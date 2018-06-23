@@ -1,0 +1,35 @@
+$menu-background: rgb(32, 37, 45);
+$menu-content-padding: $grid-step * 2;
+$menu-header-logo-margin: $grid-step * 2;
+$menu-head-l-margin: $grid-step * 2;
+$menu-header-height: $grid-step * 8;
+$menu-width: $grid-step * 32;
+
+.menu {
+  background: $menu-background;
+  color: whitesmoke;
+
+  &.left {
+    width: $menu-width;
+  }
+
+  &.top {
+    height: $menu-header-height;
+  }
+
+  &__logo {
+    height: calc(#{$menu-header-height} - 2 * #{$menu-header-logo-margin});
+    padding: $menu-header-logo-margin 0 $menu-header-logo-margin 0;
+    border-right: 1px solid gray;
+    box-shadow: 0 -1px black inset;
+  }
+
+  &__header {
+    height: $menu-header-height;
+    border-bottom: 1px solid gray;
+  }
+
+  &__user-control {
+    width: $grid-step * 30;
+  }
+}

@@ -1,0 +1,70 @@
+@import "constants";
+@import "card";
+@import "grid";
+@import "typography";
+
+body {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+
+  background: rgb(199, 205, 205);;
+
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+}
+
+.btn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  display: inline-block;
+  padding: 7px 40px;
+  margin-bottom: 0;
+  font-size: 18px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 0px;
+  outline: none;
+
+  &_neutral {
+    color: $btn-neutral-color;
+    background: linear-gradient($btn-neutral-bg-start, $btn-neutral-bg-end);
+    text-decoration: none;
+  }
+
+  &_neutral:hover {
+    color: $btn-neutral-color;
+    background: linear-gradient($btn-neutral-bg-start, $btn-neutral-bg-end);
+    text-decoration: underline;
+  }
+
+  &_warning {
+    color: $btn-warning-color;
+    background: linear-gradient($btn-warning-bg-start, $btn-warning-bg-end);
+    text-decoration: none;
+  }
+
+  &_warning:hover {
+    color: $btn-warning-color;
+    background: linear-gradient($btn-warning-hov-bg-start, $btn-warning-hov-bg-end);
+    text-decoration: none;
+  }
+
+  &_ok {
+    color: $btn-ok-color;
+    background: linear-gradient($btn-ok-bg-start, $btn-ok-bg-end);
+    text-decoration: none;
+  }
+
+  &_ok:hover {
+    color: $btn-ok-color;
+    background: linear-gradient($btn-ok-hov-bg-start, $btn-ok-hov-bg-end);
+    text-decoration: none;
+  }
+}

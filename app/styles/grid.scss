@@ -1,0 +1,131 @@
+$grid-step: 8px;
+$v-step: $grid-step;
+
+$col-number: 12;
+$col-margin: $grid-step;
+$col-padding: 0;
+$col-width: $grid-step * 12 - $col-margin -$col-padding;
+
+$min-col-size: 1;
+$max-col-size: 12;
+
+$min-grid-size: 1;
+$max-grid-size: 32;
+
+@for $size from $min-grid-size through $min-grid-size {
+  @each $property in margin, padding {
+    @each $side in left, right, top, bottom {
+      .#{ $property }-#{ $side }-#{ $size }x {
+        #{ $property }-#{ $side }: #{ $grid-step * $size }px;
+      }
+    }
+  }
+}
+
+@each $property in margin, padding {
+  .no-#{ $property } {
+    #{ $property }: 0 !important;
+
+    @each $side in right, left, top, bottom {
+      &-#{ $side } {
+        #{ $property }-#{ $side }: 0 !important;
+      }
+    }
+  }
+}
+
+._base_grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+._base_col {
+  padding-left: $col-padding;
+  padding-right: $col-padding;
+  margin-left: $col-margin;
+  margin-right: $col-margin;
+}
+
+.grid {
+  &-static {
+    @extend ._base_grid;
+
+    @for $i from $min-col-size through $max-col-size {
+      & .col {
+        &-#{ $i } {
+          @extend ._base_col;
+          width: $col-width * $i;
+        }
+
+        &-min-#{ $i } {
+          @extend ._base_col;
+          min-width: $col-width * $i;
+        }
+
+        &-max-#{ $i } {
+          @extend ._base_col;
+          max-width: $col-width * $i;
+        }
+      }
+    }
+  }
+
+  &-fluid {
+    @extend ._base_grid;
+
+    @for $i from 1 through $col-number {
+      & .col {
+        &-#{ $i } {
+          @extend ._base_col;
+          width: calc(#{ $i * 100 / $col-number }% - 2 * #{ $col-margin } - 1px);
+        }
+
+        &-min-#{ $i } {
+          @extend ._base_col;
+          min-width: calc(#{ $i * 100 / $col-number }% - 2 * #{ $col-margin } - 1px);
+        }
+
+        &-max-#{ $i } {
+          @extend ._base_col;
+          max-width: calc(#{ $i * 100 / $col-number }% - 2 * #{ $col-margin } - 1px);
+        }
+      }
+    }
+  }
+}
+
+.items {
+  &-top {
+    align-items: flex-start;
+  }
+
+  &-center {
+    align-items: center;
+  }
+
+  &-bottom {
+    align-items: flex-end;
+  }
+}
+
+.col-full {
+  @extend ._base_col;
+
+  flex: 1;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.col {
+  &-top {
+    align-self: flex-start;
+  }
+
+  &-center {
+    align-self: center;
+  }
+
+  &-bottom {
+    align-self: flex-end;
+  }
+}
