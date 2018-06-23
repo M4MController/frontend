@@ -1,3 +1,45 @@
-{{#each model as |object|}}
-  {{object.name}}
-{{/each}}
+<div class="grid-static vp-height vp-width">
+  <div class="menu left full-height col-3 no-margin no-padding">
+    {{#link-to 'index' class="layout h-center v-center full-width menu-header-height menu"}}
+      <img src="/images/logo.svg" class="menu__logo"/>
+    {{/link-to}}
+    <div class="full-width">
+      {{#menu-option
+        caption="Objects"
+        icon="home"
+        linkTo="index"
+      }}
+        {{#each model.objects as |object|}}
+          {{#menu-option
+            caption=object.name
+            linkTo='object_'
+            linkParam=object.id
+          }}{{/menu-option}}
+        {{/each}}
+      {{/menu-option}}
+
+      {{menu-option
+        caption="Finance"
+        icon="credit-card"
+        linkTo='finance'
+      }}
+
+      {{menu-option
+        caption="Settings"
+        icon="settings"
+        linkTo='settings'
+      }}
+    </div>
+  </div>
+
+  <div class="menu menu__head full-height no-margin-left col-full">
+    <div class="menu__header menu-header-height">
+      <div class="pull-right">
+      </div>
+    </div>
+
+    <div class="overflow-y-auto full-height">
+      {{yield}}
+    </div>
+  </div>
+</div>

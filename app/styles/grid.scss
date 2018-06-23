@@ -3,7 +3,7 @@ $v-step: $grid-step;
 
 $col-number: 12;
 $col-margin: $grid-step;
-$col-padding: 0;
+$col-padding: $grid-step;
 $col-width: $grid-step * 12 - $col-margin -$col-padding;
 
 $min-col-size: 1;
@@ -55,16 +55,7 @@ $max-grid-size: 32;
         &-#{ $i } {
           @extend ._base_col;
           width: $col-width * $i;
-        }
-
-        &-min-#{ $i } {
-          @extend ._base_col;
-          min-width: $col-width * $i;
-        }
-
-        &-max-#{ $i } {
-          @extend ._base_col;
-          max-width: $col-width * $i;
+          box-sizing: border-box;
         }
       }
     }
@@ -78,16 +69,6 @@ $max-grid-size: 32;
         &-#{ $i } {
           @extend ._base_col;
           width: calc(#{ $i * 100 / $col-number }% - 2 * #{ $col-margin } - 1px);
-        }
-
-        &-min-#{ $i } {
-          @extend ._base_col;
-          min-width: calc(#{ $i * 100 / $col-number }% - 2 * #{ $col-margin } - 1px);
-        }
-
-        &-max-#{ $i } {
-          @extend ._base_col;
-          max-width: calc(#{ $i * 100 / $col-number }% - 2 * #{ $col-margin } - 1px);
         }
       }
     }

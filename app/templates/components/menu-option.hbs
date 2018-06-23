@@ -1,0 +1,35 @@
+<div class="option">
+  {{#if linkParam}}
+    {{#link-to linkTo linkParam class="head"}}
+      {{#if icon}}
+        {{icon-component name=icon class="icon"}}
+      {{else}}
+        <i class="dot"></i>
+      {{/if}}
+      <span class="caption text-default text-white">
+        {{caption}}
+      </span>
+      {{#if counter}}
+        <span class="text-white">{{counter}}</span>
+      {{/if}}
+    {{/link-to}}
+  {{else}}
+    {{#link-to linkTo class="head"}}
+      {{#if icon}}
+        {{icon-component name=icon class="icon"}}
+      {{else}}
+        <i class="dot"></i>
+      {{/if}}
+      <span class="caption text-default text-white">
+        {{caption}}
+      </span>
+      {{#if counter}}
+        <span class="text-white">{{counter}}</span>
+      {{/if}}
+    {{/link-to}}
+  {{/if}}
+
+  <div class="body">
+    {{yield}}
+  </div>
+</div>

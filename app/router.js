@@ -1,3 +1,5 @@
+/* eslint-disable no-invalid-this */
+
 import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
 
@@ -7,6 +9,9 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('object_', {path: '/object/:object_id'});
+  this.route('finance');
+  this.route('settings');
 });
 
 export default Router;
