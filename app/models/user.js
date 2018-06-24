@@ -3,6 +3,7 @@ import {
   attr,
   hasMany,
 } from '@ember-decorators/data';
+import {computed} from '@ember-decorators/object';
 
 export default class UserModel extends DS.Model {
   @attr familyName;
@@ -19,4 +20,9 @@ export default class UserModel extends DS.Model {
   @attr citizenship;
   @attr email;
   @hasMany('object') objects;
+
+  @computed('familyName', 'secondName')
+  get fullName() {
+    return `${this.get('familyName')} ${this.get('secondName')}`;
+  }
 }

@@ -7,6 +7,10 @@ body {
   font-size: $base-font-size;
 }
 
+.no-wrap {
+  text-wrap: none;
+}
+
 .text-caption {
   font-size: $large-font-size;
 }

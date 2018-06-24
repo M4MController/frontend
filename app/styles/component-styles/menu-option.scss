@@ -8,7 +8,7 @@ $icon-size: $grid-step * 2;
 $icon-r-margin: $grid-step * 2;
 
 .head {
-  height: $body-height;
+  min-height: $body-height;
   display: block;
   text-decoration: none;
   color: white;

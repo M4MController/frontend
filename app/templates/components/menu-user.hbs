@@ -1,0 +1,22 @@
+<div class="grid-fluid col-center full-height">
+  {{icon-component name="man" class="col avatar"}}
+  <div class="clickable col-full" onClick={{action "onClickAction"}}>
+    {{user.fullName}}
+  </div>
+  {{icon-component
+    name="down-arrow"
+    class="col array clickable"
+    onClick=(action "onClickAction")
+  }}
+</div>
+{{#if isDropDownOpened}}
+  <div class="menu-container">
+    {{#link-to "settings" class="menu-item"}}
+      Settings
+    {{/link-to}}
+    {{#link-to "finance" class="menu-item"}}
+      Finance
+    {{/link-to}}
+
+  </div>
+{{/if}}
