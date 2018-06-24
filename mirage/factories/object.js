@@ -1,6 +1,9 @@
-import {Factory, faker} from 'ember-cli-mirage';
+import {
+  Factory,
+  faker,
+} from 'ember-cli-mirage';
 
 export default Factory.extend({
-  name: faker.address.state(),
+  name: () => faker.address.country(),
   address: () => faker.address.streetAddress(),
 });
