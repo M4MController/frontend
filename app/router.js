@@ -9,7 +9,7 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('object_', {path: '/object/:object_id'});
+  this.route('subject', {path: '/object/:object_id'});
   this.route('finance');
   this.route('settings');
 });

@@ -15,7 +15,7 @@ export default class extends Service {
     if (!_rawNamespace) {
       return '';
     }
-    return `/${_rawNamespace.replace(/^[\/]+|[\/]+$/g, '')}`; // trim '/'
+    return `/${_rawNamespace.replace(/^[/]+|[/]+$/g, '')}`; // trim '/'
   }
 
   @computed('_rawHost')
@@ -28,24 +28,15 @@ export default class extends Service {
     return `${parser.protocol}//${parser.host}`;
   }
 
-  async request(path, method, data) {
-    try {
-      const response = await this.get('ajax').request(this.buildUrl(path), {
-        method: method,
-        data: data,
-        contentType: 'application/json',
-        xhrFields: {
-          withCredentials: true,
-        },
-      });
-
-      this.set('isAuthorized', true);
-    } catch (e) {
-      if (e.code === 401) {
-        this.set('isAuthorized', false);
-      }
-      throw e;
-    }
+  request(path, method, data) {
+    return this.get('ajax').request(this.buildUrl(path), {
+      method: method,
+      data: data,
+      contentType: 'application/json',
+      xhrFields: {
+        withCredentials: true,
+      },
+    });
   }
 
   buildUrl(path) {

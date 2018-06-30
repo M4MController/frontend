@@ -1,6 +1,10 @@
 /* eslint-env node */
 'use strict';
 
+const MIRAGE = true;
+const BACKEND_HOST = 'http://meter4.me';
+const BACKEND_NAMESPACE = '/api';
+
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'M4M',
@@ -18,10 +22,15 @@ module.exports = function(environment) {
       },
     },
 
+    'ember-cli-mirage': {
+      enabled: MIRAGE,
+      excludeFilesFromBuild: !MIRAGE,
+    },
+
     APP: {
       backend: {
-        host: 'http://meter4.me',
-        namespace: '/api',
+        host: MIRAGE ? '' : BACKEND_HOST,
+        namespace: BACKEND_NAMESPACE,
       },
     },
   };

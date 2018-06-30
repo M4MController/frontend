@@ -1,0 +1,51 @@
+.object {
+  display: flex;
+  flex-direction: column;
+
+  &__tooltip {
+    align-self: center;
+    height: $grid-step * 3;
+    margin-top: $grid-step;
+  }
+
+  &__body {
+    flex: 1;
+  }
+
+  &__amount {
+    height: $grid-step * 3;
+  }
+
+  &__footer {
+    align-self: flex-end;
+    width: 100%;
+    background: $object-card-footer-background;
+  }
+}
+
+.header {
+  padding: $grid-step 0;
+  color: $object-card-header-color;
+  background: $object-card-header-ok-background;
+  box-sizing: border-box;
+  height: 100%;
+
+  &__title {
+    text-wrap: none;
+    vertical-align: center;
+    font-size: $large-font-size;
+    font-weight: normal;
+    margin-bottom: 5px;
+    height: $grid-step * 4;
+  }
+}
+
+.header-wrapper {
+  background-size: cover;
+  background-image: url('http://europeya.ru.opt-images.1c-bitrix-cdn.ru/upload/medialibrary/78e/78e62266dbe348925c434101403e1219.jpg?1481011582195555');
+  background-clip: border-box;
+  background-position: center;
+  overflow: hidden;
+
+  height: $grid-step * 10;
+}

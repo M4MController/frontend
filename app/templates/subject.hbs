@@ -1,0 +1,8 @@
+<div class="grid-static full-width">
+  {{#each model.controllers as |controller|}}
+    {{#each controller.sensors as |sensor|}}
+      {{sensor.name}}
+    {{/each}}
+    <br/>
+  {{/each}}
+</div>

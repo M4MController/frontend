@@ -1,6 +1,3 @@
-@import "grid";
-@import "constants";
-
 .pull {
   @each $side in right, left {
     &-#{ $side } {
@@ -29,13 +26,15 @@
 
 @for $i from 1 through 9 {
   @each $property in margin, padding {
-    .#{ $property }-#{ $i }x {
-      #{ $property }: #{ $grid-step * $i } !important;
-    }
-
-    @each $side in right, left, top, bottom {
-      &-#{ $side }-#{ $i }x {
+    .#{ $property } {
+      &-#{ $i }x {
         #{ $property }: #{ $grid-step * $i } !important;
+      }
+
+      @each $side in right, left, top, bottom {
+        &-#{ $side }-#{ $i }x {
+          #{ $property }-#{ $side }: #{ $grid-step * $i } !important;
+        }
       }
     }
   }

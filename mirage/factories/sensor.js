@@ -6,4 +6,5 @@ export default Factory.extend({
   company: () => faker.company.companyName(),
   activationDate: () => faker.date.past(),
   deactivationDate: () => faker.date.past(),
+  value: () => faker.random.number(0, 10000),
 });

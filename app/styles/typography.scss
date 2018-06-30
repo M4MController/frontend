@@ -30,3 +30,13 @@ body {
 .text-white {
   color: white;
 }
+
+.text-bubble {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 50px;
+  font-style: normal;
+
+  color: rgb(255, 255, 255);
+  background: rgb(14, 188, 186);
+}

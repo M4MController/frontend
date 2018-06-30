@@ -2,7 +2,6 @@ import DS from 'ember-data';
 import {
   attr,
   belongsTo,
-  hasMany,
 } from '@ember-decorators/data';
 
 export default class SensorModel extends DS.Model {
@@ -11,6 +10,6 @@ export default class SensorModel extends DS.Model {
   @attr company;
   @attr activationDate;
   @attr deactivationDate;
-  @hasMany('data') data;
+  @attr value;
   @belongsTo sensor;
 }
