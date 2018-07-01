@@ -11,5 +11,11 @@ export default class SensorModel extends DS.Model {
   @attr activationDate;
   @attr deactivationDate;
   @attr value;
+  @attr curMonthAmount;
+  @attr lastMonthAmount;
+  @attr yearAverageAmount;
+  @attr accural;
+  @attr overpay;
+  @attr summary;
   @belongsTo sensor;
 }

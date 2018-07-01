@@ -27,4 +27,11 @@ $menu-header-height: $grid-step * 8;
   &__user-control {
     width: $grid-step * 30;
   }
+
+  &__content {
+    background: transparent;
+    height: calc(100vh - #{ $menu-header-height });
+    overflow-y: auto;
+    color: #333;
+  }
 }

@@ -4,9 +4,9 @@ import {
 } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  name: () => faker.address.country(),
+  name: () => faker.address.country().slice(0, 16),
   address: () => faker.address.streetAddress(),
-  curMonthAmount: () => faker.random.number(0, 5000),
-  lastMonthAmount: () => faker.random.number(0, 5000),
-  yearAverageAmount: () => faker.random.number(0, 5000),
+  curMonthAmount: () => faker.random.number(5000),
+  lastMonthAmount: () => faker.random.number(5000),
+  yearAverageAmount: () => faker.random.number(5000),
 });
