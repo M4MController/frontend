@@ -1,9 +1,9 @@
 <div class="grid-fluid col-center full-height">
-  {{icon-component name="man" class="col avatar"}}
+  {{core/icon-component name="man" class="col avatar"}}
   <div class="clickable col-full" onClick={{action "onClickAction"}}>
     {{user.fullName}}
   </div>
-  {{icon-component
+  {{core/icon-component
     name="down-arrow"
     class="col array clickable"
     onClick=(action "onClickAction")

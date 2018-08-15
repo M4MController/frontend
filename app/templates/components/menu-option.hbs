@@ -2,7 +2,7 @@
   {{#if linkParam}}
     {{#link-to linkTo linkParam class="head"}}
       {{#if icon}}
-        {{icon-component name=icon class="icon"}}
+        {{core/icon-component name=icon class="icon"}}
       {{else}}
         <i class="dot"></i>
       {{/if}}
@@ -16,7 +16,7 @@
   {{else}}
     {{#link-to linkTo class="head"}}
       {{#if icon}}
-        {{icon-component name=icon class="icon"}}
+        {{core/icon-component name=icon class="icon"}}
       {{else}}
         <i class="dot"></i>
       {{/if}}
