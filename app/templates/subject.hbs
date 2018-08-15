@@ -1,5 +1,5 @@
 <div class="grid-static full-width">
-  {{#each model.sensors as |sensor|}}
+  {{#each (await model.sensors) as |sensor|}}
       {{sensor-card sensor=sensor}}
   {{/each}}
 </div>

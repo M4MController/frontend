@@ -7,7 +7,11 @@
         </div>
         <div class="header__description">
         <span class="text-bubble">
-          {{object.sensors.length}}
+          {{#if (is-pending object.sensors)}}
+            -
+          {{else}}
+            {{get (await object.sensors) 'length'}}
+          {{/if}}
         </span>
           active sensors
         </div>
@@ -21,23 +25,29 @@
       </div>
     </div>
   </div>
-  <div class="object__body padding-bottom-1x">
-    <div class="grid-fluid full-height items-center">
-      {{#each object.sensors as |sensor|}}
-        <div class="col col-min-6 object__amount margin-top-1x">
+  <div class="object__body">
+    {{#if (is-pending object.sensors)}}
+      <div class="layout v-center h-center full-height">
+        {{core/loader-component}}
+      </div>
+    {{else}}
+      <div class="grid-fluid full-height items-center">
+        {{#each (await object.sensors) as |sensor|}}
+          <div class="col col-min-6 object__amount margin-top-1x">
           <span class="text-default pull-left">
             {{sensor.name}}
           </span>
-          <span class="text-bubble pull-right">
-            {{sensor.value}}
-          </span>
-        </div>
-      {{else}}
-        <div class="text-muted text-center col-12 margin-top-1x">
-          No sensors
-        </div>
-      {{/each}}
-    </div>
+            <span class="text-bubble pull-right">
+              {{sensor.value}}
+            </span>
+          </div>
+        {{else}}
+          <div class="text-muted text-center col-12 margin-top-1x">
+            No sensors
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
   </div>
   <div class="object__footer grid-fluid padding-top-1x">
     <div class="col-6 full-height padding-right-2x">

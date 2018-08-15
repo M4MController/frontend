@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 import {
   attr,
@@ -17,9 +18,15 @@ export default class ObjectModel extends DS.Model {
 
   @computed('controllers')
   get sensors() {
-    return this.get('controllers').
-      toArray().
-      map((controller) => controller.get('sensors').toArray()).
-      reduce((sensors1, sensors2) => sensors1.concat(sensors2), []);
+    return (async () => {
+      let a = (await this.get('controllers')).
+        toArray().
+        map((controller) => controller.get('sensors').toArray()).
+        reduce((sensors1, sensors2) => sensors1.concat(sensors2), [])
+      ;
+      // return a;
+      console.log(a);
+      return new Ember.A(a);
+    })();
   }
 }
