@@ -7,7 +7,7 @@ const BACKEND_NAMESPACE = '/api';
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'M4M',
+    modulePrefix: 'm4m',
     environment,
     rootURL: '/',
     locationType: 'auto',

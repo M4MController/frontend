@@ -1,10 +1,13 @@
 import Route from '@ember/routing/route';
+import {addListener} from '@ember/object/events';
+import {service} from '@ember-decorators/service';
 
 export default class extends Route {
-  async model() {
-    return {
-      user: (await this.get('store').findAll('user', {include: 'objects'})).get('firstObject'),
-      objects: await this.get('store').peekAll('object'),
-    };
+  @service backend;
+
+  constructor(...args) {
+    super(...args);
+
+    addListener(this.get('backend'), 'log-in-required', () => this.transitionTo('auth.log-in'));
   }
 }

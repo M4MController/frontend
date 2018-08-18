@@ -8,4 +8,9 @@ export default class extends Component {
   onClickAction() {
     this.toggleProperty('isDropDownOpened');
   }
+
+  @action
+  onLogOutClickAction() {
+    this.attrs.onLogOut && this.attrs.onLogOut();
+  }
 }

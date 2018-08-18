@@ -1,10 +1,13 @@
 import Service from '@ember/service';
+import {sendEvent} from '@ember/object/events';
 import {computed} from '@ember-decorators/object';
 import {service} from '@ember-decorators/service';
+
 import config from '../config/environment';
 
 export default class extends Service {
   @service ajax;
+  @service auth;
 
   _rawHost = config.APP.backend.host;
   _rawNamespace = config.APP.backend.namespace;
@@ -28,7 +31,15 @@ export default class extends Service {
     return `${parser.protocol}//${parser.host}`;
   }
 
-  request(path, method, data) {
+  /**
+   * Sends a request to the server.
+   *
+   * @param {String} path Url path without prefix
+   * @param {String} method HTTP method
+   * @param {Object} data Payload serializing into JSON
+   * @return {Promise<Object>}
+   */
+  async request(path, method, data) {
     return this.get('ajax').request(this.buildUrl(path), {
       method: method,
       data: data,
@@ -36,6 +47,15 @@ export default class extends Service {
       xhrFields: {
         withCredentials: true,
       },
+    }).then((response) => {
+      this.set('auth.isAuthorized', true);
+      return response;
+    }).catch((e) => {
+      if (e.status === 401) {
+        this.set('auth.isAuthorized', false);
+        sendEvent(this, 'log-in-required');
+      }
+      throw e;
     });
   }
 

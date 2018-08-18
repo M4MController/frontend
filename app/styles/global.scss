@@ -14,10 +14,11 @@ body {
   font-size: $base-font-size;
 }
 
+input {
+  box-sizing: border-box;
+}
+
 .btn {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 
   display: inline-block;
@@ -29,42 +30,52 @@ body {
   vertical-align: middle;
   cursor: pointer;
   border-radius: 5px;
-  border: 0px;
+  border: 0;
   outline: none;
 
-  &_neutral {
+  &-neutral {
     color: $btn-neutral-color;
     background: linear-gradient($btn-neutral-bg-start, $btn-neutral-bg-end);
     text-decoration: none;
+
+    &:hover {
+      color: $btn-neutral-color;
+      background: linear-gradient($btn-neutral-bg-start, $btn-neutral-bg-end);
+      text-decoration: underline;
+    }
   }
 
-  &_neutral:hover {
-    color: $btn-neutral-color;
-    background: linear-gradient($btn-neutral-bg-start, $btn-neutral-bg-end);
-    text-decoration: underline;
-  }
-
-  &_warning {
+  &-warning {
     color: $btn-warning-color;
     background: linear-gradient($btn-warning-bg-start, $btn-warning-bg-end);
     text-decoration: none;
+
+    &:hover {
+      color: $btn-warning-color;
+      background: linear-gradient($btn-warning-hov-bg-start, $btn-warning-hov-bg-end);
+      text-decoration: none;
+    }
   }
 
-  &_warning:hover {
-    color: $btn-warning-color;
-    background: linear-gradient($btn-warning-hov-bg-start, $btn-warning-hov-bg-end);
-    text-decoration: none;
-  }
-
-  &_ok {
+  &-ok {
     color: $btn-ok-color;
     background: linear-gradient($btn-ok-bg-start, $btn-ok-bg-end);
     text-decoration: none;
+
+    &:hover {
+      color: $btn-ok-color;
+      background: linear-gradient($btn-ok-hov-bg-start, $btn-ok-hov-bg-end);
+      text-decoration: none;
+    }
   }
 
-  &_ok:hover {
-    color: $btn-ok-color;
-    background: linear-gradient($btn-ok-hov-bg-start, $btn-ok-hov-bg-end);
-    text-decoration: none;
+  &-disabled {
+    color: white;
+    background: gray;
+    cursor: default;
+
+    &:hover {
+      //background: red;
+    }
   }
 }

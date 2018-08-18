@@ -24,8 +24,6 @@ export default class ObjectModel extends DS.Model {
         map((controller) => controller.get('sensors').toArray()).
         reduce((sensors1, sensors2) => sensors1.concat(sensors2), [])
       ;
-      // return a;
-      console.log(a);
       return new Ember.A(a);
     })();
   }

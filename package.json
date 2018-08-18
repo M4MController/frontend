@@ -1,10 +1,10 @@
 {
-  "name": "M4M",
+  "name": "m4m",
   "version": "0.0.1",
   "private": true,
-  "description": "M4M",
+  "description": "m4m",
   "license": "MIT",
-  "author": "M4M frontend team",
+  "author": "m4m frontend team",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -12,6 +12,7 @@
   "repository": "",
   "scripts": {
     "build": "ember build",
+    "lint": "eslint app/ tests/",
     "start": "ember serve",
     "test": "ember test"
   },

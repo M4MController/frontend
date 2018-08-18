@@ -9,9 +9,14 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('subject', {path: '/object/:object_id'});
-  this.route('finance');
-  this.route('settings');
+  this.route('auth', {resetNamespace: true}, function() {
+    this.route('log-in');
+  });
+  this.route('account', {path: '/'}, function() {
+    this.route('subject', {path: '/object/:object_id'});
+    this.route('finance');
+    this.route('settings');
+  });
 });
 
 export default Router;

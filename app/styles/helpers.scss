@@ -12,6 +12,12 @@
   }
 }
 
+@each $property in absolute, static, fixed {
+  .#{ $property } {
+    position: $property !important;
+  }
+}
+
 @each $property in margin, padding {
   .no-#{ $property } {
     #{ $property }: 0 !important;

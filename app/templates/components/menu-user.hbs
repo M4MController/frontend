@@ -11,12 +11,14 @@
 </div>
 {{#if isDropDownOpened}}
   <div class="menu-container">
-    {{#link-to "settings" class="menu-item"}}
+    {{#link-to "account.settings" class="menu-item text-default"}}
       Settings
     {{/link-to}}
-    {{#link-to "finance" class="menu-item"}}
+    {{#link-to "account.finance" class="menu-item text-default"}}
       Finance
     {{/link-to}}
-
+    <div class="menu-item text-dangerous" onclick={{action 'onLogOutClickAction'}}>
+      Log Out
+    </div>
   </div>
 {{/if}}
