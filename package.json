@@ -12,7 +12,7 @@
   "repository": "",
   "scripts": {
     "build": "ember build",
-    "lint": "eslint app/ tests/",
+    "lint": "eslint app/ tests/ && ./node_modules/.bin/ember-template-lint app/templates/",
     "start": "ember serve",
     "test": "ember test"
   },
@@ -43,6 +43,7 @@
     "ember-promise-helpers": "^1.0.6",
     "ember-resolver": "^5.0.1",
     "ember-source": "^3.3.1",
+    "ember-template-lint": "^0.8.23",
     "ember-truth-helpers": "^2.0.0",
     "ember-welcome-page": "^3.0.0",
     "eslint": "^5.2.0",

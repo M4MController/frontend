@@ -1,7 +1,7 @@
 <div class="grid-static vp-height vp-width">
   <div class="menu left full-height col-3 no-margin no-padding">
-    {{#link-to 'account.index' class="layout h-center v-center full-width menu-header-height menu"}}
-      <img src="/images/logo.svg" class="menu__logo"/>
+    {{#link-to "account.index" class="layout h-center v-center full-width menu-header-height menu"}}
+      {{core/image-component name="logo" class="menu__logo"}}
     {{/link-to}}
     <div class="full-width">
       {{#menu-option
@@ -12,7 +12,7 @@
         {{#each model.objects as |object|}}
           {{#menu-option
             caption=object.name
-            linkTo='account.subject'
+            linkTo="account.subject"
             linkParam=object.id
           }}{{/menu-option}}
         {{/each}}
@@ -21,7 +21,7 @@
       {{menu-option
         caption="Finance"
         icon="credit-card"
-        linkTo='account.finance'
+        linkTo="account.finance"
       }}
 
       {{menu-option
@@ -38,7 +38,7 @@
         <div class="col-3 col-center">
           {{menu-user user=model.user
                       class="full-height"
-                      onLogOut=(action 'onLogOutAction')
+                      onLogOut=(action "onLogOutAction")
           }}
         </div>
       </div>

@@ -1,6 +1,6 @@
 <div class="grid-fluid col-center full-height">
   {{core/icon-component name="man" class="col avatar"}}
-  <div class="clickable col-full" onClick={{action "onClickAction"}}>
+  <div class="clickable col-full" role="button" onclick={{action "onClickAction"}}>
     {{user.fullName}}
   </div>
   {{core/icon-component
@@ -17,7 +17,7 @@
     {{#link-to "account.finance" class="menu-item text-default"}}
       Finance
     {{/link-to}}
-    <div class="menu-item text-dangerous" onclick={{action 'onLogOutClickAction'}}>
+    <div class="menu-item text-dangerous" role="button" onclick={{action "onLogOutClickAction"}}>
       Log Out
     </div>
   </div>

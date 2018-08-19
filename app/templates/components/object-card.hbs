@@ -1,4 +1,4 @@
-{{#link-to 'account.subject' object.id class="object" tagName='div'}}
+{{#link-to "account.subject" object.id class="object" tagName="div"}}
   <div class="header-wrapper">
     <div class="header grid-fluid">
       <div class="col-7">
@@ -6,19 +6,19 @@
           {{object.name}}
         </div>
         <div class="header__description">
-        <span class="text-bubble">
-          {{#if (is-pending object.sensors)}}
-            -
-          {{else}}
-            {{get (await object.sensors) 'length'}}
-          {{/if}}
-        </span>
+          <span class="text-bubble">
+            {{#if (is-pending object.sensors)}}
+              -
+            {{else}}
+              {{get (await object.sensors) "length"}}
+            {{/if}}
+          </span>
           active sensors
         </div>
       </div>
       <div class="col-5 col-center">
         <div class="pull-right">
-          {{#link-to 'account.subject' object.id class='btn btn-ok'}}
+          {{#link-to "account.subject" object.id class="btn btn-ok"}}
             More
           {{/link-to}}
         </div>
@@ -34,9 +34,9 @@
       <div class="grid-fluid full-height items-center">
         {{#each (await object.sensors) as |sensor|}}
           <div class="col col-min-6 object__amount margin-top-1x">
-          <span class="text-default pull-left">
-            {{sensor.name}}
-          </span>
+            <span class="text-default pull-left">
+              {{sensor.name}}
+            </span>
             <span class="text-bubble pull-right">
               {{sensor.value}}
             </span>
@@ -52,32 +52,32 @@
   <div class="object__footer grid-fluid padding-top-1x">
     <div class="col-6 full-height padding-right-2x">
       <div class="object__amount">
-      <span class="text-default pull-left">
-        Current month
-      </span>
+        <span class="text-default pull-left">
+          Current month
+        </span>
         <span class="pull-right">
           {{object.curMonthAmount}}
         </span>
       </div>
       <div class="object__amount">
-      <span class="text-default pull-left">
-        Last month
-      </span>
+        <span class="text-default pull-left">
+          Last month
+        </span>
         <span class="pull-right">
           {{object.lastMonthAmount}}
         </span>
       </div>
       <div class="object__amount ">
-      <span class="text-default pull-left">
-        Last year average
-      </span>
+        <span class="text-default pull-left">
+          Last year average
+        </span>
         <span class="pull-right">
           {{object.yearAverageAmount}}
         </span>
       </div>
     </div>
     <div class="col-6 col-center">
-      {{#link-to 'account.index' class='btn btn-ok pull-right'}}
+      {{#link-to "account.index" class="btn btn-ok pull-right"}}
         Pay
       {{/link-to}}
     </div>
