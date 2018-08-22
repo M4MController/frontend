@@ -40,16 +40,7 @@ $max-grid-size: 32;
 }
 
 ._base_col {
-  padding-left: $col-padding;
-  padding-right: $col-padding;
-  //margin-left: $col-margin;
-  //margin-right: $col-margin;
   box-sizing:  border-box;
-
-  &::first-line {
-    //margin-left: 0;
-    //padding-left: 0;
-  }
 }
 
 .grid {

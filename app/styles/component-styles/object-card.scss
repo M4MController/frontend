@@ -10,15 +10,26 @@
 
   &__body {
     flex: 1;
+    padding-top: $grid-step;
+    padding-left: $grid-step;
   }
 
   &__amount {
+    height: $grid-step * 4;
+    padding-right: $grid-step;
+  }
+
+  &__stats {
     height: $grid-step * 3;
+    padding-right: $grid-step;
   }
 
   &__footer {
     align-self: flex-end;
     width: 100%;
+    padding-right: $grid-step;
+    padding-bottom: $grid-step;
+    box-sizing: border-box;
     background: $object-card-footer-background;
   }
 }
