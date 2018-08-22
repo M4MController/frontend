@@ -9,11 +9,9 @@ $border-line: 1px;
 $user-menu-width: $grid-step * 20;
 
 .container {
-  display: flex;
-  align-items: center;
-
-  height: $control-height;
-  padding: $control-padding-h $control-padding-v;
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
 }
 
 .avatar {
