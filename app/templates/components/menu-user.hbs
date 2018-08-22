@@ -1,12 +1,13 @@
-<div class="grid-fluid col-center full-height">
+<div class="container clickable grid-fluid col-center full-height"
+     role="button"
+     onclick={{action "onClickAction"}}>
   {{core/icon-component name="man" class="col avatar"}}
-  <div class="clickable col-full" role="button" onclick={{action "onClickAction"}}>
+  <div class="col-full margin-left-1x">
     {{user.fullName}}
   </div>
   {{core/icon-component
-    name="down-arrow"
-    class="col array clickable"
-    onClick=(action "onClickAction")
+    name="arrow-down"
+    class="col array clickable rotate-90"
   }}
 </div>
 {{#if isDropDownOpened}}

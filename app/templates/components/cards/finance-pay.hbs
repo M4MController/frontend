@@ -1,0 +1,59 @@
+{{! template-lint-disable no-html-comments no-inline-styles }}
+
+<div class="card item col-5">
+  <div class="margin-2x text-capitalize">
+    Pay
+  </div>
+  {{#each bills as |bill|}}
+    <div class="spoiler" style={{html-safe (concat "border-right-color: " bill.color)}}>
+      <!-- for the prototype identifies billing by its title :) !-->
+      <div class="spoiler-header clickable"
+           role="button"
+           onclick={{action "toggle" bill "opened"}}>
+        <div>
+          <span class="text-bold text-uppercase">
+            {{bill.title}}
+          </span>
+          {{core/icon-component
+            name="arrow-down"
+            class=(concat "arrow margin-left-3x pull-right rotate-" (if bill.opened "270" "90"))
+          }}
+          <span class="pull-right">
+            Account: {{bill.account}}
+          </span>
+        </div>
+        {{#if bill.subtitle}}
+          <div class="text-small padding-top-1x margin-right-3x">
+            {{bill.subtitle}}
+          </div>
+        {{/if}}
+
+      </div>
+      <div class="spoiler-body {{unless bill.opened "closed"}}">
+        {{#each bill.elements as |element|}}
+          <div class="spoiler-element grid-fluid">
+            <div class="col-6">
+              <div class="text-bold">{{element.title}}</div>
+              <div class="spoiler-element-text">Payment: {{element.price}} &#8381;</div>
+              <div class="spoiler-element-text">Controller: {{element.controller}}</div>
+            </div>
+            <div class="col-6 v-center h-right">
+              <div>
+                {{input class="inline input-control text-default" type="number" value=(readonly element.price)}}
+                &#8381;
+              </div>
+            </div>
+          </div>
+        {{/each}}
+        <div class="spoiler-element h-right">
+          <div>
+            <span class="text-bold margin-right-2x">
+              Total to the payment {{bill.totalPrice}} &#8381;
+            </span>
+            <button class="inline btn btn-ok">Pay</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>

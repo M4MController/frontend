@@ -1,5 +1,4 @@
 $base-font-family: Arial, Helvetica, sans-serif;
-$small-font-size: $v-step * 1;
 $base-font-size: $grid-step * 2;
 $large-font-size: $grid-step * 3;
 
@@ -11,36 +10,57 @@ body {
   text-wrap: none;
 }
 
-.text-caption {
-  font-size: $large-font-size;
-}
+.text {
+  &-bubble {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 50px;
+    font-style: normal;
 
-.text-center {
-  text-align: center;
-}
+    color: rgb(255, 255, 255);
+    background: rgb(14, 188, 186);
+  }
 
-.text-default {
-  color: #333;
-}
+  &-caption {
+    font-size: $large-font-size;
+  }
 
-.text-dangerous {
-  color: #ab0000;
-}
+  &-center {
+    text-align: center;
+  }
 
-.text-muted {
-  color: gray;
-}
+  &-default {
+    color: #333;
+    font-size: $grid-step * 2;
+    line-height: $grid-step * 2;
+  }
 
-.text-white {
-  color: white;
-}
+  &-dangerous {
+    color: #ab0000;
+  }
 
-.text-bubble {
-  display: inline-block;
-  padding: 2px 7px;
-  border-radius: 50px;
-  font-style: normal;
+  &-muted {
+    color: gray;
+  }
 
-  color: rgb(255, 255, 255);
-  background: rgb(14, 188, 186);
+  &-small {
+    font-size: $grid-step * 1.5;
+    line-height: $grid-step * 2;
+  }
+
+  &-white {
+    color: white;
+  }
+
+  @each $value in capitalize, lowercase, uppercase {
+    &-#{ $value } {
+      text-transform: $value;
+    }
+  }
+
+  @each $value in bold, italic {
+    &-#{ $value } {
+      font-weight: $value;
+    }
+  }
 }

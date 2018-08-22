@@ -1,0 +1,68 @@
+// Colors
+$spoiler-head-color: #efeef3;
+$spoiler-body-color: #f9f9f9;
+$spoiler-item-item-bottom: solid 1px #e1e1e3;
+$object-body-color: $object-card-body-background;
+$object-shadow-color: $object-card-header-color;
+$object-splitter-color: darken($object-card-body-background, 20);
+$object-spoiler-header-color: darken($object-card-body-background, 10);
+$object-spoiler-color: darken($object-card-body-background, 5);
+$input-border-color: lightgray;
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 0 5px $object-shadow-color;
+}
+
+.spoiler {
+  border-right: solid 5px green;
+  border-bottom: solid transparent 1px;
+
+  &-header {
+    background-color: $spoiler-head-color;
+    padding: $grid-step * 2;
+
+    &:hover {
+      background-color: darken($spoiler-head-color, 2);
+    }
+  }
+
+  &-body {
+    background-color: $spoiler-body-color;
+    overflow: hidden;
+
+    max-height: 100vh;
+    transition: max-height 500ms ease;
+
+    &.closed {
+      max-height: 0;
+    }
+  }
+
+  &-element {
+    border-bottom: $spoiler-item-item-bottom;
+    padding: $grid-step $grid-step * 2;
+
+    &-text {
+      padding-left: $grid-step;
+      padding-top: $grid-step;
+    }
+  }
+}
+
+.input-control {
+  border: 1px solid lightgray;
+  border-radius: $grid-step;
+
+  text-align: right;
+
+  height: $grid-step * 4;
+  width: $grid-step * 15;
+}
+
+.arrow {
+  height: $grid-step * 1.2;
+  transition: transform 350ms;
+}
