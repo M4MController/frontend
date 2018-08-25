@@ -5,6 +5,7 @@ import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
 
 import './overrides/component';
+import './overrides/route';
 
 const App = Application.extend({
   modulePrefix: config.modulePrefix,
