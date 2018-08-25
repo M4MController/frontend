@@ -21,8 +21,14 @@ $user-menu-width: $grid-step * 20;
   border: white $border-line solid;
 }
 
-.array {
+.arrow {
   width: $grid-step * 2;
+  transition: transform 300ms ease;
+}
+
+.bell {
+  width: $grid-step * 3;
+  margin: auto $grid-step * 3;
 }
 
 .user-menu {

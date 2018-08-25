@@ -1,14 +1,25 @@
-<div class="container clickable grid-fluid col-center full-height"
-     role="button"
-     onclick={{action "onClickAction"}}>
-  {{core/icon-component name="man" class="col avatar"}}
-  <div class="col-full margin-left-1x">
-    {{user.fullName}}
+<div class="grid-fluid col-center full-height">
+  <div class="container clickable col-center grid-fluid full-height"
+       role="button"
+       onclick={{action "onClickAction"}}>
+    {{core/icon-component name="man" class="col avatar"}}
+    <div class="margin-left-1x">
+      {{user.fullName}}
+    </div>
+    {{core/icon-component
+      name="arrow-down"
+      class=(concat
+        "arrow margin-left-2x rotate-"
+        (if isDropDownOpened "270" "90")
+      )
+    }}
   </div>
-  {{core/icon-component
-    name="arrow-down"
-    class="col array clickable rotate-90"
-  }}
+  <span class="container clickable col-center grid-fluid full-height">
+    {{core/icon-component
+      name="bell"
+      class="bell"
+    }}
+  </span>
 </div>
 {{#if isDropDownOpened}}
   <div class="menu-container">
