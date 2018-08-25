@@ -49,9 +49,7 @@
 }
 
 .header-wrapper {
-  background-size: cover;
-  background-clip: border-box;
-  background: url('http://europeya.ru.opt-images.1c-bitrix-cdn.ru/upload/medialibrary/78e/78e62266dbe348925c434101403e1219.jpg?1481011582195555') center;
+  background: url('http://europeya.ru.opt-images.1c-bitrix-cdn.ru/upload/medialibrary/78e/78e62266dbe348925c434101403e1219.jpg?') center;
   overflow: hidden;
 
   height: $grid-step * 10;

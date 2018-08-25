@@ -106,26 +106,12 @@ $max-grid-size: 32;
   &-bottom {
     align-items: flex-end;
   }
-}
 
-.col-full {
-  @extend ._base_col;
+  &-full {
+    @extend ._base_col;
 
-  flex: 1;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.col {
-  &-top {
-    align-self: flex-start;
-  }
-
-  &-center {
-    align-self: center;
-  }
-
-  &-bottom {
-    align-self: flex-end;
+    flex: 1;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 }
