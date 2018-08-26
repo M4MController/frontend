@@ -15,6 +15,7 @@ export default function() {
     ['data', 'sensor'],
   ].forEach(([type, relations]) => {
     this.get(`/${type}`);
+    this.post(`/${type}`);
     this.get(`/${type}/:id`);
 
     if (relations) {

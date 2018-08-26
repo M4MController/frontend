@@ -1,0 +1,18 @@
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+
+}
+
+.cover {
+  background-color: #fefefe;
+  margin: 100px auto auto auto;
+  padding: $grid-step * 2;
+  border: 1px solid #888;
+}

@@ -1,0 +1,23 @@
+<div class="modal grid-static">
+  {{#if cover}}
+    <div class="cover col-{{width}}">
+      {{#if (or attrs.title attrs.onClose)}}
+        <div class="margin-bottom-2x">
+          {{#if attrs.title}}
+            <span class="text-bold">{{attrs.title}}</span>
+          {{/if}}
+          {{#if attrs.onClose}}
+            <span class="pull-right text-bold clickable text-small"
+                  role="button"
+                  onclick={{action "onCloseButtonClickAction"}}>
+              X
+            </span>
+          {{/if}}
+        </div>
+      {{/if}}
+      {{yield}}
+    </div>
+  {{else}}
+    {{yield}}
+  {{/if}}
+</div>

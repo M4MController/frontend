@@ -3,3 +3,10 @@
     {{sensor-card sensor=sensor}}
   {{/each}}
 </div>
+
+{{#if showAddModal}}
+  {{modals/add-controller
+    onClose=(action 'set' 'showAddModal' false)
+    onAdd=(action 'addControllerAction')
+  }}
+{{/if}}

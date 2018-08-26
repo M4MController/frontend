@@ -3,3 +3,10 @@
     {{object-card object=object}}
   {{/each}}
 </div>
+
+{{#if showAddModal}}
+  {{modals/add-object
+    onClose=(action 'set' 'showAddModal' false)
+    onAdd=(action 'onAddObjectAction')
+  }}
+{{/if}}

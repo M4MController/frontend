@@ -1,0 +1,19 @@
+{{#modals/modal-component
+  title="Add Object"
+  onClose=(action "onCloseAction")
+  width=4
+}}
+  <div class="text-default margin-bottom-1x">
+    Name:
+  </div>
+  {{input class='full-width input input-default'
+          value=name
+          enter=(action 'onAddClickAction')
+  }}
+
+  <div class="btn btn-{{if isValidName 'ok' 'disabled'}} pull-right margin-top-2x"
+       role="button"
+       onclick={{action 'onAddClickAction'}}>
+    Add
+  </div>
+{{/modals/modal-component}}

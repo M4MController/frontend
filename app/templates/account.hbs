@@ -10,11 +10,13 @@
         linkTo="account.index"
       }}
         {{#each model.objects as |object|}}
-          {{#menu-option
-            caption=object.name
-            linkTo="account.subject"
-            linkParam=object.id
-          }}{{/menu-option}}
+          {{#if object.id}}
+            {{menu-option
+              caption=object.name
+              linkTo="account.subject"
+              linkParam=object.id
+            }}
+          {{/if}}
         {{/each}}
       {{/menu-option}}
 
