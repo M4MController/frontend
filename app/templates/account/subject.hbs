@@ -1,12 +1,24 @@
 <div class="grid-static full-width">
-  {{#each (await model.sensors) as |sensor|}}
-    {{sensor-card sensor=sensor}}
-  {{/each}}
+  {{#if (is-pending model.controllers)}}
+    {{core/loader-component class="vp-height full-width v-center h-center"}}
+  {{else}}
+    {{#each model.controllers as |controller|}}
+      {{#each (await controller.sensors) as |sensor|}}
+        {{sensor-card sensor=sensor}}
+      {{/each}}
+    {{/each}}
+    {{cards/plus-card
+      text="Add new object"
+      width=4
+      click=(action "set" this "modalAddVisible" true)
+    }}
+  {{/if}}
 </div>
 
-{{#if showAddModal}}
+{{#if modalAddVisible}}
   {{modals/add-controller
-    onClose=(action 'set' 'showAddModal' false)
-    onAdd=(action 'addControllerAction')
+    loading=modalAddLoading
+    onClose=(action "set" "modalAddVisible" false)
+    onAdd=(action "addControllerAction")
   }}
 {{/if}}

@@ -1,0 +1,13 @@
+.plus {
+  border: 3px dashed #9ea2a3;
+  border-radius: 3px;
+}
+
+.icon {
+  width: $grid-step * 14;
+  transition: transform 200ms ease;
+}
+
+.plus:hover .icon {
+  transform: scale(1.05);
+}

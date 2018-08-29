@@ -2,16 +2,28 @@ import Controller from '@ember/controller';
 import {action} from '@ember-decorators/object';
 
 export default class extends Controller {
-  showAddModal = true;
+  modalAddVisible = false;
+  modalAddLoading = false;
 
   @action
   async addControllerAction(macAddress) {
-    const obj = this.get('model');
+    this.set('modalAddLoading', true);
     const controller = this.get('store').createRecord('controller', {
       name: macAddress,
       object: this.get('model'),
     });
     await controller.save();
-    this.set('showAddModal', false);
+
+    // todo: remove the following
+    /* TEST DATA */
+    for (let i = 0; i < 6; ++i) {
+      await this.get('store').createRecord('sensor', {
+        name: `sensor ${i + 1}`,
+        controller,
+      }).save();
+    }
+
+    this.set('modalAddVisible', false);
+    this.set('modalAddLoading', false);
   }
 }

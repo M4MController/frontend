@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import {
   action,
   computed,
+  on,
 } from '@ember-decorators/object';
 import {
   and,
@@ -9,6 +10,11 @@ import {
 
 export default class extends Component {
   macAddress = '';
+
+  @on('didRender')
+  focusOnInput() {
+    this.$('.input').focus();
+  }
 
   @computed('macAddress')
   get isValidMacAddress() {
@@ -23,6 +29,6 @@ export default class extends Component {
 
   @action
   onAddClickAction() {
-    this.get('isValidMacAddress') && this.attrs.onAdd && this.attrs.onAdd(this.get('name'));
+    this.get('isValidMacAddress') && this.attrs.onAdd && this.attrs.onAdd(this.get('macAddress'));
   }
 }

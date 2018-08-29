@@ -1,19 +1,21 @@
 {{#modals/modal-component
   title="Add Controller"
   onClose=(action "onCloseAction")
+  loading=attrs.loading
   width=4
 }}
   <div class="text-default margin-bottom-1x">
     Mac Address:
   </div>
-  {{input class=(concat 'full-width input input-' (if isValidMacAddress 'default' 'danger'))
+  {{input class=(concat "full-width input input-" (if isValidMacAddress "default" "danger"))
           value=macAddress
-          enter=(action 'onAddClickAction')
+          loading=attrs.loading
+          enter=(action "onAddClickAction")
   }}
 
-  <div class="btn btn-{{if isValid 'ok' 'disabled'}} pull-right margin-top-2x"
+  <div class="btn btn-{{if isValid "ok" "disabled"}} pull-right margin-top-2x"
        role="button"
-       onclick={{action 'onAddClickAction'}}>
+       onclick={{action "onAddClickAction"}}>
     Add
   </div>
 {{/modals/modal-component}}

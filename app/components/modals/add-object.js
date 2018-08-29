@@ -1,11 +1,19 @@
 import Component from '@ember/component';
-import {action} from '@ember-decorators/object';
+import {
+  action,
+  on,
+} from '@ember-decorators/object';
 import {bool} from '@ember-decorators/object/computed';
 
 export default class extends Component {
   name = '';
 
   @bool('name') isValidName;
+
+  @on('didRender')
+  focusOnInput() {
+    this.$('.input').focus();
+  }
 
   @action
   onCloseAction() {

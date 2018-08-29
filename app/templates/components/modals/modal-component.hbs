@@ -6,7 +6,7 @@
           {{#if attrs.title}}
             <span class="text-bold">{{attrs.title}}</span>
           {{/if}}
-          {{#if attrs.onClose}}
+          {{#if (and attrs.onClose (not loading))}}
             <span class="pull-right text-bold clickable text-small"
                   role="button"
                   onclick={{action "onCloseButtonClickAction"}}>
@@ -15,7 +15,11 @@
           {{/if}}
         </div>
       {{/if}}
-      {{yield}}
+      {{#if attrs.loading}}
+        {{core/loader-component class="full-width h-center"}}
+      {{else}}
+        {{yield}}
+      {{/if}}
     </div>
   {{else}}
     {{yield}}

@@ -1,5 +1,7 @@
 import ApplicationSerializer from './application';
 
-export default ApplicationSerializer.extend({
-  relations: ['objects'],
-});
+export default class extends ApplicationSerializer {
+  relations = [
+    'objects',
+  ];
+}
