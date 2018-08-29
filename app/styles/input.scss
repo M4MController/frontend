@@ -1,5 +1,16 @@
 .input {
+  @extend .text-default;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: $grid-step;
+  padding-left: $grid-step;
+  height: $grid-step * 4;
+
   &-default {
-    background: white;
+    border-color: lightgray;
+  }
+
+  &-danger {
+    border-color: red;
   }
 }

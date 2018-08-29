@@ -17,5 +17,5 @@ export default class SensorModel extends DS.Model {
   @attr accural;
   @attr overpay;
   @attr summary;
-  @belongsTo sensor;
+  @belongsTo controller;
 }

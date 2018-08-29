@@ -2,4 +2,17 @@
   {{#each model as |object|}}
     {{object-card object=object}}
   {{/each}}
+  {{cards/plus-card
+    text="Add new object"
+    width=4
+    click=(action "set" this "modalAddVisible" true)
+  }}
 </div>
+
+{{#if modalAddVisible}}
+  {{modals/add-object
+    onClose=(action "set" "modalAddVisible" false)
+    onAdd=(action "onAddObjectAction")
+    loading=modalAddLoading
+  }}
+{{/if}}

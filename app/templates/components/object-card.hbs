@@ -26,21 +26,23 @@
     </div>
   </div>
   <div class="object__body">
-    {{#if (is-pending object.sensors)}}
+    {{#if (is-pending object.controllers)}}
       <div class="layout v-center h-center full-height">
         {{core/loader-component}}
       </div>
     {{else}}
       <div class="grid-fluid full-height items-center">
-        {{#each (await object.sensors) as |sensor|}}
-          <div class="col col-min-6 object__amount">
-            <span class="text-default pull-left">
-              {{sensor.name}}
-            </span>
-            <span class="text-bubble pull-right">
-              {{sensor.value}}
-            </span>
-          </div>
+        {{#each object.controllers as |controller|}}
+          {{#each controller.sensors as |sensor|}}
+            <div class="col col-min-6 object__amount">
+              <span class="text-default pull-left">
+                {{sensor.name}}
+              </span>
+              <span class="text-bubble pull-right">
+                {{sensor.value}}
+              </span>
+            </div>
+          {{/each}}
         {{else}}
           <div class="text-muted text-center col-12">
             No sensors

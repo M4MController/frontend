@@ -53,13 +53,8 @@ $input-border-color: lightgray;
 }
 
 .input-control {
-  border: 1px solid lightgray;
-  border-radius: $grid-step;
-
-  text-align: right;
-
-  height: $grid-step * 4;
   width: $grid-step * 15;
+  text-align: right;
 }
 
 .arrow {
