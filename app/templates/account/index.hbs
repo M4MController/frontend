@@ -1,13 +1,13 @@
-<div class="grid-static full-width">
+{{#cards/cards-container}}
   {{#each model as |object|}}
-    {{object-card object=object}}
+    {{cards/object-card object=object}}
   {{/each}}
   {{cards/plus-card
     text="Add new object"
     width=4
     click=(action "set" this "modalAddVisible" true)
   }}
-</div>
+{{/cards/cards-container}}
 
 {{#if modalAddVisible}}
   {{modals/add-object

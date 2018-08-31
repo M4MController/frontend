@@ -10,5 +10,9 @@ Component.reopen({
       }
       set(obj, property, !get(obj, property));
     },
+
+    transitionToRoute(route, ...args) {
+      this.get('router').transitionTo(route, ...(args.slice(0, args.length - 1)));
+    },
   },
 });

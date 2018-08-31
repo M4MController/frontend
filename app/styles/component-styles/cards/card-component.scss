@@ -1,5 +1,3 @@
-@import "grid";
-
 @keyframes card-appearance {
   from {
     opacity: 0;
@@ -9,6 +7,10 @@
   to {
     opacity: 1;
   }
+}
+
+.head {
+  border-bottom: solid #dddddd 1px;
 }
 
 .card {
@@ -27,6 +29,3 @@
   }
 }
 
-.item {
-  margin: $grid-step;
-}
