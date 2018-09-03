@@ -1,5 +1,3 @@
 {{#cards/cards-container}}
-  {{#cards/card-component title="Profile Info" class="col-5"}}
-    test
-  {{/cards/card-component}}
+  {{cards/settings-change-password onSave=(action "updatePasswordAction")}}
 {{/cards/cards-container}}
