@@ -1,0 +1,15 @@
+{{#cards/card-component title="Profile Info" class="col-5"}}
+  <div class="padding-2x">
+    <div class="margin-left-1x margin-bottom-1x">Your name:</div>
+    {{input class="input input-default full-width" type="text" value=fullName}}
+    <div class="margin-1x">Telephone:</div>
+    {{input class="input input-default full-width" type="tel" value=mobilePhone}}
+    <div class="margin-1x">Email:</div>
+    {{input class="input input-default full-width" type="email" value=email}}
+    <button class="btn {{if canSave "btn-ok" "btn-disabled"}} margin-top-1x"
+            onclick={{action "saveBtnClickAction"}}
+    >
+      Save
+    </button>
+  </div>
+{{/cards/card-component}}

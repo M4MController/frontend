@@ -1,0 +1,8 @@
+<div class="{{unless noCover "card"}} {{if clickable "clickable"}}">
+  {{#if attrs.title}}
+    <div class="head padding-2x text-capitalize">
+      {{attrs.title}}
+    </div>
+  {{/if}}
+  {{yield}}
+</div>

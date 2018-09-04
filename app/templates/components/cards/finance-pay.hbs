@@ -1,9 +1,6 @@
 {{! template-lint-disable no-html-comments no-inline-styles }}
 
-<div class="card item col-5">
-  <div class="margin-2x text-capitalize">
-    Pay
-  </div>
+{{#cards/card-component class="col-5" title="Pay"}}
   {{#each bills as |bill|}}
     <div class="spoiler" style={{html-safe (concat "border-right-color: " bill.color)}}>
       <!-- for the prototype identifies billing by its title :) !-->
@@ -56,4 +53,4 @@
       </div>
     </div>
   {{/each}}
-</div>
+{{/cards/card-component}}

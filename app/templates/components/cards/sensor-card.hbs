@@ -1,0 +1,70 @@
+{{#cards/card-component
+  class="sensor col-4" tagName="div"
+  clickable=true
+  click=(action "transitionToRoute" "account.index")
+}}
+  <div class="header-wrapper">
+    <div class="header padding-1x grid-fluid">
+      <div class="col-7">
+        <div class="header__title text-caption layout v-center">
+          {{sensor.name}}
+        </div>
+        <div class="header__description text-muted">
+          {{sensor.company}}
+        </div>
+      </div>
+      <div class="col-5 col-center">
+        <div class="pull-right">
+          {{#link-to "account.subject" object.id class="btn btn-ok"}}
+            More
+          {{/link-to}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sensor__body grid-fluid">
+    {{#each stats as |stat|}}
+      <div class="col-12 margin-top-1x">
+        <span class="text-default pull-left">
+          {{stat.name}}
+        </span>
+        <span class="text-default pull-right">
+          {{stat.value}} W
+        </span>
+      </div>
+    {{/each}}
+  </div>
+  <div class="sensor__footer grid-fluid padding-top-1x">
+    <div class="col-6 full-height padding-right-2x">
+      <div class="sensor__amount">
+        <span class="text-default pull-left">
+          Accural
+        </span>
+        <span class="pull-right">
+          {{sensor.accural}}
+        </span>
+      </div>
+      <div class="sensor__amount">
+        <span class="text-default pull-left">
+          Overpay
+        </span>
+        <span class="pull-right">
+          {{sensor.overpay}}
+        </span>
+      </div>
+      <div class="sensor__amount ">
+        <span class="text-default pull-left">
+          Summary payment
+        </span>
+        <span class="pull-right">
+          {{sensor.summary}}
+        </span>
+      </div>
+    </div>
+    <div class="col-6 col-center">
+      {{#link-to "account.index" class="btn btn-ok pull-right"}}
+        Pay
+      {{/link-to}}
+    </div>
+  </div>
+{{/cards/card-component}}

@@ -1,10 +1,9 @@
 import Component from '@ember/component';
+import {computed} from '@ember-decorators/object';
 
 export default class extends Component {
-  classNames = [
-    this.get('styleNamespace'), /* eslint-disable-line no-invalid-this */
-    'item',
-    'clickable',
-    'no-padding',
-  ];
+  @computed('attrs.width')
+  get containerClass() {
+    return `plus col-${this.get('attrs.width')} full-height v-center h-center padding-1x`;
+  }
 }

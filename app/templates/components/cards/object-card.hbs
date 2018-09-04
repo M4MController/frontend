@@ -1,4 +1,8 @@
-{{#link-to "account.subject" object.id class="object" tagName="div"}}
+{{#cards/card-component
+  class="object col-4" tagName="div"
+  clickable=true
+  click=(action "transitionToRoute" "account.subject" object.id)
+}}
   <div class="header-wrapper">
     <div class="header padding-1x grid-fluid">
       <div class="col-7">
@@ -84,4 +88,4 @@
       {{/link-to}}
     </div>
   </div>
-{{/link-to}}
+{{/cards/card-component}}

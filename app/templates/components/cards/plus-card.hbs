@@ -1,4 +1,4 @@
-<div class="plus col-{{attrs.width}} full-height v-center h-center padding-1x">
+{{#cards/card-component class=containerClass noCover=true clickable=true}}
   {{core/icon-component
     class="icon margin-1x"
     name="plus"
@@ -6,4 +6,4 @@
   <div class="text text-caption text-muted">
     {{attrs.text}}
   </div>
-</div>
+{{/cards/card-component}}
