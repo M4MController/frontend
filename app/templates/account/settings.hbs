@@ -1,4 +1,5 @@
 {{#cards/cards-container}}
   {{cards/settings-profile-info user=model.user onSave=(action "updateProfileInfoAction")}}
   {{cards/settings-change-password onSave=(action "updatePasswordAction")}}
+  {{cards/settings-deactivate-account onDeactivate=(action "deactivateAccountAction")}}
 {{/cards/cards-container}}

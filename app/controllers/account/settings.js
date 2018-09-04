@@ -18,4 +18,10 @@ export default class extends Controller {
   @action
   updatePasswordAction() {
   }
+
+  @action
+  deactivateAccountAction() {
+    // todo:
+    alert('stub');
+  }
 }
