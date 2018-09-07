@@ -1,7 +1,49 @@
 <div class="card item col-5">
-  {{#each exampleValues as |value|}}
-    <div class="example-rule">
-      {{value.text}}
-    </div>
-  {{/each}}
+      <div class='object-header'>
+        <div class='drag-container-row'>
+          <div class='drag-left'>
+            <div class='object-header-title'>
+              История платежей
+            </div>
+          </div>
+          <div class='drag-center object-header-title'>
+            <div class='calendar-body'>
+              <div class='calendar-range'>
+                {{formatedRange}}
+              </div>
+
+              <div class='calendar-icon'>
+                {{#core/icon-component name='calendar'}}
+                {{/core/icon-component}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='expense-list'>
+        {{#each pay_history as |elem|}}
+        <div class='expense'>
+          <div class='date'>
+            <strong class='drag-container-row'>
+              <div class='drag-left date-margin'>{{elem.time}}</div>
+              <div class='drag-right date-margin'>{{elem.total}}&#8381;</div>
+            </strong>
+          </div>
+          {{#each elem.expenses as |expense|}}
+          <div class='expense-block'>
+            <div class='drag-container-row expense-row'>
+              <div class='expense-row-cell text-align-left'>{{expense.provider}}</div>
+              <div class='expense-row-cell text-align-left'>{{expense.service}}</div>
+              <div class='expense-row-cell text-align-right'>{{expense.cost}}&#8381;</div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+        {{/each}}
+      </div>
+      <div class='object-footer drag-container-row'>
+        <div class='drag-right text-margin'>
+          Показать больше
+        </div>
+      </div>
 </div>
