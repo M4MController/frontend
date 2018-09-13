@@ -66,8 +66,8 @@ $menu-item-height: $grid-step * 2;
   text-align: right;
   overflow: hidden;
 
-  font-size: $base-font-size;
-  font-family: $base-font-family;
+  font-size: $font-base-size;
+  font-family: $font-base-family;
 
   z-index: 999;
 }

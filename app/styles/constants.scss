@@ -1,3 +1,9 @@
+$grid-step: 8px;
+
+$font-base-family: Arial, Helvetica, sans-serif;
+$font-base-size: $grid-step * 2;
+$font-large-size: $grid-step * 3;
+
 $btn-neutral-bg-start: rgb(120, 160, 159);
 $btn-neutral-bg-end: rgb(97, 136, 135);
 $btn-neutral-color: white;

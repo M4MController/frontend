@@ -1,6 +1,3 @@
-@import "constants";
-@import "typography";
-
 body {
   overflow: hidden;
   padding: 0;
@@ -8,8 +5,8 @@ body {
 
   background: rgb(199, 205, 205);
 
-  font-family: $base-font-family;
-  font-size: $base-font-size;
+  font-family: $font-base-family;
+  font-size: $font-base-size;
 }
 
 input {
