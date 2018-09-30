@@ -44,9 +44,6 @@ export default class extends Service {
       method: method,
       data: data,
       contentType: 'application/json',
-      xhrFields: {
-        withCredentials: true,
-      },
     }).then((response) => {
       this.set('auth.isAuthorized', true);
       return response;
