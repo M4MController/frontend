@@ -4,6 +4,9 @@
 @import "ember-bootstrap/variables";
 @import "ember-bootstrap/mixins";
 
+// enable font-awesome
+@import "font-awesome";
+
 @import "constants";
 @import "helpers";
 @import "layout";
