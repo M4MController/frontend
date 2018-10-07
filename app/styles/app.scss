@@ -1,6 +1,10 @@
-@import "constants";
+// enable bootstrap
+// https://www.ember-bootstrap.com/#/getting-started/assets
+@import "ember-bootstrap/functions";
+@import "ember-bootstrap/variables";
+@import "ember-bootstrap/mixins";
 
-@import "grid";
+@import "constants";
 @import "helpers";
 @import "layout";
 
