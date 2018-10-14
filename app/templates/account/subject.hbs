@@ -1,24 +1,12 @@
-{{#cards/cards-container}}
-  {{#if (is-pending model.controllers)}}
-    {{core/loader-component class="vp-height full-width v-center h-center"}}
-  {{else}}
+<div class="container">
+  <div class="row">
+    {{page-caption text=model.name icon="icon-home" class="col-md-8"}}
+  </div>
+  <div class="row havings">
     {{#each model.controllers as |controller|}}
-      {{#each (await controller.sensors) as |sensor|}}
-        {{cards/sensor-card sensor=sensor}}
+      {{#each controller.sensors as |sensor|}}
+        {{sensor-card sensor=sensor}}
       {{/each}}
     {{/each}}
-    {{cards/plus-card
-      text="Add new object"
-      width=4
-      click=(action "set" this "modalAddVisible" true)
-    }}
-  {{/if}}
-{{/cards/cards-container}}
-
-{{#if modalAddVisible}}
-  {{modals/add-controller
-    loading=modalAddLoading
-    onClose=(action "set" "modalAddVisible" false)
-    onAdd=(action "addControllerAction")
-  }}
-{{/if}}
+  </div>
+</div>
