@@ -1,0 +1,67 @@
+<div class="cardStyle objectWrap">
+  <div class="objectWrap__title">
+    <span class="objectWrap__name">
+      <strong class="objectName text-black">{{object.name}}</strong>
+      <span class="objectIndicator"></span>
+    </span>
+    <small class="objectTitle">{{object.address}}</small>
+  </div>
+  <div class="row objectServices">
+    {{#each object.controllers as |controller|}}
+      {{#each controller.sensors as |sensor|}}
+        <div class="col-md-6 col-sm-6 col-xs-12 objectServicesWrap">
+          <div class="objectService">
+            <span class="counterIcon icon-high-voltage"></span>
+            <div class="objectService__info">
+              <small>{{sensor.name}}</small>
+              <br/>
+              <span class="text-black">{{sensor.value}} кВт</span>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    {{/each}}
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="stakedBarChartWrap">
+        <div class="cardRow">
+          <span class="cardRow__item">За месяц:</span>
+          <span class="cardRow__item text-right"><span class="text-black">300 ₽</span> <small>(450 прогноз)</small></span>
+        </div>
+        {{core/progress-bar class="stakedBarChart" value=50 background='#ffcc00'}}
+        <!-- <StakedBarChart current_indicators={300} compared={400} special_color={true} /> -->
+      </div>
+
+      <div class="stakedBarChartWrap">
+        <div class="cardRow">
+          <span class="cardRow__item">За прошлый месяц:</span>
+          <span class="cardRow__item text-right text-black">200 ₽</span>
+        </div>
+        {{core/progress-bar class="stakedBarChart" value=70}}
+        <!-- <StakedBarChart current_indicators={200} compared={400} /> -->
+      </div>
+
+      <div class="stakedBarChartWrap">
+        <div class="cardRow">
+          <span class="cardRow__item">Среднее за год:</span>
+          <span class="cardRow__item text-right text-black">250 ₽</span>
+        </div>
+        {{core/progress-bar class="stakedBarChart" value=30}}
+        <!-- <StakedBarChart current_indicators={250} compared={400} /> -->
+      </div>
+    </div>
+  </div>
+  <div class="row cardBtnsWrap">
+    <div class="col-md-6 col-sm-6 col-xs-6">
+      {{#link-to 'account.subject' object.id}}
+        <button class="btn btnStyle btnStyle_сolorless">Подробнее</button>
+      {{/link-to}}
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-6">
+      <a href="payment.html">
+        <button class="btn btnStyle btnStyle_сolor">Оплатить</button>
+      </a>
+    </div>
+  </div>
+</div>

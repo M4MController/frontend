@@ -1,0 +1,251 @@
+.popup {
+  display: none;
+}
+
+.popup.active {
+  display: block;
+}
+
+.popup-overlay {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .6);
+  z-index: 100;
+}
+
+.popup-body {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+
+  max-width: 600px;
+  width: 100%;
+  background-color: #fff;
+  margin: 10vh auto;
+  padding: 20px;
+  border-radius: .5rem;
+  z-index: 101;
+
+  overflow: hidden;
+}
+
+.popup-body h3 {
+  position: relative;
+  color: #000;
+}
+
+.closePopup {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #bcbcbc;
+
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.closePopup:hover {
+  color: #69b7a4;
+}
+
+/* Default Popup Form --- */
+.popupFormWrap {
+  margin: 20px 0;
+}
+
+.popupForm {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.popupForm .popupForm__item {
+  display: block;
+  margin: 20px 0;
+}
+
+.popupForm .popupForm__item label {
+  display: block;
+  margin: 0;
+}
+
+.popupForm .popupForm__item > label {
+  font-weight: 600;
+}
+
+.popupForm .popupForm__item input,
+.popupForm .popupForm__item textarea,
+.popupForm .popupForm__item select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: .5rem;
+  color: #333;
+  font-size: 16px;
+}
+
+.popupForm .popupForm__item input:focus,
+.popupForm .popupForm__item textarea:focus,
+.popupForm .popupForm__item select:focus {
+  border-color: #69b7a4;
+}
+
+.popupForm .popupForm__item textarea {
+  resize: vertical;
+}
+
+.popupForm .popupForm__item button {
+  background: #567ba7;
+  color: #fff;
+  min-width: 200px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.popupForm .checkboxWrap label {
+  display: inline-block;
+  margin: 0 0 0 10px;
+}
+
+.popupForm .checkboxWrap input {
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.popupEnterBtn {
+  width: 100%;
+}
+
+/* --- Default Popup Form */
+
+/* popup newEntity --- */
+
+.newEntity .popup-body {
+  max-width: 420px;
+  padding: 0;
+}
+
+.newEntity_chagesWidth .popup-body {
+  max-width: 600px;
+}
+
+.screen.screen_active {
+  display: flex;
+}
+
+.screen {
+  display: none;
+}
+
+.screen_error {
+  display: none;
+}
+
+.screen__img {
+  position: relative;
+  width: 180px;
+  background: url(../images/popup-bg.png);
+}
+
+.screen__img img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.screen__content {
+  padding: 20px;
+  width: 420px;
+}
+
+.screen__content select {
+  width: 100%;
+}
+
+/* --- popup newEntity */
+
+/* Entity form --- */
+.entityFormWrap {
+  margin: 0;
+}
+
+.entityForm {
+  max-width: 600px;
+}
+
+.entityForm .popupForm__item button {
+  width: 100%;
+}
+
+.radioBtnsBlock {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.checkboxBlock {
+  margin-top: 20px;
+}
+
+.radioBtnsBlock > * {
+  margin-right: 20px;
+}
+
+.radioBtnsBlock label {
+  padding: 10px;
+  border-radius: .5rem;
+  color: #567ba7;
+}
+
+.radioBtnsBlock label.active {
+  background-color: #efefef;
+}
+
+.radioBtnsBlock input {
+  display: none;
+}
+
+.checkboxBlock label {
+  padding: 0;
+}
+
+.checkboxBlock label a {
+  text-decoration: underline;
+  color: #567ba7;
+}
+
+.checkboxBlock input {
+  display: none;
+}
+
+.customCheckbox {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  border-radius: .2rem;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.customCheckbox .icon-ok {
+  display: none;
+}
+
+.customCheckbox .icon-ok.active {
+  display: block;
+}
+
+/* --- Entity form*/

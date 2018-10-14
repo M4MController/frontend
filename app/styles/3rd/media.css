@@ -1,0 +1,473 @@
+@media only screen and (max-width: 1281px) {
+  /* hi-res laptops and desktops */
+}
+
+@media only screen and (max-width: 1025px) {
+  /* big landscape tablets, laptops, and desktops */
+}
+
+@media only screen and (max-width: 961px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+
+@media only screen and (max-width: 641px) {
+  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+}
+
+@media (min-width: 576px) {
+
+}
+
+@media only screen and (max-width: 481px) {
+  /* smartphones, Android phones, landscape iPhone */
+}
+
+@media only screen and (min-width: 321px) and (max-width: 480px) {
+
+}
+
+@media only screen and (max-width: 320px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+
+}
+
+/* Bootstrap4 */
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .headerMenu__nav {
+    overflow: auto !important;
+  }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+}
+
+/*Extra large devices (large desktops)*/
+/*No media query since the extra-large breakpoint has no upper bound on its width*/
+
+/*Large devices (desktops, less than 1200px)*/
+@media (max-width: 1199px) {
+  .footerMenu {
+    font-size: .8em;
+  }
+}
+
+/*Medium devices (tablets, less than 992px)*/
+@media (max-width: 991px) {
+  .mobileMenuBtn {
+    display: block;
+    margin-right: 20px;
+  }
+
+  .closeMenu {
+    display: block;
+  }
+
+  .headerMenu {
+    flex-basis: 0;
+  }
+
+  .headerSubMenu a {
+    line-height: 3;
+  }
+
+  .logoWrap .logo > * {
+    width: 70%;
+  }
+
+  .headerMenu__nav {
+    position: fixed;
+    top: 0;
+    left: -999px;
+    z-index: 1;
+    opacity: 0;
+    background-color: #567ba7;
+
+    flex-direction: column;
+    width: 300px;
+
+    -webkit-transition: all .6s ease-in-out;
+    -o-transition: all .6s ease-in-out;
+    transition: all .6s ease-in-out;
+
+    width: 0;
+    height: 100vh;
+  }
+
+  .mobile_active .headerMenu__nav {
+    width: 50vw;
+    z-index: 100;
+    opacity: 1;
+    left: 0;
+  }
+
+  .mobile_active .menuPanel {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: 1;
+  }
+
+  .menuItem {
+    text-align: center;
+    align-self: stretch;
+    display: block;
+
+  }
+
+  span.menuItem:hover {
+    background-color: transparent;
+    cursor: default;
+  }
+
+  span.menuItem:hover .headerSubMenu,
+  .headerSubMenu {
+    background-color: transparent;
+    position: static;
+    color: #fff;
+    width: 100%;
+    opacity: 1;
+    z-index: 100;
+  }
+
+  .footerMenuInHeader {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .headerMenu__nav.active {
+    left: 0px;
+  }
+
+  .headerPanel .logoWrap,
+  .userInfo {
+    order: 2;
+  }
+
+  .userInfo {
+    flex-basis: 90%;
+  }
+
+  .footerMenu {
+    display: none;
+  }
+}
+
+/*Small devices (landscape phones, less than 768px)*/
+@media (max-width: 767px) {
+  .container {
+    max-width: 380px;
+    padding: 0;
+  }
+
+  .page_settings .container {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .page_settings h2 [class^="icon"],
+  .page_settings .mobileMenuBtn {
+    margin-left: 10px;
+  }
+
+  .page_settings .footerRow {
+    padding: 0 10px;
+  }
+
+  .havings > .col-sm-6 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .cardStyle {
+    margin: 10px 0;
+  }
+
+  .mobile_active .headerMenu__nav {
+    width: 80vw;
+  }
+
+  .page__title .btnStyle {
+    background-color: #ccc;
+    border-color: #ccc;
+    color: #000;
+  }
+
+  .userInfo {
+    display: none;
+  }
+
+  .page__title .btnStyle {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .siteDevelopment {
+    display: none;
+  }
+
+  .inspector__mobileBtns {
+    display: block;
+  }
+
+  .inspector__btns {
+    width: 0;
+    height: 0;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 20px;
+    padding: 0;
+    background: #fff;
+
+    opacity: 0;
+    z-index: -1;
+
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+  }
+
+  .inspector__btns.active {
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    z-index: 2;
+
+    margin: 30px 0;
+  }
+
+  .inspector__btn {
+    margin: 0;
+    border: 0;
+
+    border-bottom: 1px solid #CCC;
+    border-radius: 0;
+    padding: 20px;
+    font-size: 1.3em;
+  }
+
+  .counterItem__mobileControls {
+    display: block;
+  }
+
+  .counterItem {
+    align-items: baseline;
+  }
+
+  .counterItem > * {
+    flex: 1 1;
+  }
+
+  .counterItem__details {
+    display: flex;
+    flex-direction: column;
+
+    flex-basis: 100%;
+  }
+
+  .counterItem__firm {
+    margin: 0;
+  }
+
+  .inspector {
+    padding: 0;
+    border-bottom: 0;
+  }
+
+  .counterItem,
+  .inspector__countersTitle,
+  .inspector__pannel {
+    padding: 0 20px;
+  }
+
+  .inspectors .inspector:last-of-type .inspector__counters .inspector__countersList .counterItem:last-of-type .counterItem__controls.active {
+    top: -40px;
+  }
+
+  .counterItem__controls {
+    width: 0;
+    height: 0;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 20px;
+    padding: 0;
+    background: #fff;
+    opacity: 0;
+    z-index: -1;
+
+    color: #666666;
+    flex-basis: 20%;
+    text-align: right;
+
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+  }
+
+  .counterItem__controls.active {
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    z-index: 2;
+    margin: 30px 0;
+  }
+
+  .counterItem__controls .counterItem__control {
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    margin-left: 0px;
+    font-size: 1.4em;
+  }
+
+  .counterItem__controls .controlText {
+    display: inline-block;
+    font-family: sans-serif;
+    color: #000;
+  }
+
+  .counterItem {
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #cccccc;
+    margin: 0;
+    padding: 15px 20px;
+  }
+
+}
+
+@media (max-width: 700px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .container {
+    width: 100%;
+    max-width: 425px;
+    min-width: 300px;
+    padding: 0;
+  }
+
+  .col-xs-6 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  h2 [class^="icon"],
+  .mobileMenuBtn {
+    margin-left: 10px;
+  }
+
+  .menuItem {
+    z-index: 2;
+  }
+
+  .headerSubMenu {
+    position: static;
+    width: 100%;
+    opacity: 1;
+  }
+
+  .menuItem:hover .headerSubMenu {
+    background-color: transparent;
+    z-index: inherit;
+  }
+
+  span.menuItem:hover {
+    background-color: transparent;
+    z-index: 2;
+    opacity: 1;
+  }
+
+  .tabs__item span {
+    width: 80px;
+    display: inline-block;
+  }
+
+  .tabsWrap,
+  .footerBottom {
+    font-size: .9em;
+  }
+
+  .footerRow {
+    padding: 0 10px;
+  }
+}
+
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 430px) {
+  .page__title .btnStyle,
+  .cardStyle {
+    border-radius: 0;
+  }
+
+  .inputsSet .btnStyle {
+    width: 100%;
+  }
+
+  .bankCards .col-xs-6 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .box__title > * {
+    flex-basis: 50%;
+  }
+}
+
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575px) {
+  
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767px) {
+  
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991px) {
+  
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+}

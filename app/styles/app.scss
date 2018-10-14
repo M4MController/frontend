@@ -4,16 +4,27 @@
 @import "ember-bootstrap/variables";
 @import "ember-bootstrap/mixins";
 
+@import "ember-bootstrap/grid";
+@import "ember-bootstrap/reboot";
+
+@import "ember-bootstrap/type";
+
 // enable font-awesome
 @import "font-awesome";
 
-@import "constants";
-@import "helpers";
-@import "layout";
+// import 3rd till style refactor completed
+@import "3rd/fonts";
+@import "3rd/media";
+@import "3rd/popup";
+@import "3rd/style";
+@import "3rd/main";
 
-@import "global";
-@import "input";
-@import "menu";
-@import "typography";
+//@import "constants";
+//@import "helpers";
+//@import "layout";
 
-@import "pod-styles";
+//@import "global";
+//@import "input";
+//@import "typography";
+
+//@import "pod-styles";

@@ -6,8 +6,9 @@ import {
 import {computed} from '@ember-decorators/object';
 
 export default class UserModel extends DS.Model {
-  @attr familyName;
-  @attr secondName;
+  @attr firstName;
+  @attr lastName;
+  @attr middleName;
   @attr dateReceiving;
   @attr issuedBy;
   @attr divisionNumber;
@@ -21,8 +22,8 @@ export default class UserModel extends DS.Model {
   @attr email;
   @hasMany('object') objects;
 
-  @computed('familyName', 'secondName')
+  @computed('firstName', 'lastName')
   get fullName() {
-    return `${this.get('familyName')} ${this.get('secondName')}`;
+    return `${this.get('firstName')} ${this.get('lastName')} ${this.get('middleName')}`;
   }
 }
