@@ -1,18 +1,9 @@
-{{#cards/cards-container}}
-  {{#each model as |object|}}
-    {{cards/object-card object=object}}
-  {{/each}}
-  {{cards/plus-card
-    text="Add new object"
-    width=4
-    click=(action "set" this "modalAddVisible" true)
-  }}
-{{/cards/cards-container}}
-
-{{#if modalAddVisible}}
-  {{modals/add-object
-    onClose=(action "set" "modalAddVisible" false)
-    onAdd=(action "onAddObjectAction")
-    loading=modalAddLoading
-  }}
-{{/if}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row align-items-center">
+        {{page-caption text="My objects" icon="im.tree" class="col-md-8"}}
+      </div>
+    </div>
+  </div>
+</div>
