@@ -7,8 +7,11 @@ import {
 
 export default class ControllerModel extends DS.Model {
   @attr name;
+  @attr macAddress;
+  @attr deactivationDate;
+  @attr controllerType;
+  @attr activationDate;
   @attr status;
-  @attr max;
   @attr meta;
   @hasMany('sensor') sensors;
   @belongsTo object;
