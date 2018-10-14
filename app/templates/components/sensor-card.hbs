@@ -11,17 +11,17 @@
     <div class="payableBlock">
       <div class="service__accrual cardRow">
         <span class="cardRow__item">Начисление:</span>
-        <span class="cardRow__item text-right text-black">100 руб</span>
+        <span class="cardRow__item text-right text-black">100 ₽</span>
       </div>
 
       <div class="service__overpayment cardRow">
         <span class="cardRow__item">Переплата:</span>
-        <span class="cardRow__item text-right text-black">70 руб</span>
+        <span class="cardRow__item text-right text-black">70 ₽</span>
       </div>
 
       <div class="service__total cardRow">
         <span class="cardRow__item">И того к оплате:</span>
-        <span class="cardRow__item text-right text-black">30 руб</span>
+        <span class="cardRow__item text-right text-black">30 ₽</span>
       </div>
     </div>
 
@@ -30,25 +30,28 @@
         <span class="cardRow__item">За месяц:</span>
         <span class="cardRow__item text-right"><span class="text-black">{{sensor.value}} кВт</span> <small>(450 прогноз)</small></span>
       </div>
-      <div class="stakedBarChart stakedBarChart_month"></div>
+      {{core/progress-bar class="stakedBarChart" value=70 background='#ffcc00'}}
+      <!--<div class="stakedBarChart stakedBarChart_month"></div>-->
       <!-- <StakedBarChart current_indicators={current_indicators} compared={prediction} special_color={true} /> -->
     </div>
 
     <div class="stakedBarChartWrap">
       <div class="cardRow">
         <span class="cardRow__item">За прошлый месяц:</span>
-        <span class="cardRow__item text-right"><span class="text-black">150 м2</span></span>
+        <span class="cardRow__item text-right"><span class="text-black">150 кВт</span></span>
       </div>
-      <div class="stakedBarChart stakedBarChart_lastMonth"></div>
+      {{core/progress-bar class="stakedBarChart" value=50}}
+      <!--<div class="stakedBarChart stakedBarChart_lastMonth"></div>-->
       <!-- <StakedBarChart current_indicators={current_indicators} compared={prediction} /> -->
     </div>
 
     <div class="stakedBarChartWrap">
       <div class="cardRow">
         <span class="cardRow__item">Среднее за год:</span>
-        <span class="cardRow__item text-right"><span class="text-black">300 м2</span></span>
+        <span class="cardRow__item text-right"><span class="text-black">300 кВт</span></span>
       </div>
-      <div class="stakedBarChart stakedBarChart_avgYear"></div>
+      {{core/progress-bar class="stakedBarChart" value=70 background='#ffcc00'}}
+      <!--<div class="stakedBarChart stakedBarChart_avgYear"></div>-->
       <!-- <StakedBarChart current_indicators={current_indicators} compared={prediction} /> -->
     </div>
 

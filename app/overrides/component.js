@@ -1,8 +1,21 @@
 import Ember from 'ember';
-import {action, computed} from '@ember-decorators/object';
+import {computed as emberComputed} from '@ember/object';
+import {action, computed, on} from '@ember-decorators/object';
 import {className} from '@ember-decorators/component';
 
 Ember.Component = class extends Ember.Component {
+  @on('didUpdateAttrs', 'didReceiveAttrs')
+  _on() {
+    if (this.defaultAttrs) {
+      for (let attr of Object.keys(this.defaultAttrs)) {
+        const prop = `attrs.${attr}`;
+        this.set(attr, emberComputed(prop, () => {
+          return this.get(prop) || this.defaultAttrs[attr];
+        }));
+      }
+    }
+  }
+
   @computed('localClassNames', 'styleNamespace')
   @className
   get _localClassNames() {

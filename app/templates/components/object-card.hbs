@@ -27,24 +27,27 @@
       <div class="stakedBarChartWrap">
         <div class="cardRow">
           <span class="cardRow__item">За месяц:</span>
-          <span class="cardRow__item text-right text-black">300 кВт</span>
+          <span class="cardRow__item text-right text-black">300 ₽</span>
         </div>
+        {{core/progress-bar class="stakedBarChart" value=50 background='#ffcc00'}}
         <!-- <StakedBarChart current_indicators={300} compared={400} special_color={true} /> -->
       </div>
 
       <div class="stakedBarChartWrap">
         <div class="cardRow">
           <span class="cardRow__item">За прошлый месяц:</span>
-          <span class="cardRow__item text-right text-black">200 кВт</span>
+          <span class="cardRow__item text-right text-black">200 ₽</span>
         </div>
+        {{core/progress-bar class="stakedBarChart" value=70}}
         <!-- <StakedBarChart current_indicators={200} compared={400} /> -->
       </div>
 
       <div class="stakedBarChartWrap">
         <div class="cardRow">
           <span class="cardRow__item">Среднее за год:</span>
-          <span class="cardRow__item text-right text-black">250 кВт</span>
+          <span class="cardRow__item text-right text-black">250 ₽</span>
         </div>
+        {{core/progress-bar class="stakedBarChart" value=30}}
         <!-- <StakedBarChart current_indicators={250} compared={400} /> -->
       </div>
     </div>
