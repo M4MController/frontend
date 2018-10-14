@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <div class="row align-items-center">
-        {{page-caption text="My objects" icon="im.tree" class="col-md-8"}}
-      </div>
-    </div>
+    {{page-caption text="Мои объекты" icon="icon-diagram" class="col-md-8"}}
+  </div>
+  <div class="row havings">
+    {{#each model as |object|}}
+      {{object-card object=object}}
+    {{/each}}
   </div>
 </div>

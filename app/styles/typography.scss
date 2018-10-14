@@ -48,6 +48,10 @@ body {
     color: white;
   }
 
+  &-black{
+    color: #000;
+  }
+
   @each $value in capitalize, lowercase, uppercase {
     &-#{ $value } {
       text-transform: $value;
