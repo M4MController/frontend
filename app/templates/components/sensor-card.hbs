@@ -28,9 +28,9 @@
     <div class="stakedBarChartWrap">
       <div class="cardRow">
         <span class="cardRow__item">За месяц:</span>
-        <span class="cardRow__item text-right"><span class="text-black">{{sensor.valueMonth}} {{sensor.unitName}}</span> <small>({{mult 1.2 sensor.valueMonth}} прогноз)</small></span>
+        <span class="cardRow__item text-right"><span class="text-black">{{sensor.valueMonth}} {{sensor.unitName}}</span> <small>({{round sensor.valueForecast}} прогноз)</small></span>
       </div>
-      {{core/progress-bar class="stakedBarChart" value=81 background='#ffcc00'}}
+      {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valueForecast background='#ffcc00'}}
       <!--<div class="stakedBarChart stakedBarChart_month"></div>-->
       <!-- <StakedBarChart current_indicators={current_indicators} compared={prediction} special_color={true} /> -->
     </div>
@@ -40,7 +40,7 @@
         <span class="cardRow__item">За прошлый месяц:</span>
         <span class="cardRow__item text-right"><span class="text-black">{{sensor.valueLastMonth}} {{sensor.unitName}}</span></span>
       </div>
-      {{core/progress-bar class="stakedBarChart" value=50}}
+      {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valueLastMonth}}
       <!--<div class="stakedBarChart stakedBarChart_lastMonth"></div>-->
       <!-- <StakedBarChart current_indicators={current_indicators} compared={prediction} /> -->
     </div>
@@ -50,7 +50,7 @@
         <span class="cardRow__item">Среднее за год:</span>
         <span class="cardRow__item text-right"><span class="text-black">{{sensor.valueYearAverage}} {{sensor.unitName}}</span></span>
       </div>
-      {{core/progress-bar class="stakedBarChart" value=70 background='#ffcc00'}}
+      {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valueYearAverage background='#ffcc00'}}
       <!--<div class="stakedBarChart stakedBarChart_avgYear"></div>-->
       <!-- <StakedBarChart current_indicators={current_indicators} compared={prediction} /> -->
     </div>

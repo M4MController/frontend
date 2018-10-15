@@ -96,6 +96,11 @@ export default class SensorModel extends DS.Model {
     }
   }
 
+  @computed('valueMonth', 'type')
+  get valueForecast() {
+    return this.get('valueMonth') * (1 + (+this.get('type') / 7));
+  }
+
   @computed('type', 'valueMonth')
   get totalMonth() {
     return calculateTotal(this.get('valueMonth'), this.get('type'));
@@ -109,5 +114,10 @@ export default class SensorModel extends DS.Model {
   @computed('type', 'valueYearAverage')
   get totalYearAverage() {
     return calculateTotal(this.get('valueYearAverage'), this.get('type'));
+  }
+
+  @computed('type', 'valueForecast')
+  get totalForecast() {
+    return calculateTotal(this.get('valueForecast'), this.get('type'));
   }
 }

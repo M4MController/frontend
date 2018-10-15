@@ -14,14 +14,13 @@ export default class extends Component {
   @attribute
   @computed('min', 'max', 'color', 'background')
   get style() {
-    const max = +this.get('max');
-    const min = +this.get('min');
-    const value = +this.get('value');
-    const color = this.get('color');
-    const background = this.get('background');
+    const max = +this.getAttr('max');
+    const min = +this.getAttr('min');
+    const value = +this.getAttr('value');
+    const color = this.getAttr('color');
+    const background = this.getAttr('background');
 
     const percent = (value - min) * 100 / (max - min);
-    return `background: linear-gradient(to right, ${color} ${percent}%, ${background} ${100 -
-    percent}%)`.htmlSafe();
+    return `background: linear-gradient(to right, ${color} ${percent}%, ${background} ${percent}%)`.htmlSafe();
   }
 }

@@ -27,9 +27,9 @@
       <div class="stakedBarChartWrap">
         <div class="cardRow">
           <span class="cardRow__item">За месяц:</span>
-          <span class="cardRow__item text-right"><span class="text-black">{{round object.totalMonth}} ₽</span> <small>({{round (mult 1.2 object.totalMonth)}} прогноз)</small></span>
+          <span class="cardRow__item text-right"><span class="text-black">{{round object.totalMonth}} ₽</span> <small>({{round object.totalForecast}} прогноз)</small></span>
         </div>
-        {{core/progress-bar class="stakedBarChart" value=81 background='#ffcc00'}}
+        {{core/progress-bar class="stakedBarChart" value=object.totalMonth max=object.totalForecast background='#ffcc00'}}
         <!-- <StakedBarChart current_indicators={300} compared={400} special_color={true} /> -->
       </div>
 
@@ -38,7 +38,7 @@
           <span class="cardRow__item">За прошлый месяц:</span>
           <span class="cardRow__item text-right text-black">{{round object.totalLastMonth}} ₽</span>
         </div>
-        {{core/progress-bar class="stakedBarChart" value=100}}
+        {{core/progress-bar class="stakedBarChart" value=object.totalMonth max=object.totalLastMonth}}
         <!-- <StakedBarChart current_indicators={200} compared={400} /> -->
       </div>
 
@@ -47,7 +47,7 @@
           <span class="cardRow__item">Среднее за год:</span>
           <span class="cardRow__item text-right text-black">{{round object.totalYearAverage}} ₽</span>
         </div>
-        {{core/progress-bar class="stakedBarChart" value=30}}
+        {{core/progress-bar class="stakedBarChart" value=object.totalMonth max=object.totalYearAverage}}
         <!-- <StakedBarChart current_indicators={250} compared={400} /> -->
       </div>
     </div>

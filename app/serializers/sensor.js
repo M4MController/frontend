@@ -7,7 +7,7 @@ export default class extends ApplicationSerializer {
     deactivationDate: 'deactivation_date',
     company: 'company',
     activationDate: 'activation_date',
-    value: 'last_value',
+    // value: 'last_value',
     controller: 'controller_id',
   };
 }
