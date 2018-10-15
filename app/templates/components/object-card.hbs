@@ -15,7 +15,7 @@
             <div class="objectService__info">
               <small>{{sensor.name}}</small>
               <br/>
-              <span class="text-black">{{sensor.value}} кВт</span>
+              <span class="text-black">{{sensor.valueMonth}} {{sensor.unitName}}</span>
             </div>
           </div>
         </div>
@@ -27,25 +27,25 @@
       <div class="stakedBarChartWrap">
         <div class="cardRow">
           <span class="cardRow__item">За месяц:</span>
-          <span class="cardRow__item text-right"><span class="text-black">300 ₽</span> <small>(450 прогноз)</small></span>
+          <span class="cardRow__item text-right"><span class="text-black">{{round object.totalMonth}} ₽</span> <small>({{round (mult 1.2 object.totalMonth)}} прогноз)</small></span>
         </div>
-        {{core/progress-bar class="stakedBarChart" value=50 background='#ffcc00'}}
+        {{core/progress-bar class="stakedBarChart" value=81 background='#ffcc00'}}
         <!-- <StakedBarChart current_indicators={300} compared={400} special_color={true} /> -->
       </div>
 
       <div class="stakedBarChartWrap">
         <div class="cardRow">
           <span class="cardRow__item">За прошлый месяц:</span>
-          <span class="cardRow__item text-right text-black">200 ₽</span>
+          <span class="cardRow__item text-right text-black">{{round object.totalLastMonth}} ₽</span>
         </div>
-        {{core/progress-bar class="stakedBarChart" value=70}}
+        {{core/progress-bar class="stakedBarChart" value=100}}
         <!-- <StakedBarChart current_indicators={200} compared={400} /> -->
       </div>
 
       <div class="stakedBarChartWrap">
         <div class="cardRow">
           <span class="cardRow__item">Среднее за год:</span>
-          <span class="cardRow__item text-right text-black">250 ₽</span>
+          <span class="cardRow__item text-right text-black">{{round object.totalYearAverage}} ₽</span>
         </div>
         {{core/progress-bar class="stakedBarChart" value=30}}
         <!-- <StakedBarChart current_indicators={250} compared={400} /> -->

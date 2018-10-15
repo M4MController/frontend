@@ -11,26 +11,26 @@
     <div class="payableBlock">
       <div class="service__accrual cardRow">
         <span class="cardRow__item">Начисление:</span>
-        <span class="cardRow__item text-right text-black">100 ₽</span>
+        <span class="cardRow__item text-right text-black">{{round (mult 1.25 sensor.totalMonth)}} ₽</span>
       </div>
 
       <div class="service__overpayment cardRow">
         <span class="cardRow__item">Переплата:</span>
-        <span class="cardRow__item text-right text-black">70 ₽</span>
+        <span class="cardRow__item text-right text-black">{{round (mult 0.25 sensor.totalMonth)}} ₽</span>
       </div>
 
       <div class="service__total cardRow">
         <span class="cardRow__item">И того к оплате:</span>
-        <span class="cardRow__item text-right text-black">30 ₽</span>
+        <span class="cardRow__item text-right text-black">{{round sensor.totalMonth}} ₽</span>
       </div>
     </div>
 
     <div class="stakedBarChartWrap">
       <div class="cardRow">
         <span class="cardRow__item">За месяц:</span>
-        <span class="cardRow__item text-right"><span class="text-black">{{sensor.value}} кВт</span> <small>(450 прогноз)</small></span>
+        <span class="cardRow__item text-right"><span class="text-black">{{sensor.valueMonth}} {{sensor.unitName}}</span> <small>({{mult 1.2 sensor.valueMonth}} прогноз)</small></span>
       </div>
-      {{core/progress-bar class="stakedBarChart" value=70 background='#ffcc00'}}
+      {{core/progress-bar class="stakedBarChart" value=81 background='#ffcc00'}}
       <!--<div class="stakedBarChart stakedBarChart_month"></div>-->
       <!-- <StakedBarChart current_indicators={current_indicators} compared={prediction} special_color={true} /> -->
     </div>
@@ -38,7 +38,7 @@
     <div class="stakedBarChartWrap">
       <div class="cardRow">
         <span class="cardRow__item">За прошлый месяц:</span>
-        <span class="cardRow__item text-right"><span class="text-black">150 кВт</span></span>
+        <span class="cardRow__item text-right"><span class="text-black">{{sensor.valueLastMonth}} {{sensor.unitName}}</span></span>
       </div>
       {{core/progress-bar class="stakedBarChart" value=50}}
       <!--<div class="stakedBarChart stakedBarChart_lastMonth"></div>-->
@@ -48,7 +48,7 @@
     <div class="stakedBarChartWrap">
       <div class="cardRow">
         <span class="cardRow__item">Среднее за год:</span>
-        <span class="cardRow__item text-right"><span class="text-black">300 кВт</span></span>
+        <span class="cardRow__item text-right"><span class="text-black">{{sensor.valueYearAverage}} {{sensor.unitName}}</span></span>
       </div>
       {{core/progress-bar class="stakedBarChart" value=70 background='#ffcc00'}}
       <!--<div class="stakedBarChart stakedBarChart_avgYear"></div>-->
