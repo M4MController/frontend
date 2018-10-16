@@ -1,7 +1,4 @@
-{{site-header user=model.user objects=model.objects}}
-
-{{#site-body class="vp-height"}}
+{{#site-component user=model.user objects=model.objects}}
   {{outlet}}
-{{/site-body}}
+{{/site-component}}
 
-{{site-footer}}

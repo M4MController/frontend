@@ -76,7 +76,7 @@ header {
 }
 
 .logoWrap {
-  flex-basis: 100px;
+  flex-basis: 80px;
   padding: 10px;
 }
 
@@ -370,9 +370,12 @@ h2 i {
 }
 
 footer {
+  justify-self: flex-end;
+  width: 100vw;
+
+  margin-top: 80px;
   background-color: #333333;
   color: #fff;
-  margin-top: 80px;
 }
 
 .footerTop {
