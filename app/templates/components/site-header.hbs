@@ -15,7 +15,9 @@
                   Объекты
 									<ul class="headerSubMenu">
                     {{#each model.objects as |object|}}
-                      <li><a href="entity.html">{{object.name}}</a></li>
+                    <li>{{#link-to 'account.subject' object.id}}
+                      {{object.name}}
+                    {{/link-to}}</li>
                     {{/each}}
 									</ul>
 								</span>
