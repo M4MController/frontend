@@ -2,7 +2,7 @@
   <div class="container">
     <div class="headerPanel">
       <div class="logoWrap">
-        <a href="index.html" class="logo">
+        <a href="/" class="logo">
           <img src="images/logo.svg" alt="">
         </a>
       </div>
@@ -14,25 +14,25 @@
           <span class="menuItem">
                   Объекты
 									<ul class="headerSubMenu">
-                    {{#each model.objects as |object|}}
+                    {{#each objects as |object|}}
                     <li>{{#link-to 'account.subject' object.id}}
                       {{object.name}}
                     {{/link-to}}</li>
                     {{/each}}
 									</ul>
 								</span>
-          <a class="nav-link menuItem" href="finance.html">Финансы</a>
-          <a class="nav-link menuItem" href="settings.html">Настройки</a>
+          <a class="nav-link menuItem" href="/">Финансы</a>
+          <a class="nav-link menuItem" href="/">Настройки</a>
         </nav>
       </div>
       <div class="userInfo">
         <a href="private-office.html">
           <span class="userInfo__name">
             <i class="fa fa-user-o" aria-hidden="true"></i>
-              {{model.user.fullName}}
+              {{user.fullName}}
           </span>
         </a>
-        <a href="index.html">
+        <a href="/">
           <i class="fa fa-power-off" aria-hidden="true"></i>
         </a>
       </div>
