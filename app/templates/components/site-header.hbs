@@ -1,0 +1,39 @@
+<header>
+  <div class="container">
+    <div class="headerPanel">
+      <div class="logoWrap">
+        <a href="index.html" class="logo">
+          <img src="images/logo.svg" alt="">
+        </a>
+      </div>
+      <div class="headerMenu headerMenu_js">
+        <div class="mobileMenuBtn mobileMenuBtn_js"><i class="fa fa-bars" aria-hidden="true"></i></div>
+        <div class="menuPanel menuPanel_js"></div>
+        <nav class="nav headerNav headerMenu__nav">
+          <span class="closeMenu"><span class="icon-cross closeMenu__btn closeMenu__btn_js"></span></span>
+          <span class="menuItem">
+                  Объекты
+									<ul class="headerSubMenu">
+                    {{#each model.objects as |object|}}
+                      <li><a href="entity.html">{{object.name}}</a></li>
+                    {{/each}}
+									</ul>
+								</span>
+          <a class="nav-link menuItem" href="finance.html">Финансы</a>
+          <a class="nav-link menuItem" href="settings.html">Настройки</a>
+        </nav>
+      </div>
+      <div class="userInfo">
+        <a href="private-office.html">
+          <span class="userInfo__name">
+            <i class="fa fa-user-o" aria-hidden="true"></i>
+              {{model.user.fullName}}
+          </span>
+        </a>
+        <a href="index.html">
+          <i class="fa fa-power-off" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
