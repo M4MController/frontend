@@ -3,7 +3,7 @@
 ## Running the app
 At first clone the repository:
 ```bash
-$ git clone git@github.com:m4mController/frontend-ember.git && cd frontend
+$ git clone git@github.com:m4mController/frontend.git && cd frontend
 ```
 
 Now you can build and run the app, there are several ways to do it:
