@@ -27,7 +27,7 @@
 
     <div class="stakedBarChartWrap">
       <div class="cardRow">
-        <span class="cardRow__item">За месяц:</span>
+        <span class="cardRow__item">{{month}} {{year}}:</span>
         <span class="cardRow__item text-right"><span class="text-black">{{sensor.valueMonth}} {{sensor.unitName}}</span> <small>({{round sensor.valueForecast}} прогноз)</small></span>
       </div>
       {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valueForecast background='#ffcc00'}}
@@ -37,7 +37,7 @@
 
     <div class="stakedBarChartWrap">
       <div class="cardRow">
-        <span class="cardRow__item">За прошлый месяц:</span>
+        <span class="cardRow__item">{{month}} {{year -1}}</span>
         <span class="cardRow__item text-right"><span class="text-black">{{sensor.valueLastMonth}} {{sensor.unitName}}</span></span>
       </div>
       {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valueLastMonth}}
@@ -47,7 +47,7 @@
 
     <div class="stakedBarChartWrap">
       <div class="cardRow">
-        <span class="cardRow__item">Среднее за год:</span>
+        <span class="cardRow__item">Среднее {{year -1}}:</span>
         <span class="cardRow__item text-right"><span class="text-black">{{sensor.valueYearAverage}} {{sensor.unitName}}</span></span>
       </div>
       {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valueYearAverage background='#ffcc00'}}

@@ -26,7 +26,7 @@
     <div class="col-md-12">
       <div class="stakedBarChartWrap">
         <div class="cardRow">
-          <span class="cardRow__item">За месяц:</span>
+          <span class="cardRow__item">{{month}} {{year}}:</span>
           <span class="cardRow__item text-right"><span class="text-black">{{round object.totalMonth}} ₽</span> <small>({{round object.totalForecast}} прогноз)</small></span>
         </div>
         {{core/progress-bar class="stakedBarChart" value=object.totalMonth max=object.totalForecast background='#ffcc00'}}
@@ -35,7 +35,7 @@
 
       <div class="stakedBarChartWrap">
         <div class="cardRow">
-          <span class="cardRow__item">За прошлый месяц:</span>
+          <span class="cardRow__item">{{month}} {{year -1}}:</span>
           <span class="cardRow__item text-right text-black">{{round object.totalLastMonth}} ₽</span>
         </div>
         {{core/progress-bar class="stakedBarChart" value=object.totalMonth max=object.totalLastMonth}}
@@ -44,7 +44,7 @@
 
       <div class="stakedBarChartWrap">
         <div class="cardRow">
-          <span class="cardRow__item">Среднее за год:</span>
+          <span class="cardRow__item">Среднее {{year -1}}:</span>
           <span class="cardRow__item text-right text-black">{{round object.totalYearAverage}} ₽</span>
         </div>
         {{core/progress-bar class="stakedBarChart" value=object.totalMonth max=object.totalYearAverage}}
