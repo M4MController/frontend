@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 
 export default class extends Component {
-  classNames = [
+  globalClassNames = [
     'col-lg-4',
     'col-md-6',
     'col-sm-6',

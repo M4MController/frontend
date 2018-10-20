@@ -8,6 +8,13 @@ Ember.Component = class extends Ember.Component {
     return attrValue === undefined ? this.defaultAttrs[prop] : attrValue;
   }
 
+  @computed('globalClassNames')
+  @className
+  get _globalClassNames() {
+    const globalClassNames = this.get('globalClassNames');
+    return globalClassNames ? globalClassNames.join(' ') : '';
+  }
+
   @computed('localClassNames', 'styleNamespace')
   @className
   get _localClassNames() {

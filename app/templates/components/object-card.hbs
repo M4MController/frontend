@@ -11,7 +11,7 @@
       {{#each controller.sensors as |sensor|}}
         <div class="col-md-6 col-sm-6 col-xs-12 objectServicesWrap">
           <div class="objectService">
-            <span class="counterIcon icon-high-voltage"></span>
+            {{sensor-icon sensor=sensor class="sensor-icon"}}
             <div class="objectService__info">
               <small>{{sensor.name}}</small>
               <br/>
