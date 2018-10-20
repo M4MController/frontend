@@ -14,7 +14,7 @@ const calculateSumForSensors = function(this_, property) {
     }
   }
   return result;
-}
+};
 
 export default class ObjectModel extends DS.Model {
   @attr name;
@@ -27,9 +27,9 @@ export default class ObjectModel extends DS.Model {
     return calculateSumForSensors(this, 'totalMonth');
   }
 
-  @computed('controllers.@each.sensors.@each.totalLastMonth')
-  get totalLastMonth() {
-    return calculateSumForSensors(this, 'totalLastMonth');
+  @computed('controllers.@each.sensors.@each.totalPrevMonth')
+  get totalPrevMonth() {
+    return calculateSumForSensors(this, 'totalPrevMonth');
   }
 
   @computed('controllers.@each.sensors.@each.totalYearAverage')

@@ -11,24 +11,27 @@
     <div class="payableBlock">
       <div class="service__accrual cardRow">
         <span class="cardRow__item">Начисление:</span>
-        <span class="cardRow__item text-right text-black">{{round (mult 1.25 sensor.totalMonth)}} ₽</span>
+        <span class="cardRow__item text-right text-black">{{currency (mult 1.25 sensor.totalMonth)}}</span>
       </div>
 
       <div class="service__overpayment cardRow">
         <span class="cardRow__item">Переплата:</span>
-        <span class="cardRow__item text-right text-black">{{round (mult 0.25 sensor.totalMonth)}} ₽</span>
+        <span class="cardRow__item text-right text-black">{{currency (mult 0.25 sensor.totalMonth)}}</span>
       </div>
 
       <div class="service__total cardRow">
         <span class="cardRow__item">И того к оплате:</span>
-        <span class="cardRow__item text-right text-black">{{round sensor.totalMonth}} ₽</span>
+        <span class="cardRow__item text-right text-black">{{currency sensor.totalMonth}}</span>
       </div>
     </div>
 
     <div class="stakedBarChartWrap">
       <div class="cardRow">
         <span class="cardRow__item">{{month}} {{year}}:</span>
-        <span class="cardRow__item text-right"><span class="text-black">{{sensor.valueMonth}} {{sensor.unitName}}</span> <small>({{round sensor.valueForecast}} прогноз)</small></span>
+        <span class="cardRow__item text-right">
+          <span class="text-black">{{measurement sensor.valueMonth sensor.unitName}}</span>
+          <small>{{measurement sensor.valueForecast sensor.unitName}}</small>
+        </span>
       </div>
       {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valueForecast background='#ffcc00'}}
       <!--<div class="stakedBarChart stakedBarChart_month"></div>-->
@@ -38,9 +41,9 @@
     <div class="stakedBarChartWrap">
       <div class="cardRow">
         <span class="cardRow__item">{{month}} {{year -1}}</span>
-        <span class="cardRow__item text-right"><span class="text-black">{{sensor.valueLastMonth}} {{sensor.unitName}}</span></span>
+        <span class="cardRow__item text-right"><span class="text-black">{{measurement sensor.valuePrevYear sensor.unitName}}</span></span>
       </div>
-      {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valueLastMonth}}
+      {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valuePrevYear}}
       <!--<div class="stakedBarChart stakedBarChart_lastMonth"></div>-->
       <!-- <StakedBarChart current_indicators={current_indicators} compared={prediction} /> -->
     </div>
@@ -48,9 +51,11 @@
     <div class="stakedBarChartWrap">
       <div class="cardRow">
         <span class="cardRow__item">Среднее {{year -1}}:</span>
-        <span class="cardRow__item text-right"><span class="text-black">{{sensor.valueYearAverage}} {{sensor.unitName}}</span></span>
+        <span class="cardRow__item text-right">
+          <span class="text-black">{{measurement sensor.valuePrevYearAverage sensor.unitName}}</span>
+        </span>
       </div>
-      {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valueYearAverage background='#ffcc00'}}
+      {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valuePrevYearAverage background='#ffcc00'}}
       <!--<div class="stakedBarChart stakedBarChart_avgYear"></div>-->
       <!-- <StakedBarChart current_indicators={current_indicators} compared={prediction} /> -->
     </div>
