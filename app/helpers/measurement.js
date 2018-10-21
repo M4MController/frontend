@@ -4,7 +4,7 @@ export function measurement([value, unitName]) {
   if (!unitName) {
     return value;
   }
-  return `${value.toLocaleString({maximumFractionDigits: 3})} ${unitName}`;
+  return `${value.toPrettyString({fractionDigits: 3})} ${unitName}`;
 }
 
 export default helper(measurement);

@@ -4,6 +4,8 @@ import loadInitializers from 'ember-load-initializers';
 
 import config from './config/environment';
 
+import './overrides/number';
+
 import './overrides/component';
 import './overrides/controller';
 import './overrides/route';
