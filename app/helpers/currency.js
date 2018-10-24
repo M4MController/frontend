@@ -1,7 +1,8 @@
 import {helper} from '@ember/component/helper';
+import toPrettyString from '../utils/to-pretty-string';
 
 export function currency([value]) {
-  return value.toPrettyString({fractionDigits: 2}) + ' ₽';
+  return toPrettyString(value, {fractionDigits: 2}) + ' ₽';
 }
 
 export default helper(currency);

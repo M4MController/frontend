@@ -1,10 +1,10 @@
-Number.prototype.toPrettyString = function(
+export default function(value,
   {
     commas = true,
-    fractionDigits = 3,
-  },
+    fractionDigits = 2,
+  } = {},
 ) {
-  const [integer, fraction] = this.toString().split('.');
+  const [integer, fraction] = value.toString().split('.');
 
   const integerArray = [];
   if (commas) {
@@ -22,4 +22,4 @@ Number.prototype.toPrettyString = function(
   return `${integerArray.join(',')}${fraction ?
     `.${fraction.slice(0, fractionDigits)}` :
     ''}`;
-};
+}
