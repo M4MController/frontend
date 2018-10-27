@@ -1,12 +1,31 @@
-@import "constants";
+// enable bootstrap
+// https://www.ember-bootstrap.com/#/getting-started/assets
+@import "ember-bootstrap/functions";
+@import "ember-bootstrap/variables";
+@import "ember-bootstrap/mixins";
 
-@import "grid";
+@import "ember-bootstrap/grid";
+@import "ember-bootstrap/reboot";
+@import "ember-bootstrap/nav";
+@import "ember-bootstrap/type";
+@import "ember-bootstrap/forms";
+
+// enable font-awesome
+@import "font-awesome";
+
+// import 3rd till style refactor completed
+@import "3rd/fonts";
+@import "3rd/media";
+@import "3rd/popup";
+@import "3rd/style";
+@import "3rd/main";
+
+@import "constants";
 @import "helpers";
 @import "layout";
 
-@import "global";
-@import "input";
-@import "menu";
+//@import "global";
+//@import "input";
 @import "typography";
 
 @import "pod-styles";

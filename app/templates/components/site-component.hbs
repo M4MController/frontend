@@ -1,0 +1,12 @@
+<div class="site-content">
+  {{site-header class="site-header"
+                user=user objects=objects
+                onLogOut=(action "onLogOutAction")
+  }}
+
+  {{#site-body class="site-body"}}
+    {{outlet}}
+  {{/site-body}}
+
+  {{site-footer class="site-footer"}}
+</div>

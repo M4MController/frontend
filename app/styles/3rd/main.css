@@ -1,0 +1,941 @@
+* {
+  outline: none;
+  box-sizing: border-box;
+}
+
+a:link,
+a:hover,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: #fff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+textarea {
+  resize: none;
+}
+
+.text-black {
+  color: #000;
+}
+
+select {
+  padding: 10px;
+  border-radius: .5rem;
+  border-color: #ddd;
+  color: #b6b6b6;
+}
+
+select:hover {
+  border-color: #69b7a4;
+}
+
+option {
+  padding: 10px;
+}
+
+option:hover {
+  background-color: #eee;
+}
+
+.page {
+  width: 100%;
+  overflow: hidden;
+}
+
+.page .mainContent {
+  /*min-height: calc(100vh - 48px - 165px - 80px);*/
+  min-height: calc(100vh - 48px - 267px - 80px);
+}
+
+.page__title {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+body {
+  background: #eee;
+  font-family: "SFUIRegular";
+  font-size: 16px;
+}
+
+header {
+  background-color: #567ba7;
+  color: #fff;
+}
+
+.headerPanel {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.logoWrap {
+  flex-basis: 80px;
+  padding: 10px;
+}
+
+.logoWrap .logo > * {
+  width: 100%;
+  height: auto;
+}
+
+.logo {
+  font-family: 'GothamProMedium';
+  font-size: 2em;
+}
+
+.headerMenu {
+  position: relative;
+  height: 48px;
+  line-height: 48px;
+  display: flex;
+  align-items: center;
+  flex-basis: 70%;
+}
+
+.headerMenu__nav {
+  height: 80px;
+}
+
+.menuItem {
+  padding: 0 16px;
+  /*align-self: stretch;*/
+  cursor: pointer;
+
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+
+  display: flex;
+  align-items: center;
+}
+
+.menuItem:hover,
+.menuItem:hover .headerSubMenu {
+  background-color: #69b7a4;
+  z-index: 2;
+  opacity: 1;
+}
+
+.headerSubMenu {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  padding: 0;
+  width: 150px;
+  overflow: hidden;
+  z-index: -1;
+  opacity: 0;
+
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.headerSubMenu a {
+  display: block;
+  padding: 0 16px;
+  line-height: 60px;
+}
+
+.headerSubMenu a:hover {
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+
+  background-color: #72c6b7;
+}
+
+.closeMenu {
+  text-align: right;
+}
+
+.closeMenu__btn {
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.userInfo {
+  flex-basis: 30%;
+  text-align: right;
+}
+
+.userInfo__id {
+  margin: 0 20px;
+}
+
+.footerMenuInHeader {
+  display: none;
+}
+
+.closeMenu,
+.mobileMenuBtn {
+  display: none;
+  cursor: pointer;
+
+}
+
+h2 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+h2 span {
+  font-size: 1.6rem;
+  vertical-align: middle;
+}
+
+h2 [class^="icon"],
+h2 i {
+  color: #b6b6b6;
+  margin-right: 20px;
+  font-size: 1em;
+}
+
+.cardStyle {
+  background-color: #fff;
+  color: #b6b6b6;
+  border-radius: .5rem;
+  padding: 20px;
+  margin: 15px 0;
+  position: relative;
+}
+
+.cardStyle_noPaddings {
+  padding: 0;
+  overflow: hidden;
+}
+
+.cardStyle--withTitle {
+  padding: 0;
+  color: #000;
+  overflow: hidden;
+}
+
+.cardStyle--withTitle__title {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  text-transform: uppercase;
+}
+
+.cardStyle--withTitle__content {
+  padding: 20px;
+}
+
+.btnStyle {
+  padding: 10px 20px;
+  border-radius: .5rem;
+  border: 1px solid;
+  cursor: pointer;
+
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.btnStyle:hover {
+  background-color: #69b7a4;
+  color: #fff;
+  border-color: #69b7a4;
+}
+
+.btnStyle--small {
+  padding: 10px;
+}
+
+.btnStyle_сolor {
+  background-color: #567ba7;
+  color: #fff;
+  border-color: #567ba7;
+}
+
+.btnStyle_сolorless {
+  background-color: transparent;
+  color: #b6b6b6;
+  border-color: #b6b6b6;
+}
+
+.btnStyle_сolorgray {
+  background-color: #eee;
+  color: #555;
+  border-color: #eee;
+}
+
+.cardRow {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.cardRow__item {
+  flex-basis: 50% 1 1;
+}
+
+.cardStyle .btnStyle {
+  width: auto;
+}
+
+.cardBtnsWrap {
+  display: flex;
+  /*opacity: 0;*/
+  opacity: 1;
+
+  /*position: absolute;*/
+  /*top: 100%;*/
+  /*left: 0;*/
+  /*width: 100%;*/
+  padding-top: 15px;
+  /*z-index: 2;*/
+  background-color: #fff;
+  border-radius: 0 0 .5rem .5rem;
+  /*box-shadow: 2px 5px 10px 2px #eeeeee;*/
+
+  /*-webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;*/
+}
+
+/*.cardStyle--withBtns:hover{
+	border-radius: .5rem .5rem 0 0;
+}*/
+/*.cardStyle--withBtns:hover .cardBtnsWrap{
+	opacity: 1;
+}*/
+.cardBtnsWrap .btnStyle {
+  width: 100%;
+}
+
+.objectWrap__title {
+  line-height: 1.3em;
+}
+
+.objectWrap__title > * {
+  display: block;
+}
+
+.objectIndicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #00cc99;
+  border-radius: 50%;
+}
+
+.objectServices {
+  margin: 20px 0;
+}
+
+.objectServicesWrap {
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.objectService {
+  display: flex;
+  align-items: center;
+}
+
+.objectService__info {
+  line-height: 1.1em;
+}
+
+.service__title {
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.service__item {
+  width: 100%;
+}
+
+.service__name {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.payableBlock {
+  margin-right: -20px;
+  margin-left: -20px;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+footer {
+  justify-self: flex-end;
+  width: 100vw;
+
+  margin-top: 80px;
+  background-color: #333333;
+  color: #fff;
+}
+
+.footerTop {
+  padding: 20px 0;
+}
+
+.footerBottom {
+  background-color: #2b2b2b;
+  padding: 20px 0;
+}
+
+.footerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footerMenuItem {
+  border-radius: .5rem;
+
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.footerMenuItem:hover {
+  background-color: #2b2b2b;
+}
+
+.socialsNav a {
+  display: inline-block;
+  border: 2px solid #7a7a7a;
+  color: #7a7a7a;
+  border-radius: 50%;
+  text-align: center;
+  margin-left: 4px;
+}
+
+.socialsNav a i {
+  padding: 5px;
+  width: 28px;
+}
+
+.Logo {
+  vertical-align: text-bottom;
+}
+
+.chartWrap {
+  margin-top: 20px;
+}
+
+.lineChartWrap {
+  padding: 20px 0;
+}
+
+.lineChartWrap .selectRow {
+  padding: 0 20px;
+}
+
+.stakedBarChart {
+  height: 2px;
+}
+
+.stakedBarChart_month {
+  background: linear-gradient(to right, #567ba7 70%, #ffcc00 30%);
+}
+
+.stakedBarChart_lastMonth {
+  background: linear-gradient(to right, #567ba7 50%, #cccccc 50%);
+}
+
+.stakedBarChart_avgYear {
+  background: linear-gradient(to right, #567ba7 70%, #cccccc 30%);
+}
+
+/* Support */
+.form .clip {
+  font-size: 1.2em;
+  transform: rotate(-90deg);
+  vertical-align: middle;
+  margin-right: 10px;
+  color: #b6b6b6;
+}
+
+.formLabelFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form_fileInput input[type="file"] {
+  display: none;
+}
+
+.form-field {
+  border-radius: .5rem;
+}
+
+.supportNav__item {
+  padding: 20px;
+
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.supportNav__item:hover {
+  background-color: #f5f5f5;
+  border-radius: inherit;
+}
+
+.flexRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.itemIndicator {
+  background-color: #ddd;
+  border-radius: 50%;
+  line-height: 24px;
+  width: 24px;
+  text-align: center;
+}
+
+.itemIndicator--color-green {
+  background-color: #69b7a4;
+}
+
+.itemIndicator--color-blue {
+  background-color: #567ba7;
+}
+
+.itemIndicator--color-gray {
+  background-color: #999;
+}
+
+/* Tabs */
+/* базовый контейнер вкладок */
+.tabsWrap_minHeight {
+  min-height: calc(100vh - 500px);
+}
+
+.tabs_block {
+  width: 100%;
+
+  min-height: inherit;
+}
+
+.tabs_block:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.tabs_block_row {
+  display: flex;
+}
+
+/* панель навигации вкладок */
+.tabs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  color: #000;
+
+  min-height: inherit;
+}
+
+.tabs_col {
+  flex-direction: column;
+  min-width: 280px;
+  border-right: 1px solid #ddd;
+  min-height: inherit;
+}
+
+/* список вкладок */
+.tabs__item {
+  text-align: center;
+  float: left;
+  padding: 30px 0px;
+  background: #f9f9f9;
+  cursor: pointer;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  flex: 1 1;
+}
+
+.tabs__item_col {
+  text-align: left;
+  padding: 30px 20px;
+  flex: inherit;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+/* активная вкладка */
+.tabs__item.active {
+  background: #fff;
+}
+
+.tabs__item_col.active {
+  background: #f9f9f9;
+}
+
+/* блоки вкладок с содержанием */
+.box {
+  background: #fff;
+  width: 100%;
+  display: none;
+  text-align: left;
+  float: left;
+  padding-bottom: 20px;
+}
+
+/* параграф внутри вкладок */
+.box p {
+  margin-bottom: 15px;
+}
+
+/* активный блок при загрузке */
+.visible, .open_tab {
+  display: block;
+}
+
+/* картинки внутри вкладок */
+.box img {
+  width: 25%;
+  height: auto;
+}
+
+/* картинки слева */
+.pl-left {
+  float: left;
+  margin: 5px 15px 5px 0;
+}
+
+/* картинки справа */
+.pl-right {
+  float: right;
+  margin: 5px 0 5px 15px;
+}
+
+/* убираем выравнивание на маленьких экранах */
+@media (max-width: 300px) {
+  .tabs, .tabs li {
+    float: none;
+  }
+}
+
+.personalData__block {
+  border-bottom: 1px solid #eee;
+}
+
+.personalData__block:last-of-type {
+  border: 0;
+}
+
+.inputsSet {
+  padding: 20px;
+}
+
+.inputsSet .btnStyle {
+  margin-top: 20px;
+}
+
+.box__title {
+  padding: 0 20px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.box__name {
+  margin: 0;
+}
+
+.box__title .btnStyle {
+  font-size: .9em;
+  width: auto;
+}
+
+.box__title [class^="icon"] {
+  color: #69b7a4;
+}
+
+.bankCards {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px 20px 0;
+}
+
+.bankCard {
+  border: 2px dashed #eee;
+  border-radius: .5rem;
+  padding: 15px;
+  color: #666666;
+  margin-bottom: 20px;
+}
+
+.bankCard__title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bankCard__settings {
+  cursor: pointer;
+}
+
+.bankCard__info {
+  min-height: 100px;
+}
+
+.inspector {
+  border-bottom: 1px solid #eee;
+  padding: 0 20px;
+}
+
+.inspector:last-of-type {
+  border: 0;
+}
+
+.inspector__pannel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.inspector__btns {
+  display: flex;
+}
+
+.inspector__btn {
+  padding: 10px;
+  margin-left: 5px;
+  font-size: .9em;
+  color: #000;
+}
+
+.inspector__btn:hover [class^="icon"] {
+  color: #fff;
+}
+
+.inspector__btn [class^="icon"] {
+  vertical-align: middle;
+  color: #999999;
+  margin-right: 5px;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.inspector__countersTitle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.inspector__countersTitle .btnStyle {
+  width: auto;
+  font-size: .9em;
+}
+
+.inspector__mobileBtns {
+  display: none;
+
+  align-self: flex-start;
+  color: #999999;
+  cursor: pointer;
+}
+
+#substrate.contextMenu {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 1;
+}
+
+.counterItem__mobileControls {
+  display: none;
+  color: #999999;
+  cursor: pointer;
+}
+
+.counterItem {
+  margin: 5px 0;
+  font-size: .9em;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.counterItem__controls {
+  color: #666666;
+
+  position: absolute;
+  right: 20px;
+}
+
+.counterItem__controls [class^="icon"] {
+  font-size: .75em;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.controlText {
+  display: none;
+}
+
+.counterItem__firm {
+  color: #999999;
+  margin: 0 40px 0 20px;
+}
+
+.counterItem__icon {
+  margin-right: 10px;
+}
+
+.counterIcon {
+  background-color: #567ba7;
+  color: #fff;
+  padding: 3px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Page - Finance */
+.archiveMarker {
+  position: relative;
+}
+
+.archiveMarker .finance {
+  display: block;
+}
+
+.archiveMarker .financeArchive {
+  display: none;
+}
+
+.archiveMarker.showArchive .finance {
+  display: none;
+}
+
+.archiveMarker.showArchive .financeArchive {
+  display: block;
+}
+
+.finance,
+.financeArchive {
+  /*position: absolute;*/
+
+  -webkit-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.finance > *,
+.financeArchive > * {
+  padding: 20px;
+}
+
+.financeArchive > * {
+  border-bottom: 1px solid #ccc;
+}
+
+.financeArchive > *:last-of-type {
+  border: 0;
+}
+
+.finance__details {
+  background-color: #f9f9f9;
+}
+
+.financeArchive__check,
+.finance__formWrap {
+  padding: 0;
+}
+
+.finance__service {
+  padding: 15px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.finance__submit {
+  padding: 15px 20px;
+}
+
+.finance__submit button {
+  margin-left: 15px;
+}
+
+.finance__serviceTitle {
+  font-weight: 600;
+  padding-bottom: 15px;
+}
+
+.finance__serviceDetails > * {
+  min-width: 120px;
+  margin-right: 20px;
+}
+
+.finance__inputWrap input {
+  width: 100px;
+  display: inline-block;
+}
+
+.finance__inputWrap label {
+  margin-left: 20px;
+}
+
+.finance__info {
+  margin-bottom: 25px;
+}
+
+.finance__info > * {
+  min-width: 150px;
+  margin-right: 20px;
+}
+
+.financeSmallerBasicText {
+  font-size: .875em;
+}
+
+.financeBiggerBasicText {
+  font-size: 1.125em;
+}
+
+.financeArchive__calendarForm .input-group-addon,
+.financeArchive__searchForm .input-group-addon {
+  background-color: transparent;
+}
+
+.financeArchive__searchForm input[type="search"] {
+  border-right: 0;
+}
+
+input#downloadExel {
+  display: none;
+}
+
+label[for="downloadExel"] img {
+  height: 22px;
+  width: auto;
+}
+
+.faTable__head {
+  background-color: #f9f9f9;
+}
+
+.faTable__row {
+  flex-wrap: wrap;
+}
+
+.faTable__col {
+  flex-basis: 33%;
+  padding: 15px 20px;
+}
