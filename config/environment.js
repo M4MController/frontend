@@ -2,7 +2,7 @@
 'use strict';
 
 const MIRAGE = false;
-const BACKEND_HOST = 'http://meter4.me';
+const BACKEND_HOST = '//meter4.me';
 const BACKEND_NAMESPACE = '/api';
 
 module.exports = function(environment) {
