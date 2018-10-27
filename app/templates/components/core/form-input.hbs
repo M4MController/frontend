@@ -1,0 +1,10 @@
+<div class="form-group">
+  <label>{{name}}:</label>
+  {{input class=(concat "form-control form-field " (if wasFocused (if isValid "is-valid" "is-invalid")))
+          type=type
+          value=value
+          enter=(action "onEnterAction")
+          focus-out=(action "focusOutAction")
+  }}
+  <small class="invalid-feedback">{{error}}</small>
+</div>

@@ -8,6 +8,7 @@
 @import "ember-bootstrap/reboot";
 @import "ember-bootstrap/nav";
 @import "ember-bootstrap/type";
+@import "ember-bootstrap/forms";
 
 // enable font-awesome
 @import "font-awesome";
@@ -21,7 +22,7 @@
 
 @import "constants";
 @import "helpers";
-//@import "layout";
+@import "layout";
 
 //@import "global";
 //@import "input";

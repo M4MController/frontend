@@ -1,4 +1,7 @@
-{{#site-component user=model.user objects=model.objects}}
+{{#site-component
+  user=model.user objects=model.objects
+  onLogOut=(action "onLogOutAction")
+}}
   {{outlet}}
 {{/site-component}}
 

@@ -1,7 +1,8 @@
 {{#if isLoading}}
-  {{core/loader-component}}
+  {{core/loader-component class="vp-height vp-width h-center v-center"}}
 {{else}}
-  {{log-in-form error=logInError
-                onLogIn=(action "onLogInAction")
+  {{forms/sign-in class="vp-height vp-width h-center v-center"
+                  error=logInError
+                  onLogIn=(action "onLogInAction")
   }}
 {{/if}}
