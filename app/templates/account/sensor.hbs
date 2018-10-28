@@ -3,6 +3,9 @@
     {{page-caption text=model.name icon=(sensor-icon-name model) class="col-md-8"}}
   </div>
   <div class="row cardStyle h-center">
-    {{time-series-chart class="col-xs-12" lineData=sensorLineData selectedSeedColor='#567ba7'}}
+    <h2 class="text-caption">График потребления</h2>
+    {{#core/loader-component loading=(not model.values)}}
+      {{time-series-chart class="col-xs-12" lineData=sensorLineData selectedSeedColor='#567ba7'}}
+    {{/core/loader-component}}
   </div>
 </div>

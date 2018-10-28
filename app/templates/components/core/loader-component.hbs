@@ -1,1 +1,5 @@
-<div class="lds-dual-ring"></div>
+{{#if loading}}
+  <div class="lds-dual-ring"></div>
+{{else}}
+  {{yield}}
+{{/if}}
