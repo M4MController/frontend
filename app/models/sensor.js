@@ -2,6 +2,7 @@ import DS from 'ember-data';
 import {
   attr,
   belongsTo,
+  hasMany,
 } from '@ember-decorators/data';
 import {computed} from '@ember-decorators/object';
 
@@ -20,7 +21,7 @@ const calculateTotal = function(value, type) {
   }
 };
 
-export default class SensorModel extends DS.Model {
+export default class extends DS.Model {
   @attr name;
 
   @attr overpayment;
@@ -39,6 +40,7 @@ export default class SensorModel extends DS.Model {
   @attr deactivationDate;
   @belongsTo('service-company', {async: false}) serviceCompany;
   @belongsTo({async: false}) controller;
+  @hasMany('sensor-value', {async: false}) values;
 
   @computed('valueMonth', 'type')
   get valueForecast() {
