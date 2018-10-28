@@ -1,4 +1,6 @@
-<h2>
-  <span class={{icon}}></span>
-  <span>{{text}}</span>
+<h2 class="page-title">
+  {{#if icon}}
+    {{core/icon-component name=icon class="page-icon"}}
+  {{/if}}
+  <span class="page-caption">{{text}}</span>
 </h2>
