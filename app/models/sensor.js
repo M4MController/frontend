@@ -23,6 +23,10 @@ const calculateTotal = function(value, type) {
 export default class SensorModel extends DS.Model {
   @attr name;
 
+  @attr overpayment;
+  @attr charge;
+  @attr forPayment;
+
   @attr valueMonth;
   @attr valuePrevYear;
   @attr valuePrevYearAverage;

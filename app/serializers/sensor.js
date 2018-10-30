@@ -6,13 +6,15 @@ export default class extends ApplicationSerializer {
     deactivationDate: 'deactivation_date',
     company: 'company',
     activationDate: 'activation_date',
-    // value: 'last_value',
     controller: 'controller_id',
   };
 
   normalize(modelClass, resourceHash) {
-    const additional ={
+    const additional = {
       type: resourceHash['characteristics']['sensor_type'],
+      charge: resourceHash['payments']['charge'],
+      overpayment: resourceHash['payments']['overpayment'],
+      forPayment: resourceHash['payments']['for_payment'],
       unitName: resourceHash['characteristics']['unit_of_measurement'],
       valueMonth: resourceHash['stats']['month'],
       valuePrevYear: resourceHash['stats']['prev_month'],

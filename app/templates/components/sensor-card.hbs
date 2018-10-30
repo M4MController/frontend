@@ -11,17 +11,17 @@
     <div class="payableBlock">
       <div class="service__accrual cardRow">
         <span class="cardRow__item">Начисление:</span>
-        <span class="cardRow__item text-right text-black">{{currency (mult 1.25 sensor.totalMonth)}}</span>
+        <span class="cardRow__item text-right text-black">{{currency sensor.charge}}</span>
       </div>
 
       <div class="service__overpayment cardRow">
         <span class="cardRow__item">Переплата:</span>
-        <span class="cardRow__item text-right text-black">{{currency (mult 0.25 sensor.totalMonth)}}</span>
+        <span class="cardRow__item text-right text-black">{{currency sensor.overpayment}}</span>
       </div>
 
       <div class="service__total cardRow">
         <span class="cardRow__item">И того к оплате:</span>
-        <span class="cardRow__item text-right text-black">{{currency sensor.totalMonth}}</span>
+        <span class="cardRow__item text-right text-black">{{currency sensor.forPayment}}</span>
       </div>
     </div>
 
@@ -55,7 +55,7 @@
           <span class="text-black">{{measurement sensor.valuePrevYearAverage sensor.unitName}}</span>
         </span>
       </div>
-      {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valuePrevYearAverage background='#ffcc00'}}
+      {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valuePrevYearAverage}}
       <!--<div class="stakedBarChart stakedBarChart_avgYear"></div>-->
       <!-- <StakedBarChart current_indicators={current_indicators} compared={prediction} /> -->
     </div>
