@@ -5,6 +5,19 @@ export default class extends Controller {
   modalAddVisible = false;
   modalAddLoading = false;
 
+  // Better to do in modal dialog?
+  bShowAddObject = false;
+
+  @action
+  showAddObject() {
+    this.set('bShowAddObject', true);
+  }
+
+  @action
+  hideAddObject() {
+    this.set('bShowAddObject', false);
+  }
+
   @action
   async onAddObjectAction(name) {
     this.set('modalAddLoading', true);

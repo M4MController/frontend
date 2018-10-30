@@ -1,11 +1,11 @@
 {{#modals/modal-component
-  title="Add Controller"
+  title="Добавить контролер"
   onClose=(action "onCloseAction")
   loading=attrs.loading
   width=4
 }}
   <div class="text-default margin-bottom-1x">
-    Mac Address:
+    Mac-адрес:
   </div>
   {{input class=(concat "full-width input input-" (if isValidMacAddress "default" "danger"))
           value=macAddress
@@ -13,9 +13,11 @@
           enter=(action "onAddClickAction")
   }}
 
-  <div class="btn btn-{{if isValid "ok" "disabled"}} pull-right margin-top-2x"
-       role="button"
-       onclick={{action "onAddClickAction"}}>
-    Add
+  <div class="clearfix">
+    <div class="btn btnStyle btnStyle_сolor pull-right margin-top-2x"
+         role="button"
+         onclick={{action "onAddClickAction"}}>
+      Добавить
+    </div>
   </div>
 {{/modals/modal-component}}

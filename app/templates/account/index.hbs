@@ -1,7 +1,16 @@
 <div class="container">
-  <div class="row">
+  <div class="row align-items-center page__title">
     {{page-caption text="Мои объекты" icon="icon-diagram" class="col-md-8"}}
+    <div class="col-md-4 text-right">
+      <button class="btn btnStyle btnStyle_сolor" {{action "showAddObject"}}>Добавить объект</button>
+    </div>
   </div>
+
+  {{#if bShowAddObject}}
+    {{#modals/add-object onClose=(action "hideAddObject") }}
+    {{/modals/add-object}}
+  {{/if}}
+
   <div class="row havings">
     {{#each model as |object|}}
       {{object-card object=object}}

@@ -5,6 +5,18 @@ export default class extends Controller {
   modalAddVisible = false;
   modalAddLoading = false;
 
+  bShowAddController = false;
+
+  @action
+  showAddController() {
+    this.set('bShowAddController', true);
+  }
+
+  @action
+  hideAddController() {
+    this.set('bShowAddController', false);
+  }
+
   @action
   async addControllerAction(macAddress) {
     this.set('modalAddLoading', true);

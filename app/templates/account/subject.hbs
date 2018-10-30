@@ -1,7 +1,16 @@
 <div class="container">
-  <div class="row">
+  <div class="row align-items-center page__title">
     {{page-caption text=model.name icon="icon-home" class="col-md-8"}}
+    <button class="btn btnStyle btnStyle_сolor" {{action "showAddController"}}>
+      Добавить контролер
+    </button>
   </div>
+
+  {{#if bShowAddController}}
+    {{#modals/add-controller onClose=(action "hideAddController")}}
+    {{/modals/add-controller}}
+  {{/if}}
+
   <div class="row havings">
     {{#each model.controllers as |controller|}}
       {{#each controller.sensors as |sensor|}}
