@@ -37,7 +37,8 @@ export default class SensorModel extends DS.Model {
   @attr type;
   @attr activationDate;
   @attr deactivationDate;
-  @belongsTo controller;
+  @belongsTo('service-company', {async: false}) serviceCompany;
+  @belongsTo({async: false}) controller;
 
   @computed('valueMonth', 'type')
   get valueForecast() {

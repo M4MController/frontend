@@ -1,4 +1,14 @@
 .sensor-icon {
   height: $grid-step * 4;
   margin-right: $grid-step;
+  margin-bottom: $grid-step;
+}
+
+.indicator {
+  display: inline-block;
+  width: $grid-step;
+  height: $grid-step;
+  margin-left: $grid-step;
+  background-color: #00cc99;
+  border-radius: 50%;
 }

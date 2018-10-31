@@ -19,26 +19,31 @@ const calculateSumForSensors = function(this_, property) {
 export default class ObjectModel extends DS.Model {
   @attr name;
   @attr address;
-  @belongsTo user;
-  @hasMany('controller') controllers;
+  @belongsTo({async: false}) user;
+  @hasMany('controller', {async: false}) controllers;
 
-  @computed('controllers.@each.sensors.@each.totalMonth')
+  @computed('sensors')
   get totalMonth() {
     return calculateSumForSensors(this, 'totalMonth');
   }
 
-  @computed('controllers.@each.sensors.@each.totalPrevMonth')
+  @computed('sensors')
   get totalPrevMonth() {
     return calculateSumForSensors(this, 'totalPrevMonth');
   }
 
-  @computed('controllers.@each.sensors.@each.totalYearAverage')
+  @computed('sensors')
   get totalYearAverage() {
     return calculateSumForSensors(this, 'totalYearAverage');
   }
 
-  @computed('controllers.@each.sensors.@each.totalForecast')
+  @computed('sensors')
   get totalForecast() {
     return calculateSumForSensors(this, 'totalForecast');
+  }
+
+  @computed('controllers.@each.sensors')
+  get sensors() {
+    return this.get('controllers').mapBy('sensors').reduce((a, b) => a.concat(b.toArray()), []);
   }
 }

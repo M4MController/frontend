@@ -14,7 +14,9 @@ Router.map(function() {
   });
   this.route('account', {path: '/'}, function() {
     this.route('subject', {path: '/object/:object_id'});
-    this.route('finance');
+    this.route('finance', function() {
+      this.route('subject', {path: '/:object_id'});
+    });
     this.route('settings');
   });
 });

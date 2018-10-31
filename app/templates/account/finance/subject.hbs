@@ -1,0 +1,70 @@
+<div class="finance finance_js">
+  <div class="finance__title d-flex justify-content-between align-items-center">
+    <div class="">
+      <h4 class="font-weight-bold">{{model.name}}</h4>
+      <div class="financeSmallText">{{model.address}}</div>
+    </div>
+    <div>
+      <button class="btn btnStyle btnStyle_сolorless toShowArchive_js">
+        <span class="icon-disabled"></span>
+        История платежей
+      </button>
+    </div>
+  </div>
+
+  {{#each serviceCompanies as |serviceCompany|}}
+    <div class="finance__details">
+      <div class="finance__info d-flex">
+        <div>
+        <span class="financeSmallText">
+        Оператор
+        </span>
+          <br>
+          <span class="financeBiggerBasicText">{{serviceCompany.item.name}}</span>
+        </div>
+        <div>
+          <span class="financeSmallText">Лицевой счет:</span>
+          <br>
+          <span class="financeBiggerBasicText">{{serviceCompany.item.bankAccount}}</span>
+        </div>
+        <div>
+          <span class="financeSmallText">Call центр</span>
+          <br>
+          <span class="financeBiggerBasicText">{{serviceCompany.item.phone}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="finance__formWrap">
+      <div class="finance__form">
+        {{#each serviceCompany.sensors as |sensor|}}
+          {{#if (eq sensor.controller.object.id model.id)}}
+            <div class="finance__service d-flex justify-content-between align-items-center">
+              <div class="">
+                <div class="finance__serviceTitle">{{sensor.name}}</div>
+                <div class="finance__serviceDetails d-flex">
+                  <div class="financeSmallerBasicText">Долг: {{currency sensor.forPayment}}</div>
+                  <div class="financeSmallerBasicText">За последний месяц: {{currency sensor.totalMonth}}</div>
+                </div>
+              </div>
+
+              <div class="finance__inputWrap">
+                <div class="form-group">
+                  <input type="number" class="form-control form-field" aria-describedby="emailHelp"
+                         placeholder="" value="{{sensor.forPayment}}">
+                  <label for="exampleInputlorem" class="financeSmallerBasicText">руб.</label>
+                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                </div>
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+
+        <div class="finance__submit text-right">
+          Всего к оплате {{currency serviceCompany.forPayment}}
+          <button class="btn btnStyle btnStyle_сolor">Оплатить</button>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>

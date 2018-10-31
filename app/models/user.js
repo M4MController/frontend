@@ -20,7 +20,7 @@ export default class UserModel extends DS.Model {
   @attr mobilePhone;
   @attr citizenship;
   @attr email;
-  @hasMany('object') objects;
+  @hasMany('object', {async: false}) objects;
 
   @computed('firstName', 'lastName')
   get fullName() {

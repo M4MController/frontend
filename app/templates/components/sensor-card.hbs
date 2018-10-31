@@ -2,9 +2,12 @@
   <div class="service">
     <div class="service__title">
       {{sensor-icon sensor=sensor class="sensor-icon"}}
-      <div class="service__item">
-        <div class="service__name text-caption text-bold text-black">{{sensor.name}}<span class="objectIndicator"></span></div>
-        <small class="service__company">{{sensor.company}}</small>
+      <div class="objectWrap__title">
+        <div class="objectWrap__name">
+          <strong class="text-caption text-bold text-black">{{sensor.name}}</strong>
+          <span class="indicator"></span>
+        </div>
+        <small class="objectTitle full-width">{{sensor.serviceCompany.name}}</small>
       </div>
     </div>
 
@@ -41,7 +44,8 @@
     <div class="stakedBarChartWrap">
       <div class="cardRow">
         <span class="cardRow__item">{{month}} {{year -1}}</span>
-        <span class="cardRow__item text-right"><span class="text-black">{{measurement sensor.valuePrevYear sensor.unitName}}</span></span>
+        <span class="cardRow__item text-right"><span class="text-black">{{measurement sensor.valuePrevYear
+                                                                                      sensor.unitName}}</span></span>
       </div>
       {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valuePrevYear}}
       <!--<div class="stakedBarChart stakedBarChart_lastMonth"></div>-->

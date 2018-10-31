@@ -3,10 +3,8 @@
     {{page-caption text=model.name icon="icon-home" class="col-md-8"}}
   </div>
   <div class="row havings">
-    {{#each model.controllers as |controller|}}
-      {{#each controller.sensors as |sensor|}}
-        {{sensor-card sensor=sensor}}
-      {{/each}}
+    {{#each model.sensors as |sensor|}}
+      {{sensor-card sensor=sensor}}
     {{/each}}
   </div>
 </div>

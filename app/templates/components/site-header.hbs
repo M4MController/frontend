@@ -21,9 +21,9 @@
               {{/each}}
             </ul>
           </span>
-          <a class="nav-link menuItem" href="https://m4mcontroller.github.io/m4m-web-prototype/finance.html">
+          {{#link-to 'account.finance.subject' objects.firstObject class="nav-link menuItem"}}
             Финансы
-          </a>
+          {{/link-to}}
           <a class="nav-link menuItem" href="https://m4mcontroller.github.io/m4m-web-prototype/settings.html">
             Настройки
           </a>

@@ -1,12 +1,16 @@
 import ApplicationSerializer from './application';
+import DS from 'ember-data';
 
-export default class extends ApplicationSerializer {
+export default class extends ApplicationSerializer.extend(DS.EmbeddedRecordsMixin, {}) {
   attrs = {
     name: 'name',
     deactivationDate: 'deactivation_date',
     company: 'company',
     activationDate: 'activation_date',
     controller: 'controller_id',
+    serviceCompany: {
+      embedded: 'always',
+    },
   };
 
   normalize(modelClass, resourceHash) {
@@ -19,9 +23,11 @@ export default class extends ApplicationSerializer {
       valueMonth: resourceHash['stats']['month'],
       valuePrevYear: resourceHash['stats']['prev_month'],
       valuePrevYearAverage: resourceHash['stats']['prev_year'],
+      serviceCompany: resourceHash['finance']['service_company'],
     };
 
     return super.normalize(modelClass,
-      Object.assign(resourceHash, additional));
+      Object.assign(resourceHash, additional),
+    );
   }
 }

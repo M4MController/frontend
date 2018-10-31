@@ -13,6 +13,6 @@ export default class ControllerModel extends DS.Model {
   @attr activationDate;
   @attr status;
   @attr meta;
-  @hasMany('sensor') sensors;
-  @belongsTo object;
+  @hasMany('sensor', {async: false}) sensors;
+  @belongsTo({async: false}) object;
 }
