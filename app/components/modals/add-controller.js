@@ -9,18 +9,20 @@ import {
 } from '@ember-decorators/object/computed';
 
 export default class extends Component {
-  macAddress = '';
+  controllerId = '';
 
   @on('didRender')
   focusOnInput() {
     this.$('.input').focus();
   }
 
-  @computed('macAddress')
-  get isValidMacAddress() {
-    return !this.get('macAddress') || /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/.test(this.get('macAddress'));
+  @computed('controllerId')
+  get isValidControllerId() {
+    const controllerId = this.get('controllerId');
+    return !controllerId || +controllerId;
   }
-  @and('macAddress', 'isValidMacAddress') isValid;
+
+  @and('controllerId', 'isValidControllerId') isValid;
 
   @action
   onCloseAction() {
@@ -29,6 +31,6 @@ export default class extends Component {
 
   @action
   onAddClickAction() {
-    this.get('isValidMacAddress') && this.attrs.onAdd && this.attrs.onAdd(this.get('macAddress'));
+    this.get('isValidControllerId') && this.attrs.onAdd && this.attrs.onAdd(this.get('controllerId'));
   }
 }

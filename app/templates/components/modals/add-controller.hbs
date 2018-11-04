@@ -1,15 +1,14 @@
 {{#modals/modal-component
-  title="Добавить контролер"
+  title="Активировать новый контроллер"
   onClose=(action "onCloseAction")
   loading=attrs.loading
   width=4
 }}
   {{core/form-input
-          name="Mac-адрес"
-          value=macAddress
-          isValid=isValidMacAddress
-          error="Неверный mac-адрес"
-          loading=attrs.loading
+          name="Идентификатор контроллера"
+          value=controllerId
+          isValid=isValidcontrollerId
+          error="Должен состоять только из цифр"
           enter=(action "onAddClickAction")
   }}
 
