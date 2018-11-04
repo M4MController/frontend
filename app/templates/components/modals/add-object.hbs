@@ -4,12 +4,11 @@
   loading=attrs.loading
   width=4
 }}
-  <div class="text-default margin-bottom-1x">
-    Имя:
-  </div>
 
-  {{input class="full-width input input-default"
+  {{core/form-input
+          name="Имя"
           value=name
+          isValid=true
           enter=(action "onAddClickAction")
   }}
 

@@ -4,11 +4,11 @@
   loading=attrs.loading
   width=4
 }}
-  <div class="text-default margin-bottom-1x">
-    Mac-адрес:
-  </div>
-  {{input class=(concat "full-width input input-" (if isValidMacAddress "default" "danger"))
+  {{core/form-input
+          name="Mac-адрес"
           value=macAddress
+          isValid=isValidMacAddress
+          error="Неверный mac-адрес"
           loading=attrs.loading
           enter=(action "onAddClickAction")
   }}
