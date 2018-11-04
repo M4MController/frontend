@@ -1,15 +1,14 @@
-{{#modals/modal-component
-  title="Активировать новый контроллер"
-  onClose=(action "onCloseAction")
-  loading=attrs.loading
-  width=4
+{{#modals/modal-component className="col-xs-12 col-md-8 col-lg-6"
+                          title="Активировать новый контроллер"
+                          onClose=(action "onCloseAction")
+                          loading=attrs.loading
 }}
   {{core/form-input
-          name="Идентификатор контроллера"
-          value=controllerId
-          isValid=isValidcontrollerId
-          error="Должен состоять только из цифр"
-          enter=(action "onAddClickAction")
+    name="Идентификатор контроллера"
+    value=controllerId
+    isValid=isValidcontrollerId
+    error="Должен состоять только из цифр"
+    enter=(action "onAddClickAction")
   }}
 
   <div class="clearfix">
