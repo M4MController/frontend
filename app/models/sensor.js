@@ -23,6 +23,10 @@ const calculateTotal = function(value, type) {
 export default class SensorModel extends DS.Model {
   @attr name;
 
+  @attr overpayment;
+  @attr charge;
+  @attr forPayment;
+
   @attr valueMonth;
   @attr valuePrevYear;
   @attr valuePrevYearAverage;
@@ -33,7 +37,8 @@ export default class SensorModel extends DS.Model {
   @attr type;
   @attr activationDate;
   @attr deactivationDate;
-  @belongsTo controller;
+  @belongsTo('service-company', {async: false}) serviceCompany;
+  @belongsTo({async: false}) controller;
 
   @computed('valueMonth', 'type')
   get valueForecast() {

@@ -1,6 +1,7 @@
 import Service from '@ember/service';
 import {sendEvent} from '@ember/object/events';
 import {computed} from '@ember-decorators/object';
+import {alias} from '@ember-decorators/object/computed';
 import {service} from '@ember-decorators/service';
 
 import config from '../config/environment';
@@ -11,6 +12,8 @@ export default class extends Service {
 
   _rawHost = config.APP.backend.host;
   _rawNamespace = config.APP.backend.namespace;
+
+  @alias('auth.token') token;
 
   @computed('_rawNamespace')
   get namespace() {
@@ -37,14 +40,17 @@ export default class extends Service {
    * @param {String} path Url path without prefix
    * @param {String} method HTTP method
    * @param {Object} data Payload serializing into JSON
+   * @param {Object} options jquery ajax options
    * @return {Promise<Object>}
    */
-  async request(path, method, data) {
-    return this.get('ajax').request(this.buildUrl(path), {
+  async request(path, method, data, options = {}) {
+    const contentType = method === 'POST' ? 'application/json' : undefined;
+
+    return this.get('ajax').request(this.buildUrl(path, {token: this.get('token')}), Object.assign({
       method: method,
-      data: data,
-      contentType: 'application/json',
-    }).then((response) => {
+      data,
+      contentType,
+    }, options)).then((response) => {
       this.set('auth.isAuthorized', true);
       return response;
     }).catch((e) => {
@@ -56,8 +62,11 @@ export default class extends Service {
     });
   }
 
-  buildUrl(path) {
+  buildUrl(path, queryParams) {
     const parser = document.createElement('a');
+    if (queryParams) {
+      path += `?${Object.entries(queryParams).map(([key, value]) => `${key}=${value}`).join('&')}`;
+    }
     parser.href = path;
     return `${this.get('host')}${this.get('namespace')}${parser.pathname}${parser.search}`;
   }
