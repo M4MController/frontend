@@ -1,27 +1,33 @@
-<div class="modal grid-static">
-  {{#if cover}}
-    <div class="cover col-{{width}}">
-      {{#if (or attrs.title attrs.onClose)}}
-        <div class="margin-bottom-2x">
-          {{#if attrs.title}}
-            <span class="text-bold">{{attrs.title}}</span>
-          {{/if}}
-          {{#if (and attrs.onClose (not loading))}}
-            <span class="pull-right text-bold clickable text-small"
-                  role="button"
-                  onclick={{action "onCloseButtonClickAction"}}>
+<div class="modal ">
+  <div class="container">
+    <div class="row">
+      {{#if cover}}
+        <div class="cover {{className}}">
+          {{#if (or attrs.title attrs.onClose)}}
+            <div class="margin-bottom-2x">
+              {{#if attrs.title}}
+                <span class="text-bold">{{attrs.title}}</span>
+              {{/if}}
+              {{#if (and attrs.onClose (not loading))}}
+                <span class="pull-right text-bold clickable text-small"
+                      role="button"
+                      onclick={{action "onCloseButtonClickAction"}}>
               X
             </span>
+              {{/if}}
+            </div>
+          {{/if}}
+          {{#if attrs.loading}}
+            {{core/loader-component class="full-width h-center"}}
+          {{else}}
+            {{yield}}
           {{/if}}
         </div>
-      {{/if}}
-      {{#if attrs.loading}}
-        {{core/loader-component class="full-width h-center"}}
       {{else}}
-        {{yield}}
+        <div class="{{className}}">
+          {{yield}}
+        </div>
       {{/if}}
     </div>
-  {{else}}
-    {{yield}}
-  {{/if}}
+  </div>
 </div>

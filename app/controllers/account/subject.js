@@ -2,28 +2,41 @@ import Controller from '@ember/controller';
 import {action} from '@ember-decorators/object';
 
 export default class extends Controller {
-  modalAddVisible = false;
-  modalAddLoading = false;
+  bShowAddController = false;
+  bLoadingAddController = false;
 
   @action
-  async addControllerAction(macAddress) {
-    this.set('modalAddLoading', true);
-    const controller = this.get('store').createRecord('controller', {
-      name: macAddress,
-      object: this.get('model'),
-    });
-    await controller.save();
+  showAddController() {
+    this.set('bShowAddController', true);
+  }
 
-    // todo: remove the following
-    /* TEST DATA */
-    for (let i = 0; i < 6; ++i) {
-      await this.get('store').createRecord('sensor', {
-        name: `sensor ${i + 1}`,
-        controller,
-      }).save();
+  @action
+  hideAddController() {
+    this.set('bShowAddController', false);
+  }
+
+  @action
+  async onAddControllerAction(controllerId) {
+    const existingController = this.get('store').peekRecord('controller', controllerId);
+    if (existingController && existingController.get('object')) {
+      alert('Этот контроллер уже активирован в другом объекте');
+      return;
     }
 
-    this.set('modalAddVisible', false);
-    this.set('modalAddLoading', false);
+    this.set('bLoadingAddController', true);
+    const controller = this.get('store').createRecord('controller', {
+      id: controllerId,
+      name: `controller ${controllerId}`,
+      object: this.get('model'),
+    });
+
+    try {
+      await controller.save();
+      this.set('bShowAddController', false);
+    } catch (e) {
+      alert('Не удаётся активировать контроллер с данным идентификатором');
+    }
+
+    this.set('bLoadingAddController', false);
   }
 }

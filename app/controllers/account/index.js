@@ -2,16 +2,31 @@ import Controller from '@ember/controller';
 import {action} from '@ember-decorators/object';
 
 export default class extends Controller {
-  modalAddVisible = false;
-  modalAddLoading = false;
+  bShowAddObject = false;
+  bLoadingAddObject = false;
+
+  @action
+  showAddObject() {
+    this.set('bShowAddObject', true);
+  }
+
+  @action
+  hideAddObject() {
+    this.set('bShowAddObject', false);
+  }
 
   @action
   async onAddObjectAction(name) {
-    this.set('modalAddLoading', true);
-    const object = this.get('store').createRecord('object', {name});
-    await object.save();
+    this.set('bLoadingAddObject', true);
 
-    this.set('modalAddVisible', false);
-    this.set('modalAddLoading', false);
+    const object = this.get('store').createRecord('object', {name});
+    try {
+      await object.save();
+      this.set('bShowAddObject', false);
+    } catch (e) {
+      alert('Ошибка создания объекта.');
+    }
+
+    this.set('bLoadingAddObject', false);
   }
 }

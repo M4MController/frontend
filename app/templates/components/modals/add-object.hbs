@@ -1,20 +1,16 @@
-{{#modals/modal-component
-  title="Add Object"
-  onClose=(action "onCloseAction")
-  loading=attrs.loading
-  width=4
+{{#modals/modal-component className="col-xs-12 col-md-8 col-lg-6"
+                          title="Добавить объект"
+                          onClose=(action "onCloseAction")
+                          loading=attrs.loading
 }}
-  <div class="text-default margin-bottom-1x">
-    Name:
-  </div>
-  {{input class="full-width input input-default"
-          value=name
-          enter=(action "onAddClickAction")
+  {{core/form-input
+    name="Имя"
+    value=name
+    isValid=true
+    enter=(action "onAddClickAction")
   }}
 
-  <div class="btn btn-{{if isValidName "ok" "disabled"}} pull-right margin-top-2x"
-       role="button"
-       onclick={{action "onAddClickAction"}}>
-    Add
+  <div class="clearfix">
+    <button class="btnStyle btnStyle_сolor margin-top-2x pull-right" {{action "onAddClickAction"}}>Добавить</button>
   </div>
 {{/modals/modal-component}}
