@@ -2,11 +2,8 @@ import Controller from '@ember/controller';
 import {action} from '@ember-decorators/object';
 
 export default class extends Controller {
-  modalAddVisible = false;
-  modalAddLoading = false;
-
-  // Better to do in modal dialog?
   bShowAddObject = false;
+  bLoadingAddObject = false;
 
   @action
   showAddObject() {
@@ -20,11 +17,16 @@ export default class extends Controller {
 
   @action
   async onAddObjectAction(name) {
-    this.set('modalAddLoading', true);
-    const object = this.get('store').createRecord('object', {name});
-    await object.save();
+    this.set('bLoadingAddObject', true);
 
-    this.set('modalAddVisible', false);
-    this.set('modalAddLoading', false);
+    const object = this.get('store').createRecord('object', {name});
+    try {
+      await object.save();
+      this.set('bShowAddObject', false);
+    } catch (e) {
+      alert('Ошибка создания объекта.');
+    }
+
+    this.set('bLoadingAddObject', false);
   }
 }

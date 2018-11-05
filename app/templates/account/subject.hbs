@@ -9,8 +9,11 @@
   </div>
 
   {{#if bShowAddController}}
-    {{#modals/add-controller onClose=(action "hideAddController")}}
-    {{/modals/add-controller}}
+    {{modals/add-controller
+      loading=bLoadingAddController
+      onAdd=(action "onAddControllerAction")
+      onClose=(action "hideAddController")
+    }}
   {{/if}}
 
   <div class="row havings">

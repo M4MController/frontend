@@ -7,8 +7,11 @@
   </div>
 
   {{#if bShowAddObject}}
-    {{#modals/add-object onClose=(action "hideAddObject") }}
-    {{/modals/add-object}}
+    {{modals/add-object
+      loading=bLoadingAddObject
+      onAdd=(action "onAddObjectAction")
+      onClose=(action "hideAddObject")
+    }}
   {{/if}}
 
   <div class="row havings">
