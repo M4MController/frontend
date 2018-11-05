@@ -69,7 +69,9 @@
         <button class="openPopup_js btn btnStyle btnStyle_сolorless">Подробнее</button>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6">
-        <button href="payment.html" class="btn btnStyle btnStyle_сolor">Оплатить</button>
+        {{#link-to 'account.finance.subject' sensor.controller.object.id}}
+          <button class="btn btnStyle btnStyle_сolor">Оплатить</button>
+        {{/link-to}}
       </div>
     </div>
   </div>
