@@ -12,9 +12,11 @@
             <div class="tabs_block tabs_block_js tabs_block_row">
               <ul class="tabs tabs_col">
                 {{#each model as |object|}}
-                  <li class="tabs__item tabs__item_col font-weight-bold active">
-                    <span>{{object.name}}</span>
-                  </li>
+                  {{#link-to "account.finance.subject" object.id
+                             tagName="li"
+                             class="tabs__item tabs__item_col font-weight-bold"}}
+                    {{object.name}}
+                  {{/link-to}}
                 {{/each}}
               </ul>
               <div class="box box_js visible archiveMarker archiveMarker_js">
