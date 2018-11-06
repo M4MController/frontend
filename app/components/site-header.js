@@ -6,7 +6,6 @@ export default class extends Component {
 
   click(event) {
     const classList = event.target.classList;
-    console.log(classList);
     if (classList.contains('hideSideMenu_action') || classList.contains('menuItem'))
       this.hideSideMenu();
   }
