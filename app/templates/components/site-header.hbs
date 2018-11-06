@@ -9,7 +9,7 @@
       <div class="headerMenu headerMenu_js{{if bShowSideMenu " mobile_active"}}">
         <div class="mobileMenuBtn mobileMenuBtn_js" onclick={{action "showSideMenu"}}><i class="fa fa-bars" aria-hidden="true"></i></div>
         <div class="menuPanel menuPanel_js"></div>
-        <nav class="nav headerNav headerMenu__nav">
+        <nav class="nav headerNav headerMenu__nav" style="flex-wrap: nowrap; overflow: scroll;">
           <span class="closeMenu" onclick={{action "hideSideMenu"}}><span class="icon-cross closeMenu__btn closeMenu__btn_js"></span></span>
           <span class="menuItem">
             {{#link-to "account.index"}}Объекты{{/link-to}}
@@ -27,13 +27,13 @@
           <a class="nav-link menuItem" href="https://m4mcontroller.github.io/m4m-web-prototype/settings.html">
             Настройки
           </a>
-          <nav class="nav footerNav footerMenu footerMenuInHeader">
-            <a href="/" class="nav-link footerMenuItem">О компании</a>
-            <a href="/" class="nav-link footerMenuItem">Контакты</a>
-            <a href="/" class="nav-link footerMenuItem">Новости</a>
-            <a href="/" class="nav-link footerMenuItem">Инвесторам</a>
-            <a href="/" class="nav-link footerMenuItem">Партнерам</a>
-            <a href="/" class="nav-link footerMenuItem">Юридическая информация</a>
+          <nav class="nav footerNav footerMenuInHeader" style="flex-wrap: nowrap">
+            <a href="/" class="nav-link menuItem">О компании</a>
+            <a href="/" class="nav-link menuItem">Контакты</a>
+            <a href="/" class="nav-link menuItem">Новости</a>
+            <a href="/" class="nav-link menuItem">Инвесторам</a>
+            <a href="/" class="nav-link menuItem">Партнерам</a>
+            <a href="/" class="nav-link menuItem">Юридическая информация</a>
           </nav>
         </nav>
       </div>
@@ -48,7 +48,7 @@
                               click=(action "onLogOutAction")
         }}
       </div>
-      <div class="col-md-4 sign-out-mobile" style="order: 2;">
+      <div class="col-md-4 sign-out-mobile">
         {{core/icon-component name="sign-out" class="sign-out-icon clickable pull-right"
                               click=(action "onLogOutAction")
         }}
