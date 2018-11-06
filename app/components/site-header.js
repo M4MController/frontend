@@ -4,6 +4,13 @@ import {action} from '@ember-decorators/object';
 export default class extends Component {
   bShowSideMenu = false;
 
+  click(event) {
+    const classList = event.target.classList;
+    console.log(classList);
+    if (classList.contains('hideSideMenu_action') || classList.contains('menuItem'))
+      this.hideSideMenu();
+  }
+
   @action
   onLogOutAction() {
     this.attrs.onLogOut && this.attrs.onLogOut();

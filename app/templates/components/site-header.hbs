@@ -8,14 +8,14 @@
       </div>
       <div class="headerMenu headerMenu_js{{if bShowSideMenu " mobile_active"}}">
         <div class="mobileMenuBtn mobileMenuBtn_js" onclick={{action "showSideMenu"}}><i class="fa fa-bars" aria-hidden="true"></i></div>
-        <div class="menuPanel menuPanel_js"></div>
+        <div class="menuPanel menuPanel_js hideSideMenu_action"></div>
         <nav class="nav headerNav headerMenu__nav" style="flex-wrap: nowrap; overflow: scroll;">
-          <span class="closeMenu" onclick={{action "hideSideMenu"}}><span class="icon-cross closeMenu__btn closeMenu__btn_js"></span></span>
+          <span class="closeMenu"><span class="icon-cross closeMenu__btn closeMenu__btn_js hideSideMenu_action"></span></span>
           <span class="menuItem">
             {{#link-to "account.index"}}Объекты{{/link-to}}
             <ul class="headerSubMenu">
               {{#each objects as |object|}}
-                <li>{{#link-to 'account.subject' object.id}}
+                <li>{{#link-to 'account.subject' object.id class="menuItem"}}
                   {{object.name}}
                 {{/link-to}}</li>
               {{/each}}
