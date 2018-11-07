@@ -12,7 +12,7 @@
         <nav class="nav headerNav headerMenu__nav" style="flex-wrap: nowrap; overflow: scroll;">
           <span class="closeMenu"><span class="icon-cross closeMenu__btn closeMenu__btn_js hideSideMenu_action"></span></span>
           <span class="menuItem">
-            {{#link-to "account.index"}}Объекты{{/link-to}}
+            {{#link-to "account.index" class="nav-link menuItem"}}Объекты{{/link-to}}
             <ul class="headerSubMenu">
               {{#each objects as |object|}}
                 <li>{{#link-to 'account.subject' object.id class="menuItem"}}
