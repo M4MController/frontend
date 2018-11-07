@@ -6,16 +6,16 @@
           <img src="/images/logo.svg" alt="">
         {{/link-to}}
       </div>
-      <div class="headerMenu headerMenu_js">
-        <div class="mobileMenuBtn mobileMenuBtn_js"><i class="fa fa-bars" aria-hidden="true"></i></div>
-        <div class="menuPanel menuPanel_js"></div>
-        <nav class="nav headerNav headerMenu__nav">
-          <span class="closeMenu"><span class="icon-cross closeMenu__btn closeMenu__btn_js"></span></span>
+      <div class="headerMenu headerMenu_js{{if bShowSideMenu " mobile_active"}}">
+        <div class="mobileMenuBtn mobileMenuBtn_js" onclick={{action "showSideMenu"}}><i class="fa fa-bars" aria-hidden="true"></i></div>
+        <div class="menuPanel menuPanel_js hideSideMenu_action"></div>
+        <nav class="nav headerNav headerMenu__nav" style="flex-wrap: nowrap; overflow: scroll;">
+          <span class="closeMenu"><span class="icon-cross closeMenu__btn closeMenu__btn_js hideSideMenu_action"></span></span>
           <span class="menuItem">
-            {{#link-to "account.index"}}Объекты{{/link-to}}
+            {{#link-to "account.index" class="nav-link menuItem"}}Объекты{{/link-to}}
             <ul class="headerSubMenu">
               {{#each objects as |object|}}
-                <li>{{#link-to 'account.subject' object.id}}
+                <li>{{#link-to 'account.subject' object.id class="menuItem"}}
                   {{object.name}}
                 {{/link-to}}</li>
               {{/each}}
@@ -27,6 +27,14 @@
           <a class="nav-link menuItem" href="https://m4mcontroller.github.io/m4m-web-prototype/settings.html">
             Настройки
           </a>
+          <nav class="nav footerNav footerMenuInHeader" style="flex-wrap: nowrap">
+            <a href="/" class="nav-link menuItem">О компании</a>
+            <a href="/" class="nav-link menuItem">Контакты</a>
+            <a href="/" class="nav-link menuItem">Новости</a>
+            <a href="/" class="nav-link menuItem">Инвесторам</a>
+            <a href="/" class="nav-link menuItem">Партнерам</a>
+            <a href="/" class="nav-link menuItem">Юридическая информация</a>
+          </nav>
         </nav>
       </div>
       <div class="userInfo">
@@ -36,7 +44,9 @@
             {{user.fullName}}
           </span>
         {{/link-to}}
-        {{core/icon-component name="sign-out" class="sign-out-icon clickable"
+      </div>
+      <div style="order: 2; margin-left: auto; margin-right: 15px;">
+        {{core/icon-component name="sign-out" class="sign-out-icon clickable pull-right"
                               click=(action "onLogOutAction")
         }}
       </div>

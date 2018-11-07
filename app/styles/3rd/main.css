@@ -939,3 +939,7 @@ label[for="downloadExel"] img {
   flex-basis: 33%;
   padding: 15px 20px;
 }
+
+.sign-out-mobile {
+  display: none;
+}
