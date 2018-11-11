@@ -14,8 +14,8 @@
             {{sensor-icon sensor=sensor class="sensor-icon"}}
             <div class="objectService__info">
               <small>{{sensor.name}}</small>
-              <br/>
-              <span class="text-black">{{measurement sensor.valueMonth sensor.unitName}}</span>
+              <div class="text-black">{{measurement sensor.valueMonth sensor.unitName}}</div>
+              <div class="text-muted">{{currency sensor.totalMonth}}</div>
             </div>
           </div>
         </div>
