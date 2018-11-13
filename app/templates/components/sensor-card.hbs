@@ -1,7 +1,7 @@
 <div class="cardStyle">
   <div class="service">
     <div class="service__title">
-      {{sensor-icon sensor=sensor class="sensor-icon"}}
+      {{core/icon-component name=(sensor-icon-name sensor) class="sensor-icon"}}
       <div class="objectWrap__title">
         <div class="objectWrap__name">
           <strong class="text-caption text-bold text-black">{{sensor.name}}</strong>
@@ -66,7 +66,9 @@
 
     <div class="row cardBtnsWrap">
       <div class="col-md-6 col-sm-6 col-xs-6">
-        <button class="openPopup_js btn btnStyle btnStyle_сolorless">Подробнее</button>
+        {{#link-to 'account.sensor' sensor.id}}
+          <button class="openPopup_js btn btnStyle btnStyle_сolorless">Подробнее</button>
+        {{/link-to}}
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6">
         {{#link-to 'account.finance.subject' sensor.controller.object.id}}

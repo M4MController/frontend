@@ -1,0 +1,19 @@
+& {
+  margin-top: $grid-step * 3;
+  margin-bottom: $grid-step;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.page-icon {
+  height: $grid-step * 3;
+  margin-right: $grid-step * 2;
+}
+
+.page-content {
+  flex: 1;
+}

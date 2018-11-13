@@ -14,6 +14,7 @@ Router.map(function() {
   });
   this.route('account', {path: '/'}, function() {
     this.route('subject', {path: '/object/:object_id'});
+    this.route('sensor', {path: '/sensor/:sensor_id'});
     this.route('finance', function() {
       this.route('subject', {path: '/:object_id'});
     });

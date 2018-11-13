@@ -1,4 +1,7 @@
-<h2>
-  <span class={{icon}}></span>
-  <span>{{text}}</span>
-</h2>
+<div class="page-wrapper">
+  {{#if icon}}
+    {{core/icon-component name=icon class="page-icon"}}
+  {{/if}}
+  <h2 class="inline page-caption">{{text}}</h2>
+  <div class="page-content">{{yield}}</div>
+</div>

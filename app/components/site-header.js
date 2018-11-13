@@ -6,8 +6,9 @@ export default class extends Component {
 
   click(event) {
     const classList = event.target.classList;
-    if (classList.contains('hideSideMenu_action') || classList.contains('menuItem'))
+    if (classList.contains('hideSideMenu_action') || classList.contains('menuItem')) {
       this.hideSideMenu();
+    }
   }
 
   @action
@@ -24,5 +25,4 @@ export default class extends Component {
   hideSideMenu() {
     this.set('bShowSideMenu', false);
   }
-
 }

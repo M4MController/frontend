@@ -11,7 +11,7 @@
       {{#each controller.sensors as |sensor|}}
         <div class="col-md-6 col-sm-6 col-xs-6 objectServicesWrap">
           <div class="objectService">
-            {{sensor-icon sensor=sensor class="sensor-icon"}}
+            {{core/icon-component name=(sensor-icon-name sensor) class="sensor-icon"}}
             <div class="objectService__info">
               <small>{{sensor.name}}</small>
               <div class="text-black">{{measurement sensor.valueMonth sensor.unitName}}</div>
