@@ -1,11 +1,13 @@
 <div class="container">
   <div class="row">
-    {{page-caption text=model.name icon=(sensor-icon-name model) class="col-md-8"}}
+    {{page-caption text=model.name icon=(sensor-icon-name model) class="col-12"}}
   </div>
-  <div class="row cardStyle h-center">
-    <h2 class="text-caption">График потребления</h2>
-    {{#core/loader-component loading=(not model.values)}}
-      {{time-series-chart class="col-xs-12" lineData=sensorLineData selectedSeedColor='#567ba7'}}
-    {{/core/loader-component}}
+  <div class="row cardStyle block">
+    <!--<h2 class="text-caption text-center">График потребления</h2>-->
+    <div align="middle">
+      {{#core/loader-component loading=(not model.values)}}
+        {{high-charts mode="StockChart" content=content chartOptions=chartOptions settings=settings}}
+      {{/core/loader-component}}
+    </div>
   </div>
 </div>

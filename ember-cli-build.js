@@ -18,6 +18,10 @@ module.exports = function(defaults) {
     'ember-font-awesome': {
       useScss: true,
     },
+
+    'emberHighCharts': {
+      includeHighStock: true,
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
