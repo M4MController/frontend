@@ -11,8 +11,6 @@ export default class extends Component {
   username = '';
   password = '';
 
-  wasValidated = false;
-
   @computed('username')
   get usernameError() {
     const username = this.get('username');
@@ -45,14 +43,11 @@ export default class extends Component {
 
   @computed('usernameError', 'passwordError')
   get isValid() {
-    return this.get('usernameError') === undefined &&
-      this.get('passwordError') === undefined;
+    return !this.get('usernameError') && !this.get('passwordError');
   }
 
   @action
   onLoginClickAction() {
-    this.set('wasValidated', true);
-    this.get('isValid') && this.attrs.onLogIn &&
-    this.attrs.onLogIn(this.get('username'), this.get('password'));
+    this.get('isValid') && this.attrs.onLogIn && this.attrs.onLogIn(this.get('username'), this.get('password'));
   }
 }

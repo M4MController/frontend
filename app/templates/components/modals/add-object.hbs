@@ -3,14 +3,5 @@
                           onClose=(action "onCloseAction")
                           loading=attrs.loading
 }}
-  {{core/form-input
-    name="Имя"
-    value=name
-    isValid=true
-    enter=(action "onAddClickAction")
-  }}
-
-  <div class="clearfix">
-    <button class="btnStyle btnStyle_сolor margin-top-2x pull-right" {{action "onAddClickAction"}}>Добавить</button>
-  </div>
+  {{forms/object-creation onSubmit=(action 'onSubmitAction')}}
 {{/modals/modal-component}}

@@ -16,10 +16,13 @@ export default class extends Controller {
   }
 
   @action
-  async onAddObjectAction(name) {
+  async onAddObjectAction(objectAttrs) {
     this.set('bLoadingAddObject', true);
 
-    const object = this.get('store').createRecord('object', {name});
+    const object = this.get('store').createRecord('object', {
+      name: objectAttrs.name,
+    });
+
     try {
       await object.save();
       this.set('bShowAddObject', false);

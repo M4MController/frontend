@@ -3,19 +3,5 @@
                           onClose=(action "onCloseAction")
                           loading=attrs.loading
 }}
-  {{core/form-input
-    name="Идентификатор контроллера"
-    value=controllerId
-    isValid=isValidControllerId
-    error="Должен состоять только из цифр"
-    enter=(action "onAddClickAction")
-  }}
-
-  <div class="clearfix">
-    <div class="btn btnStyle btnStyle_сolor pull-right margin-top-2x"
-         role="button"
-         onclick={{action "onAddClickAction"}}>
-      Добавить
-    </div>
-  </div>
+  {{forms/controller-activate onSubmit=(action "onSubmitAction")}}
 {{/modals/modal-component}}

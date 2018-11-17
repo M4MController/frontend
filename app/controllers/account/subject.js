@@ -16,17 +16,17 @@ export default class extends Controller {
   }
 
   @action
-  async onAddControllerAction(controllerId) {
-    const existingController = this.get('store').peekRecord('controller', controllerId);
+  async onAddControllerAction(controllerAttrs) {
+    const existingController = this.get('store').peekRecord('controller', controllerAttrs.id);
     if (existingController && existingController.get('object')) {
-      alert('Этот контроллер уже активирован в другом объекте');
+      alert('Этот контроллер уже активирован');
       return;
     }
 
     this.set('bLoadingAddController', true);
     const controller = this.get('store').createRecord('controller', {
-      id: controllerId,
-      name: `controller ${controllerId}`,
+      id: controllerAttrs.id,
+      name: controllerAttrs.name,
       object: this.get('model'),
     });
 
