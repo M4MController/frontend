@@ -1,18 +1,38 @@
 import Controller from '@ember/controller';
 import {computed} from '@ember-decorators/object';
-import {map} from '@ember-decorators/object/computed';
+import {measurement} from '../../helpers/measurement';
 
 export default class extends Controller {
-  @map('model.values')
-  dataUnsorted(reading) {
-    return [Math.round(new Date(reading.get('timestamp')).getTime()), reading.get('value')];
+  @computed('model.values.@each')
+  get sensorData() {
+    return this.get('model.values').map((reading) =>
+      [Math.round(new Date(reading.get('timestamp')).getTime()), reading.get('value')],
+    ).sort((a, b) => a[0] - b[0]);
   }
 
-  @computed('model.name')
+  @computed('model.name', 'model.unitName')
   get chartOptions() {
+    const name = this.get('model.name');
+    const unitName = this.get('model.unitName');
     return {
       rangeSelector: {
         selected: 1,
+      },
+      scrollbar: {
+        trackBackgroundColor: '#f9f9f9',
+        trackBorderWidth: 0,
+        trackBorderRadius: 7,
+      },
+      tooltip: {
+        animation: true,
+        formatter: function() {
+          return `
+          <i>${new Date(this.x).toLocaleString()}</i>
+          <br/>
+          <span style="fill:#7cb5ec; padding-right: 8px;">●</span>
+          <b>${name}:</b> ${measurement([this.y, unitName])}`;
+        },
+        valueDecimals: 2,
       },
       yAxis: {
         title: {
@@ -22,15 +42,12 @@ export default class extends Controller {
     };
   }
 
-  @computed('model.name', 'data')
+  @computed('model.name', 'model.unitName', 'sensorData')
   get content() {
     return [
       {
         name: this.get('model.name'),
-        data: this.get('dataUnsorted').sort((a, b) => b[0] < a[0]),
-        tooltip: {
-          valueDecimals: 2,
-        },
+        data: this.get('sensorData'),
       }];
   }
 
