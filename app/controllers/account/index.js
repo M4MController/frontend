@@ -31,5 +31,7 @@ export default class extends Controller {
     }
 
     this.set('bLoadingAddObject', false);
+
+    this.transitionToRoute('account.subject', object.get('id'));
   }
 }

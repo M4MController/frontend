@@ -4,9 +4,6 @@ import {
   computed,
   on,
 } from '@ember-decorators/object';
-import {
-  and,
-} from '@ember-decorators/object/computed';
 
 export default class extends Component {
   controllerId = '';

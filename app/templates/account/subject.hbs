@@ -17,6 +17,15 @@
     }}
   {{/if}}
 
+  {{#if bShowSensorsActivation}}
+    {{modals/sensors-activation
+      sensors=controllerForSensorsActivation
+      loading=bLoadingSensorsActivation
+      onActivate=(action "onActivateSensorsAction")
+      onClose=(action "toggle" "bShowSensorsActivation")
+    }}
+  {{/if}}
+
   <div class="row havings">
     {{#each model.sensors as |sensor|}}
       {{sensor-card sensor=sensor}}

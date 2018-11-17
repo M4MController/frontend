@@ -5,6 +5,11 @@ export default class extends Controller {
   bShowAddController = false;
   bLoadingAddController = false;
 
+  bShowSensorsActivation = false;
+  bLoadingSensorsActivation = false;
+
+  controllerForSensorsActivation;
+
   @action
   showAddController() {
     this.set('bShowAddController', true);
@@ -33,10 +38,24 @@ export default class extends Controller {
     try {
       await controller.save();
       this.set('bShowAddController', false);
+
+
+      // todo: remove the stub
+      this.set('controllerForSensorsActivation', this.get('store').peekAll('sensor'));
+      this.set('bShowSensorsActivation', true);
     } catch (e) {
       alert('Не удаётся активировать контроллер с данным идентификатором');
     }
 
     this.set('bLoadingAddController', false);
+  }
+
+  @action
+  onActivateSensorsAction() {
+    this.set('bLoadingSensorsActivation', true);
+    setTimeout(() => {
+      this.set('bShowSensorsActivation', false);
+      this.set('bLoadingSensorsActivation', false);
+    }, 1500);
   }
 }
