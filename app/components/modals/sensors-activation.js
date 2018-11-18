@@ -10,7 +10,8 @@ export default class extends Component {
   }
 
   @action
-  onSubmitAction(objectAttrs) {
-    this.attrs.onAdd && this.attrs.onAdd(objectAttrs);
+  onActivateAction() {
+    // todo: implement
+    this.attrs.onActivate && this.attrs.onActivate();
   }
 }

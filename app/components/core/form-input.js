@@ -1,10 +1,20 @@
 import Component from '@ember/component';
-import {action} from '@ember-decorators/object';
+import {
+  action,
+  computed,
+} from '@ember-decorators/object';
 
 export default class extends Component {
   defaultAttrs = {
     type: 'text',
   };
+
+  wasFocused = false;
+
+  @computed('error')
+  get isValid() {
+    return !this.get('error.length');
+  }
 
   @action
   onEnterAction(...args) {

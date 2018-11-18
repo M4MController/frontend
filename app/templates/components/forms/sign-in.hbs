@@ -4,14 +4,12 @@
   {{core/form-input
     name="E-mail"
     value=username
-    isValid=(is-equal usernameError undefined)
     error=usernameError
   }}
   {{core/form-input
     name="Пароль"
     type="password"
     value=password
-    isValid=(is-equal passwordError undefined)
     error=passwordError
   }}
   <button class="btn btnStyle btnStyle_сolor popupEnterBtn" onClick={{action "onLoginClickAction"}}>

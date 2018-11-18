@@ -3,8 +3,13 @@
   {{input class=(concat "form-control form-field " (if wasFocused (if isValid "is-valid" "is-invalid")))
           type=type
           value=value
+          placeholder=placeholder
           enter=(action "onEnterAction")
           focus-out=(action "focusOutAction")
   }}
-  <small class="invalid-feedback">{{error}}</small>
+  {{#if wasFocused}}
+    {{#unless isValid}}
+      <small class="invalid-feedback">{{error}}</small>
+    {{/unless}}
+  {{/if}}
 </div>

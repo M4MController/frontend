@@ -1,0 +1,11 @@
+{{core/form-input
+  name="Имя"
+  value=name
+  placeholder="Например, Домик на даче"
+  error=nameError
+  enter=(action "onSubmitAction")
+}}
+
+<div class="clearfix">
+  <button class="btnStyle btnStyle_сolor margin-top-2x pull-right" {{action "onSubmitAction"}}>Добавить</button>
+</div>

@@ -34,7 +34,7 @@ Ember.Component = class extends Ember.Component {
       property = obj;
       obj = this;
     }
-    this.set(obj, property, !this.get(obj, property));
+    obj.set(obj, property, !obj.get(obj, property));
   }
 
   @action

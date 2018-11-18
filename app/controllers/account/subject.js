@@ -5,6 +5,11 @@ export default class extends Controller {
   bShowAddController = false;
   bLoadingAddController = false;
 
+  bShowSensorsActivation = false;
+  bLoadingSensorsActivation = false;
+
+  controllerForSensorsActivation;
+
   @action
   showAddController() {
     this.set('bShowAddController', true);
@@ -16,27 +21,41 @@ export default class extends Controller {
   }
 
   @action
-  async onAddControllerAction(controllerId) {
-    const existingController = this.get('store').peekRecord('controller', controllerId);
+  async onAddControllerAction(controllerAttrs) {
+    const existingController = this.get('store').peekRecord('controller', controllerAttrs.id);
     if (existingController && existingController.get('object')) {
-      alert('Этот контроллер уже активирован в другом объекте');
+      alert('Этот контроллер уже активирован');
       return;
     }
 
     this.set('bLoadingAddController', true);
     const controller = this.get('store').createRecord('controller', {
-      id: controllerId,
-      name: `controller ${controllerId}`,
+      id: controllerAttrs.id,
+      name: controllerAttrs.name,
       object: this.get('model'),
     });
 
     try {
       await controller.save();
       this.set('bShowAddController', false);
+
+
+      // todo: remove the stub
+      this.set('controllerForSensorsActivation', this.get('store').peekAll('sensor'));
+      this.set('bShowSensorsActivation', true);
     } catch (e) {
       alert('Не удаётся активировать контроллер с данным идентификатором');
     }
 
     this.set('bLoadingAddController', false);
+  }
+
+  @action
+  onActivateSensorsAction() {
+    this.set('bLoadingSensorsActivation', true);
+    setTimeout(() => {
+      this.set('bShowSensorsActivation', false);
+      this.set('bLoadingSensorsActivation', false);
+    }, 1500);
   }
 }
