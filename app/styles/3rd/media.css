@@ -64,6 +64,11 @@
   }
 }
 
+.footerMenu {
+  flex: 1;
+  margin-left: 24px;
+}
+
 /*Medium devices (tablets, less than 992px)*/
 @media (max-width: 991px) {
   .mobileMenuBtn {
