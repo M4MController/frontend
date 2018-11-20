@@ -29,6 +29,11 @@ Ember.Component = class extends Ember.Component {
   }
 
   @action
+  setProp(property, value) {
+    this.set(property, value);
+  }
+
+  @action
   toggle(obj, property) {
     if (!property) {
       property = obj;

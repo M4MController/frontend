@@ -1,0 +1,28 @@
+.change-state {
+  cursor: pointer;
+text-decoration: underline;
+
+  &:hover {
+    color: darkblue;
+  }
+}
+
+.device {
+  cursor: pointer;
+  &:hover {
+    background: #eceaeb;
+  }
+
+  &.active {
+    background: lightblue;
+  }
+
+  &-logo {
+    height: $grid-step * 5;
+    margin: $grid-step;
+  }
+
+  &-name {
+    height: 100%;
+  }
+}

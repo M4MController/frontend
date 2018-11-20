@@ -2,6 +2,10 @@
   <div class="row align-items-center">
     {{#page-caption text=model.name icon="home" class="col-12"}}
       <div class="text-right">
+        <button class="margin-right-1x btn btnStyle btnStyle_сolor" {{action "setProp" "bShowSensorsAddition" true}}>
+          Добавить сенсор
+        </button>
+
         <button class="btn btnStyle btnStyle_сolor" {{action "showAddController"}}>
           Добавить контроллер
         </button>
@@ -24,6 +28,14 @@
       onActivate=(action "onActivateSensorsAction")
       onClose=(action "toggle" "bShowSensorsActivation")
     }}
+  {{/if}}
+
+  {{#if bShowSensorsAddition}}
+    {{modals/sensor-add
+      sensors=sensorsForAddition
+      loading=bLoadingSensorsAddition
+      onAdd=(action "onAddSensorsAction")
+      onClose=(action "setProp" "bShowSensorsAddition" false)}}
   {{/if}}
 
   <div class="row havings">
