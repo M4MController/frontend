@@ -1,0 +1,28 @@
+<div class="personalData">
+  <div class="personalData__block">
+    <div class="box__title align-items-center">
+      <h5 class="box__name h5">Мои карты</h5>
+      <button class="btn btnStyle btnStyle_сolor" onclick={{action 'addCard'}}>Новая карта</button>
+    </div>
+    <div class="row bankCards">
+      {{#each cards as |card|}}
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+          <div class="bankCard">
+            <div class="bankCard__title">
+              <span class="bankCard__bankName">
+                {{card.bankName}}
+              </span>
+              <span class="bankCard__settings text-right">
+                <span class="icon-settings"></span>
+              </span>
+            </div>
+            <div class="bankCard__content">
+              <div class="bankCard__info"></div>
+              <div class="bankCard__number text-center">{{card.number}}</div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

@@ -2,14 +2,14 @@ import ApplicationSerializer from './application';
 
 export default class extends ApplicationSerializer {
   attrs = {
-    name: 'name',
+    bankName: 'name',
     address: 'addres',
     user: 'user_id',
   };
 
   serialize(snapshot, options) {
     return {
-      'name': snapshot.attr('name'),
+      'bankName': snapshot.attr('name'),
       'address': snapshot.attr('address') || '',
     };
   }
