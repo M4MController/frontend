@@ -7,19 +7,17 @@
     <small class="objectTitle">{{object.address}}</small>
   </div>
   <div class="row objectServices">
-    {{#each object.controllers as |controller|}}
-      {{#each controller.sensors as |sensor|}}
-        <div class="col-md-6 col-sm-6 col-xs-6 objectServicesWrap">
-          <div class="objectService">
-            {{core/icon-component name=(sensor-icon-name sensor) class="sensor-icon"}}
-            <div class="objectService__info">
-              <small>{{sensor.name}}</small>
-              <div class="text-black">{{measurement sensor.valueMonth sensor.unitName}}</div>
-              <div class="text-muted">{{currency sensor.totalMonth}}</div>
-            </div>
+    {{#each sensors as |sensor|}}
+      <div class="col-md-6 col-sm-6 col-xs-6 objectServicesWrap">
+        <div class="objectService">
+          {{core/icon-component name=(sensor-icon-name sensor) class="sensor-icon"}}
+          <div class="objectService__info">
+            <small>{{sensor.name}}</small>
+            <div class="text-black">{{measurement sensor.valueMonth sensor.unitName}}</div>
+            <div class="text-muted">{{currency sensor.totalMonth}}</div>
           </div>
         </div>
-      {{/each}}
+      </div>
     {{/each}}
   </div>
   <div class="row">
@@ -27,9 +25,11 @@
       <div class="stakedBarChartWrap">
         <div class="cardRow">
           <span class="cardRow__item">{{month}} {{year}}:</span>
-          <span class="cardRow__item text-right"><span class="text-black">{{currency object.totalMonth}}</span> <small>(прогноз {{currency object.totalForecast}})</small></span>
+          <span class="cardRow__item text-right"><span class="text-black">{{currency object.totalMonth}}</span> <small>(прогноз {{currency
+            object.totalForecast}})</small></span>
         </div>
-        {{core/progress-bar class="stakedBarChart" value=object.totalMonth max=object.totalForecast background='#ffcc00'}}
+        {{core/progress-bar class="stakedBarChart" value=object.totalMonth max=object.totalForecast
+                            background='#ffcc00'}}
         <!-- <StakedBarChart current_indicators={300} compared={400} special_color={true} /> -->
       </div>
 
