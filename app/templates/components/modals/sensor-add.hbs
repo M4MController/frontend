@@ -1,0 +1,76 @@
+{{#modals/modal-component className="col-xs-12 col-md-8"
+                          title="Добавление сенсора"
+                          onClose=(action "onCloseAction")
+                          loading=attrs.loading
+}}
+  {{#if (eq state "from-list")}}
+    <table class="table">
+      <thead>
+      <tr>
+        <th></th>
+        <th>Порт</th>
+        <th>Название</th>
+        <th>Тип</th>
+        <th>Оператор</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each sensors as |sensor|}}
+        <tr>
+          <td><input type="checkbox" checked/></td>
+          <td>MBUS</td>
+          <td>{{sensor.name}}</td>
+          <td>
+            <select class="form-control full-width">
+              <option selected>{{sensor.name}}</option>
+            </select>
+          </td>
+          <td><u class="clickable">{{sensor.serviceCompany.name}}</u></td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+
+    Если нет в списке,
+    <span class="change-state" onclick={{action "setProp" "state" "manually"}}>добавьте вручную</span>
+  {{else if (eq state "manually")}}
+    <div>Выберите тип подключения:</div>
+
+    <div class="devices-list">
+      {{#each sources as |source|}}
+        <div class="device {{if (eq selectedSourceId source.id) "active"}}"
+             onclick={{action "setProp" "state" "scanning"}}>
+          {{core/icon-component name=source.logo class="device-logo"}}
+          <span class="device-name">{{source.name}}</span>
+        </div>
+      {{/each}}
+    </div>
+
+    <span class="change-state" onclick={{action "setProp" "state" "from-list"}}>Выбрать из списка</span>
+
+  {{else if (eq state "scanning")}}
+    Идет поиск новых устройств...
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th></th>
+        <th>Порт</th>
+        <th>Название</th>
+        <th>Тип</th>
+        <th>Оператор</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td colspan="5">
+          {{core/loader-component class="full-width h-center"}}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    Если вашего устройства нет в списке, проверьте, ключено ли оно.
+  {{/if}}
+  <button class="btnStyle btnStyle_сolor pull-right" {{action "onSubmitAction"}}>Добавить</button>
+{{/modals/modal-component}}
