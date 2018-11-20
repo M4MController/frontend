@@ -37,9 +37,24 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <!-- В модели нет поля Город проживания, нашёл только адрес регистрации -->
           <label for="registration-address-input">Город проживания</label>
           <input class="form-control form-field" id="registration-address-input" value={{user.registrationAddress}}>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Пол</label>
+          <div>
+            <label for="sex-male-input">
+              Мужской
+              <input type="radio" name="sex" id="sex-male-input" checked={{user.sex}}>
+            </label>
+
+            <label for="sex-female-input">
+              Женский
+              <input type="radio" name="sex" id="sex-female-input" checked={{if user.sex false true}}>
+            </label>
+          </div>
         </div>
       </div>
     </div>
