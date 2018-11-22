@@ -1,23 +1,14 @@
 import Controller from '@ember/controller';
-import {action, computed} from '@ember-decorators/object';
+import {action} from '@ember-decorators/object';
 
 export default class extends Controller {
   bShowAddController = false;
   bLoadingAddController = false;
 
-  bShowSensorsActivation = false;
-  bLoadingSensorsActivation = false;
-
   bShowSensorsAddition = false;
   bLoadingSensorsAddition = false;
 
-  controllerForSensorsActivation;
-
-  // todo: remove the stub
-  @computed('model.sensors')
-  get sensorsForAddition() {
-    return this.get('model.sensors').slice(0, 4);
-  }
+  sensorsForAddition;
 
   @action
   showAddController() {
@@ -49,22 +40,13 @@ export default class extends Controller {
       this.set('bShowAddController', false);
 
       // todo: remove the stub
-      this.set('controllerForSensorsActivation', this.get('store').peekAll('sensor'));
-      this.set('bShowSensorsActivation', true);
+      this.set('sensorsForAddition', controller.get('sensors'));
+      this.set('bShowSensorsAddition', true);
     } catch (e) {
       alert('Не удаётся активировать контроллер с данным идентификатором');
     }
 
     this.set('bLoadingAddController', false);
-  }
-
-  @action
-  onActivateSensorsAction() {
-    this.set('bLoadingSensorsActivation', true);
-    setTimeout(() => {
-      this.set('bShowSensorsActivation', false);
-      this.set('bLoadingSensorsActivation', false);
-    }, 1500);
   }
 
   @action

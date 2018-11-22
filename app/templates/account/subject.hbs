@@ -21,15 +21,6 @@
     }}
   {{/if}}
 
-  {{#if bShowSensorsActivation}}
-    {{modals/sensors-activation
-      sensors=controllerForSensorsActivation
-      loading=bLoadingSensorsActivation
-      onActivate=(action "onActivateSensorsAction")
-      onClose=(action "toggle" "bShowSensorsActivation")
-    }}
-  {{/if}}
-
   {{#if bShowSensorsAddition}}
     {{modals/sensor-add
       sensors=sensorsForAddition

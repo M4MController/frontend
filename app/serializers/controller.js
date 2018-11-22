@@ -21,6 +21,6 @@ export default class extends ApplicationSerializer {
   }
 
   normalizeCreateRecordResponse(store, primaryModelClass, payload, id, requestType) {
-    return this.normalize(primaryModelClass, payload['msg']);
+    return super.normalizeCreateRecordResponse(store, primaryModelClass, payload['msg'], id, requestType);
   }
 }
