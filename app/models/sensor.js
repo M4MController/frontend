@@ -28,6 +28,8 @@ export default class extends DS.Model {
   @attr charge;
   @attr forPayment;
 
+  @attr lastValue;
+
   @attr valueMonth;
   @attr valuePrevYear;
   @attr valuePrevYearAverage;

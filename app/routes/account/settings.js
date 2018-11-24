@@ -5,7 +5,7 @@ export default class extends Route {
 
   async model() {
     return {
-      user: (await this.get('store').findAll('user')).get('firstObject'),
+      user: this.get('store').peekAll('user').get('firstObject'),
     };
   }
 }

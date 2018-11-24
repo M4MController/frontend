@@ -8,6 +8,7 @@ export default class extends ApplicationSerializer.extend(DS.EmbeddedRecordsMixi
     company: 'company',
     activationDate: 'activation_date',
     controller: 'controller_id',
+    lastValue: 'last_value',
     serviceCompany: {
       embedded: 'always',
     },
