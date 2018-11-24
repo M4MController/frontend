@@ -19,9 +19,9 @@ Router.map(function() {
       this.route('subject', {path: '/:object_id'});
     });
     this.route('settings', function() {
-      this.route('account-settings');
-      this.route('devices-settings');
-      this.route('payment-settings');
+      this.route('account');
+      this.route('devices');
+      this.route('payment');
     });
   });
 });
