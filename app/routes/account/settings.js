@@ -1,11 +1,11 @@
 import Route from '@ember/routing/route';
 
 export default class extends Route {
-  pageTitle = 'Settings';
+  pageTitle = 'Настройки';
 
   async model() {
     return {
-      user: (await this.get('store').findAll('user')).get('firstObject'),
+      user: this.get('store').peekAll('user').get('firstObject'),
     };
   }
 }

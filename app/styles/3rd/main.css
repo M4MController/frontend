@@ -602,12 +602,6 @@ footer {
   display: block;
 }
 
-/* картинки внутри вкладок */
-.box img {
-  width: 25%;
-  height: auto;
-}
-
 /* картинки слева */
 .pl-left {
   float: left;

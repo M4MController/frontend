@@ -1,15 +1,134 @@
-{{#cards/card-component title="Profile Info" class="col-5"}}
-  <div class="padding-2x">
-    <div class="margin-left-1x margin-bottom-1x">Your name:</div>
-    {{input class="input input-default full-width" type="text" value=fullName}}
-    <div class="margin-1x">Telephone:</div>
-    {{input class="input input-default full-width" type="tel" value=mobilePhone}}
-    <div class="margin-1x">Email:</div>
-    {{input class="input input-default full-width" type="email" value=email}}
-    <button class="btn {{if canSave "btn-ok" "btn-disabled"}} margin-top-1x"
-            onclick={{action "saveBtnClickAction"}}
-    >
-      Save
-    </button>
+<div class="personalData">
+  <div class="personalData__block">
+    <div class="box__title align-items-center">
+      <h5 class="box__name h5">Личные данные</h5>
+      {{#if personalDataOK}}
+        <span>
+          <span class="icon-check-symbol"></span>
+          Изменения успешно сохранены
+        </span>
+      {{/if}}
+      <button class="btn btnStyle btnStyle_сolor" onclick={{action 'savePersonalData'}}>Сохранить настройки</button>
+    </div>
+    <div class="row inputsSet">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="middle-name-input">Фамилия</label>
+          <input class="form-control form-field" id="middle-name-input" value={{user.middleName}}>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="first-name-input">Имя</label>
+          <input class="form-control form-field" id="first-name-input" value={{user.firstName}}>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="last-name-input">Отчество</label>
+          <input class="form-control form-field" id="last-name-input" value={{user.lastName}}>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="birthday-input">Дата рождения</label>
+          <input type="date" class="form-control form-field" id="birthday-input" value={{user.birthday}}>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="registration-address-input">Город проживания</label>
+          <input class="form-control form-field" id="registration-address-input" value={{user.registrationAddress}}>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Пол</label>
+          <div>
+            <label for="sex-male-input">
+              Мужской
+              <input type="radio" name="sex" id="sex-male-input" checked={{user.sex}}>
+            </label>
+
+            <label for="sex-female-input">
+              Женский
+              <input type="radio" name="sex" id="sex-female-input" checked={{if user.sex false true}}>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-{{/cards/card-component}}
+
+  <div class="personalData__block">
+    <div class="box__title align-items-center">
+      <h5 class="box__name h5">Контакты</h5>
+      {{#if contactDataOK}}
+        <span>
+          <span class="icon-check-symbol"></span>
+          Изменения успешно сохранены
+        </span>
+      {{/if}}
+      <button class="btn btnStyle btnStyle_сolor" onclick={{action 'saveContactData'}}>Сохранить настройки</button>
+    </div>
+    <div class="row inputsSet">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="home-phone-input">Домашний телефон</label>
+          <input class="form-control form-field" id="home-phone-input" value={{user.homePhone}}>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="mobile-phone-input">Мобильный телефон</label>
+          <input class="form-control form-field" id="mobile-phone-input" value={{user.mobilePhone}}>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="mail-address-input">Почтовый адрес</label>
+          <input class="form-control form-field" id="mail-address-input" value={{user.mailingAddress}}>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="email-input">Email</label>
+          <input class="form-control form-field" id="email-input" value={{user.email}}>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="personalData__block">
+    <div class="box__title align-items-center">
+      <h5 class="box__name h5">Изменить пароль</h5>
+      {{#if passwordChangeOK}}
+        <span>
+          <span class="icon-check-symbol"></span>
+          Изменения успешно сохранены
+        </span>
+      {{/if}}
+      <button class="btn btnStyle btnStyle_сolor" onclick={{action 'changePassword'}}>Сохранить настройки</button>
+    </div>
+    <div class="row inputsSet">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="old-password-input">Пароль</label>
+          <input type="password" class="form-control form-field" id="old-password-input">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="new-password-input">Новый пароль</label>
+          <input type="password" class="form-control form-field" id="new-password-input">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="repeat-password-input">Повторите пароль</label>
+          <input type="password" class="form-control form-field" id="repeat-password-input">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

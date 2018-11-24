@@ -1,15 +1,34 @@
 import Component from '@ember/component';
 import {
   action,
-  computed,
-  on,
 } from '@ember-decorators/object';
 
 export default class extends Component {
-  fullName;
-  mobilePhone;
-  email;
+  user;
+  oldPassword;
+  newPassword;
+  repPassword;
 
+  personalDataOK = false;
+  contactDataOK = false;
+  passwordChangeOK = false;
+
+  @action
+  savePersonalData() {
+    this.set('personalDataOK', true);
+  }
+
+  @action
+  saveContactData() {
+    this.set('contactDataOK', true);
+  }
+
+  @action
+  changePassword() {
+    this.set('passwordChangeOK', true);
+  }
+
+  /*
   @on('didReceiveAttrs')
   initInputFields() {
     this.set('fullName', this.get('user.fullName'));
@@ -45,4 +64,5 @@ export default class extends Component {
       newEmail: this.get('email'),
     });
   }
+  */
 }

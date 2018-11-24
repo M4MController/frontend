@@ -1,0 +1,71 @@
+<div class="box__title align-items-center">
+  <h5 class="box__name">Мои контролеры</h5>
+  <span class="pull-right text-muted text-small text-right">
+    Чтобы добавить контроллер, перейдите на страницу объекта
+    <br>
+    и нажмите на кнопку "Добавить контроллер"
+  </span>
+</div>
+<div id="substrate"></div>
+<div class="inspectors">
+  {{#each model.controllers as |controller|}}
+    <div class="inspector">
+      <div class="inspector__pannel">
+        <div class="inspector__info">
+          <div class="text-caption">{{controller.name}}</div>
+          <div class="inspector__title">{{controller.object.name}}</div>
+          <div class="inspector__address">{{contoller.object.address}}</div>
+          <div class="inspector__id">{{controller.macAddress}}</div>
+        </div>
+        <div class="inspector__mobileBtns inspector__mobileBtns_js"><span class="icon-ellipsis"></span></div>
+        <div class="inspector__btns inspector__btns_js">
+          <button class="btn btnStyle btnStyle_сolorless inspector__btn">
+            <span class="icon-disabled"></span>
+            <span>Заблокировать</span>
+          </button>
+          <!--<button class="btn btnStyle btnStyle_сolorless inspector__btn">-->
+            <!--<span class="icon-move"></span>-->
+            <!--<span>Переместить</span>-->
+          <!--</button>-->
+          <button class="btn btnStyle btnStyle_сolorless inspector__btn">
+            <span class="icon-cross"></span>
+            <span>Удалить</span>
+          </button>
+        </div>
+      </div>
+      <div class="inspector__counters">
+        <div class="inspector__countersTitle align-items-center">
+          <span class="padding-left-1x text-default">Сенсоры</span>
+          <button class="btn btnStyle btnStyle_сolorgray" onclick={{action "setProp" "bShowAddSensor" true}}>
+            Добавить сенсор
+          </button>
+        </div>
+        <table class="table">
+          <tbody>
+          {{#each controller.sensors as |sensor|}}
+            <tr>
+              <td>
+                {{core/icon-component name=(sensor-icon-name sensor)
+                                      class="height-3x margin-right-1x"}}
+                <span class="counterItem__name">{{sensor.name}}</span>
+              </td>
+              <td class="text-muted">{{sensor.serviceCompany.name}}</td>
+              <td class="text-muted">{{measurement sensor.lastValue sensor.unitName}}</td>
+              <td align="right">
+                  <span class="icon-disabled counterItem__control"> <span
+                    class="controlText"> Заблокировать</span></span>
+                <span class="icon-cross counterItem__control"> <span
+                  class="controlText"> Удалить</span></span>
+              </td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+{{#if bShowAddSensor}}
+  {{modals/sensor-add onClose=(action "setProp" "bShowAddSensor" false)}}
+{{/if}}

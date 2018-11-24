@@ -1,5 +1,37 @@
-{{#cards/cards-container}}
-  {{cards/settings-profile-info user=model.user onSave=(action "updateProfileInfoAction")}}
-  {{cards/settings-change-password onSave=(action "updatePasswordAction")}}
-  {{cards/settings-deactivate-account onDeactivate=(action "deactivateAccountAction")}}
-{{/cards/cards-container}}
+<div class="container">
+  <div class="row align-items-center page__title">
+    <div class="col-md-12">
+      <h2>
+        <span class="icon-settings"></span>
+        <span>Настройки</span>
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="cardStyle cardStyle_noPaddings">
+        <div class="tabsWrap">
+          <div class="tabs">
+            <div class="tabs_block">
+              <ul class="tabs">
+                {{#link-to "account.settings.account" tagName="li" class="tabs__item"}}
+                  Мой профиль
+                {{/link-to}}
+                {{#link-to "account.settings.devices" tagName="li" class="tabs__item"}}
+                  Мои устройства
+                {{/link-to}}
+                {{#link-to "account.settings.payment" tagName="li" class="tabs__item"}}
+                  Платёжные карты
+                {{/link-to}}
+              </ul>
+
+              <div class="box" style="display: block">
+                {{outlet}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

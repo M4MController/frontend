@@ -18,7 +18,11 @@ Router.map(function() {
     this.route('finance', function() {
       this.route('subject', {path: '/:object_id'});
     });
-    this.route('settings');
+    this.route('settings', function() {
+      this.route('account');
+      this.route('devices');
+      this.route('payment');
+    });
   });
 });
 
