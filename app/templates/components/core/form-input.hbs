@@ -7,9 +7,10 @@
           enter=(action "onEnterAction")
           focus-out=(action "focusOutAction")
   }}
-  {{#if wasFocused}}
-    {{#unless isValid}}
-      <small class="invalid-feedback">{{error}}</small>
-    {{/unless}}
+
+  {{#if showErrorMessage}}
+    <small class="invalid-feedback clickable" onclick={{action "setProp" "wasFocused" false}}>{{error}}</small>
+  {{else}}
+    <small class="form-text text-muted">{{description}}</small>
   {{/if}}
 </div>

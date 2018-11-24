@@ -16,6 +16,11 @@ export default class extends Component {
     return !this.get('error.length');
   }
 
+  @computed('isValid', 'wasFocused')
+  get showErrorMessage() {
+    return this.get('wasFocused') && !this.get('isValid');
+  }
+
   @action
   onEnterAction(...args) {
     this.attrs.onEnterAction && this.attrs.onEnterAction(...args);

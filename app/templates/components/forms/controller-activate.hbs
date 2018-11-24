@@ -1,19 +1,19 @@
 {{core/form-input
-  name="Идентификатор"
-  placeholder="Цифра, которая написана на корпусе контроллера"
-  value=controllerId
-  error=controllerIdError
-  enter=(action "onSubmitAction")
-}}
-
-{{core/form-input
   name="Название"
-  placeholder="Например, Контроллер в прихожей"
+  placeholder="2-й этаж"
   value=controllerName
   error=controllerNameError
   enter=(action "onSubmitAction")
 }}
 
+{{core/form-input
+  name="Идентификатор"
+  placeholder="547995"
+  description="Число на задней крышке контроллера"
+  value=controllerId
+  error=controllerIdError
+  enter=(action "onSubmitAction")
+}}
 
 <div class="btn btnStyle btnStyle_сolor pull-right margin-top-2x"
      role="button"

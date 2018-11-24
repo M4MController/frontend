@@ -17,7 +17,14 @@ export default class extends Component {
   @computed('controllerId')
   get controllerIdError() {
     const controllerId = this.get('controllerId');
-    return !+controllerId && 'Должно быть числом';
+
+    if (!controllerId.length) {
+      return 'Поле не должно быть пустым';
+    } else if (!/^\d+$/.test(controllerId)) {
+      return 'Идентификатор состоит только из цифр';
+    }
+
+    return false;
   }
 
   @computed('controllerName')

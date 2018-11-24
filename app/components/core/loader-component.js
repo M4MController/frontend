@@ -3,7 +3,7 @@ import {computed} from '@ember-decorators/object';
 
 export default class extends Component {
   @computed('attrs.loading')
-  get loading() {
+  get isLoading() {
     const loading = this.get('attrs.loading');
     return loading === undefined ? true : loading;
   }

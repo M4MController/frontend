@@ -15,8 +15,8 @@ export default class extends Component {
   get usernameError() {
     const username = this.get('username');
 
-    if (username.length === 0) {
-      return 'Введите электронную почту';
+    if (!username.length) {
+      return 'Поле не может быть пустым';
     }
 
     if (!emailRegex.test(username)) {
