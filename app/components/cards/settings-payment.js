@@ -34,7 +34,7 @@ const cards = [
     bankName: 'Банк8',
     number: '1111 2222 3333 4444',
   },
-]
+];
 
 export default class extends Component {
   cards = cards;

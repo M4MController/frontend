@@ -1,8 +1,6 @@
 import Component from '@ember/component';
 import {
   action,
-  computed,
-  on,
 } from '@ember-decorators/object';
 
 export default class extends Component {
