@@ -23,4 +23,8 @@ export default class extends ApplicationSerializer {
   normalizeCreateRecordResponse(store, primaryModelClass, payload, id, requestType) {
     return super.normalizeCreateRecordResponse(store, primaryModelClass, payload['msg'], id, requestType);
   }
+
+  normalizeDeleteRecordResponse(store, primaryModelClass, payload, id, requestType) {
+    return super.normalizeDeleteRecordResponse(store, primaryModelClass, {}, id, requestType);
+  }
 }
