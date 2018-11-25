@@ -21,6 +21,17 @@ export default class extends Controller {
   }
 
   @action
+  async onDeleteObjectAction(object) {
+    try {
+      object.deleteRecord();
+      await object.save();
+      this.transitionToRoute('account.index');
+    } catch (e) {
+      alert(`Не могу удалить объект: ${e.toString()}`);
+    }
+  }
+
+  @action
   async onAddControllerAction(controllerAttrs) {
     const existingController = this.get('store').peekRecord('controller', controllerAttrs.id);
     if (existingController && existingController.get('object')) {
