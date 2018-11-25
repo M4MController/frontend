@@ -12,8 +12,12 @@
     <div class="inspector">
       <div class="inspector__pannel">
         <div class="inspector__info">
-          <div class="text-caption">{{controller.name}}</div>
-          <div class="inspector__title">{{controller.object.name}}</div>
+          <div class="text-caption">
+            {{controller.name}}
+            {{#link-to "account.subject" controller.object.id class="padding-left-1x text-muted"}}
+              {{controller.object.name}}
+            {{/link-to}}
+          </div>
           <div class="inspector__address">{{contoller.object.address}}</div>
           <div class="inspector__id">{{controller.macAddress}}</div>
         </div>
