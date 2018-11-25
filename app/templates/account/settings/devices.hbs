@@ -72,5 +72,8 @@
 </div>
 
 {{#if bShowAddSensor}}
-  {{modals/sensor-add onClose=(action "setProp" "bShowAddSensor" false)}}
+  {{modals/sensor-add
+    onAdd=(action "setProp" "bShowAddSensor" false)
+    onClose=(action "setProp" "bShowAddSensor" false)
+  }}
 {{/if}}
