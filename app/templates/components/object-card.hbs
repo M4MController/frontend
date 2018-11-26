@@ -25,8 +25,14 @@
       <div class="stakedBarChartWrap">
         <div class="cardRow">
           <span class="cardRow__item">{{month}} {{year}}:</span>
-          <span class="cardRow__item text-right"><span class="text-black">{{currency object.totalMonth}}</span> <small>(прогноз {{currency
-            object.totalForecast}})</small></span>
+          <span class="cardRow__item text-right">
+            <span class="text-black" title="Текущая сумма за {{month}}">
+              {{currency object.totalMonth}}
+            </span>
+            <span class="text-muted text-small" title="Прогнозируемая сумма расходов на конец месяца">
+              {{currency object.totalForecast}}
+            </span>
+          </span>
         </div>
         {{core/progress-bar class="stakedBarChart" value=object.totalMonth max=object.totalForecast
                             background='#ffcc00'}}

@@ -32,8 +32,12 @@
       <div class="cardRow">
         <span class="cardRow__item">{{month}} {{year}}:</span>
         <span class="cardRow__item text-right">
-          <span class="text-black">{{measurement sensor.valueMonth sensor.unitName}}</span>
-          <small>{{measurement sensor.valueForecast sensor.unitName}}</small>
+          <span class="text-black" title="Показание счётчика за {{month}}">
+            {{measurement sensor.valueMonth sensor.unitName}}
+          </span>
+          <span class="text-muted text-small" title="Прогнозируемое показание счётчика на конец месяца">
+            {{measurement sensor.valueForecast sensor.unitName}}
+          </span>
         </span>
       </div>
       {{core/progress-bar class="stakedBarChart" value=sensor.valueMonth max=sensor.valueForecast background='#ffcc00'}}
