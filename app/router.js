@@ -12,7 +12,7 @@ Router.map(function() {
   this.route('auth', {resetNamespace: true}, function() {
     this.route('log-in');
   });
-  this.route('account', {path: '/'}, function() {
+  this.route('account', function() {
     this.route('subject', {path: '/object/:object_id'});
     this.route('sensor', {path: '/sensor/:sensor_id'});
     this.route('finance', function() {
@@ -24,6 +24,7 @@ Router.map(function() {
       this.route('payment');
     });
   });
+  this.route('landing');
 });
 
 export default Router;

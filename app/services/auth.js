@@ -25,7 +25,7 @@ export default class extends Service {
     }, {dataType: 'html'}).then((response) => {
       this.set('isAuthorized', true);
       this.set('token', response);
-      return true;
+      return this.get('store').findRecord('user', 1);
     }).catch(() => false);
   }
 
