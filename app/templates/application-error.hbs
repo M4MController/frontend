@@ -1,5 +1,9 @@
 <div class="layout v-center h-center vp-height text-muted">
-  <img src="https://dailynous.com/wp-content/uploads/2016/10/poop-emoji-frown-300x300.png">
-  <div>Случилось что-то непоправимое, прости...</div>
+  {{core/icon-component name="5xx-error" class="height-9x margin-bottom-2x"}}
+  <div class="text-caption text-center">Случилось что-то плохое...</div>
   <div>Скоро всё починим.</div>
+
+  <button class="btn btnStyle btnStyle_сolorless margin-top-3x" onclick={{action "onRefreshButtonClickAction"}}>
+    Обновить
+  </button>
 </div>
