@@ -6,7 +6,7 @@
     <!--<h2 class="text-caption text-center">График потребления</h2>-->
     <div align="middle">
       {{#core/loader-component loading=(not model.values)}}
-        {{high-charts mode="StockChart" content=content chartOptions=chartOptions settings=settings}}
+        {{3rd/dynamic-high-charts mode="StockChart" content=content chartOptions=chartOptions settings=settings}}
       {{/core/loader-component}}
     </div>
   </div>
