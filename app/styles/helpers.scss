@@ -48,6 +48,10 @@
   .height-#{ $i }x {
     height: #{ $grid-step * $i };
   }
+
+  .width-#{ $i }x {
+    width: #{ $grid-step * $i };
+  }
 }
 
 @each $degree in 90, 180, 270 {

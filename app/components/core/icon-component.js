@@ -14,4 +14,10 @@ export default class extends Component {
   get src() {
     return `/icons/${this.get('name')}.svg`;
   }
+
+  @attribute
+  @computed('text')
+  get title() {
+    return this.get('text') || '';
+  }
 }
