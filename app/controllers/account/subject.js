@@ -63,9 +63,9 @@ export default class extends Controller {
   @action
   onAddSensorsAction() {
     this.set('bLoadingSensorsAddition', true);
-    setTimeout(() => {
+    // setTimeout(() => {
       this.set('bShowSensorsAddition', false);
       this.set('bLoadingSensorsAddition', false);
-    }, 1500);
+    // }, 1500);
   }
 }
