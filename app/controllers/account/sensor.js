@@ -16,7 +16,32 @@ export default class extends Controller {
     const unitName = this.get('model.unitName');
     return {
       rangeSelector: {
-        selected: 1,
+        buttonTheme: {
+          width: 80,
+        },
+        selected: 0,
+        buttons: [
+          {
+            type: 'minute',
+            count: 5,
+            text: '5 минут',
+          }, {
+            type: 'hour',
+            text: 'Час',
+          }, {
+            type: 'day',
+            text: 'День',
+          }, {
+            type: 'month',
+            text: 'Месяц',
+          }, {
+            type: 'ytd',
+            text: 'Этот год',
+          }, {
+            type: 'all',
+            text: 'Все данные',
+          },
+        ],
       },
       scrollbar: {
         trackBackgroundColor: '#f9f9f9',
@@ -58,6 +83,7 @@ export default class extends Controller {
       style: {
         fontFamily: 'Dosis, sans-serif',
       },
+      zoomType: 'x',
     },
     tooltip: {
       borderWidth: 0,
