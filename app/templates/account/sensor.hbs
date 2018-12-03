@@ -32,7 +32,10 @@
         <td>раз в неделю</td>
         <td align="right">
           {{core/icon-component name="pen" class="height-2x padding-right-2x clickable" text="Изменить"}}
-          {{core/icon-component name="switch-on" class="height-2x clickable" text="Статус: правило действует"}}
+          {{core/icon-component name=(if is1RuleActive "switch-off" "switch-on") class="height-2x clickable"
+                                text="Статус: правило действует"
+                                click=(action "toggle" "is1RuleActive")
+          }}
         </td>
       </tr>
       <tr>
@@ -41,7 +44,10 @@
         <td>раз в день</td>
         <td align="right">
           {{core/icon-component name="pen" class="height-2x padding-right-2x clickable" text="Изменить"}}
-          {{core/icon-component name="switch-on" class="height-2x clickable" text="Статус: правило действует"}}
+          {{core/icon-component name=(if is2RuleActive "switch-off" "switch-on") class="height-2x clickable"
+                                text="Статус: правило действует"
+                                click=(action "toggle" "is2RuleActive")
+          }}
         </td>
       </tr>
       <tr>
@@ -50,7 +56,10 @@
         <td>раз в день</td>
         <td align="right">
           {{core/icon-component name="pen" class="height-2x padding-right-2x clickable" text="Изменить"}}
-          {{core/icon-component name="switch-on" class="height-2x clickable" text="Статус: правило действует"}}
+          {{core/icon-component name=(if is3RuleActive "switch-off" "switch-on") class="height-2x clickable"
+                                text="Статус: правило действует"
+                                click=(action "toggle" "is3RuleActive")
+          }}
         </td>
       </tr>
       <tr>
@@ -59,7 +68,10 @@
         <td>раз в день</td>
         <td align="right">
           {{core/icon-component name="pen" class="height-2x padding-right-2x clickable" text="Изменить"}}
-          {{core/icon-component name="switch-off" class="height-2x clickable" text="Статус: правило не активно"}}
+          {{core/icon-component name=(if is4RuleActive "switch-on" "switch-off") class="height-2x clickable"
+                                text="Статус: правило не активно"
+                                click=(action "toggle" "is4RuleActive")
+          }}
         </td>
       </tr>
       </tbody>

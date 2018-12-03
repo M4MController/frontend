@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import {get, set} from '@ember/object';
 import {action} from '@ember-decorators/object';
 
 Ember.Controller = class extends Ember.Controller {
@@ -9,11 +8,7 @@ Ember.Controller = class extends Ember.Controller {
   }
 
   @action
-  toggle(obj, property) {
-    if (!property) {
-      property = obj;
-      obj = this;
-    }
-    set(obj, property, !get(obj, property));
+  toggle(property) {
+    this.set(property, !this.get(property));
   }
 };
