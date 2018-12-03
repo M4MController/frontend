@@ -24,12 +24,17 @@ export default class extends Route {
   @on('activate')
   startAutoUpdate() {
     const timer = later(this, async function() {
+      // todo: вычистить этот треш. в частности избавиться от pushPayload
+      this.startAutoUpdate();
       const sensorId = this.get('sensorId');
       const sensor = this.get('store').peekRecord('sensor', sensorId);
-      let from = new Date(sensor.get('values').sortBy('timestamp').get('lastObject.timestamp'));
-      from.setHours(from.getHours() + 3);
-      from = from.toISOString();
-      const a = await this.get('store').query('sensor-value', {sensorId});
+      let startDate = new Date(sensor.get('values').sortBy('timestamp').get('lastObject.timestamp'));
+      startDate.setHours(startDate.getHours() + 3);
+      startDate = startDate.toISOString();
+      const a = await this.get('store').query('sensor-value', {
+        sensorId,
+        from: startDate.slice(0, startDate.length - 5),
+      });
       a.forEach((value) => {
         this.get('store').pushPayload({
           'sensor-value': [
@@ -42,7 +47,6 @@ export default class extends Route {
           ],
         });
       });
-      this.startAutoUpdate();
     }, 10 * 1000);
     this.set('autoUpdateTimer', timer);
   }
