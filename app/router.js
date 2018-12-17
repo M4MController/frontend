@@ -24,7 +24,7 @@ Router.map(function() {
       this.route('payment');
     });
   });
-  this.route('landing');
+  this.route('redirect');
 });
 
 export default Router;

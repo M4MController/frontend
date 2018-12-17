@@ -7,9 +7,9 @@
         {{/link-to}}
       </div>
       <nav class="nav footerNav footerMenu">
-        {{#link-to 'landing' class="nav-link footerMenuItem"}}О компании{{/link-to}}
-        <a href="#" class="nav-link footerMenuItem">Контакты</a>
-        <a href="#" class="nav-link footerMenuItem">Инвесторам</a>
+        {{#link-to 'redirect' (query-params to="landing") class="nav-link footerMenuItem"}}О компании{{/link-to}}
+        {{#link-to 'redirect' (query-params to="contacts") class="nav-link footerMenuItem"}}Контакты{{/link-to}}
+        {{#link-to 'redirect' (query-params to="forInvestors") class="nav-link footerMenuItem"}}Инвесторам{{/link-to}}
       </nav>
       <nav class="socialsNav text-right">
         <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>

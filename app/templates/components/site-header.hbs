@@ -20,9 +20,9 @@
             Настройки
           {{/link-to}}
           <nav class="nav footerNav footerMenuInHeader" style="flex-wrap: nowrap">
-            {{#link-to 'landing' class="nav-link menuItem"}}О компании{{/link-to}}
-            <a href="#" class="nav-link menuItem">Контакты</a>
-            <a href="#" class="nav-link menuItem">Инвесторам</a>
+            {{#link-to 'redirect' (query-params to="landing") class="nav-link menuItem"}}О компании{{/link-to}}
+            {{#link-to 'redirect' (query-params to="contacts") class="nav-link menuItem"}}Контакты{{/link-to}}
+            {{#link-to 'redirect' (query-params to="forInvestors") class="nav-link menuItem"}}Инвесторам{{/link-to}}
           </nav>
         </nav>
       </div>
