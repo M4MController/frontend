@@ -19,13 +19,9 @@ export default class extends Controller {
         buttonTheme: {
           width: 80,
         },
-        selected: 0,
+        selected: 2,
         buttons: [
           {
-            type: 'minute',
-            count: 5,
-            text: '5 минут',
-          }, {
             type: 'hour',
             text: 'Час',
           }, {
@@ -33,10 +29,14 @@ export default class extends Controller {
             text: 'День',
           }, {
             type: 'month',
+            count: 1,
             text: 'Месяц',
           }, {
             type: 'ytd',
             text: 'Этот год',
+          },{
+            type: 'year',
+            text: 'Год',
           }, {
             type: 'all',
             text: 'Все данные',
