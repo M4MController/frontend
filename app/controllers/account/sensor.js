@@ -6,7 +6,7 @@ export default class extends Controller {
   @computed('model.values.@each')
   get sensorData() {
     return this.get('model.values').map((reading) =>
-      [Math.round(new Date(reading.get('timestamp')).getTime()), reading.get('value')],
+      [Math.round(reading.get('date').getTime()), reading.get('value')],
     ).sort((a, b) => a[0] - b[0]);
   }
 

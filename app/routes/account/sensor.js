@@ -28,26 +28,22 @@ export default class extends Route {
       this.startAutoUpdate();
       const sensorId = this.get('sensorId');
       const sensor = this.get('store').peekRecord('sensor', sensorId);
-      let startDate = new Date(sensor.get('values').sortBy('timestamp').get('lastObject.timestamp'));
-      startDate.setHours(startDate.getHours() + 3);
-      startDate = startDate.toISOString();
-      const a = await this.get('store').query('sensor-value', {
-        sensorId,
-        from: startDate.slice(0, startDate.length - 5),
-      });
-      a.forEach((value) => {
+
+      // console.log('aa')
+      const from = new Date(Math.max(...sensor.get('values').mapBy('date').toArray()));
+      (await this.get('store').query('sensor-value', {sensorId, from})).forEach((value) => {
         this.get('store').pushPayload({
           'sensor-value': [
             {
               sensor: value.get('sensor.id'),
               id: value.get('id'),
               value: value.get('value'),
-              timestamp: value.get('timestamp'),
+              time: value.get('time'),
             },
           ],
         });
       });
-    }, 10 * 1000);
+    }, 60 * 1000);
     this.set('autoUpdateTimer', timer);
   }
 

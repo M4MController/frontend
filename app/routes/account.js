@@ -15,7 +15,7 @@ export default class extends Route {
     const timer = later(this, async function() {
       await this.get('store').findAll('object', {reload: true}); // eslint-disable-line
       this.startAutoUpdate(); // eslint-disable-line
-    }, 10 * 1000);
+    }, 60 * 1000);
     this.set('autoUpdateTimer', timer);
   }
 

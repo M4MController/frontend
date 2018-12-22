@@ -6,7 +6,7 @@ import {
 
 export default class extends DS.Model {
   @attr('number') value;
-  @attr timestamp;
+  @attr('date') date;
   @attr hash;
   @belongsTo({async: false}) sensor;
 }
