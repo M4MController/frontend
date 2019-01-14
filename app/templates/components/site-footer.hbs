@@ -1,27 +1,25 @@
-<footer>
-  <div class="footerTop">
-    <div class="container footerRow">
-      <div class="logoWrap">
-        {{#link-to "account.index" class="logo"}}
-          <img src="/images/logo.svg" alt="">
-        {{/link-to}}
-      </div>
-      <nav class="nav footerNav footerMenu">
-        {{#link-to 'redirect' (query-params to="landing") class="nav-link footerMenuItem"}}О компании{{/link-to}}
-        {{#link-to 'redirect' (query-params to="contacts") class="nav-link footerMenuItem"}}Контакты{{/link-to}}
-        {{#link-to 'redirect' (query-params to="forInvestors") class="nav-link footerMenuItem"}}Инвесторам{{/link-to}}
-      </nav>
-      <nav class="socialsNav text-right">
-        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-        <a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a>
-      </nav>
+<div class="footerTop">
+  <div class="container footerRow">
+    <div class="logoWrap">
+      {{#link-to "account.index" class="logo"}}
+        <img src="/images/logo.svg" alt="">
+      {{/link-to}}
     </div>
+    <nav class="nav footerNav footerMenu">
+      {{#link-to 'redirect' (query-params to="landing") class="nav-link footerMenuItem"}}О компании{{/link-to}}
+      {{#link-to 'redirect' (query-params to="contacts") class="nav-link footerMenuItem"}}Контакты{{/link-to}}
+      {{#link-to 'redirect' (query-params to="forInvestors") class="nav-link footerMenuItem"}}Инвесторам{{/link-to}}
+    </nav>
+    <nav class="socialsNav text-right">
+      <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a>
+    </nav>
   </div>
-  <div class="footerBottom">
-    <div class="container footerRow align-items-baseline">
-      <div>2018 Все права защищены</div>
-    </div>
+</div>
+<div class="footerBottom">
+  <div class="container footerRow align-items-baseline">
+    <div>2018 Все права защищены</div>
   </div>
-</footer>
+</div>
