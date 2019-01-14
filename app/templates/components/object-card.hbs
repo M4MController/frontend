@@ -1,12 +1,12 @@
-<div class="cardStyle objectWrap">
-  <div class="objectWrap__title">
-    <span class="objectWrap__name">
-      <strong class="text-caption text-bold text-black">{{object.name}}</strong>
-      <span class="objectIndicator"></span>
-    </span>
-    <small class="objectTitle">{{object.address}}</small>
+<div class="cardStyle">
+  <div>
+    <div class="title-caption">
+      <span class="text-caption text-bold text-black">{{object.name}}</span>
+      {{core/status-indicator class="pull-right" status=status}}
+    </div>
+    <div class="title-company text-small">{{object.address}}</div>
   </div>
-  <div class="row objectServices">
+  <div class="row no-margin margin-top-1x">
     {{#each sensors as |sensor|}}
       <div class="col-md-6 col-sm-6 col-xs-6 objectServicesWrap">
         <div class="objectService">

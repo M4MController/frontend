@@ -13,4 +13,19 @@ export default class extends Component {
   get sensors() {
     return this.get('object.sensors').slice(0, 4);
   }
+
+  @computed('object.sensors.@each.status')
+  get status() {
+    let ok = false;
+    for (let sensor of this.get('object.sensors')) {
+      if (sensor.get('status')) {
+        ok = true;
+      } else {
+        if (ok) {
+          return 'warning';
+        }
+      }
+    }
+    return ok ? 'ok' : 'danger';
+  }
 }

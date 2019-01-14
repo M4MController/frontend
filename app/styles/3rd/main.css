@@ -202,7 +202,7 @@ h2 i {
   background-color: #fff;
   color: #b6b6b6;
   border-radius: .5rem;
-  padding: 20px;
+  padding: 16px;
   margin: 15px 0;
   position: relative;
 }
@@ -311,10 +311,6 @@ h2 i {
   width: 100%;
 }
 
-.objectWrap__title {
-  line-height: 1.3em;
-}
-
 .objectWrap__title > * {
   display: block;
 }
@@ -325,10 +321,6 @@ h2 i {
   height: 10px;
   background-color: #00cc99;
   border-radius: 50%;
-}
-
-.objectServices {
-  margin: 20px 0;
 }
 
 .objectServicesWrap {
@@ -346,7 +338,7 @@ h2 i {
 }
 
 .service__title {
-  padding-bottom: 20px;
+  padding-bottom: 16px;
   display: flex;
   align-items: center;
 }
@@ -363,8 +355,8 @@ h2 i {
 }
 
 .payableBlock {
-  margin-right: -20px;
-  margin-left: -20px;
+  margin-right: -16px;
+  margin-left: -16px;
   background-color: #f9f9f9;
   padding: 20px;
 }

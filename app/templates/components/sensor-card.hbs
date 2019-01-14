@@ -1,13 +1,13 @@
 <div class="cardStyle">
   <div class="service">
-    <div class="service__title">
+    <div class="sensor-header">
       {{core/icon-component name=(sensor-icon-name sensor) class="sensor-icon"}}
-      <div class="objectWrap__title">
-        <div class="objectWrap__name">
-          <strong class="text-caption text-bold text-black">{{sensor.name}}</strong>
-          <span class="indicator"></span>
+      <div class="title">
+        <div class="title-caption">
+          <span class="text-caption text-bold text-black">{{sensor.name}}</span>
+          {{core/status-indicator class="pull-right" status=(if sensor.status "ok" "danger")}}
         </div>
-        <small class="objectTitle full-width">{{sensor.serviceCompany.name}}</small>
+        <div class="title-company text-small">{{sensor.serviceCompany.name}}</div>
       </div>
     </div>
 

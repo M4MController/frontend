@@ -1,0 +1,16 @@
+& {
+  transform: scale(1.5);
+  color: #b6b6b6;
+}
+
+&.ok {
+  color: #00cc99;
+}
+
+&.danger {
+  color: red;
+}
+
+&.warning {
+  color: #e6e600;
+}

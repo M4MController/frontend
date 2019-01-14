@@ -1,14 +1,21 @@
+.sensor-header {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: $grid-step * 2;
+}
+
+.title {
+  flex: 1;
+}
+
+.text-caption {
+  line-height: 1.2em;
+}
+
 .sensor-icon {
   height: $grid-step * 3;
   margin-right: $grid-step;
   margin-bottom: $grid-step;
-}
 
-.indicator {
-  display: inline-block;
-  width: $grid-step;
-  height: $grid-step;
-  margin-left: $grid-step;
-  background-color: #00cc99;
-  border-radius: 50%;
+  align-self: center;
 }
