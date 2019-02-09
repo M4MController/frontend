@@ -2,6 +2,7 @@ FROM nginx:alpine
 MAINTAINER Ed Asriyan <ed-asriyan@protonmail.com>
 
 RUN apk update && apk add nodejs
+RUN if ! type "npm" > /dev/null; then apk add npm; fi
 
 WORKDIR /application
 
