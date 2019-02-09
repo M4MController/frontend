@@ -1,5 +1,7 @@
-FROM smebberson/alpine-nginx-nodejs
+FROM nginx:alpine
 MAINTAINER Ed Asriyan <ed-asriyan@protonmail.com>
+
+RUN apk update && apk add nodejs
 
 WORKDIR /application
 
@@ -14,7 +16,6 @@ ADD config ./config
 ADD app ./app
 ADD public ./public
 ADD mirage ./mirage
-ADD nginx.conf /etc/nginx/nginx.conf
 
 RUN npm run build -- --environment=production
 
@@ -27,4 +28,4 @@ RUN rm -fr /application
 # remove unnecessary source files
 RUN rm -fr /application
 
-EXPOSE 80
+ADD nginx.conf /etc/nginx/nginx.conf
