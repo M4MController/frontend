@@ -5,7 +5,6 @@ WORKDIR /application
 
 # install dependencies
 ADD package.json .
-ADD package-lock.json .
 RUN npm install
 
 # build the app
