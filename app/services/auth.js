@@ -1,11 +1,14 @@
-import Service from '@ember/service';
+import BackendService from './backend';
 import {service} from '@ember-decorators/service';
 
-export default class extends Service {
-  @service backend;
+import config from '../config/environment';
+
+export default class extends BackendService {
+  @service cookies;
   @service store;
 
-  @service cookies;
+  baseUrl = config.APP.backend.auth;
+  sendToken = false;
 
   isAuthorised = undefined;
 
@@ -17,9 +20,8 @@ export default class extends Service {
     this.get('cookies').write('token', value, {path: '/'});
   }
 
-
   async logIn(username, password) {
-    return this.get('backend').request('/auth/sign_in', 'POST', {
+    return this.request('/sign_in', 'POST', {
       'e_mail': username,
       password,
     }, {dataType: 'html'}).then((response) => {
@@ -36,7 +38,7 @@ export default class extends Service {
     return true;
 
     /* till backend does not support log out */
-    // return this.get('backend').request('/auth/logout', 'POST').then(() => {
+    // return this.get('backend').request('/logout', 'POST').then(() => {
     //   this.set('isAuthorized', false);
     //   this.get('store').unloadAll();
     //   return true;

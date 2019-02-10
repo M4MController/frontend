@@ -2,8 +2,6 @@
 'use strict';
 
 const MIRAGE = false;
-const BACKEND_HOST = '/';
-const BACKEND_NAMESPACE = '/api';
 
 module.exports = function(environment) {
   let ENV = {
@@ -29,8 +27,8 @@ module.exports = function(environment) {
 
     APP: {
       backend: {
-        host: MIRAGE ? '' : BACKEND_HOST,
-        namespace: BACKEND_NAMESPACE,
+        api: 'https://api.meter4.me',
+        auth: 'https://auth.meter4.me',
       },
     },
   };

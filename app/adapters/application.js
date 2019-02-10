@@ -2,10 +2,10 @@ import DS from 'ember-data';
 import {service} from '@ember-decorators/service';
 
 export default class extends DS.Adapter {
-  @service backend;
+  @service api;
 
   ajax(url, method, data) {
-    return this.get('backend').request(url, method, data);
+    return this.get('api').request(url, method, data);
   }
 
   buildUrlFindAll() {
