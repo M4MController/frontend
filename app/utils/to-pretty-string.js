@@ -4,6 +4,7 @@ export default function(value,
     fractionDigits = 2,
   } = {},
 ) {
+  if (!value) return '0';
   const [integer, fraction] = value.toString().split('.');
 
   const integerArray = [];

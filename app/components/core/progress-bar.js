@@ -20,7 +20,13 @@ export default class extends Component {
     const color = this.getAttr('color');
     const background = this.getAttr('background');
 
-    const percent = (value - min) * 100 / (max - min);
-    return `background: linear-gradient(to right, ${color} ${percent}%, ${background} ${percent}%)`.htmlSafe();
+    let result;
+    if (isNaN(max) || isNaN(min) || isNaN(value)) {
+      result = `background: ${color}`;
+    } else {
+      const percent = (value - min) * 100 / (max - min);
+      result = `background: linear-gradient(to right, ${color} ${percent}%, ${background} ${percent}%)`;
+    }
+    return result.htmlSafe();
   }
 }
