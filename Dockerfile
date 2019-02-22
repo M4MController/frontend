@@ -21,7 +21,7 @@ ADD mirage ./mirage
 RUN npm run build -- --environment=production
 
 # copy generated files
-RUN cp -R dist/. /usr/html/
+RUN mkdir /usr/html && cp -R dist/. /usr/html/account/
 
 # remove unnecessary source files
 RUN rm -fr /application
