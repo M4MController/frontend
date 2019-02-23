@@ -17,14 +17,12 @@ ADD config ./config
 ADD app ./app
 ADD public ./public
 ADD mirage ./mirage
+ADD translations ./translations
 
 RUN npm run build -- --environment=production
 
 # copy generated files
 RUN mkdir /usr/html && cp -R dist/. /usr/html/account/
-
-# remove unnecessary source files
-RUN rm -fr /application
 
 # remove unnecessary source files
 RUN rm -fr /application

@@ -1,0 +1,18 @@
+<div class="cardStyle">
+  <table class="table text-default">
+    <thead>
+    <tr>
+      <th>{{t 'components.sensor-card.obd.column_1'}}</th>
+      <th>{{t 'components.sensor-card.obd.column_2'}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each-in sensor.value as |key value|}}
+      <tr>
+        <td>{{t (concat 'components.sensor-card.obd.' key)}}</td>
+        <td>{{value}}</td>
+      </tr>
+    {{/each-in}}
+    </tbody>
+  </table>
+</div>

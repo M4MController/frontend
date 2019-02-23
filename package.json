@@ -47,6 +47,7 @@
     "ember-export-application-global": "^2.0.0",
     "ember-font-awesome": "^4.0.0-rc.4",
     "ember-highcharts": "^1.0.1",
+    "ember-intl": "^3.5.0",
     "ember-load-initializers": "^1.0.0",
     "ember-math-helpers": "^2.7.1",
     "ember-promise-helpers": "^1.0.6",

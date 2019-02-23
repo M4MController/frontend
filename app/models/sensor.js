@@ -28,6 +28,7 @@ export default class extends DS.Model {
   @attr charge;
   @attr forPayment;
 
+  @attr value;
   @attr lastValue;
 
   @attr valueMonth;
