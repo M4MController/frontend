@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import ModalMixin from 'm4m/mixins/modal';
 import {action} from '@ember-decorators/object';
+import {closeModal} from '../../helpers/close-modal';
 
 export default class extends Component.extend(ModalMixin, {}) {
   state = 'from-list';
@@ -30,6 +31,11 @@ export default class extends Component.extend(ModalMixin, {}) {
 
   @action
   onSubmitAction(objectAttrs) {
-    this.attrs.onAdd && this.attrs.onAdd(objectAttrs);
+    this.set('loading', true);
+    setTimeout(() => {
+      this.set('loading', false);
+      this.onSuccess && this.onSuccess([]);
+      closeModal(this.get('modalId'));
+    }, 1500);
   }
 }

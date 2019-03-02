@@ -8,28 +8,14 @@
             <span class="icon-cross"></span> Удалить
           </button>
         {{/unless}}
-        <button class="btn btnStyle btnStyle_сolor" {{action "showAddController"}}>
+        <button class="btn btnStyle btnStyle_сolor"
+                onclick={{open-modal "controller-add" object=model onSuccess=(action "afterControllerAdded")}}
+        >
           Добавить контроллер
         </button>
       </div>
     {{/page-caption}}
   </div>
-
-  {{#if bShowAddController}}
-    {{modals/add-controller
-      loading=bLoadingAddController
-      onAdd=(action "onAddControllerAction")
-      onClose=(action "hideAddController")
-    }}
-  {{/if}}
-
-  {{#if bShowSensorsAddition}}
-    {{modals/sensor-add
-      sensors=sensorsForAddition
-      loading=bLoadingSensorsAddition
-      onAdd=(action "onAddSensorsAction")
-      onClose=(action "setProp" "bShowSensorsAddition" false)}}
-  {{/if}}
 
   <div class="row havings">
     {{#each model.sensors as |sensor|}}

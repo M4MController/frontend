@@ -2,18 +2,14 @@
   <div class="row">
     {{#page-caption text="Мои объекты" icon="tree-structure" class="col-12"}}
       <div class="text-right">
-        <button class="btn btnStyle btnStyle_сolor" {{action "showAddObject"}}>Добавить объект</button>
+        <button class="btn btnStyle btnStyle_сolor"
+                onclick={{open-modal "object-add" onSuccess=(action "afterObjectCreated")}}
+        >
+          Добавить объект
+        </button>
       </div>
     {{/page-caption}}
   </div>
-
-  {{#if bShowAddObject}}
-    {{modals/add-object
-      loading=bLoadingAddObject
-      onAdd=(action "onAddObjectAction")
-      onClose=(action "hideAddObject")
-    }}
-  {{/if}}
 
   <div class="row havings">
     {{#each model as |object|}}

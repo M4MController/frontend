@@ -1,0 +1,7 @@
+{{#core/modal-component className="col-xs-12 col-md-8 col-lg-6"
+                        title="Добавить объект"
+                        loading=loading
+                        modalId=modalId
+}}
+  {{forms/object-creation onSubmit=(action "onSubmitAction")}}
+{{/core/modal-component}}

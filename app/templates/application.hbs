@@ -1,1 +1,5 @@
 {{outlet}}
+
+{{#each __modals as |modal|}}
+  {{component (concat "modals/" modal.modalName) params=modal.params modalId=modal.id}}
+{{/each}}

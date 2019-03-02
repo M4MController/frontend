@@ -3,21 +3,21 @@
     <div class="row">
       {{#if cover}}
         <div class="cover {{className}}">
-          {{#if (or attrs.title attrs.onClose)}}
+          {{#if (or title onClose)}}
             <div class="margin-bottom-2x">
-              {{#if attrs.title}}
-                <span class="text-bold">{{attrs.title}}</span>
+              {{#if title}}
+                <span class="text-bold">{{title}}</span>
               {{/if}}
-              {{#if (and attrs.onClose (not loading))}}
+              {{#unless (or (eq modalId undefined) loading)}} {{! if (modalId !== undefined && !loading) }}
                 <span class="pull-right text-bold clickable text-small"
                       role="button"
-                      onclick={{action "onCloseButtonClickAction"}}>
+                      onclick={{close-modal modalId}}>
               X
             </span>
-              {{/if}}
+              {{/unless}}
             </div>
           {{/if}}
-          {{#if attrs.loading}}
+          {{#if loading}}
             {{core/loader-component class="full-width h-center"}}
           {{else}}
             {{yield}}

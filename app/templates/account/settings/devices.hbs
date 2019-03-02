@@ -41,7 +41,9 @@
       <div class="inspector__counters">
         <div class="inspector__countersTitle align-items-center">
           <span class="padding-left-1x text-default">Сенсоры</span>
-          <button class="btn btnStyle btnStyle_сolorgray" onclick={{action "setProp" "bShowAddSensor" true}}>
+          <button class="btn btnStyle btnStyle_сolorgray"
+                  onclick={{open-modal "sensors-add" sensors=controller.sensors}}
+          >
             Добавить сенсор
           </button>
         </div>
@@ -70,10 +72,3 @@
     </div>
   {{/each}}
 </div>
-
-{{#if bShowAddSensor}}
-  {{modals/sensor-add
-    onAdd=(action "setProp" "bShowAddSensor" false)
-    onClose=(action "setProp" "bShowAddSensor" false)
-  }}
-{{/if}}

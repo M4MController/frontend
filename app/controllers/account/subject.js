@@ -1,25 +1,8 @@
 import Controller from '@ember/controller';
 import {action} from '@ember-decorators/object';
+import {openModal} from '../../helpers/open-modal';
 
 export default class extends Controller {
-  bShowAddController = false;
-  bLoadingAddController = false;
-
-  bShowSensorsAddition = false;
-  bLoadingSensorsAddition = false;
-
-  sensorsForAddition;
-
-  @action
-  showAddController() {
-    this.set('bShowAddController', true);
-  }
-
-  @action
-  hideAddController() {
-    this.set('bShowAddController', false);
-  }
-
   @action
   async onDeleteObjectAction(object) {
     try {
@@ -32,40 +15,10 @@ export default class extends Controller {
   }
 
   @action
-  async onAddControllerAction(controllerAttrs) {
-    const existingController = this.get('store').peekRecord('controller', controllerAttrs.id);
-    if (existingController && existingController.get('object')) {
-      alert('Этот контроллер уже активирован');
-      return;
-    }
-
-    this.set('bLoadingAddController', true);
-    const controller = this.get('store').createRecord('controller', {
-      id: controllerAttrs.id,
-      name: controllerAttrs.name,
-      object: this.get('model'),
+  afterControllerAdded(controller) {
+    openModal('sensors-add', {
+      sensors: controller.get('sensors'),
+      onSuccess: () => openModal('sensors-add', {sensors: controller.get('sensors')}),
     });
-
-    try {
-      await controller.save();
-      this.set('bShowAddController', false);
-
-      // todo: remove the stub
-      this.set('sensorsForAddition', controller.get('sensors'));
-      this.set('bShowSensorsAddition', true);
-    } catch (e) {
-      alert('Не удаётся активировать контроллер с данным идентификатором');
-    }
-
-    this.set('bLoadingAddController', false);
-  }
-
-  @action
-  onAddSensorsAction() {
-    this.set('bLoadingSensorsAddition', true);
-    // setTimeout(() => {
-      this.set('bShowSensorsAddition', false);
-      this.set('bLoadingSensorsAddition', false);
-    // }, 1500);
   }
 }

@@ -1,7 +1,7 @@
-{{#modals/modal-component className="col-xs-12 col-md-8"
-                          title="Добавление сенсора"
-                          onClose=(action "onCloseAction")
-                          loading=attrs.loading
+{{#core/modal-component className="col-xs-12 col-md-8"
+                        title="Добавление сенсора"
+                        modalId=modalId
+                        loading=loading
 }}
   {{#if (eq state "from-list")}}
     <table class="table">
@@ -73,4 +73,4 @@
     Если вашего устройства нет в списке, проверьте, ключено ли оно.
   {{/if}}
   <button class="btnStyle btnStyle_сolor pull-right" {{action "onSubmitAction"}}>Добавить</button>
-{{/modals/modal-component}}
+{{/core/modal-component}}
