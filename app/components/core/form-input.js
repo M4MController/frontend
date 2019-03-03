@@ -2,6 +2,8 @@ import Component from '@ember/component';
 import {
   action,
   computed,
+  observes,
+  on,
 } from '@ember-decorators/object';
 
 export default class extends Component {
@@ -10,6 +12,7 @@ export default class extends Component {
   };
 
   wasFocused = false;
+  localValue = '';
 
   @computed('error')
   get isValid() {
@@ -21,6 +24,16 @@ export default class extends Component {
     return this.get('wasFocused') && !this.get('isValid');
   }
 
+  @on('didReceiveAttrs')
+  copyValue() {
+    this.set('localValue', this.get('value'));
+  }
+
+  @observes('localValue')
+  changeValue() {
+    this.set('value', this.get('localValue').trim());
+  }
+
   @action
   onEnterAction(...args) {
     this.attrs.onEnterAction && this.attrs.onEnterAction(...args);
@@ -28,6 +41,7 @@ export default class extends Component {
 
   @action
   focusOutAction() {
+    this.set('localValue', this.get('localValue').trim());
     this.set('wasFocused', true);
   }
 }
