@@ -2,7 +2,7 @@
   <label>{{name}}:</label>
   {{input class=(concat "form-control form-field " (if wasFocused (if isValid "is-valid" "is-invalid")))
           type=type
-          value=value
+          value=localValue
           placeholder=placeholder
           enter=(action "onEnterAction")
           focus-out=(action "focusOutAction")
