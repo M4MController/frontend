@@ -19,7 +19,7 @@ export default class extends ApplicationSerializer {
       id: `${data['hash']}${data['date']}${data['sensor_id']}`,
       type: 'sensor-value',
       attributes: {
-        value: data['value'],
+        value: JSON.parse(data['value']),
         date: this.serializeDate(data['date']),
         hash: data['hash'],
       },

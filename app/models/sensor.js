@@ -28,7 +28,6 @@ export default class extends DS.Model {
   @attr charge;
   @attr forPayment;
 
-  @attr value;
   @attr lastValue;
 
   @attr valueMonth;
@@ -44,6 +43,11 @@ export default class extends DS.Model {
   @belongsTo('service-company', {async: false}) serviceCompany;
   @belongsTo({async: false}) controller;
   @hasMany('sensor-value', {async: false}) values;
+
+  @computed('lastValue', 'values.lastObject.value')
+  get value() {
+    return this.get('lastValue') || this.get('values.lastObject.value');
+  }
 
   @computed('valueMonth', 'type')
   get valueForecast() {
