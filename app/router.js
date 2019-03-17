@@ -11,6 +11,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('auth', {resetNamespace: true}, function() {
     this.route('log-in');
+    this.route('sign-up');
   });
   this.route('account', function() {
     this.route('subject', {path: '/object/:object_id'});

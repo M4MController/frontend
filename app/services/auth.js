@@ -31,6 +31,17 @@ export default class extends BackendService {
     }).catch(() => false);
   }
 
+  async signUp({username, lastName, firstName, middleName, password}) {
+    return this.request('/sign_in', 'POST', {
+      'e_mail': username,
+      password,
+    }, {dataType: 'html'}).then((response) => {
+      this.set('isAuthorized', true);
+      this.set('token', response);
+      return this.get('store').findRecord('user', 1);
+    }).catch(() => false);
+  }
+
   logOut() {
     this.set('token', '');
     this.set('isAuthorized', false);
