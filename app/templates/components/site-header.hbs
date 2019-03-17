@@ -19,6 +19,11 @@
           {{#link-to 'account.settings.devices' class='nav-link menuItem'}}
             Настройки
           {{/link-to}}
+
+          {{#each user.companies as |company|}}
+            <span class="nav-link menuItem">{{company.name}}</span>
+          {{/each}}
+
           <nav class="nav footerNav footerMenuInHeader" style="flex-wrap: nowrap">
             {{#link-to 'redirect' (query-params to="landing") class="nav-link menuItem"}}О компании{{/link-to}}
             {{#link-to 'redirect' (query-params to="contacts") class="nav-link menuItem"}}Контакты{{/link-to}}
