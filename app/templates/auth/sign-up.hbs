@@ -1,0 +1,8 @@
+{{#if isLoading}}
+  {{core/loader-component class="vp-height vp-width h-center v-center"}}
+{{else}}
+  {{forms/sign-up class="vp-height vp-width h-center v-center"
+                  error=sugnUpError
+                  onSignUp=(action "onSignUpAction")
+  }}
+{{/if}}

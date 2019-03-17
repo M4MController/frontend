@@ -233,6 +233,7 @@ h2 i {
   border-radius: .5rem;
   border: 1px solid;
   cursor: pointer;
+  outline: none !important;
 
   -webkit-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
