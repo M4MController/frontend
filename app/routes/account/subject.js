@@ -10,7 +10,14 @@ export default class extends Route {
   async model(params) {
     const objectId = params['object_id'];
 
-    return await this.get('store').peekRecord('object', objectId);
+    const result = this.get('store').peekRecord('object', objectId);
+
+    // todo: remove undefined after https://github.com/M4MController/backend/issues/33 will completed
+    this.get('store').peekAll('sensor').filterBy('type', undefined).forEach((sensor) => {
+      this.get('store').query('sensor-value', {sensorId: sensor.get('id'), limit: 1});
+    });
+
+    return result;
   }
 
   afterModel(model) {
