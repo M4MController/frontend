@@ -26,4 +26,6 @@ export default class UserModel extends DS.Model {
   get fullName() {
     return `${this.get('firstName')} ${this.get('lastName')} ${this.get('middleName')}`;
   }
+
+  @hasMany('service-company', {async: false}) companies;
 }

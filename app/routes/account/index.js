@@ -4,6 +4,9 @@ export default class extends Route {
   pageTitle = 'Объекты';
 
   model() {
-     return this.get('store').peekAll('object');
+    return {
+      user: this.get('store').peekAll('user').get('firstObject'),
+      objects: this.get('store').peekAll('object'),
+    };
   }
 }

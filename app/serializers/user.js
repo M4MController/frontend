@@ -14,6 +14,7 @@ export default class extends ApplicationSerializer {
     issuedBy: 'issued_by',
     divisionNumber: 'division_number',
     sex: 'sex',
+    companies: {serialize: false},
   };
 
   normalizeFindRecordResponse(store, primaryModelClass, payload, id, requestType) {
