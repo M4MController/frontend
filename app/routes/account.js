@@ -21,6 +21,7 @@ export default class extends Route {
   afterModel(model) {
     // todo: remove the stub
     const company = this.get('store').createRecord('service-company', {
+      id: 100500,
       name: 'Гараж 4x4',
       phone: '8 (800) 555-35-35',
       address: 'Ильменский пр., 9А, стр. 12, Москва',

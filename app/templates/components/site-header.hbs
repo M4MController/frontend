@@ -21,7 +21,9 @@
           {{/link-to}}
 
           {{#each user.companies as |company|}}
-            <span class="nav-link menuItem">{{company.name}}</span>
+            {{#link-to 'account.company-account' company.id class='nav-link menuItem'}}
+              {{company.name}}
+            {{/link-to}}
           {{/each}}
 
           <nav class="nav footerNav footerMenuInHeader" style="flex-wrap: nowrap">
