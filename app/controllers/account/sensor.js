@@ -34,7 +34,7 @@ export default class extends Controller {
           }, {
             type: 'ytd',
             text: 'Этот год',
-          },{
+          }, {
             type: 'year',
             text: 'Год',
           }, {

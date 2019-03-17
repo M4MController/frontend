@@ -24,7 +24,6 @@ export default class extends Component.extend(ModalMixin, {}) {
       await controller.save();
     } catch (e) {
       alert('Не удаётся активировать контроллер с данным идентификатором');
-      console.log(e);
       return;
     } finally {
       this.set('loading', false);

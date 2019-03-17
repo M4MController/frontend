@@ -98,7 +98,6 @@ const testObdStub = {
   'fuel_inject_timing': 'none',
   'fuel_rate': 'none',
 };
-;
 
 export default class extends ApplicationSerializer.extend(DS.EmbeddedRecordsMixin, {}) {
   attrs = {
