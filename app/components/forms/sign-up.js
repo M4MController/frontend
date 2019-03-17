@@ -77,10 +77,7 @@ export default class extends Component {
 
   @action
   onRegisterClickAction() {
-    const fio = this.get('fio').split(' ');
-    const lastName = fio[0];
-    const firstName = fio[1] ? fio[1] : '';
-    const middleName = fio[2] ? fio[2] : '';
+    const [lastName, firstName, middleName] = this.get('fio').split(' ');
 
     this.get('isValid') && this.attrs.onSignUp && this.attrs.onSignUp({
       username: this.get('username'),

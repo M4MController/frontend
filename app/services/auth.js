@@ -31,7 +31,7 @@ export default class extends BackendService {
     }).catch(() => false);
   }
 
-  async signUp({username, lastName, firstName, middleName, password}) {
+  async signUp({username, lastName, firstName = '', middleName = '', password}) {
     return this.request('/sign_in', 'POST', {
       'e_mail': username,
       password,
