@@ -1,8 +1,6 @@
 import EmberHighChartsComponent from 'ember-highcharts/components/high-charts';
-import {set, getProperties, get, computed, getWithDefault} from '@ember/object';
-import {setDefaultHighChartOptions} from 'ember-highcharts/utils/option-loader';
-import {getSeriesMap, getSeriesChanges} from 'ember-highcharts/utils/chart-data';
-import {observes} from '@ember-decorators/object';
+import {getProperties} from '@ember/object';
+import {getSeriesMap} from 'ember-highcharts/utils/chart-data';
 
 export default class extends EmberHighChartsComponent {
   layoutName = 'ember-highcharts/templates/components/high-charts';

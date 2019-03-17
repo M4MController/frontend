@@ -1,3 +1,5 @@
+/* eslint-disable no-invalid-this */
+
 import Route from '@ember/routing/route';
 import {cancel, later} from '@ember/runloop';
 import {observes, on} from '@ember-decorators/object';
