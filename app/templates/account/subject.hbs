@@ -19,10 +19,7 @@
 
   <div class="row havings">
     {{#each model.sensors as |sensor|}}
-    {{! todo: remove after https://github.com/M4MController/backend/issues/33 will completed }}
-      {{#unless sensor.value.lat}}
-        {{sensor-card sensor=sensor}}
-      {{/unless}}
+      {{sensor-card sensor=sensor}}
     {{/each}}
   </div>
 </div>
