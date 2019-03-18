@@ -29,8 +29,8 @@ const getSensorConfigByType = function(type) {
     case 3:
     case 4:
       return sensorsConfig['hcs'];
-    // todo: replace with case 0 after https://github.com/M4MController/backend/issues/34 will completed
-    case null:
+    // todo: добавить gps после того, как на бекенде будет разделение на типы сенсоров
+    case 0:
     case undefined:
       return sensorsConfig['obd'];
   }

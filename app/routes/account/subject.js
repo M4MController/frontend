@@ -12,8 +12,8 @@ export default class extends Route {
 
     const result = this.get('store').peekRecord('object', objectId);
 
-    // todo: remove undefined after https://github.com/M4MController/backend/issues/33 will completed
-    this.get('store').peekAll('sensor').filterBy('type', undefined).forEach((sensor) => {
+    // todo: изменить на gps после того, как на бекенде будет разделение на типы сенсоров
+    this.get('store').peekAll('sensor').filterBy('type', 0).forEach((sensor) => {
       this.get('store').query('sensor-value', {sensorId: sensor.get('id'), limit: 1});
     });
 
