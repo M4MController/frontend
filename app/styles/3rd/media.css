@@ -181,16 +181,6 @@
 
 /*Small devices (landscape phones, less than 768px)*/
 @media (max-width: 767px) {
-  .container {
-    max-width: 380px;
-    padding: 0;
-  }
-
-  .page_settings .container {
-    max-width: 100%;
-    width: 100%;
-  }
-
   .page_settings h2 [class^="icon"],
   .page_settings .mobileMenuBtn {
     margin-left: 10px;
@@ -369,20 +359,7 @@
   }
 }
 
-@media (max-width: 700px) {
-  .container {
-    width: 100%;
-  }
-}
-
 @media (max-width: 575px) {
-  .container {
-    width: 100%;
-    max-width: 425px;
-    min-width: 300px;
-    padding: 0;
-  }
-
   .col-xs-6 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 50%;
