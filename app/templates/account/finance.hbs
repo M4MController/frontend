@@ -1,27 +1,25 @@
-<div class="container">
-  <div class="row align-items-center page__title">
-    <div class="col-md-12">
-      <h2><span class="icon-settings"></span><span>Финансы</span></h2>
-    </div>
+<div class="row align-items-center page__title">
+  <div class="col-md-12">
+    <h2><span class="icon-settings"></span><span>Финансы</span></h2>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="cardStyle cardStyle_noPaddings">
-        <div class="tabsWrap tabsWrap_minHeight">
-          <div class="tabs">
-            <div class="tabs_block tabs_block_js tabs_block_row">
-              <ul class="tabs tabs_col">
-                {{#each model as |object|}}
-                  {{#link-to "account.finance.subject" object.id
-                             tagName="li"
-                             class="tabs__item tabs__item_col font-weight-bold"}}
-                    {{object.name}}
-                  {{/link-to}}
-                {{/each}}
-              </ul>
-              <div class="box box_js visible archiveMarker archiveMarker_js">
-                {{outlet}}
-              </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="cardStyle cardStyle_noPaddings">
+      <div class="tabsWrap tabsWrap_minHeight">
+        <div class="tabs">
+          <div class="tabs_block tabs_block_js tabs_block_row">
+            <ul class="tabs tabs_col">
+              {{#each model as |object|}}
+                {{#link-to "account.finance.subject" object.id
+                           tagName="li"
+                           class="tabs__item tabs__item_col font-weight-bold"}}
+                  {{object.name}}
+                {{/link-to}}
+              {{/each}}
+            </ul>
+            <div class="box box_js visible archiveMarker archiveMarker_js">
+              {{outlet}}
             </div>
           </div>
         </div>

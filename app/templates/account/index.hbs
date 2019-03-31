@@ -1,19 +1,17 @@
-<div class="container">
-  <div class="row">
-    {{#page-caption text="Мои объекты" icon="tree-structure" class="col-12"}}
-      <div class="text-right">
-        <button class="btn btnStyle btnStyle_сolor"
-                onclick={{open-modal "object-add" onSuccess=(action "afterObjectCreated")}}
-        >
-          Добавить объект
-        </button>
-      </div>
-    {{/page-caption}}
-  </div>
+<div class="row">
+  {{#page-caption text="Мои объекты" icon="tree-structure" class="col-12"}}
+    <div class="text-right">
+      <button class="btn btnStyle btnStyle_сolor"
+              onclick={{open-modal "object-add" onSuccess=(action "afterObjectCreated")}}
+      >
+        Добавить объект
+      </button>
+    </div>
+  {{/page-caption}}
+</div>
 
-  <div class="row havings">
-    {{#each model.objects as |object|}}
-      {{object-card object=object}}
-    {{/each}}
-  </div>
+<div class="row havings">
+  {{#each model.objects as |object|}}
+    {{object-card object=object}}
+  {{/each}}
 </div>
