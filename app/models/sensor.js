@@ -49,6 +49,7 @@ export default class extends DS.Model {
     return this.get('lastValue') || this.get('values.lastObject.value');
   }
 
+  // возможно все свойства total* и valueForecast надо будет вырезать
   @computed('valueMonth', 'type')
   get valueForecast() {
     return this.get('valueMonth') * (1 + (+this.get('type') / 7));
@@ -72,5 +73,21 @@ export default class extends DS.Model {
   @computed('type', 'valueForecast')
   get totalForecast() {
     return calculateTotal(this.get('valueForecast'), this.get('type'));
+  }
+
+  @computed('type', 'value.lat', 'value.lon')
+  get typeName() {
+    switch (this.get('type')) {
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+        return 'hcs';
+      case 0:
+      case undefined:
+        // todo: починить после https://github.com/M4MController/backend/issues/37
+        return this.get('value.lon') && this.get('value.lat') ? 'gps' : 'obd';
+    }
+    return undefined;
   }
 }
