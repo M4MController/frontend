@@ -1,9 +1,9 @@
 import Route from '@ember/routing/route';
 
 const urls = {
-  'landing': '/about',
-  'contacts': '/about#contacts',
-  'forInvestors': '/about#forInvestors',
+  'landing': '//meter4.me/about',
+  'contacts': '//meter4.me/about#contacts',
+  'forInvestors': '//meter4.me/about#forInvestors',
 };
 
 export default class extends Route {
