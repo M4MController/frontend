@@ -2,6 +2,7 @@
 'use strict';
 
 const MIRAGE = false;
+const LITE_MODE = process.env['MODE'] === 'lite';
 
 module.exports = function(environment) {
   let ENV = {
@@ -26,9 +27,10 @@ module.exports = function(environment) {
     },
 
     APP: {
+      isLiteMode: LITE_MODE,
       backend: {
-        api: 'https://api.meter4.me',
-        auth: 'https://auth.meter4.me',
+        api: LITE_MODE ? '/backend/api' : 'https://api.meter4.me',
+        auth: LITE_MODE ? '/backend/auth' : 'https://auth.meter4.me',
       },
     },
   };
