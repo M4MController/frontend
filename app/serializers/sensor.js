@@ -22,7 +22,7 @@ export default class extends ApplicationSerializer.extend(DS.EmbeddedRecordsMixi
       overpayment: get(resourceHash, 'payments.overpayment'),
       forPayment: get(resourceHash, 'payments.for_payment'),
       unitName: get(resourceHash, 'characteristics.unit_of_measurement'),
-      lastValue: get(resourceHash, 'last_value'),
+      lastValue: JSON.parse(get(resourceHash, 'last_value')),
       valueMonth: get(resourceHash, 'stats.month'),
       valuePrevYear: get(resourceHash, 'stats.prev_month'),
       valuePrevYearAverage: get(resourceHash, 'stats.prev_year'),

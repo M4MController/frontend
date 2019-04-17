@@ -1,7 +1,7 @@
 import BackendService from './backend';
 
-import config from '../config/environment';
+import {BACKEND_API} from '../constants';
 
 export default class extends BackendService {
-  baseUrl = config.APP.backend.api;
+  baseUrl = BACKEND_API;
 }

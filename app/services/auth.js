@@ -1,16 +1,16 @@
 import BackendService from './backend';
 import {service} from '@ember-decorators/service';
 
-import config from '../config/environment';
+import {BACKEND_AUTH, IS_LITE_MODE} from '../constants';
 
 export default class extends BackendService {
   @service cookies;
   @service store;
 
-  baseUrl = config.APP.backend.auth;
+  baseUrl = BACKEND_AUTH;
   sendToken = false;
 
-  isAuthorised = undefined;
+  isAuthorized = IS_LITE_MODE;
 
   get token() {
     return this.get('cookies').read('token');

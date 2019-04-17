@@ -1,6 +1,7 @@
 import DS from 'ember-data';
+import {IS_LITE_MODE} from '../constants';
 
-export default class extends DS.RESTSerializer {
+const DefaultApplicationSerializer = class extends DS.RESTSerializer {
   normalizeFindAllResponse(store, primaryModelClass, payload, id, requestType) {
     return super.normalizeFindAllResponse(store, primaryModelClass, payload['msg'], id, requestType);
   }
@@ -12,4 +13,8 @@ export default class extends DS.RESTSerializer {
   payloadKeyFromModelName(modelName) {
     return modelName;
   }
-}
+};
+
+const LiteApplicationSerializer = DS.RESTSerializer;
+
+export default IS_LITE_MODE ? LiteApplicationSerializer : DefaultApplicationSerializer;

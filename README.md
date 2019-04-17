@@ -6,6 +6,15 @@ At first clone the repository:
 $ git clone git@github.com:m4mController/frontend.git && cd frontend
 ```
 
+### Setup environment variables
+* `SERVER`. **Ignored with `npm run build`!** Default: `backend`. Possible values:
+  * `backend`: frontend will be targeted to the real backend (meter4.me). 
+  * `proxy`: local proxy server to the backend will be started. Good for local deploying.
+  * `mock`: local mock server will be started. Good for local lite frontend version deploying.
+* `MODE`. Default: `default`. Possible values:
+  * `default`: frontend for meter4.me will be build.
+  * `lite`: frontend for controller will be build.
+  
 Now you can build and run the app, there are several ways to do it:
 
 ### Using docker
