@@ -1,8 +1,8 @@
 /* eslint-env node */
 'use strict';
 
-const MIRAGE = false;
 const LITE_MODE = process.env['MODE'] === 'lite';
+const USE_PROXY = process.env['SERVER'] === 'proxy';
 
 module.exports = function(environment) {
   let ENV = {
@@ -21,16 +21,11 @@ module.exports = function(environment) {
       },
     },
 
-    'ember-cli-mirage': {
-      enabled: MIRAGE,
-      excludeFilesFromBuild: !MIRAGE,
-    },
-
     APP: {
       isLiteMode: LITE_MODE,
       backend: {
-        api: LITE_MODE ? '/backend/api' : 'https://api.meter4.me',
-        auth: LITE_MODE ? '/backend/auth' : 'https://auth.meter4.me',
+        api: USE_PROXY ? '/api/api' : 'https://api.meter4.me',
+        auth: USE_PROXY ? '/api/auth' : 'https://auth.meter4.me',
       },
     },
   };
