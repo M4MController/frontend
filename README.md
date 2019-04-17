@@ -1,4 +1,4 @@
-# m4m Ember Web App 
+# M4M Web App [![devDependencies Status](https://david-dm.org/m4mcontroller/frontend/dev-status.svg)](https://david-dm.org/m4mcontroller/frontend?type=dev)
 
 ## Running the app
 At first clone the repository:
