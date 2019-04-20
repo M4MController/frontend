@@ -6,7 +6,7 @@ At first clone the repository:
 $ git clone git@github.com:m4mController/frontend.git && cd frontend
 ```
 
-### Setup environment variables
+### Set environment variables
 * `SERVER`. **Ignored with `npm run build`!** Default: `backend`. Possible values:
   * `backend`: frontend will be targeted to the real backend (meter4.me). 
   * `proxy`: local proxy server to the backend will be started. Good for local deploying.
