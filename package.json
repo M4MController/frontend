@@ -13,7 +13,7 @@
   "scripts": {
     "build": "ember build",
     "lint": "npm run lint:js && npm run lint:hbs && npm run lint:scss",
-    "lint:js": "eslint app/ tests/",
+    "lint:js": "eslint app/",
     "lint:hbs": "./node_modules/.bin/ember-template-lint app/templates/",
     "lint:scss": "stylelint app/styles",
     "start": "ember serve",

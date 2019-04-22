@@ -23,9 +23,10 @@ module.exports = function(environment) {
 
     APP: {
       isLiteMode: LITE_MODE,
+      isUsingProxy: USE_PROXY,
       backend: {
-        api: USE_PROXY ? '/api/api' : 'https://api.meter4.me',
-        auth: USE_PROXY ? '/api/auth' : 'https://auth.meter4.me',
+        api: 'https://api.meter4.me',
+        auth: 'https://auth.meter4.me',
       },
     },
   };

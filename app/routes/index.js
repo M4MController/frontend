@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import {service} from '@ember-decorators/service';
-import config from '../config/environment';
+
+import {IS_LITE_MODE} from '../constants';
 
 export default class extends Route {
   @service auth;
@@ -9,8 +10,8 @@ export default class extends Route {
     if (this.get('auth.isAuthorized')) {
       this.transitionTo('account.index');
     } else {
-      if (config.APP.isLiteMode) {
-        this.transitionTo('auth.log-in');
+      if (IS_LITE_MODE) {
+        alert('Что-то пошло не так. Этого быть не должно.');
       } else {
         this.transitionTo('redirect', {queryParams: {to: 'landing'}});
       }

@@ -1,13 +1,16 @@
 'use strict';
 
-const proxyPath = '/api/api';
+const config = require('../../../config/environment')();
+
+const proxyPath = '/api/auth';
+const target = config.APP.backend.auth;
 
 module.exports = function(app) {
   // For options, see:
   // https://github.com/nodejitsu/node-http-proxy
   let proxy = require('http-proxy').createProxyServer({
     changeOrigin: true,
-    target: 'https://api.meter4.me',
+    target,
   });
 
   proxy.on('error', function(err, req) {

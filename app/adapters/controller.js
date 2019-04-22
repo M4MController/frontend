@@ -1,6 +1,7 @@
 import ApplicationAdapter from './application';
+import {IS_LITE_MODE} from '../constants';
 
-export default class extends ApplicationAdapter {
+const DefaultControllerAdapter = class extends ApplicationAdapter {
   buildUrlCreateRecord(store, type, snapshot) {
     return `/v2/controller/${snapshot.id}/activate`;
   }
@@ -16,4 +17,8 @@ export default class extends ApplicationAdapter {
   deleteRecord(store, type, snapshot) {
     return this.ajax(this.buildUrlDeleteRecord(store, type, snapshot), 'DELETE');
   }
-}
+};
+
+const LiteControllerAdapter = ApplicationAdapter;
+
+export default IS_LITE_MODE ? LiteControllerAdapter : DefaultControllerAdapter;
