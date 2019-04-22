@@ -12,11 +12,13 @@ module.exports = function(app) {
   switch (serverMode) {
     case 'proxy':
       if (mode === 'lite') throw 'Proxy is not implemented for lite mode';
-      modules.push(...globSync(`./proxies/${mode}/*.js`, {cwd: __dirname}).map(require));
+      const proxies = globSync(`./proxies/${mode}/*.js`, {cwd: __dirname}).map(require);
+      modules.push(...proxies);
       break;
     case 'mock':
       if (mode === 'default') throw 'Proxy is not implemented for default mode';
-      modules.push(...globSync(`./mocks/${mode}/*.js`, {cwd: __dirname}).map(require));
+      const mocks = globSync(`./mocks/${mode}/*.js`, {cwd: __dirname}).map(require);
+      modules.push(...mocks);
       break;
   }
 
