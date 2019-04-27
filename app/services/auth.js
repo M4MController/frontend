@@ -10,7 +10,16 @@ export default class extends BackendService {
   baseUrl = BACKEND_AUTH;
   sendToken = false;
 
-  isAuthorized = IS_LITE_MODE;
+  isAuthorized = undefined;
+
+  constructor() {
+    super();
+
+    // на железке нет сервера, который нас авторизует (или зарегистрирует). так что пока довольствуемся заглушками
+    if (IS_LITE_MODE) {
+      this.request = async () => 'your_token';
+    }
+  }
 
   get token() {
     return this.get('cookies').read('token');
