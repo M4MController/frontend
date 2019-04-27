@@ -3,6 +3,9 @@ import {service} from '@ember-decorators/service';
 import {addListener} from '@ember/object/events';
 import {cancel, later} from '@ember/runloop';
 import {on} from '@ember-decorators/object';
+import {IS_LITE_MODE} from '../constants';
+
+const updateInterval = IS_LITE_MODE ? 1000 : 60 * 1000;
 
 export default class extends Route {
   @service auth;
@@ -34,7 +37,7 @@ export default class extends Route {
     const timer = later(this, async function() {
       await this.get('store').findAll('object', {reload: true}); // eslint-disable-line
       this.startAutoUpdate(); // eslint-disable-line
-    }, 60 * 1000);
+    }, updateInterval);
     this.set('autoUpdateTimer', timer);
   }
 
