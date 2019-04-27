@@ -1,12 +1,15 @@
 import Controller from '@ember/controller';
 import {action} from '@ember-decorators/object';
 import {service} from '@ember-decorators/service';
+import {IS_LITE_MODE} from '../../constants';
 
 export default class extends Controller {
   @service auth;
 
   isLoading = false;
   logInError = '';
+
+  supportRegistration = IS_LITE_MODE;
 
   @action
   async onLogInAction(username, password) {
