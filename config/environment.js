@@ -6,11 +6,11 @@ const USE_PROXY = process.env['SERVER'] === 'proxy';
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'm4m',
+    'modulePrefix': 'm4m',
     environment,
-    rootURL: '/',
-    locationType: 'auto',
-    EmberENV: {
+    'rootURL': '/',
+    'locationType': 'auto',
+    'EmberENV': {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
@@ -21,13 +21,21 @@ module.exports = function(environment) {
       },
     },
 
-    APP: {
+    'APP': {
       isLiteMode: LITE_MODE,
       isUsingProxy: USE_PROXY,
       backend: {
         api: 'https://api.meter4.me',
         auth: 'https://auth.meter4.me',
       },
+    },
+    'ember-google-maps': {
+      key: process.env['GOOGLE_API_MAPS_KEY'],
+      language: 'en',
+      region: 'GB',
+      protocol: 'https',
+      version: '3.35',
+      libraries: ['geometry', 'places'],
     },
   };
 

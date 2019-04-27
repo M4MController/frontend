@@ -1,5 +1,22 @@
 & {
-  @extend .col-lg-3;
-  @extend .col-md-3;
+  @extend .col-lg-12;
+  @extend .col-md-12;
   @extend .col-sm-12;
+}
+
+.ember-google-map {
+  margin: 20px 0;
+  height: 400px;
+}
+
+.ember-google-map > div {
+  position: relative !important;
+}
+
+.ember-google-map > div > div {
+  position: relative !important;
+}
+
+.ember-google-map > div > div > iframe{
+  position: relative !important;
 }
