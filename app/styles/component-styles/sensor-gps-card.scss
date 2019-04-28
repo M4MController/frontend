@@ -5,8 +5,8 @@
 }
 
 .ember-google-map {
-  margin: 20px 0;
-  height: 400px;
+  margin: $grid-step * 3 0;
+  height: $grid-step * 50;
 }
 
 .ember-google-map > div {
