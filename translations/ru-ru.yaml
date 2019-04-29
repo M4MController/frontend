@@ -1,3 +1,7 @@
+auth:
+  registration: Регистрация
+  authorization: Вход
+
 components:
   sensor-card:
     obd:

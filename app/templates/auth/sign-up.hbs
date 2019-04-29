@@ -1,8 +1,14 @@
 {{#if isLoading}}
   {{core/loader-component class="vp-height vp-width h-center v-center"}}
 {{else}}
-  {{forms/sign-up class="vp-height vp-width h-center v-center"
-                  error=sugnUpError
-                  onSignUp=(action "onSignUpAction")
-  }}
+  <div class="vp-height v-center">
+    {{forms/sign-up class="vp-width h-center"
+                    error=sugnUpError
+                    onSignUp=(action "onSignUpAction")
+    }}
+
+    {{#link-to 'auth.log-in' class="default text-center margin-top-3x"}}
+      {{t "auth.authorization"}}
+    {{/link-to}}
+  </div>
 {{/if}}

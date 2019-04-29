@@ -1,8 +1,16 @@
 {{#if isLoading}}
   {{core/loader-component class="vp-height vp-width h-center v-center"}}
 {{else}}
-  {{forms/sign-in class="vp-height vp-width h-center v-center"
-                  error=logInError
-                  onLogIn=(action "onLogInAction")
-  }}
+  <div class="vp-height v-center">
+    {{forms/sign-in class="vp-width h-center"
+                    error=logInError
+                    onLogIn=(action "onLogInAction")
+    }}
+
+    {{#if supportRegistration}}
+      {{#link-to 'auth.sign-up' class="default text-center margin-top-3x"}}
+        {{t "auth.registration"}}
+      {{/link-to}}
+    {{/if}}
+  </div>
 {{/if}}
