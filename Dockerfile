@@ -16,7 +16,6 @@ ADD ember-cli-build.js .
 ADD config ./config
 ADD app ./app
 ADD public ./public
-ADD mirage ./mirage
 ADD translations ./translations
 
 RUN npm run build -- --environment=production
