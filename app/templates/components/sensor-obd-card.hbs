@@ -8,10 +8,12 @@
     </thead>
     <tbody>
     {{#each-in sensor.value as |key value|}}
-      <tr>
-        <td>{{t (concat 'components.sensor-card.obd.' key)}}</td>
-        <td>{{value}}</td>
-      </tr>
+      {{#if (not-eq value null)}}
+        <tr>
+          <td>{{t (concat 'components.sensor-card.obd.' key)}}</td>
+          <td>{{value}}</td>
+        </tr>
+      {{/if}}
     {{/each-in}}
     </tbody>
   </table>

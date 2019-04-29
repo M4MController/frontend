@@ -1,0 +1,9 @@
+{{#g-map lat=sensor.value.lat lng=sensor.value.lon zoom=16 zoomControl=true styles=primaryMapStyle as |g|}}
+  {{g.circle lat=sensor.value.lat lng=sensor.value.lon
+             radius=10
+             fillColor="red"
+             fillOpacity=0.9
+             strokeColor="red"
+             strokeOpacity=0.8
+             strokeWeight=1}}
+{{/g-map}}

@@ -1,31 +1,10 @@
 import Ember from 'ember';
-import {action, computed} from '@ember-decorators/object';
-import {className} from '@ember-decorators/component';
+import {action} from '@ember-decorators/object';
 
 Ember.Component = class extends Ember.Component {
   getAttr(prop) {
     const attrValue = this.get(prop);
     return attrValue === undefined ? this.defaultAttrs[prop] : attrValue;
-  }
-
-  @computed('globalClassNames')
-  @className
-  get _globalClassNames() {
-    const globalClassNames = this.get('globalClassNames');
-    return globalClassNames ? globalClassNames.join(' ') : '';
-  }
-
-  @computed('localClassNames', 'styleNamespace')
-  @className
-  get _localClassNames() {
-    const localClassNames = this.get('localClassNames');
-    if (localClassNames) {
-      const styleNamespace = this.get('styleNamespace');
-      return localClassNames.map((x) => `${styleNamespace}${x}`).
-        join(' ');
-    } else {
-      return '';
-    }
   }
 
   @action
