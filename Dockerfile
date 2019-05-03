@@ -8,6 +8,7 @@ WORKDIR /application
 
 # install dependencies
 ADD package.json .
+ADD package-lock.json .
 RUN npm install
 
 # build the app
@@ -17,6 +18,8 @@ ADD config ./config
 ADD app ./app
 ADD public ./public
 ADD translations ./translations
+
+ARG GOOGLE_API_MAPS_KEY
 
 RUN npm run build -- --environment=production
 
