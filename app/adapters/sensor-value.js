@@ -1,6 +1,7 @@
 import ApplicationAdapter from './application';
+import {IS_LITE_MODE} from '../constants';
 
-export default class extends ApplicationAdapter {
+const DefaultSensorValueAdapter = class extends ApplicationAdapter {
   _queryDataPeriod(sensorId, from, to) {
     if (from) {
       // we are living in Moscow
@@ -33,4 +34,16 @@ export default class extends ApplicationAdapter {
       return this._queryDataPeriod(query.sensorId, query.from, query.to);
     }
   }
-}
+};
+
+const LiteSensorValueAdapter = class extends ApplicationAdapter {
+  async query(store, type, query) {
+    const response = await this.ajax(`/sensor/${query.sensorId}/data`, 'GET', {field: query.field});
+    return {
+      sensorId: query.sensorId,
+      response,
+    };
+  }
+};
+
+export default IS_LITE_MODE ? LiteSensorValueAdapter : DefaultSensorValueAdapter;

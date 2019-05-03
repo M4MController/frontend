@@ -1,5 +1,8 @@
 <div class="row">
-  {{page-caption text=model.name icon=(sensor-icon-name model) class="col-12"}}
+  {{page-caption class="col-12"
+                 text=(if field (t (concat "obd." field) model))
+                 icon=(sensor-icon-name model)
+  }}
 </div>
 <div class="row cardStyle block">
   <!--<h2 class="text-caption text-center">График потребления</h2>-->
