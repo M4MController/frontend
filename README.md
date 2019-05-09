@@ -1,4 +1,4 @@
-# M4M Web App [![devDependencies Status](https://david-dm.org/m4mcontroller/frontend/dev-status.svg)](https://david-dm.org/m4mcontroller/frontend?type=dev)
+# M4M Web App [![devDependencies Status](https://david-dm.org/m4mcontroller/frontend/dev-status.svg)](https://david-dm.org/m4mcontroller/frontend?type=dev) [![Greenkeeper badge](https://badges.greenkeeper.io/M4MController/frontend.svg)](https://greenkeeper.io/)
 
 ## Running the app
 At first clone the repository:
