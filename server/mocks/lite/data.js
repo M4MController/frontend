@@ -10,7 +10,7 @@ const movePoint = function(point) {
 
 module.exports = function(app) {
   const express = require('express');
-  let apiRouter = express.Router();
+  const apiRouter = express.Router();
 
   apiRouter.get('/data', function(req, res) {
     // imitate car driving

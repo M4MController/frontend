@@ -1,8 +1,8 @@
 export default function(value,
-  {
-    commas = true,
-    fractionDigits = 2,
-  } = {},
+    {
+      commas = true,
+      fractionDigits = 2,
+    } = {},
 ) {
   if (!value) return '0';
   const [integer, fraction] = value.toString().split('.');

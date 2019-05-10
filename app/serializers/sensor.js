@@ -30,7 +30,7 @@ export default class extends ApplicationSerializer.extend(DS.EmbeddedRecordsMixi
     };
 
     return super.normalize(modelClass,
-      Object.assign(resourceHash, additional),
+        Object.assign(resourceHash, additional),
     );
   }
 }

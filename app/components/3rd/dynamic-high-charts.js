@@ -11,27 +11,27 @@ export default class extends EmberHighChartsComponent {
 
     // super.didReceiveAttrs(...args);
     // return;
-    let {content, chart, mode} = getProperties(this, 'content', 'chart', 'mode');
+    const {content, chart, mode} = getProperties(this, 'content', 'chart', 'mode');
 
     if (!content || !chart) {
       return;
     }
 
-    let isStockChart = mode === 'StockChart';
+    const isStockChart = mode === 'StockChart';
 
     // create maps to make series data easier to work with
-    let contentSeriesMap = getSeriesMap(content);
-    let chartSeriesMap = getSeriesMap(chart.series);
+    const contentSeriesMap = getSeriesMap(content);
+    const chartSeriesMap = getSeriesMap(chart.series);
 
     // remove and update current series
-    let chartSeriesToRemove = [];
+    const chartSeriesToRemove = [];
 
     chart.series.forEach((series) => {
       if (isStockChart && series.name.match(/^Navigator/)) {
         return;
       }
 
-      let contentSeries = contentSeriesMap[series.name];
+      const contentSeries = contentSeriesMap[series.name];
 
       if (!contentSeries) {
         return chartSeriesToRemove.push(series);

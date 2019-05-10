@@ -10,7 +10,7 @@ export default class extends Component {
   @computed('object.sensors.@each.status')
   get status() {
     let ok = false;
-    for (let sensor of this.get('object.sensors')) {
+    for (const sensor of this.get('object.sensors')) {
       if (sensor.get('status')) {
         ok = true;
       } else {

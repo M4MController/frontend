@@ -8,8 +8,8 @@ import {
 
 const calculateSumForSensors = function(this_, property) {
   let result = 0;
-  for (let controller of this_.get('controllers').toArray()) {
-    for (let sensor of controller.get('sensors').toArray()) {
+  for (const controller of this_.get('controllers').toArray()) {
+    for (const sensor of controller.get('sensors').toArray()) {
       result += +sensor.get(property);
     }
   }

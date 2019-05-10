@@ -13,7 +13,7 @@ const serializeDate = function(dateString) {
 };
 
 const generateId = function(data) {
-  return `${data['hash']}${data['date']}${data['sensor_id']}`
+  return `${data['hash']}${data['date']}${data['sensor_id']}`;
 };
 
 const DefaultSensorValueSerializar = class extends ApplicationSerializer {

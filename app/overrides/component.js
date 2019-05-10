@@ -24,6 +24,6 @@ Ember.Component = class extends Ember.Component {
   @action
   transitionToRoute(route, ...args) {
     this.get('router').
-      transitionTo(route, ...(args.slice(0, args.length - 1)));
+        transitionTo(route, ...(args.slice(0, args.length - 1)));
   }
 };

@@ -22,15 +22,15 @@ export default class extends Service {
     const contentType = method === 'POST' ? 'application/json' : undefined;
 
     return this.get('ajax').request(
-      this.buildUrl(
-        path,
+        this.buildUrl(
+            path,
         this.get('sendToken') ? {token: this.get('auth.token')} : undefined,
-      ),
-      Object.assign({
-        method: method,
-        data,
-        contentType,
-      }, options)).then((response) => {
+        ),
+        Object.assign({
+          method: method,
+          data,
+          contentType,
+        }, options)).then((response) => {
       this.set('auth.isAuthorized', true);
       return response;
     }).catch((e) => {
