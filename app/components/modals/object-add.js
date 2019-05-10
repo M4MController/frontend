@@ -1,8 +1,6 @@
 import Component from '@ember/component';
-import {
-  action,
-} from '@ember-decorators/object';
-import {service} from '@ember-decorators/service';
+import {action} from '@ember/object';
+import {inject as service} from '@ember-decorators/service';
 import ModalMixin from '../../mixins/modal';
 import {closeModal} from '../../helpers/close-modal';
 

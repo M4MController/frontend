@@ -1,6 +1,6 @@
 import Service from '@ember/service';
 import {sendEvent} from '@ember/object/events';
-import {service} from '@ember-decorators/service';
+import {inject as service} from '@ember-decorators/service';
 
 export default class extends Service {
   @service ajax;

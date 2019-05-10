@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {action} from '@ember-decorators/object';
+import {action} from '@ember/object';
 
 Ember.Controller = class extends Ember.Controller {
   @action

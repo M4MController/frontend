@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import ModalMixin from 'm4m/mixins/modal';
-import {action} from '@ember-decorators/object';
+import {action} from '@ember/object';
 import {closeModal} from '../../helpers/close-modal';
 
 export default class extends Component.extend(ModalMixin, {}) {

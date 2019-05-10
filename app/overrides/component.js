@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {action} from '@ember-decorators/object';
+import {action} from '@ember/object';
 
 Ember.Component = class extends Ember.Component {
   getAttr(prop) {
@@ -23,7 +23,6 @@ Ember.Component = class extends Ember.Component {
 
   @action
   transitionToRoute(route, ...args) {
-    this.get('router').
-        transitionTo(route, ...(args.slice(0, args.length - 1)));
+    this.get('router').transitionTo(route, ...(args.slice(0, args.length - 1)));
   }
 };
