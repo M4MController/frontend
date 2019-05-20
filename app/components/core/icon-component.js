@@ -3,7 +3,7 @@ import {
   attribute,
   tagName,
 } from '@ember-decorators/component';
-import {computed} from '@ember-decorators/object';
+import {computed} from '@ember/object';
 
 @tagName('img')
 export default class extends Component {

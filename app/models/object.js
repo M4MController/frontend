@@ -1,10 +1,11 @@
 import DS from 'ember-data';
-import {computed} from '@ember-decorators/object';
-import {
+import {computed} from '@ember/object';
+
+const {
   attr,
   belongsTo,
   hasMany,
-} from '@ember-decorators/data';
+} = DS;
 
 const calculateSumForSensors = function(this_, property) {
   let result = 0;
@@ -17,9 +18,9 @@ const calculateSumForSensors = function(this_, property) {
 };
 
 export default class ObjectModel extends DS.Model {
-  @attr name;
-  @attr address;
-  @belongsTo({async: false}) user;
+  @attr('string') name;
+  @attr('string') address;
+  @belongsTo('user', {async: false}) user;
   @hasMany('controller', {async: false}) controllers;
 
   @computed('sensors')

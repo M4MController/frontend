@@ -1,31 +1,32 @@
 import DS from 'ember-data';
-import {
+import {computed} from '@ember/object';
+
+const {
   attr,
   hasMany,
-} from '@ember-decorators/data';
-import {computed} from '@ember-decorators/object';
+} = DS;
 
 export default class UserModel extends DS.Model {
-  @attr firstName;
-  @attr lastName;
-  @attr middleName;
-  @attr dateReceiving;
-  @attr issuedBy;
-  @attr divisionNumber;
-  @attr registrationAddress;
-  @attr mailingAddress;
-  @attr birthday;
-  @attr sex;
-  @attr homePhone;
-  @attr mobilePhone;
-  @attr citizenship;
-  @attr email;
-  @hasMany('object', {async: false}) objects;
+  @attr('string') firstName;
+  @attr('string') lastName;
+  @attr('string') middleName;
+  @attr('string') dateReceiving;
+  @attr('string') issuedBy;
+  @attr('string') divisionNumber;
+  @attr('string') registrationAddress;
+  @attr('string') mailingAddress;
+  @attr('string') birthday;
+  @attr('string') sex;
+  @attr('string') homePhone;
+  @attr('string') mobilePhone;
+  @attr('string') citizenship;
+  @attr('string') email;
+  @hasMany('object') objects;
 
   @computed('firstName', 'lastName')
   get fullName() {
     return `${this.get('firstName')} ${this.get('lastName')} ${this.get('middleName')}`;
   }
 
-  @hasMany('service-company', {async: false}) companies;
+  @hasMany('service-company') companies;
 }

@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import {inject as service} from '@ember-decorators/service';
+import {inject as service} from '@ember/service';
 
 import {IS_LITE_MODE} from '../constants';
 

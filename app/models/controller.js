@@ -1,18 +1,19 @@
 import DS from 'ember-data';
-import {
+
+const {
   attr,
   belongsTo,
   hasMany,
-} from '@ember-decorators/data';
+} = DS;
 
 export default class ControllerModel extends DS.Model {
-  @attr name;
-  @attr macAddress;
-  @attr deactivationDate;
-  @attr controllerType;
-  @attr activationDate;
-  @attr status;
-  @attr meta;
+  @attr('string') name;
+  @attr('string') macAddress;
+  @attr('string') deactivationDate;
+  @attr('string') controllerType;
+  @attr('string') activationDate;
+  @attr('string') status;
+  @attr('string') meta;
   @hasMany('sensor', {async: false}) sensors;
-  @belongsTo({async: false}) object;
+  @belongsTo('object', {async: false}) object;
 }

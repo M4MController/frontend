@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import {alias} from '@ember-decorators/object/computed';
+import {alias} from '@ember/object/computed';
 import {className, tagName} from '@ember-decorators/component';
 
 @tagName('span')

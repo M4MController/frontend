@@ -1,12 +1,12 @@
 import DS from 'ember-data';
-import {
+const {
   attr,
   belongsTo,
-} from '@ember-decorators/data';
+} = DS;
 
 export default class extends DS.Model {
-  @attr('number') value;
+  @attr('raw') value;
   @attr('date') date;
-  @attr hash;
-  @belongsTo({async: false}) sensor;
+  @attr('string') hash;
+  @belongsTo('sensor', {async: false}) sensor;
 }

@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
-import {computed} from '@ember-decorators/object';
-import {service} from '@ember-decorators/service';
+import {computed} from '@ember/object';
+import {inject as service} from '@ember/service';
 import {measurement} from '../../helpers/measurement';
 
 export default class extends Controller {

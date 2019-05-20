@@ -2,6 +2,8 @@ import Component from '@ember/component';
 import {action} from '@ember/object';
 import {
   computed,
+} from '@ember/object';
+import {
   on,
 } from '@ember-decorators/object';
 
