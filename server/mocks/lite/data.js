@@ -27,7 +27,7 @@ module.exports = function(app) {
       {
         'id': 2,
         'name': 'OBD',
-        'last_value': JSON.stringify({'some': 1, 'values': 2}),
+        'last_value': JSON.stringify({'speed': 1, 'engine_load': 2}),
         'status': 1,
         'type': 0,
       },

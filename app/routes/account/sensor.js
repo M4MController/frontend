@@ -13,9 +13,9 @@ export default class extends Route {
     this.set('pageTitle', this.get('model.name'));
   }
 
-  model({'sensor_id': sensorId}) {
+  model({'sensor_id': sensorId, field}) {
     this.set('sensorId', sensorId);
-    this.get('store').query('sensor-value', {sensorId});
+    this.get('store').query('sensor-value', {sensorId, field});
     return this.get('store').peekRecord('sensor', sensorId);
   }
 
@@ -31,7 +31,6 @@ export default class extends Route {
       const sensorId = this.get('sensorId');
       const sensor = this.get('store').peekRecord('sensor', sensorId);
 
-      // console.log('aa')
       const from = new Date(Math.max(...sensor.get('values').mapBy('date').toArray()));
       (await this.get('store').query('sensor-value', {sensorId, from})).forEach((value) => {
         this.get('store').pushPayload({

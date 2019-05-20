@@ -3,3 +3,9 @@
   @extend .col-md-12;
   @extend .col-sm-12;
 }
+
+.obd-row {
+  &.clickable:hover {
+    background-color: #eeeeee;
+  }
+}

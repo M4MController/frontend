@@ -1,18 +1,33 @@
 import Controller from '@ember/controller';
 import {computed} from '@ember-decorators/object';
+import {service} from '@ember-decorators/service';
 import {measurement} from '../../helpers/measurement';
 
 export default class extends Controller {
+  @service intl;
+
+  queryParams = [
+    {
+      field: {
+        type: 'string',
+      },
+    },
+  ];
+
   @computed('model.values.@each')
   get sensorData() {
-    return this.get('model.values').map((reading) =>
-      [Math.round(reading.get('date').getTime()), reading.get('value')],
-    ).sort((a, b) => a[0] - b[0]);
+    let mapFunc;
+    if (this.get('field')) {
+      mapFunc = (reading) => [Math.round(reading.get('date').getTime()), reading.get(`value.${this.get('field')}`)];
+    } else {
+      mapFunc = (reading) => [Math.round(reading.get('date').getTime()), reading.get('value')];
+    }
+    return this.get('model.values').map(mapFunc).sort((a, b) => a[0] - b[0]);
   }
 
   @computed('model.name', 'model.unitName')
   get chartOptions() {
-    const name = this.get('model.name');
+    const name = this.get('field') ? this.intl.t(`obd.${this.get('field')}`) : this.get('model.name');
     const unitName = this.get('model.unitName');
     return {
       rangeSelector: {
