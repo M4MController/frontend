@@ -25,9 +25,9 @@ const calculateTotal = function(value, type) {
 export default class extends DS.Model {
   @attr('string') name;
 
-  @attr('string') overpayment;
-  @attr('string') charge;
-  @attr('string') forPayment;
+  @attr('number') overpayment;
+  @attr('number') charge;
+  @attr('number') forPayment;
 
   @attr('raw') lastValue;
 
@@ -35,12 +35,12 @@ export default class extends DS.Model {
   @attr('string') valuePrevYear;
   @attr('string') valuePrevYearAverage;
 
-  @attr('string') status;
+  @attr('number') status;
   @attr('string') company;
   @attr('string') unitName;
-  @attr('string') type;
-  @attr('string') activationDate;
-  @attr('string') deactivationDate;
+  @attr('number') type;
+  @attr('date') activationDate;
+  @attr('date') deactivationDate;
   @belongsTo('service-company', {async: false}) serviceCompany;
   @belongsTo('controller', {async: false}) controller;
   @hasMany('sensor-value', {async: false}) values;

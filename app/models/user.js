@@ -15,8 +15,8 @@ export default class UserModel extends DS.Model {
   @attr('string') divisionNumber;
   @attr('string') registrationAddress;
   @attr('string') mailingAddress;
-  @attr('string') birthday;
-  @attr('string') sex;
+  @attr('date') birthday;
+  @attr('number') sex;
   @attr('string') homePhone;
   @attr('string') mobilePhone;
   @attr('string') citizenship;
