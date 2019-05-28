@@ -1,0 +1,27 @@
+<table>
+  <thead>
+  <tr>
+    {{#each columns as |column|}}
+      <th onclick={{action onHeadClick column}}>
+        {{column.label}}
+        {{#if (eq sortColumn column)}}
+          {{#if sortAsc}}
+            <span class="text-small text-muted">стрелка вверх</span>
+          {{else}}
+            <span class="text-small text-muted">галка вниз</span>
+          {{/if}}
+        {{/if}}
+      </th>
+    {{/each}}
+  </tr>
+  </thead>
+  <tbody>
+  {{#each sortedData as |row|}}
+    <tr onclick={{attrs.onRowClick}}>
+      {{#each columns as |column|}}
+        <td>{{get row column.path}}</td>
+      {{/each}}
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
