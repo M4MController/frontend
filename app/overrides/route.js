@@ -1,18 +1,17 @@
 import Ember from 'ember';
-import Route from '@ember/routing/route';
 import {run} from '@ember/runloop';
 import {observes} from '@ember-decorators/object';
 
-Route.reopen({
-  activate(...args) {
-    this._super(...args);
+Ember.Route = class extends Ember.Route {
+  constructor(...args) {
+    super(...args);
     this.changePageTitle(this.get('pageTitle'));
-  },
+  }
 
   @observes('pageTitle')
   _onPageTitleChange() {
     this.changePageTitle(this.get('pageTitle'));
-  },
+  }
 
   changePageTitle(pageTitle) {
     pageTitle = pageTitle || 'M4M';
@@ -20,5 +19,5 @@ Route.reopen({
     run(() => {
       Ember.$(document).attr('title', pageTitle);
     });
-  },
-});
+  }
+};

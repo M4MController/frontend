@@ -1,10 +1,8 @@
 import Component from '@ember/component';
-import {
-  action,
-} from '@ember-decorators/object';
+import {action} from '@ember/object';
 import ModalMixin from '../../mixins/modal';
 import {closeModal} from '../../helpers/close-modal';
-import {service} from '@ember-decorators/service';
+import {inject as service} from '@ember/service';
 
 export default class extends Component.extend(ModalMixin, {}) {
   @service store;

@@ -1,8 +1,8 @@
 import Component from '@ember/component';
+import {action} from '@ember/object';
 import {
-  action,
   computed,
-} from '@ember-decorators/object';
+} from '@ember/object';
 
 const MIN_PASSWORD_LENGTH = 4;
 

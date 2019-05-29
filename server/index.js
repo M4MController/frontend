@@ -1,3 +1,6 @@
+/* eslint-disable no-case-declarations */
+/* eslint-disable no-throw-literal */
+
 'use strict';
 
 module.exports = function(app) {
@@ -26,5 +29,5 @@ module.exports = function(app) {
   const morgan = require('morgan');
   app.use(morgan('dev'));
 
-  modules.forEach(route => route(app));
+  modules.forEach((route) => route(app));
 };

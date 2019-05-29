@@ -8,7 +8,7 @@ const target = config.APP.backend.auth;
 module.exports = function(app) {
   // For options, see:
   // https://github.com/nodejitsu/node-http-proxy
-  let proxy = require('http-proxy').createProxyServer({
+  const proxy = require('http-proxy').createProxyServer({
     changeOrigin: true,
     target,
   });

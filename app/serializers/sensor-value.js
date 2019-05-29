@@ -13,10 +13,10 @@ const serializeDate = function(dateString) {
 };
 
 const generateId = function(data) {
-  return `${data['hash']}${data['date']}${data['sensor_id']}`
+  return `${data['hash']}${data['date']}${data['sensor_id']}`;
 };
 
-const DefaultSensorValueSerializar = class extends ApplicationSerializer {
+const DefaultSensorValueSerializer = class extends ApplicationSerializer {
   attrs = {
     value: 'value',
     time: 'date',
@@ -69,4 +69,4 @@ const LiteSensorValueSerializer = class extends ApplicationSerializer {
   }
 };
 
-export default IS_LITE_MODE ? LiteSensorValueSerializer : DefaultSensorValueSerializar;
+export default IS_LITE_MODE ? LiteSensorValueSerializer : DefaultSensorValueSerializer;

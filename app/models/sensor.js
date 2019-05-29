@@ -1,10 +1,11 @@
 import DS from 'ember-data';
-import {
+import {computed} from '@ember/object';
+
+const {
   attr,
   belongsTo,
   hasMany,
-} from '@ember-decorators/data';
-import {computed} from '@ember-decorators/object';
+} = DS;
 
 const calculateTotal = function(value, type) {
   switch (+type) {
@@ -22,26 +23,26 @@ const calculateTotal = function(value, type) {
 };
 
 export default class extends DS.Model {
-  @attr name;
+  @attr('string') name;
 
-  @attr overpayment;
-  @attr charge;
-  @attr forPayment;
+  @attr('number') overpayment;
+  @attr('number') charge;
+  @attr('number') forPayment;
 
-  @attr lastValue;
+  @attr('raw') lastValue;
 
-  @attr valueMonth;
-  @attr valuePrevYear;
-  @attr valuePrevYearAverage;
+  @attr('string') valueMonth;
+  @attr('string') valuePrevYear;
+  @attr('string') valuePrevYearAverage;
 
-  @attr status;
-  @attr company;
-  @attr unitName;
-  @attr type;
-  @attr activationDate;
-  @attr deactivationDate;
+  @attr('number') status;
+  @attr('string') company;
+  @attr('string') unitName;
+  @attr('number') type;
+  @attr('date') activationDate;
+  @attr('date') deactivationDate;
   @belongsTo('service-company', {async: false}) serviceCompany;
-  @belongsTo({async: false}) controller;
+  @belongsTo('controller', {async: false}) controller;
   @hasMany('sensor-value', {async: false}) values;
 
   @computed('lastValue', 'values.lastObject.value')

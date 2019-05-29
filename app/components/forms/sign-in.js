@@ -1,10 +1,11 @@
 import Component from '@ember/component';
+import {action} from '@ember/object';
 import {
-  action,
   computed,
-} from '@ember-decorators/object';
+} from '@ember/object';
 
 const minPasswordLength = 4;
+// eslint-disable-next-line max-len
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default class extends Component {

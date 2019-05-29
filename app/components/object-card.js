@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import {computed} from '@ember-decorators/object';
+import {computed} from '@ember/object';
 
 export default class extends Component {
   @computed('object.sensors')
@@ -10,7 +10,7 @@ export default class extends Component {
   @computed('object.sensors.@each.status')
   get status() {
     let ok = false;
-    for (let sensor of this.get('object.sensors')) {
+    for (const sensor of this.get('object.sensors')) {
       if (sensor.get('status')) {
         ok = true;
       } else {

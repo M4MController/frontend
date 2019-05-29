@@ -1,10 +1,10 @@
 import Component from '@ember/component';
-import {computed} from '@ember-decorators/object';
+import {computed} from '@ember/object';
 
 export default class extends Component {
-  @computed('attrs.loading')
+  @computed('loading')
   get isLoading() {
-    const loading = this.get('attrs.loading');
+    const loading = this.get('loading');
     return loading === undefined ? true : loading;
   }
 }

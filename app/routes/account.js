@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import {service} from '@ember-decorators/service';
+import {inject as service} from '@ember/service';
 import {addListener} from '@ember/object/events';
 import {cancel, later} from '@ember/runloop';
 import {on} from '@ember-decorators/object';

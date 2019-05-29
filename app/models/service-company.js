@@ -1,10 +1,14 @@
 import DS from 'ember-data';
-import {attr, hasMany} from '@ember-decorators/data';
+
+const {
+  attr,
+  hasMany,
+} = DS;
 
 export default class extends DS.Model {
-  @attr address;
-  @attr bankAccount;
-  @attr name;
-  @attr phone;
-  @hasMany({async: false}) sensors;
+  @attr('string') address;
+  @attr('string') bankAccount;
+  @attr('string') name;
+  @attr('string') phone;
+  @hasMany('sensor', {async: false}) sensors;
 }

@@ -1,10 +1,11 @@
 import Component from '@ember/component';
+import {action} from '@ember/object';
 import {
-  action,
   computed,
-} from '@ember-decorators/object';
+} from '@ember/object';
 
 const minPasswordLength = 4;
+// eslint-disable-next-line max-len
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default class extends Component {
@@ -72,7 +73,10 @@ export default class extends Component {
 
   @computed('usernameError', 'fioError', 'passwordError', 'passwordRepeatError')
   get isValid() {
-    return !this.get('usernameError') && !this.get('fioError') && !this.get('passwordError') && !this.get('passwordRepeatError');
+    return !this.get('usernameError') &&
+      !this.get('fioError') &&
+      !this.get('passwordError') &&
+      !this.get('passwordRepeatError');
   }
 
   @action
