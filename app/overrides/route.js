@@ -17,7 +17,7 @@ Ember.Route = class extends Ember.Route {
     pageTitle = pageTitle || 'M4M';
 
     run(() => {
-      Ember.$(document).attr('title', pageTitle);
+      document.title = pageTitle;
     });
   }
 };

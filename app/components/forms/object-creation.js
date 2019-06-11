@@ -6,6 +6,7 @@ import {
 import {
   on,
 } from '@ember-decorators/object';
+import {run} from '@ember/runloop';
 
 export default class extends Component {
   name = '';
@@ -22,7 +23,9 @@ export default class extends Component {
 
   @on('didRender')
   focusOnInput() {
-    this.$('.input').focus();
+    run(() => {
+      this.element.querySelector('.input').focus();
+    });
   }
 
   @action
