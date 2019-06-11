@@ -9,7 +9,8 @@ const urls = {
 export default class extends Route {
   templateName = 'application-loading';
 
-  beforeModel({queryParams: {to}}) {
+  beforeModel(transition) {
+    const {to} = transition.to.queryParams;
     const url = urls[to];
     if (url) {
       window.location = urls[to] || '/';
