@@ -1,4 +1,4 @@
-# M4M Web App [![Greenkeeper badge](https://badges.greenkeeper.io/M4MController/frontend.svg)](https://greenkeeper.io/)
+# M4M Web App [![Build Status](https://travis-ci.org/M4MController/frontend.svg?branch=master)](https://travis-ci.org/M4MController/frontend) [![Greenkeeper badge](https://badges.greenkeeper.io/M4MController/frontend.svg)](https://greenkeeper.io/)
 
 ## Running the app
 At first clone the repository:
