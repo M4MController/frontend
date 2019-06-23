@@ -2,6 +2,8 @@ import config from './config/environment';
 
 const appConfig = config.APP;
 
+export const IS_DEV = appConfig.environment === 'development';
+
 export const IS_LITE_MODE = appConfig.isLiteMode || !appConfig.backend;
 
 export const BACKEND_API = function() {
