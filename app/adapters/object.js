@@ -20,29 +20,8 @@ const DefaultObjectAdapter = class extends ApplicationAdapter {
 };
 
 const LiteObjectAdapter = class extends ApplicationAdapter {
-  async findAll() {
-    const sensors = await this.ajax('/data');
-
-    const OBJECT_ID = 3;
-    const CONTROLLER_ID = 1;
-
-    const objects = {
-      'id': OBJECT_ID,
-      'name': 'Mercedes Benz C 180',
-      'user_id': 1,
-      'address': 'МКАД 75км',
-    };
-    const controllers = {
-      'id': 1,
-      'mac': '00:00:00:00:00:02',
-      'meta': '',
-      'name': 'M4M controller for a car',
-      'object_id': OBJECT_ID,
-    };
-
-    sensors.forEach((sensor) => sensor['controller_id'] = CONTROLLER_ID);
-
-    return {objects, controllers, sensors};
+  buildUrlFindAll() {
+    return '/objects';
   }
 };
 
