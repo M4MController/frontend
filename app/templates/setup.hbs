@@ -1,0 +1,8 @@
+{{#if isLoading}}
+  {{core/loader-component class="vp-height vp-width h-center v-center"}}
+{{else}}
+  {{forms/setup class="vp-height vp-width h-center v-center"
+                  onSetupLocal=(action "onSetupLocalAction")
+                  onSetupM4M=(action "onSetupM4MAction")
+  }}
+{{/if}}
