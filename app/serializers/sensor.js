@@ -16,13 +16,15 @@ export default class extends ApplicationSerializer.extend(DS.EmbeddedRecordsMixi
 
   normalize(modelClass, resourceHash) {
     const type = get(resourceHash, 'characteristics.sensor_type');
+
+    const rawLastValue = get(resourceHash, 'last_value');
     const additional = {
       type,
       charge: get(resourceHash, 'payments.charge'),
       overpayment: get(resourceHash, 'payments.overpayment'),
       forPayment: get(resourceHash, 'payments.for_payment'),
       unitName: get(resourceHash, 'characteristics.unit_of_measurement'),
-      lastValue: JSON.parse(get(resourceHash, 'last_value')),
+      lastValue: typeof rawLastValue === 'string' ? JSON.parse(rawLastValue): rawLastValue,
       valueMonth: get(resourceHash, 'stats.month'),
       valuePrevYear: get(resourceHash, 'stats.prev_month'),
       valuePrevYearAverage: get(resourceHash, 'stats.prev_year'),
