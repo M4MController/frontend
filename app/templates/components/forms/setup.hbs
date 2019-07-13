@@ -1,0 +1,15 @@
+{{#link-to 'index'}}
+  {{core/image-component name="logo-black" class="logo"}}
+{{/link-to}}
+<div class="popupForm">
+  {{core/form-input
+    name="Подключить устройство: 19:11:531:11:99"
+    value=hello
+  }}
+    <button class="btn btnStyle btnStyle_сolor popupEnterBtn btn-setup" onClick={{action "onSetupLocalAction"}}>
+      Использовать локально
+    </button>
+    <button class="btn btnStyle btnStyle_сolor popupEnterBtn btn-setup" onClick={{action "onSetupM4MAction"}}>
+      Перейти в облако M4M
+    </button>
+</div>
