@@ -22,6 +22,7 @@ module.exports = function(environment) {
     },
 
     'APP': {
+      environment,
       isLiteMode: LITE_MODE,
       isUsingProxy: USE_PROXY,
       backend: {
