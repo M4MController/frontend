@@ -21,7 +21,7 @@
   </thead>
   <tbody>
   {{#each sortedData as |row|}}
-    <tr onclick={{attrs.onRowClick}}>
+    <tr class="{{if attrs.onRowClick "clickable"}}" onclick={{attrs.onRowClick}}>
       {{#each columns as |column|}}
         <td>{{get row column.path}}</td>
       {{/each}}
