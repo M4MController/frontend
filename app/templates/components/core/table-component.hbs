@@ -1,4 +1,4 @@
-<table>
+<table class="table">
   <thead>
   <tr>
     {{#each columns as |column|}}
@@ -6,9 +6,23 @@
         {{column.label}}
         {{#if (eq sortColumn column)}}
           {{#if sortAsc}}
-            <span class="text-small text-muted">стрелка вверх</span>
+            <span class="text-small text-muted arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                   id="Capa_1" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 533.333 533.333"
+                   style="enable-background:new 0 0 533.333 533.333;" xml:space="preserve">
+                <g>
+                  <path d="M266.667,0L0,266.667h166.667v266.665l200,0.001V266.667h166.667L266.667,0z"/>
+                </g>
+              </svg>
+            </span>
           {{else}}
-            <span class="text-small text-muted">галка вниз</span>
+            <span class="text-small text-muted arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                  <path d="M256,512l256-256H352V0.001L160,0v256H0L256,512z"/>
+                </g>
+              </svg>
+            </span>
           {{/if}}
         {{/if}}
       </th>
