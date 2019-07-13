@@ -2,6 +2,13 @@ auth:
   registration: Регистрация
   authorization: Вход
 
+car:
+  owner_name: ФИО владельца
+  owner_phone: Телефон
+  status: Состояние
+  model: Модель автомобиля
+
+
 components:
   sensor-card:
     column_1: Показание

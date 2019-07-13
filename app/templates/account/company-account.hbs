@@ -2,48 +2,26 @@
   {{page-caption text=model.company.name class="col-12"}}
 </div>
 <div class="row cardStyle block">
-  <!--<h2 class="text-caption text-center">График потребления</h2>-->
-
-  <table class="table text-default">
-    <thead>
-    <tr>
-      <th>ФИО владельца</th>
-      <th>Модель ТС</th>
-      <th>Состояние ТС</th>
-      <th>Телефон владельца</th>
-    </tr>
-    </thead>
-    <tbody>
-    {{#link-to 'account.subject' model.sensors.firstObject.controller.object.id tagName="tr" class="clickable"}}
-      <td>Асриян Эдуард Арменакович</td>
-      <td>Porshe 911</td>
-      <td>Отличное</td>
-      <td>8 (999) 999-99-99</td>
-    {{/link-to}}
-    {{#link-to 'account.subject' model.sensors.firstObject.controller.object.id tagName="tr" class="clickable"}}
-      <td>Асриян Эдуард Арменакович</td>
-      <td>Porshe 911</td>
-      <td>Отличное</td>
-      <td>8 (999) 999-99-99</td>
-    {{/link-to}}
-    {{#link-to 'account.subject' model.sensors.firstObject.controller.object.id tagName="tr" class="clickable"}}
-      <td>Асриян Эдуард Арменакович</td>
-      <td>Porshe 911</td>
-      <td>Отличное</td>
-      <td>8 (999) 999-99-99</td>
-    {{/link-to}}
-    {{#link-to 'account.subject' model.sensors.firstObject.controller.object.id tagName="tr" class="clickable"}}
-      <td>Асриян Эдуард Арменакович</td>
-      <td>Porshe 911</td>
-      <td>Отличное</td>
-      <td>8 (999) 999-99-99</td>
-    {{/link-to}}
-    {{#link-to 'account.subject' model.sensors.firstObject.controller.object.id tagName="tr" class="clickable"}}
-      <td>Асриян Эдуард Арменакович</td>
-      <td>Porshe 911</td>
-      <td>Отличное</td>
-      <td>8 (999) 999-99-99</td>
-    {{/link-to}}
-    </tbody>
-  </table>
+  {{core/table-component
+    data=model.clients
+    columns=(array
+      (hash
+        label=(t "car.owner_name")
+        path="ownerName"
+      )
+      (hash
+        label=(t "car.model")
+        path="model"
+      )
+      (hash
+        label=(t "car.status")
+        path="status"
+      )
+      (hash
+        label=(t "car.owner_phone")
+        path="ownerPhone"
+      )
+    )
+    onRowClick=(action "onCarClick")
+  }}
 </div>

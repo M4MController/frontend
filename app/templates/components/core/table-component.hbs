@@ -1,0 +1,31 @@
+<table class="table">
+  <thead>
+  <tr>
+    {{#each columns as |column|}}
+      <th onclick={{action onHeadClick column}}>
+        {{column.label}}
+        {{#if (eq sortColumn column)}}
+          {{#if sortAsc}}
+            <span class="text-small text-muted arrow">
+              {{core/icon-component name="up-arrow"}}
+            </span>
+          {{else}}
+            <span class="text-small text-muted arrow">
+              {{core/icon-component name="down-arrow"}}
+            </span>
+          {{/if}}
+        {{/if}}
+      </th>
+    {{/each}}
+  </tr>
+  </thead>
+  <tbody>
+  {{#each sortedData as |row|}}
+    <tr class="{{if attrs.onRowClick "clickable"}}" onclick={{attrs.onRowClick}}>
+      {{#each columns as |column|}}
+        <td>{{get row column.path}}</td>
+      {{/each}}
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
