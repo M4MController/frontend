@@ -12,10 +12,11 @@ export default class extends Route {
 
     const result = this.get('store').peekRecord('object', objectId);
 
-    // todo: изменить на gps после того, как на бекенде будет разделение на типы сенсоров
-    this.get('store').peekAll('sensor').filterBy('type', 0).forEach((sensor) => {
-      this.get('store').query('sensor-value', {sensorId: sensor.get('id'), limit: 1});
-    });
+    result.get('sensors').
+        filter((sensor) => sensor.get('typeName') === 'gps' || sensor.get('typeName') === 'obd').
+        forEach((sensor) => {
+          this.get('store').query('sensor-value', {sensorId: sensor.get('id'), limit: 1});
+        });
 
     return result;
   }

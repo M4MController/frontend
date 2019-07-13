@@ -76,7 +76,7 @@ export default class extends DS.Model {
     return calculateTotal(this.get('valueForecast'), this.get('type'));
   }
 
-  @computed('type', 'value.lat', 'value.lon')
+  @computed('type')
   get typeName() {
     switch (this.get('type')) {
       case 1:
@@ -84,10 +84,10 @@ export default class extends DS.Model {
       case 3:
       case 4:
         return 'hcs';
-      case 0:
-      case undefined:
-        // todo: починить после https://github.com/M4MController/backend/issues/37
-        return this.get('value.lon') && this.get('value.lat') ? 'gps' : 'obd';
+      case 5:
+        return 'obd';
+      case 6:
+        return 'gps';
     }
     return undefined;
   }
