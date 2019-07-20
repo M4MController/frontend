@@ -13,7 +13,7 @@ const serializeDate = function(dateString) {
 };
 
 const generateId = function(data) {
-  return `${data['hash']}${data['date']}${data['sensor_id']}`;
+  return `${data['hash']}${data['date'] || data['time_stamp']}${data['sensor_id']}`;
 };
 
 const DefaultSensorValueSerializer = class extends ApplicationSerializer {
@@ -29,7 +29,7 @@ const DefaultSensorValueSerializer = class extends ApplicationSerializer {
       id: generateId(data),
       type: 'sensor-value',
       attributes: {
-        value: JSON.parse(data['value']),
+        value: data['value'],
         date: serializeDate(data['date']),
         hash: data['hash'],
       },
@@ -52,8 +52,8 @@ const LiteSensorValueSerializer = class extends ApplicationSerializer {
       id: generateId(data),
       type: 'sensor-value',
       attributes: {
-        value: typeof data['value'] === 'string' ? JSON.parse(data['value']) : data['value'],
-        date: serializeDate(data['date']),
+        value: data['value'],
+        date: serializeDate(data['time_stamp']),
         hash: data['hash'],
       },
       relationships: {

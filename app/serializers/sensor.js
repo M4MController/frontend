@@ -15,7 +15,7 @@ export default class extends ApplicationSerializer.extend(DS.EmbeddedRecordsMixi
   };
 
   normalize(modelClass, resourceHash) {
-    const type = get(resourceHash, 'characteristics.sensor_type');
+    const type = get(resourceHash, 'characteristics.sensor_type') || get(resourceHash, 'type');
 
     const rawLastValue = get(resourceHash, 'last_value');
     const additional = {
