@@ -1,9 +1,6 @@
 import Component from '@ember/component';
 import {action} from '@ember/object';
-import {
-  on,
-  observes
-} from '@ember-decorators/object';
+import {on, observes} from '@ember-decorators/object';
 
 export default class extends Component {
   zoom = 17;
@@ -31,6 +28,6 @@ export default class extends Component {
 
   @action
   onZoomChanged(a) {
-    this.set('radius', (Math.pow(2, 20 - a.map.getZoom())))
+    this.set('radius', (Math.pow(2, 20 - a.map.getZoom())));
   }
 }
