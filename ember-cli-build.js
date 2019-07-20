@@ -22,6 +22,10 @@ module.exports = function(defaults) {
     'emberHighCharts': {
       includeHighStock: true,
     },
+
+    'ember-composable-helpers': {
+      only: ['sort-by']
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated

@@ -1,6 +1,11 @@
-{{#g-map lat=sensor.value.lat lng=sensor.value.lon zoom=16 zoomControl=true styles=primaryMapStyle as |g|}}
+<button class={{if isFollowing "button-follow button-follow-click" "button-follow"}} onclick={{action "onButtonFollowClick"}}>
+  <img src="https://img.icons8.com/ios-glyphs/30/000000/navigation.png">
+</button>
+
+{{#g-map lat=lat lng=lng zoom=zoom styles=primaryMapStyle maxZoom=20 onZoomChanged=(action "onZoomChanged")
+as |g|}}
   {{g.circle lat=sensor.value.lat lng=sensor.value.lon
-             radius=10
+             radius=radius
              fillColor="red"
              fillOpacity=0.9
              strokeColor="red"

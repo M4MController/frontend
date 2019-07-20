@@ -20,3 +20,28 @@
 .ember-google-map > div > div > iframe{
   position: relative !important;
 }
+
+.button-follow {
+  background: none rgb(255, 255, 255);
+  border: 0px;
+  margin: 10px;
+  padding: 0px;
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 2px;
+  height: 40px;
+  width: 40px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  overflow: hidden;
+  z-index: 10000;
+
+
+  right: 15px;
+  top: 75px
+
+}
+
+.button-follow-click {
+  background: #ff6363;
+}
