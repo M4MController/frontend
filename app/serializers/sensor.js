@@ -30,8 +30,6 @@ export default class extends ApplicationSerializer.extend(DS.EmbeddedRecordsMixi
       serviceCompany: get(resourceHash, 'finance.service_company'),
     };
 
-    return super.normalize(modelClass,
-        Object.assign(resourceHash, additional),
-    );
+    return super.normalize(modelClass, Object.assign(resourceHash, additional));
   }
 }
