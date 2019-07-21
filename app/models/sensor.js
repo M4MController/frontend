@@ -29,7 +29,7 @@ export default class extends DS.Model {
   @attr('number') charge;
   @attr('number') forPayment;
 
-  @attr('raw') lastValue;
+  @attr('json') lastValue;
 
   @attr('string') valueMonth;
   @attr('string') valuePrevYear;

@@ -31,7 +31,7 @@ export default class extends Route {
       const sensorId = this.get('sensorId');
       const sensor = this.get('store').peekRecord('sensor', sensorId);
 
-      const from = new Date(Math.max(...sensor.get('values').mapBy('date').toArray()));
+      const from = new Date(Math.max(...sensor.get('values').mapBy(internal).toArray()));
       (await this.get('store').query('sensor-value', {sensorId, from})).forEach((value) => {
         this.get('store').pushPayload({
           'sensor-value': [

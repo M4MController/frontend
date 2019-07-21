@@ -17,7 +17,7 @@
 </div>
 
 <div class="row havings">
-  {{#each (sort-by "typeName" model.sensors) as |sensor|}}
+  {{#each (sort-by "typeName" (filter-by 'typeName' model.sensors)) as |sensor|}}
     {{sensor-card sensor=sensor}}
   {{/each}}
 </div>

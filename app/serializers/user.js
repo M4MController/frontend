@@ -22,7 +22,7 @@ const DefaultUserSerializer = class extends ApplicationSerializer {
 
   normalizeFindRecordResponse(store, primaryModelClass, payload, id, requestType) {
     payload = {
-      user: Object.assign(payload['msg'], {id: 1}),
+      user: Object.assign(payload, {id: 1}),
     };
     return super.normalizeFindRecordResponse(store, primaryModelClass, payload, id, requestType);
   }

@@ -1,8 +1,12 @@
 import ApplicationAdapter from './application';
 import {IS_LITE_MODE} from '../constants';
 
+const addSensorId = function(sensorId, payload) {
+  payload.__internal = {sensorId};
+};
+
 const DefaultSensorValueAdapter = class extends ApplicationAdapter {
-  _queryDataPeriod(sensorId, from, to) {
+  async _queryDataPeriod(sensorId, from, to) {
     if (from) {
       // we are living in Moscow
       from.setHours(from.getHours() + 3);
@@ -27,22 +31,23 @@ const DefaultSensorValueAdapter = class extends ApplicationAdapter {
     return this.ajax(`/sensor/${sensorId}/get_data`, 'GET', {limit});
   }
 
-  query(store, type, query) {
+  async query(store, type, query) {
+    let response;
     if (query.limit) {
-      return this._queryLimit(query.sensorId, query.limit);
+      response = await this._queryLimit(query.sensorId, query.limit);
     } else {
-      return this._queryDataPeriod(query.sensorId, query.from, query.to);
+      response = await this._queryDataPeriod(query.sensorId, query.from, query.to);
     }
+    addSensorId(query.sensorId, response);
+    return response;
   }
 };
 
 const LiteSensorValueAdapter = class extends ApplicationAdapter {
   async query(store, type, query) {
     const response = await this.ajax(`/sensor/${query.sensorId}/data`, 'GET', {field: query.field});
-    return {
-      sensorId: query.sensorId,
-      response,
-    };
+    addSensorId(query.sensorId, response);
+    return response;
   }
 };
 

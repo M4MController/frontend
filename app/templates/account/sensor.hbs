@@ -1,6 +1,6 @@
 <div class="row">
   {{page-caption class="col-12"
-                 text=(if field (t (concat "obd." field) model))
+                 text=(if field (t (concat "obd." field) model) model.name)
                  icon=(sensor-icon-name model)
   }}
 </div>

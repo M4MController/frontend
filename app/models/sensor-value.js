@@ -5,8 +5,8 @@ const {
 } = DS;
 
 export default class extends DS.Model {
-  @attr('raw') value;
-  @attr('date') date;
+  @attr('json') value;
+  @attr('datetime') timestamp;
   @attr('string') hash;
   @belongsTo('sensor', {async: false}) sensor;
 }

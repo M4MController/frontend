@@ -14,18 +14,24 @@ export default class extends Controller {
     },
   ];
 
-  @computed('model.values.@each')
+  @computed('model.values.@each', 'field')
   get sensorData() {
     let mapFunc;
     if (this.get('field')) {
-      mapFunc = (reading) => [Math.round(reading.get('date').getTime()), reading.get(`value.${this.get('field')}`)];
+      mapFunc = (reading) => [
+        Math.round(reading.get('timestamp').getTime()),
+        Number.parseInt(reading.get(`value.${this.get('field')}`)),
+      ];
     } else {
-      mapFunc = (reading) => [Math.round(reading.get('date').getTime()), reading.get('value')];
+      mapFunc = (reading) => [
+        Math.round(reading.get('timestamp').getTime()),
+        Number.parseInt(reading.get('value')),
+      ];
     }
     return this.get('model.values').map(mapFunc).sort((a, b) => a[0] - b[0]);
   }
 
-  @computed('model.name', 'model.unitName')
+  @computed('model.name', 'model.unitName', 'field')
   get chartOptions() {
     const name = this.get('field') ? this.intl.t(`obd.${this.get('field')}`) : this.get('model.name');
     const unitName = this.get('model.unitName');

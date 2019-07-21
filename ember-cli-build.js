@@ -24,8 +24,8 @@ module.exports = function(defaults) {
     },
 
     'ember-composable-helpers': {
-      only: ['sort-by']
-    }
+      only: ['sort-by', 'filter-by'],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated

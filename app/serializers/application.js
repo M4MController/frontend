@@ -2,8 +2,10 @@ import DS from 'ember-data';
 import {IS_LITE_MODE} from '../constants';
 
 const DefaultApplicationSerializer = class extends DS.RESTSerializer {
-  normalizeFindAllResponse(store, primaryModelClass, payload, id, requestType) {
-    return super.normalizeFindAllResponse(store, primaryModelClass, payload['msg'], id, requestType);
+  normalizeResponse(store, primaryModelClass, payload, id, requestType) {
+    const normalized = payload['msg'];
+    normalized.__internal = payload.__internal; // use this field to pass some values from adapter to serializer
+    return super.normalizeResponse(store, primaryModelClass, normalized, id, requestType);
   }
 
   keyForAttribute(attr) {
