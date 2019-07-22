@@ -16,6 +16,13 @@ module.exports = {
     browser: true,
   },
   rules: {
+    'indent': [
+      'error',
+      2, {
+        'CallExpression': {'arguments': 1},
+        "SwitchCase": 1
+      },
+    ],
     'require-jsdoc': 0,
     'max-len': [
       1, {

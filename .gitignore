@@ -24,3 +24,6 @@ package.json.ember-try
 
 # idea
 .idea
+
+# m4m tests
+tests/**/*
