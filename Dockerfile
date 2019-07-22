@@ -20,6 +20,7 @@ ADD public ./public
 ADD translations ./translations
 
 ARG GOOGLE_API_MAPS_KEY
+ARG MODE
 
 RUN npm run build -- --environment=production
 
