@@ -29,4 +29,4 @@ RUN mkdir /usr/html && cp -R dist/. /usr/html/account/
 # remove unnecessary source files
 RUN rm -fr /application
 
-ADD nginx-${MODE}.conf /etc/nginx/nginx.conf
+ADD config/nginx-${MODE}.conf /etc/nginx/nginx.conf
