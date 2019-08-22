@@ -1,8 +1,7 @@
 FROM nginx:alpine
 MAINTAINER Ed Asriyan <ed-asriyan@protonmail.com>
 
-RUN apk update && apk add nodejs
-RUN if ! type "npm" > /dev/null; then apk add npm; fi
+RUN apk update && apk add nodejs; if ! type "npm" > /dev/null; then apk add npm; fi
 
 WORKDIR /application
 
@@ -20,7 +19,7 @@ ADD public ./public
 ADD translations ./translations
 
 ARG GOOGLE_API_MAPS_KEY
-ARG MODE
+ARG MODE=default
 
 RUN npm run build -- --environment=production
 
@@ -30,4 +29,4 @@ RUN mkdir /usr/html && cp -R dist/. /usr/html/account/
 # remove unnecessary source files
 RUN rm -fr /application
 
-ADD nginx.conf /etc/nginx/nginx.conf
+ADD nginx-${MODE}.conf /etc/nginx/nginx.conf
