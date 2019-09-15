@@ -1,14 +1,26 @@
-<button class={{if isFollowing "button-follow button-follow-click" "button-follow"}} onclick={{action "onButtonFollowClick"}}>
-  <img src="https://img.icons8.com/ios-glyphs/30/000000/navigation.png">
-</button>
+{{#if hasData}}
+  {{#if hasMap}}
+    <button class={{if isFollowing "button-follow button-follow-click" "button-follow"}} onclick={{action "onButtonFollowClick"}}>
+      <img src="https://img.icons8.com/ios-glyphs/30/000000/navigation.png">
+    </button>
 
-{{#g-map lat=lat lng=lng zoom=zoom styles=primaryMapStyle maxZoom=20 onZoomChanged=(action "onZoomChanged")
-as |g|}}
-  {{g.circle lat=sensor.value.lat lng=sensor.value.lon
-             radius=radius
-             fillColor="red"
-             fillOpacity=0.9
-             strokeColor="red"
-             strokeOpacity=0.8
-             strokeWeight=1}}
-{{/g-map}}
+    {{#g-map lat=lat lng=lng zoom=zoom styles=primaryMapStyle maxZoom=20 onZoomChanged=(action "onZoomChanged")
+    as |g|}}
+      {{g.circle lat=sensor.value.lat lng=sensor.value.lon
+                 radius=radius
+                 fillColor="red"
+                 fillOpacity=0.9
+                 strokeColor="red"
+                 strokeOpacity=0.8
+                 strokeWeight=1}}
+    {{/g-map}}
+  {{else}}
+    <div class="error">
+      Не корректные данные gps
+    </div>
+  {{/if}}
+{{else}}
+  <div class="error">
+    Нет данных gps
+  </div>
+{{/if}}
