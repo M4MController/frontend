@@ -18,6 +18,8 @@ export default class extends Component {
       this.set('isFirst', false);
       this.set('lat', this.get('sensor.value.lat'));
       this.set('lng', this.get('sensor.value.lon'));
+      this.set('hasMap', !(this.get('sensor.value.lon') === undefined || this.get('sensor.value.lat') === undefined));
+      this.set('hasData', !(this.get('sensor.value') === undefined));
     }
   }
 
