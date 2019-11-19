@@ -52,7 +52,7 @@
     "ember-load-initializers": "^2.0.0",
     "ember-math-helpers": "^2.7.1",
     "ember-promise-helpers": "^1.0.6",
-    "ember-resolver": "^5.0.1",
+    "ember-resolver": "^6.0.0",
     "ember-source": "^3.10.0",
     "ember-template-lint": "^1.1.0",
     "ember-truth-helpers": "^2.0.0",
