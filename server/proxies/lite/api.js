@@ -5,6 +5,7 @@ const config = require('../../../config/environment')();
 const proxyPath = config.APP.backend.api;
 const target = config.APP.proxy.api;
 
+console.log(target);
 module.exports = function(app) {
   // For options, see:
   // https://github.com/nodejitsu/node-http-proxy
@@ -14,6 +15,7 @@ module.exports = function(app) {
   });
 
   proxy.on('error', function(err, req) {
+    console.error(target);
     console.error(err, req.url);
   });
 

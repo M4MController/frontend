@@ -26,8 +26,8 @@ module.exports = function(environment) {
       isLiteMode: LITE_MODE,
       isUsingProxy: USE_PROXY,
       backend: {
-        api: 'https://api.meter4.me',
-        auth: 'https://auth.meter4.me',
+        api: null, // эти переменные определены далее в конфиге
+        auth: null,
       },
     },
     'ember-google-maps': {
@@ -39,6 +39,28 @@ module.exports = function(environment) {
       libraries: ['geometry', 'places'],
     },
   };
+
+  if (USE_PROXY) {
+    if (LITE_MODE) {
+      ENV.APP.backend.api = '/api';
+    } else {
+      ENV.APP.backend.api = '/api/api';
+      ENV.APP.backend.auth = '/api/auth';
+    }
+
+    // чтобы дать серверу-проксировщику знать, куда проксировать запрос
+    ENV.APP.proxy = {
+      api: process.env['BACKEND_API'] || 'https://api.meter4.me',
+      auth: process.env['BACKEND_AUTH'] || 'https://auth.meter4.me',
+    };
+  } else {
+    if (LITE_MODE) {
+      ENV.APP.backend.api = process.env['BACKEND_API'] || '/api';
+    } else {
+      ENV.APP.backend.api = process.env['BACKEND_API'] || 'https://api.meter4.me';
+      ENV.APP.backend.auth = process.env['BACKEND_AUTH'] || 'https://auth.meter4.me';
+    }
+  }
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;

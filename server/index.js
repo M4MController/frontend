@@ -14,7 +14,6 @@ module.exports = function(app) {
   const modules = [];
   switch (serverMode) {
     case 'proxy':
-      if (mode === 'lite') throw 'Proxy is not implemented for lite mode';
       const proxies = globSync(`./proxies/${mode}/*.js`, {cwd: __dirname}).map(require);
       modules.push(...proxies);
       break;
