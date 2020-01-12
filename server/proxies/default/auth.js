@@ -2,8 +2,8 @@
 
 const config = require('../../../config/environment')();
 
-const proxyPath = '/api/auth';
-const target = config.APP.backend.auth;
+const proxyPath = config.APP.backend.auth;
+const target = config.APP.proxy.auth;
 
 module.exports = function(app) {
   // For options, see:
