@@ -2,7 +2,7 @@ import ApplicationSerializer from './application';
 import {IS_LITE_MODE} from '../constants';
 
 const generateId = function(data) {
-  return `${data['hash']}${data['date'] || data['time_stamp']}${data['sensor_id']}`;
+  return `${data['hash']}${data['date'] || data['data']['time_stamp']}${data['sensor_id']}`;
 };
 
 const BaseSensorValueSerializer = class extends ApplicationSerializer {
@@ -26,8 +26,7 @@ const DefaultSensorValueSerializer = class extends BaseSensorValueSerializer {
 
 const LiteSensorValueSerializer = class extends BaseSensorValueSerializer {
   attrs = {
-    value: 'value',
-    timestamp: 'time_stamp',
+    data: 'data',
     hash: 'hash',
     sensor: 'sensor',
   };
