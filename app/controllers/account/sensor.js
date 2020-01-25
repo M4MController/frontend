@@ -3,6 +3,21 @@ import {computed} from '@ember/object';
 import {inject as service} from '@ember/service';
 import {measurement} from '../../helpers/measurement';
 
+function compact(array) {
+  let index = -1;
+  const length = array == null ? 0 : array.length;
+  let resIndex = 0;
+  const result = [];
+
+  while (++index < length) {
+    const value = array[index];
+    if (value) {
+      result[resIndex++] = value;
+    }
+  }
+  return result;
+}
+
 export default class extends Controller {
   @service intl;
 
@@ -15,20 +30,45 @@ export default class extends Controller {
   ];
 
   @computed('model.values.@each', 'field')
-  get sensorData() {
+  get sensorDataSign() {
     let mapFunc;
     if (this.get('field')) {
-      mapFunc = (reading) => [
-        Math.round(reading.get('timestamp').getTime()),
-        Number.parseInt(reading.get(`value.${this.get('field')}`)),
-      ];
+      mapFunc = (reading) => {
+        const isSign = Boolean(reading.get('sign') && reading.get('signer'));
+
+        return isSign && [
+          Math.round(reading.get('timestamp').getTime()),
+          Number.parseInt(reading.get(`value.${this.get('field')}`)),
+        ];
+      };
     } else {
       mapFunc = (reading) => [
         Math.round(reading.get('timestamp').getTime()),
         Number.parseInt(reading.get('value')),
       ];
     }
-    return this.get('model.values').map(mapFunc).sort((a, b) => a[0] - b[0]);
+    return compact(this.get('model.values').map(mapFunc)).sort((a, b) => a[0] - b[0]);
+  }
+
+  @computed('model.values.@each', 'field')
+  get sensorDataNoSign() {
+    let mapFunc;
+    if (this.get('field')) {
+      mapFunc = (reading) => {
+        const isSign = Boolean(reading.get('sign') && reading.get('signer'));
+
+        return !isSign && [
+          Math.round(reading.get('timestamp').getTime()),
+          Number.parseInt(reading.get(`value.${this.get('field')}`)),
+        ];
+      };
+    } else {
+      mapFunc = (reading) => [
+        Math.round(reading.get('timestamp').getTime()),
+        Number.parseInt(reading.get('value')),
+      ];
+    }
+    return compact(this.get('model.values').map(mapFunc)).sort((a, b) => a[0] - b[0]);
   }
 
   @computed('model.name', 'model.unitName', 'field')
@@ -75,7 +115,6 @@ export default class extends Controller {
           return `
           <i>${new Date(this.x).toLocaleString()}</i>
           <br/>
-          <span style="fill:#7cb5ec; padding-right: 8px;">●</span>
           <b>${name}:</b> ${measurement([this.y, unitName])}`;
         },
         valueDecimals: 2,
@@ -89,16 +128,34 @@ export default class extends Controller {
   }
 
   @computed('model.name', 'model.unitName', 'sensorData')
+  get contentAll() {
+    return [
+      {
+        name: this.get('model.name'),
+        data: this.get('sensorDataSign'),
+        color: '#567ba7',
+      },
+      {
+        name: this.get('model.name'),
+        data: this.get('sensorDataNoSign'),
+        color: '#ff0000',
+      },
+    ];
+  }
+
+  @computed('model.name', 'model.unitName', 'sensorData')
   get content() {
     return [
       {
         name: this.get('model.name'),
-        data: this.get('sensorData'),
-      }];
+        data: this.get('sensorDataSign'),
+        color: '#567ba7',
+      },
+    ];
   }
 
   theme = {
-    colors: ['#567ba7'],
+    colors: ['#567ba7', '#ff0000'],
     chart: {
       backgroundColor: null,
       style: {
