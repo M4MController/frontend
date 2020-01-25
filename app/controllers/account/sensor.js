@@ -4,13 +4,13 @@ import {inject as service} from '@ember/service';
 import {measurement} from '../../helpers/measurement';
 
 function compact(array) {
-  var index = -1,
-    length = array == null ? 0 : array.length,
-    resIndex = 0,
-    result = [];
+  let index = -1;
+  const length = array == null ? 0 : array.length;
+  let resIndex = 0;
+  const result = [];
 
   while (++index < length) {
-    var value = array[index];
+    const value = array[index];
     if (value) {
       result[resIndex++] = value;
     }
@@ -38,13 +38,13 @@ export default class extends Controller {
 
         return isSign && [
           Math.round(reading.get('timestamp').getTime()),
-          Number.parseInt(reading.get(`value.${this.get('field')}`))
+          Number.parseInt(reading.get(`value.${this.get('field')}`)),
         ];
       };
     } else {
       mapFunc = (reading) => [
         Math.round(reading.get('timestamp').getTime()),
-        Number.parseInt(reading.get('value'))
+        Number.parseInt(reading.get('value')),
       ];
     }
     return compact(this.get('model.values').map(mapFunc)).sort((a, b) => a[0] - b[0]);
@@ -59,13 +59,13 @@ export default class extends Controller {
 
         return !isSign && [
           Math.round(reading.get('timestamp').getTime()),
-          Number.parseInt(reading.get(`value.${this.get('field')}`))
+          Number.parseInt(reading.get(`value.${this.get('field')}`)),
         ];
       };
     } else {
       mapFunc = (reading) => [
         Math.round(reading.get('timestamp').getTime()),
-        Number.parseInt(reading.get('value'))
+        Number.parseInt(reading.get('value')),
       ];
     }
     return compact(this.get('model.values').map(mapFunc)).sort((a, b) => a[0] - b[0]);
@@ -133,13 +133,13 @@ export default class extends Controller {
       {
         name: this.get('model.name'),
         data: this.get('sensorDataSign'),
-        color: '#567ba7'
+        color: '#567ba7',
       },
       {
         name: this.get('model.name'),
         data: this.get('sensorDataNoSign'),
         color: '#ff0000',
-      }
+      },
     ];
   }
 
@@ -149,8 +149,8 @@ export default class extends Controller {
       {
         name: this.get('model.name'),
         data: this.get('sensorDataSign'),
-        color: '#567ba7'
-      }
+        color: '#567ba7',
+      },
     ];
   }
 
