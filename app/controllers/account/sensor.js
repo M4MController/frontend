@@ -4,13 +4,13 @@ import {inject as service} from '@ember/service';
 import {measurement} from '../../helpers/measurement';
 
 function compact(array) {
-  var index = -1,
-    length = array == null ? 0 : array.length,
-    resIndex = 0,
-    result = [];
+  let index = -1;
+  const length = array == null ? 0 : array.length;
+  let resIndex = 0;
+  const result = [];
 
   while (++index < length) {
-    var value = array[index];
+    const value = array[index];
     if (value) {
       result[resIndex++] = value;
     }
@@ -39,9 +39,7 @@ export default class extends Controller {
         return {
           x: Math.round(reading.get('timestamp').getTime()),
           y: Number.parseInt(reading.get(`value.${this.get('field')}`)),
-          marker: {
-            symbol: isSign ? 'url(https://www.highcharts.com/samples/graphics/sun.png)' : ''
-          }
+          color: isSign ? 'red' : '#567ba7',
         };
       };
     } else {
@@ -50,11 +48,10 @@ export default class extends Controller {
 
         return {
           x: Math.round(reading.get('timestamp').getTime()),
-          y:  Number.parseInt(reading.get('value')),
-          marker: {
-            symbol: isSign ? 'url(https://www.highcharts.com/samples/graphics/sun.png)' : ''
-          }
-      }};
+          y: Number.parseInt(reading.get('value')),
+          color: isSign ? 'red' : '#567ba7',
+        }
+      };
     }
 
     return compact(this.get('model.values').map(mapFunc)).sort((a, b) => a.x - b.x);
@@ -70,7 +67,7 @@ export default class extends Controller {
         series: {
           marker: {
             enabled: true,
-            radius: 4.2
+            radius: 4.2,
           }
         }
       },
@@ -107,6 +104,7 @@ export default class extends Controller {
       },
       tooltip: {
         animation: true,
+        borderColor: '#567ba7',
         formatter: function() {
           return `
           <i>${new Date(this.x).toLocaleString()}</i>
@@ -119,7 +117,7 @@ export default class extends Controller {
         title: {
           text: this.get('model.unitName'),
         },
-      }
+      },
     };
   }
 
@@ -129,7 +127,7 @@ export default class extends Controller {
       {
         name: this.get('model.name'),
         data: this.get('sensorData'),
-        color: '#567ba7'
+        color: '#567ba7',
       }
     ];
   }
