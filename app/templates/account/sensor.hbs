@@ -8,11 +8,6 @@
   <!--<h2 class="text-caption text-center">График потребления</h2>-->
   <div class="margin-bottom-2x" align="middle">
     {{#core/loader-component loading=(not model.values)}}
-      {{3rd/dynamic-high-charts mode="StockChart" content=contentAll chartOptions=chartOptions settings=settings}}
-    {{/core/loader-component}}
-  </div>
-  <div class="margin-bottom-2x" align="middle">
-    {{#core/loader-component loading=(not model.values)}}
       {{3rd/dynamic-high-charts mode="StockChart" content=content chartOptions=chartOptions settings=settings}}
     {{/core/loader-component}}
   </div>

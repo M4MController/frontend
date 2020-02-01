@@ -30,57 +30,51 @@ export default class extends Controller {
   ];
 
   @computed('model.values.@each', 'field')
-  get sensorDataSign() {
+  get sensorData() {
     let mapFunc;
     if (this.get('field')) {
       mapFunc = (reading) => {
         const isSign = Boolean(reading.get('sign') && reading.get('signer'));
 
-        return isSign && [
-          Math.round(reading.get('timestamp').getTime()),
-          Number.parseInt(reading.get(`value.${this.get('field')}`)),
-        ];
+        return {
+          x: Math.round(reading.get('timestamp').getTime()),
+          y: Number.parseInt(reading.get(`value.${this.get('field')}`)),
+          color: isSign ? 'red' : '#567ba7',
+        };
       };
     } else {
-      mapFunc = (reading) => [
-        Math.round(reading.get('timestamp').getTime()),
-        Number.parseInt(reading.get('value')),
-      ];
-    }
-    return compact(this.get('model.values').map(mapFunc)).sort((a, b) => a[0] - b[0]);
-  }
-
-  @computed('model.values.@each', 'field')
-  get sensorDataNoSign() {
-    let mapFunc;
-    if (this.get('field')) {
       mapFunc = (reading) => {
         const isSign = Boolean(reading.get('sign') && reading.get('signer'));
 
-        return !isSign && [
-          Math.round(reading.get('timestamp').getTime()),
-          Number.parseInt(reading.get(`value.${this.get('field')}`)),
-        ];
+        return {
+          x: Math.round(reading.get('timestamp').getTime()),
+          y: Number.parseInt(reading.get('value')),
+          color: isSign ? 'red' : '#567ba7',
+        };
       };
-    } else {
-      mapFunc = (reading) => [
-        Math.round(reading.get('timestamp').getTime()),
-        Number.parseInt(reading.get('value')),
-      ];
     }
-    return compact(this.get('model.values').map(mapFunc)).sort((a, b) => a[0] - b[0]);
+
+    return compact(this.get('model.values').map(mapFunc)).sort((a, b) => a.x - b.x);
   }
 
   @computed('model.name', 'model.unitName', 'field')
   get chartOptions() {
     const name = this.get('field') ? this.intl.t(`obd.${this.get('field')}`) : this.get('model.name');
     const unitName = this.get('model.unitName');
+
     return {
+      plotOptions: {
+        series: {
+          marker: {
+            enabled: true,
+            radius: 4.2,
+          },
+        },
+      },
       rangeSelector: {
         buttonTheme: {
           width: 80,
         },
-        selected: 2,
         buttons: [
           {
             type: 'hour',
@@ -90,7 +84,6 @@ export default class extends Controller {
             text: 'День',
           }, {
             type: 'month',
-            count: 1,
             text: 'Месяц',
           }, {
             type: 'ytd',
@@ -111,6 +104,7 @@ export default class extends Controller {
       },
       tooltip: {
         animation: true,
+        borderColor: '#567ba7',
         formatter: function() {
           return `
           <i>${new Date(this.x).toLocaleString()}</i>
@@ -128,27 +122,11 @@ export default class extends Controller {
   }
 
   @computed('model.name', 'model.unitName', 'sensorData')
-  get contentAll() {
-    return [
-      {
-        name: this.get('model.name'),
-        data: this.get('sensorDataSign'),
-        color: '#567ba7',
-      },
-      {
-        name: this.get('model.name'),
-        data: this.get('sensorDataNoSign'),
-        color: '#ff0000',
-      },
-    ];
-  }
-
-  @computed('model.name', 'model.unitName', 'sensorData')
   get content() {
     return [
       {
         name: this.get('model.name'),
-        data: this.get('sensorDataSign'),
+        data: this.get('sensorData'),
         color: '#567ba7',
       },
     ];
