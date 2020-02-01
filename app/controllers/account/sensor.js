@@ -50,7 +50,7 @@ export default class extends Controller {
           x: Math.round(reading.get('timestamp').getTime()),
           y: Number.parseInt(reading.get('value')),
           color: isSign ? 'red' : '#567ba7',
-        }
+        };
       };
     }
 
@@ -68,8 +68,8 @@ export default class extends Controller {
           marker: {
             enabled: true,
             radius: 4.2,
-          }
-        }
+          },
+        },
       },
       rangeSelector: {
         buttonTheme: {
@@ -128,7 +128,7 @@ export default class extends Controller {
         name: this.get('model.name'),
         data: this.get('sensorData'),
         color: '#567ba7',
-      }
+      },
     ];
   }
 
