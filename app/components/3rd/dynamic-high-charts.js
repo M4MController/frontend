@@ -44,7 +44,7 @@ export default class extends EmberHighChartsComponent {
 
     // add new series
     content.forEach((contentSeries) => {
-      if (!Object.object.hasOwnProperty.call(chartSeriesMap, contentSeries.name)) {
+      if (!Object.hasOwnProperty.call(chartSeriesMap, contentSeries.name)) {
         chart.addSeries(contentSeries, false);
       }
     });

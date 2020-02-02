@@ -5,23 +5,26 @@ const addSensorId = function(sensorId, payload) {
   payload.__internal = {sensorId};
 };
 
+const formatDateTime = function(dateTime) {
+  if (!dateTime) return undefined;
+  // we are living in Moscow
+  dateTime.setHours(dateTime.getHours() + 3);
+
+  // backend receives specific time format
+  dateTime = dateTime.toISOString();
+  dateTime = dateTime.slice(0, dateTime.length - 5);
+  return dateTime;
+};
+
 const DefaultSensorValueAdapter = class extends ApplicationAdapter {
   async _queryDataPeriod(sensorId, from, to) {
     if (from) {
-      // we are living in Moscow
-      from.setHours(from.getHours() + 3);
-
-      // backend receives specific time format
-      from = from.toISOString();
-      from = from.slice(0, from.length - 5);
+      from = formatDateTime(from);
     }
 
     // the same with ending date
     if (to) {
-      to.setHours(to.getHours() + 3);
-
-      to = to.toISOString();
-      to = from.slice(0, to.length - 5);
+      to = formatDateTime(to);
     }
 
     return this.ajax(`/v2/sensor/${sensorId}/get_data_period`, 'GET', {from, to});
@@ -45,7 +48,10 @@ const DefaultSensorValueAdapter = class extends ApplicationAdapter {
 
 const LiteSensorValueAdapter = class extends ApplicationAdapter {
   async query(store, type, query) {
-    const response = await this.ajax(`/sensor/${query.sensorId}/data`, 'GET', {field: query.field});
+    const response = await this.ajax(`/sensor/${query.sensorId}/data`, 'GET', {
+      field: query.field,
+      from: formatDateTime(query.from),
+    });
     addSensorId(query.sensorId, response);
     return response;
   }
