@@ -45,8 +45,9 @@ export default class extends Route {
             {
               sensor: value.get('sensor.id'),
               id: value.get('id'),
-              value: value.get('value'),
-              timestamp: value.get('timestamp'),
+              data: value.get('data'),
+              sign: value.get('sign'),
+              signer: value.get('signer'),
             },
           ],
         });
