@@ -69,6 +69,7 @@ export default class extends Controller {
             enabled: true,
             radius: 4.2,
           },
+          turboThreshold: 0,
         },
       },
       rangeSelector: {
