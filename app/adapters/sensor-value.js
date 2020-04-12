@@ -51,6 +51,7 @@ const LiteSensorValueAdapter = class extends ApplicationAdapter {
     const response = await this.ajax(`/sensor/${query.sensorId}/data`, 'GET', {
       field: query.field,
       from: formatDateTime(query.from),
+      limit: query.limit
     });
     addSensorId(query.sensorId, response);
     return response;

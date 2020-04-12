@@ -15,7 +15,7 @@ export default class extends Route {
 
   model({'sensor_id': sensorId, field}) {
     this.set('sensorId', sensorId);
-    this.get('store').query('sensor-value', {sensorId, field});
+    this.get('store').query('sensor-value', {sensorId, field, limit: 1000});
     this.set('field', field);
     return this.get('store').peekRecord('sensor', sensorId);
   }
@@ -39,6 +39,7 @@ export default class extends Route {
           sensorId,
           'from': from_.getTime() ? from_ : undefined,
           'field': this.get('field'),
+          'limit': 1000
         })).forEach((value) => {
         this.get('store').pushPayload({
           'sensor-value': [
