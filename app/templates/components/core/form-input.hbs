@@ -1,5 +1,7 @@
 <div class="form-group">
-  <label>{{name}}:</label>
+  {{#if name}}
+    <label>{{name}}:</label>
+  {{/if}}
   {{input class=(concat "form-control form-field " (if wasFocused (if isValid "is-valid" "is-invalid")))
           type=type
           value=localValue
