@@ -11,7 +11,7 @@ module.exports = function(app) {
     for (let i = 0; i < 1000; ++i) {
       date.setMinutes(date.getMinutes() + 1);
       data.push({
-        'time_stamp': date.toISOString(),
+        'timestamp': date.toISOString(),
         'value': {[req.query['field']]: Math.sin(i / 50) * (Math.random() - 0.5) * maxDelta},
       });
     }

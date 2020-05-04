@@ -15,9 +15,9 @@ export default class extends DS.Model {
   @attr('string') hash;
   @belongsTo('sensor', {async: false}) sensor;
 
-  @computed('data.time_stamp')
+  @computed('data.timestamp')
   get timestamp() {
-    return deserialize(this.get('data.time_stamp'));
+    return deserialize(this.get('data.timestamp'));
   }
   @alias('data.value') value;
 }
