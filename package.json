@@ -19,7 +19,7 @@
     "start": "ember serve",
     "test": "npm run lint && ember test"
   },
-  "devDependencies": {
+  "dependencies": {
     "@ember/jquery": "^1.0.0",
     "babel-eslint": "^10.0.3",
     "bootstrap": "^4.1.3",
