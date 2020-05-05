@@ -3,7 +3,7 @@ import {inject as service} from '@ember/service';
 
 import {BACKEND_AUTH, IS_LITE_MODE} from '../constants';
 
-export default class extends BackendService {
+const BaseAuthService = class extends BackendService {
   @service cookies;
   @service store;
 
@@ -11,15 +11,9 @@ export default class extends BackendService {
   sendToken = false;
 
   isAuthorized = undefined;
+  isSetupRequired = undefined;
 
-  constructor() {
-    super();
-
-    // на железке нет сервера, который нас авторизует (или зарегистрирует). так что пока довольствуемся заглушками
-    if (IS_LITE_MODE) {
-      this.request = async () => 'your_token';
-    }
-  }
+  async init() {}
 
   get token() {
     return this.get('cookies').read('token');
@@ -28,6 +22,32 @@ export default class extends BackendService {
   set token(value) {
     this.get('cookies').write('token', value, {path: '/'});
   }
+
+  logIn() {
+    throw new Error('Not implemented');
+  }
+
+  signUp() {
+    throw new Error('Not implemented');
+  }
+
+  logOut() {
+    this.set('token', '');
+    this.set('isAuthorized', false);
+    this.get('store').unloadAll();
+    return true;
+
+    /* till backend does not support log out */
+    // return this.get('backend').request('/logout', 'POST').then(() => {
+    //   this.set('isAuthorized', false);
+    //   this.get('store').unloadAll();
+    //   return true;
+    // });
+  }
+};
+
+const DefaultAuthService = class extends BaseAuthService {
+  isSetupRequired = false;
 
   async logIn(username, password) {
     return this.request('/sign_in', 'POST', {
@@ -50,18 +70,38 @@ export default class extends BackendService {
       return this.get('store').findRecord('user', 1);
     }).catch(() => false);
   }
+};
 
-  logOut() {
-    this.set('token', '');
-    this.set('isAuthorized', false);
-    this.get('store').unloadAll();
-    return true;
+const LiteAuthService = class extends BaseAuthService {
+  isAuthorized = false;
+  isSetupRequired = false;
 
-    /* till backend does not support log out */
-    // return this.get('backend').request('/logout', 'POST').then(() => {
-    //   this.set('isAuthorized', false);
-    //   this.get('store').unloadAll();
-    //   return true;
-    // });
+  async init() {
+    const response = await this.request('/user/list', 'GET');
+    this.set('isSetupRequired', !(response && response.users && response.users.length));
   }
-}
+
+  async logIn(username, password) {
+    return this.request('/sign_in', 'POST', {
+      login: username,
+      password,
+    }).then((response) => {
+      this.set('isAuthorized', true);
+      this.set('token', response['token']);
+      return this.get('store').findRecord('user', 1);
+    }).catch(() => false);
+  }
+
+  async signUp({username, lastName, password}) {
+    return this.request('/sign_up', 'POST', {
+      login: username,
+      password,
+    }).then((response) => {
+      this.set('isAuthorized', true);
+      this.set('token', response['token']);
+      return this.get('store').findRecord('user', 1);
+    }).catch(() => false);
+  }
+};
+
+export default IS_LITE_MODE ? LiteAuthService : DefaultAuthService;

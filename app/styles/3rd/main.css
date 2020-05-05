@@ -90,6 +90,22 @@ header {
   font-size: 2em;
 }
 
+.logo-setup {
+  height: 128px;
+}
+
+.margin-bottom-2x {
+  margin-bottom: 16px;
+}
+
+.margin-right-2x {
+  margin-right: 16px;
+}
+
+.margin-bottom-4x {
+  margin-bottom: 32px;
+}
+
 .headerMenu {
   position: relative;
   height: 48px;

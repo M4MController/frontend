@@ -2,6 +2,8 @@ import Service from '@ember/service';
 import {sendEvent} from '@ember/object/events';
 import {inject as service} from '@ember/service';
 
+import {IS_LITE_MODE} from '../constants';
+
 export default class extends Service {
   @service ajax;
   @service auth;
@@ -21,16 +23,31 @@ export default class extends Service {
   async request(path, method, data, options = {}) {
     const contentType = method === 'POST' ? 'application/json' : undefined;
 
+    const defaultOptions = {
+      method: method,
+      data,
+      contentType,
+    };
+
+    const queryParams = {};
+
+    if (this.get('sendToken')) {
+      const token = this.get('auth.token');
+      if (token) {
+        if (IS_LITE_MODE) {
+          defaultOptions.headers = {'Authorization': `Bearer ${token}`};
+        } else {
+          queryParams.token = this.get('auth.token');
+        }
+      }
+    }
+
     return this.get('ajax').request(
       this.buildUrl(
         path,
-        this.get('sendToken') ? {token: this.get('auth.token')} : undefined,
+        queryParams,
       ),
-      Object.assign({
-        method: method,
-        data,
-        contentType,
-      }, options)).then((response) => {
+      Object.assign(defaultOptions, options)).then((response) => {
       this.set('auth.isAuthorized', true);
       return response;
     }).catch((e) => {

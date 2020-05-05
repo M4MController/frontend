@@ -1,14 +1,49 @@
 {{#if isLoading}}
   {{core/loader-component class="vp-height vp-width h-center v-center"}}
 {{else}}
-  <div class="vp-height v-center">
-    {{forms/sign-up class="vp-width h-center"
-                    error=sugnUpError
-                    onSignUp=(action "onSignUpAction")
-    }}
-
-    {{#link-to 'auth.log-in' class="default text-center margin-top-3x"}}
-      {{t "auth.authorization"}}
-    {{/link-to}}
+  <div class="vp-height v-center h-center">
+    <div class="h-center">
+      <div class="h-center">
+        {{core/image-component name="logo-black" class="logo-setup margin-bottom-2x"}}
+      </div>
+      {{#if setupStep}}
+        <div class="text-center">
+          {{#unless success}}
+            <h1 class="text-center margin-bottom-2x">Устройство почти готово к использованию!</h1>
+            {{core/form-input
+                    name="Введите название нового контроллера"
+                    value=objects.firstObject.name
+            }}
+            <button class="btn btnStyle btnStyle_сolor popupEnterBtn" onclick={{action "setProp" "success" true}}>
+              Далее
+            </button>
+          {{else}}
+            {{#each objects as |object|}}
+              <h1 class="text-center margin-bottom-2x">Устройство готово к использованию!</h1>
+              <p class="margin-bottom-4x">Первичная настройка завершена! Нам удалось обнаружить следующие сенсоры:</p>
+              <div class="margin-bottom-2x">
+                <div class="margin-bottom-2x">Устройтво: <b>{{object.name}}</b></div>
+                {{#each object.sensors as |sensor|}}
+                  <div class="inline-block margin-bottom-2x margin-right-2x">
+                    {{core/icon-component name=(sensor-icon-name sensor) class="sensor-icon"}}
+                    {{sensor.name}}
+                  </div>
+                {{/each}}
+              </div>
+            {{/each}}
+            {{#link-to "account.index" class="btn btnStyle btnStyle_сolor popupEnterBtn"}}
+              Войти в личный кабинет
+            {{/link-to}}
+          {{/unless}}
+        </div>
+      {{else}}
+        <h1 class="text-center margin-bottom-2x">Добро пожаловать в систему!</h1>
+        <p>Чтобы начать использовать контроллер, пожалуйста, зарегистрируйстесь</p>
+        {{forms/sign-up class="vp-width h-center"
+                        error=sugnUpError
+                        onSignUp=(action "onSignUpAction")
+        }}
+      {{/if}}
+    </div>
   </div>
 {{/if}}
