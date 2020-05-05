@@ -12,26 +12,12 @@ const DefaultUserAdapter = class extends ApplicationAdapter {
 };
 
 const LiteUserAdapter = class extends ApplicationAdapter {
-  findRecord(store, type, id) {
-    return {
-      'users': {
-        'id': id,
-        'family_name': 'Васильевич',
-        'name': 'Василий',
-        'second_name': 'Васильев',
-        'date_receiving': 156,
-        'issued_by': '1961-06-16',
-        'division_number': 'DIVNUM',
-        'registration_addres': 'Эстония, г. Маарду',
-        'mailing_addres': 'бауманские общаги',
-        'birth_day': '156',
-        'sex': false,
-        'home_phone': '111 555',
-        'mobile_phone': '8 800 555 35 35',
-        'citizenship': 'не определено',
-        'e_mail': 'ml@gmail.com',
-      },
-    };
+  buildUrlFindRecord() {
+    return '/user/info';
+  }
+
+  buildUrlUpdateRecord() {
+    return '/user/info';
   }
 };
 

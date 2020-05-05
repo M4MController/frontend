@@ -92,14 +92,26 @@ const LiteAuthService = class extends BaseAuthService {
     }).catch(() => false);
   }
 
-  async signUp({username, lastName, password}) {
+  async signUp({
+    username,
+    lastName,
+    firstName,
+    middleName,
+    password,
+  }) {
     return this.request('/sign_up', 'POST', {
       login: username,
       password,
-    }).then((response) => {
+    }).then(async (response) => {
       this.set('isAuthorized', true);
       this.set('token', response['token']);
-      return this.get('store').findRecord('user', 1);
+      const user = await this.get('store').findRecord('user', 1);
+      user.set('email', username);
+      user.set('firstName', firstName);
+      user.set('lastName', lastName);
+      user.set('middleName', middleName);
+      await user.save();
+      return user;
     }).catch(() => false);
   }
 };

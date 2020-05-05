@@ -5,6 +5,7 @@ import {IS_LITE_MODE} from '../../constants';
 
 export default class extends Controller {
   @service auth;
+  @service store;
 
   isLoading = false;
   logInError = '';
