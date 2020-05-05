@@ -17,6 +17,10 @@ const BaseAdapter = class extends DS.Adapter {
   findRecord(store, type, id, snapshot) {
     return this.ajax(this.buildUrlFindRecord(id), 'GET');
   }
+
+  updateRecord(store, type, snapshot) {
+    return this.ajax(this.buildUrlUpdateRecord(snapshot.id), 'PATCH', this.serialize(snapshot));
+  }
 };
 
 const DefaultApplicationAdapter = class extends BaseAdapter {

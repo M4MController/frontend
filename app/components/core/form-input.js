@@ -28,7 +28,7 @@ export default class extends Component {
 
   @on('didReceiveAttrs')
   copyValue() {
-    this.set('localValue', this.get('value'));
+    this.set('localValue', this.get('value') || '');
   }
 
   @observes('localValue')

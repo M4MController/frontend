@@ -26,6 +26,12 @@ export default class extends Component {
     this.set('passwordChangeOK', true);
   }
 
+  @action
+  async changeSocialTokens() {
+    await this.get('socialTokens').save();
+    this.set('integrationsChangeOK', true);
+  }
+
   /*
   @on('didReceiveAttrs')
   initInputFields() {
