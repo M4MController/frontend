@@ -131,4 +131,24 @@
       </div>
     </div>
   </div>
+
+  <div class="personalData__block">
+    <div class="box__title align-items-center">
+      <h5 class="box__name h5">Интеграции</h5>
+      {{#if integrationsChangeOK}}
+        <span>
+          <span class="icon-check-symbol"></span>
+          Изменения успешно сохранены
+        </span>
+      {{/if}}
+      <button class="btn btnStyle btnStyle_сolor" onclick={{action 'changeSocialTokens'}}>Сохранить настройки</button>
+    </div>
+    <div class="row inputsSet">
+      <div class="col-md-4">
+        <div class="form-group">
+          {{core/form-input value=socialTokens.yandexDisk name="Yandex.Disk Token"}}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

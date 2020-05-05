@@ -21,7 +21,7 @@ export default class extends Service {
    * @return {Promise<Object>}
    */
   async request(path, method, data, options = {}) {
-    const contentType = method === 'POST' ? 'application/json' : undefined;
+    const contentType = ~['POST', 'PATCH'].indexOf(method.toUpperCase()) ? 'application/json' : undefined;
 
     const defaultOptions = {
       method: method,
