@@ -1,4 +1,4 @@
-# M4M Web App [![Build Status](https://travis-ci.org/M4MController/frontend.svg?branch=master)](https://travis-ci.org/M4MController/frontend) [![Greenkeeper badge](https://badges.greenkeeper.io/M4MController/frontend.svg)](https://greenkeeper.io/)
+# M4M Web App [![Known Vulnerabilities](https://snyk.io/test/github/M4MController/frontend/badge.svg?targetFile=package.json)](https://snyk.io/test/github/M4MController/frontend?targetFile=package.json)
 
 ## Running the app
 At first clone the repository:
