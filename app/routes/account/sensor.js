@@ -16,7 +16,7 @@ export default class extends Route {
 
   model({'sensor_id': sensorId, field}) {
     this.set('sensorId', sensorId);
-    if (!IS_LITE_MODE) {
+    if (IS_LITE_MODE) {
       this.get('store').query('sensor-value', {sensorId, field, limit: 1000});
     }
     this.set('field', field);
@@ -29,7 +29,7 @@ export default class extends Route {
 
   @on('activate')
   startAutoUpdate() {
-    if (!IS_LITE_MODE) {
+    if (IS_LITE_MODE) {
       const timer = later(this, async function() {
         // todo: вычистить этот треш. в частности избавиться от pushPayload
         this.startAutoUpdate();

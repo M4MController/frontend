@@ -135,7 +135,7 @@ export default class extends Controller {
   }
 
   get isGraphVisible() {
-    return !IS_LITE_MODE;
+    return IS_LITE_MODE;
   }
 
   theme = {
