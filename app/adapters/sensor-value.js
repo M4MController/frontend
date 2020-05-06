@@ -16,35 +16,7 @@ const formatDateTime = function(dateTime) {
   return dateTime;
 };
 
-const DefaultSensorValueAdapter = class extends ApplicationAdapter {
-  async _queryDataPeriod(sensorId, from, to) {
-    if (from) {
-      from = formatDateTime(from);
-    }
-
-    // the same with ending date
-    if (to) {
-      to = formatDateTime(to);
-    }
-
-    return this.ajax(`/v2/sensor/${sensorId}/get_data_period`, 'GET', {from, to});
-  }
-
-  _queryLimit(sensorId, limit) {
-    return this.ajax(`/sensor/${sensorId}/get_data`, 'GET', {limit});
-  }
-
-  async query(store, type, query) {
-    let response;
-    if (query.limit) {
-      response = await this._queryLimit(query.sensorId, query.limit);
-    } else {
-      response = await this._queryDataPeriod(query.sensorId, query.from, query.to);
-    }
-    addSensorId(query.sensorId, response);
-    return response;
-  }
-};
+const DefaultSensorValueAdapter = ApplicationAdapter;
 
 const LiteSensorValueAdapter = class extends ApplicationAdapter {
   async query(store, type, query) {

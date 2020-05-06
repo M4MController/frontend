@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import {observes} from '@ember-decorators/object';
+import {IS_LITE_MODE} from '../../constants';
 
 export default class extends Route {
   @observes('model.name')
@@ -12,11 +13,11 @@ export default class extends Route {
 
     const result = this.get('store').peekRecord('object', objectId);
 
-    result.get('sensors').
-      filter((sensor) => sensor.get('typeName') === 'gps' || sensor.get('typeName') === 'obd').
-      forEach((sensor) => {
+    if (!IS_LITE_MODE) {
+      result.get('sensors').filter((sensor) => sensor.get('typeName') === 'gps' || sensor.get('typeName') === 'obd').forEach((sensor) => {
         this.get('store').query('sensor-value', {sensorId: sensor.get('id'), limit: 1});
       });
+    }
 
     return result;
   }
