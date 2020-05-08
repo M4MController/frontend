@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import {action} from '@ember/object';
 import {openModal} from '../../helpers/open-modal';
+import {IS_LITE_MODE} from '../../constants';
 
 export default class extends Controller {
   @action
@@ -20,5 +21,9 @@ export default class extends Controller {
       sensors: controller.get('sensors'),
       onSuccess: () => openModal('sensors-add', {sensors: controller.get('sensors')}),
     });
+  }
+
+  get isLiteMode() {
+    return IS_LITE_MODE;
   }
 }

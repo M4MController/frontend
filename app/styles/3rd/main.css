@@ -910,3 +910,34 @@ label[for="downloadExel"] img {
 .sign-out-mobile {
   display: none;
 }
+
+.cards-wrapper {
+  display: flex;
+}
+
+.cards-wrapper:first-child {
+  margin-left: 0;
+}
+
+.card-wrapper {
+  margin-left: 20px;
+}
+
+.card-wrapper .cardStyle {
+  min-width: 250px;
+  text-align: center;
+}
+
+.cardStyle-title {
+  color: black;
+  font-size: 18px;
+}
+
+.cardStyle-description {
+  margin-top: 30px;
+}
+
+.card-wrapper:hover .cardStyle-description {
+  color: black;
+  cursor: pointer;
+}

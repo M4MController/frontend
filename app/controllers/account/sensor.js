@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import {computed} from '@ember/object';
 import {inject as service} from '@ember/service';
 import {measurement} from '../../helpers/measurement';
+import {IS_LITE_MODE} from '../../constants';
 
 function compact(array) {
   let index = -1;
@@ -131,6 +132,10 @@ export default class extends Controller {
         color: '#567ba7',
       },
     ];
+  }
+
+  get isGraphVisible() {
+    return IS_LITE_MODE;
   }
 
   theme = {
