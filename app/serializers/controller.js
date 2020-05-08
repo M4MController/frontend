@@ -19,8 +19,4 @@ export default class extends ApplicationSerializer {
       'object_id': +snapshot.belongsTo('object').id,
     };
   }
-
-  normalizeDeleteRecordResponse(store, primaryModelClass, payload, id, requestType) {
-    return super.normalizeDeleteRecordResponse(store, primaryModelClass, {}, id, requestType);
-  }
 }

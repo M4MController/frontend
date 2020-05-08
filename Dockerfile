@@ -1,7 +1,14 @@
 FROM nginx:alpine
 MAINTAINER Ed Asriyan <ed-asriyan@protonmail.com>
 
-RUN apk update && apk add nodejs; if ! type "npm" > /dev/null; then apk add npm; fi
+RUN apk update && apk add --no-cache nodejs; if ! type "npm" > /dev/null; then apk add --no-cache npm; fi
+
+ARG MODE=default
+RUN if [ ${MODE} == 'default' ]; then \
+      apk add --no-cache git && \
+      git clone --depth=1 https://github.com/M4MController/frontend-landing.git /usr/html/landing && \
+      rm -rf usr/html/landing/.git; \
+      fi
 
 WORKDIR /application
 
@@ -19,12 +26,11 @@ ADD public ./public
 ADD translations ./translations
 
 ARG GOOGLE_API_MAPS_KEY
-ARG MODE=default
 
 RUN npm run build -- --environment=production
 
 # copy generated files
-RUN mkdir /usr/html && cp -R dist/. /usr/html/account/
+RUN cp -R dist/. /usr/html/account/
 
 # remove unnecessary source files
 RUN rm -fr /application
