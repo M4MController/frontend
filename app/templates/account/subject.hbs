@@ -16,8 +16,27 @@
   {{/page-caption}}
 </div>
 
-<div class="row havings">
-  {{#each (sort-by "typeName" (filter-by 'typeName' model.sensors)) as |sensor|}}
-    {{sensor-card sensor=sensor}}
-  {{/each}}
-</div>
+{{#if isLiteMode}}
+  <div class="row havings">
+    {{#each (sort-by "typeName" (filter-by 'typeName' model.sensors)) as |sensor|}}
+      {{sensor-card sensor=sensor}}
+    {{/each}}
+  </div>
+{{else}}
+  <div class="cards-wrapper">
+    {{#each (sort-by "typeName" (filter-by 'typeName' model.sensors)) as |sensor|}}
+      <div class="card-wrapper">
+        {{#link-to "account.sensor" sensor.id tagName="div" class="clickable"}}
+          <div class="cardStyle">
+            <div class="cardStyle-title">
+              {{sensor.name}}
+            </div>
+            <div class="cardStyle-description">
+              Перейти к настройке
+            </div>
+          </div>
+        {{/link-to}}
+      </div>
+    {{/each}}
+  </div>
+{{/if}}
