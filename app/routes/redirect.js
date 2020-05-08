@@ -3,9 +3,9 @@ import {debug} from '@ember/debug';
 import {IS_DEV} from '../constants';
 
 const urls = {
-  'landing': '//meter4.me/about',
-  'contacts': '//meter4.me/about#contacts',
-  'forInvestors': '//meter4.me/about#forInvestors',
+  'landing': '/about',
+  'contacts': '/about#contacts',
+  'forInvestors': '/about#forInvestors',
 };
 
 export default class extends Route {

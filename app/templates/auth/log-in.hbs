@@ -6,5 +6,11 @@
                     error=logInError
                     onLogIn=(action "onLogInAction")
     }}
+
+    {{#if supportRegistration}}
+      {{#link-to 'auth.sign-up' class="default text-center margin-top-3x"}}
+        {{t "auth.registration"}}
+      {{/link-to}}
+    {{/if}}
   </div>
 {{/if}}

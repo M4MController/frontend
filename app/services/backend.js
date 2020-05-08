@@ -2,13 +2,13 @@ import Service from '@ember/service';
 import {sendEvent} from '@ember/object/events';
 import {inject as service} from '@ember/service';
 
-import {IS_LITE_MODE} from '../constants';
+import {BACKEND_API} from '../constants';
 
 export default class extends Service {
   @service ajax;
   @service auth;
 
-  baseUrl = '/';
+  baseUrl = BACKEND_API;
   sendToken = true;
 
   /**
@@ -20,7 +20,7 @@ export default class extends Service {
    * @param {Object} options jquery ajax options
    * @return {Promise<Object>}
    */
-  async request(path, method, data, options = {}) {
+  async request(path, method, data = null, options = {}) {
     const contentType = ~['POST', 'PATCH'].indexOf(method.toUpperCase()) ? 'application/json' : undefined;
 
     const defaultOptions = {
@@ -34,11 +34,7 @@ export default class extends Service {
     if (this.get('sendToken')) {
       const token = this.get('auth.token');
       if (token) {
-        if (IS_LITE_MODE) {
-          defaultOptions.headers = {'Authorization': `Bearer ${token}`};
-        } else {
-          queryParams.token = this.get('auth.token');
-        }
+        defaultOptions.headers = {'Authorization': `Bearer ${token}`};
       }
     }
 

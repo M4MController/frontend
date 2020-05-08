@@ -41,27 +41,14 @@ module.exports = function(environment) {
   };
 
   if (USE_PROXY) {
-    if (LITE_MODE) {
-      ENV.APP.backend.api = '/api';
-      ENV.APP.backend.auth = '/api';
-    } else {
-      ENV.APP.backend.api = '/api/api';
-      ENV.APP.backend.auth = '/api/auth';
-    }
+    ENV.APP.backend.api = '/api';
 
     // чтобы дать серверу-проксировщику знать, куда проксировать запрос
     ENV.APP.proxy = {
-      api: process.env['BACKEND_API'] || 'https://api.meter4.me',
-      auth: process.env['BACKEND_AUTH'] || 'https://auth.meter4.me',
+      api: process.env['BACKEND_API'] || 'https://meter4.me',
     };
   } else {
-    if (LITE_MODE) {
-      ENV.APP.backend.api = process.env['BACKEND_API'] || '/api';
-      ENV.APP.backend.auth = process.env['BACKEND_AUTH'] || '/api';
-    } else {
-      ENV.APP.backend.api = process.env['BACKEND_API'] || 'https://api.meter4.me';
-      ENV.APP.backend.auth = process.env['BACKEND_AUTH'] || 'https://auth.meter4.me';
-    }
+    ENV.APP.backend.api = process.env['BACKEND_API'] || '/api';
   }
 
   if (environment === 'development') {

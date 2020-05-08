@@ -16,18 +16,16 @@ const formatDateTime = function(dateTime) {
   return dateTime;
 };
 
-const DefaultSensorValueAdapter = ApplicationAdapter;
-
 const LiteSensorValueAdapter = class extends ApplicationAdapter {
   async query(store, type, query) {
     const response = await this.ajax(`/sensor/${query.sensorId}/data`, 'GET', {
       field: query.field,
       from: formatDateTime(query.from),
-      limit: query.limit
+      limit: query.limit,
     });
     addSensorId(query.sensorId, response);
     return response;
   }
 };
 
-export default IS_LITE_MODE ? LiteSensorValueAdapter : DefaultSensorValueAdapter;
+export default IS_LITE_MODE ? LiteSensorValueAdapter : ApplicationAdapter;

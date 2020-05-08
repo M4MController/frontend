@@ -9,7 +9,7 @@ export default class extends Controller {
   isLoading = false;
   logInError = '';
 
-  supportRegistration = IS_LITE_MODE;
+  supportRegistration = !IS_LITE_MODE;
 
   @action
   async onLogInAction(username, password) {
