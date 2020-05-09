@@ -30,7 +30,7 @@ ARG GOOGLE_API_MAPS_KEY
 RUN npm run build -- --environment=production
 
 # copy generated files
-RUN cp -R dist/. /usr/html/account/
+RUN mkdir -p /usr/html/ && cp -R dist/. /usr/html/account/
 
 # remove unnecessary source files
 RUN rm -fr /application
