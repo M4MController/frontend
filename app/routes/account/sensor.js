@@ -43,7 +43,7 @@ export default class extends Route {
             sensorId,
             'from': from_.getTime() ? from_ : undefined,
             'field': this.get('field'),
-            'limit': 1000
+            'limit': 1000,
           })).forEach((value) => {
           this.get('store').pushPayload({
             'sensor-value': [
