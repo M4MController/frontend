@@ -12,12 +12,14 @@ export default class extends Component {
   passwordChangeOK = false;
 
   @action
-  savePersonalData() {
+  async savePersonalData() {
+    await this.get('user').save();
     this.set('personalDataOK', true);
   }
 
   @action
-  saveContactData() {
+  async saveContactData() {
+    await this.get('user').save();
     this.set('contactDataOK', true);
   }
 
@@ -30,6 +32,12 @@ export default class extends Component {
   async changeSocialTokens() {
     await this.get('socialTokens').save();
     this.set('integrationsChangeOK', true);
+  }
+
+  @action
+  async changeEncryption() {
+    await this.get('user').save();
+    this.set('changeEncryptionOK', true);
   }
 
   /*

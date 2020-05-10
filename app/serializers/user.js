@@ -14,6 +14,7 @@ export default class extends ApplicationSerializer {
     issuedBy: 'issued_by',
     divisionNumber: 'division_number',
     sex: 'sex',
+    encryptionKey: 'encrypt_key',
     companies: {serialize: false},
   };
 
