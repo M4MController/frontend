@@ -6,6 +6,7 @@ export default class extends Route {
   async model() {
     const store = this.get('store');
     return {
+      user: await store.findRecord('user', 1),
       socialTokens: await store.findRecord('user-social-token', 1),
     };
   }

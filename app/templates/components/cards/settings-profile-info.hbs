@@ -13,32 +13,27 @@
     <div class="row inputsSet">
       <div class="col-md-6">
         <div class="form-group">
-          <label for="middle-name-input">Фамилия</label>
-          <input class="form-control form-field" id="middle-name-input" value={{user.middleName}}>
+          {{core/form-input value=user.middleName name="Фамилия"}}
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="first-name-input">Имя</label>
-          <input class="form-control form-field" id="first-name-input" value={{user.firstName}}>
+          {{core/form-input value=user.firstName name="Имя"}}
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="last-name-input">Отчество</label>
-          <input class="form-control form-field" id="last-name-input" value={{user.lastName}}>
+          {{core/form-input value=user.lastName name="Отчество"}}
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="birthday-input">Дата рождения</label>
-          <input type="date" class="form-control form-field" id="birthday-input" value={{user.birthday}}>
+          {{core/form-input value=user.birthday name="Дата рождения"}}
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="registration-address-input">Город проживания</label>
-          <input class="form-control form-field" id="registration-address-input" value={{user.registrationAddress}}>
+          {{core/form-input value=user.registrationAddress name="Город проживания"}}
         </div>
       </div>
       <div class="col-md-6">
@@ -74,26 +69,22 @@
     <div class="row inputsSet">
       <div class="col-md-6">
         <div class="form-group">
-          <label for="home-phone-input">Домашний телефон</label>
-          <input class="form-control form-field" id="home-phone-input" value={{user.homePhone}}>
+          {{core/form-input value=user.homePhone name="Домашний телефон"}}
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="mobile-phone-input">Мобильный телефон</label>
-          <input class="form-control form-field" id="mobile-phone-input" value={{user.mobilePhone}}>
+          {{core/form-input value=user.mobilePhone name="Мобильный телефон"}}
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="mail-address-input">Почтовый адрес</label>
-          <input class="form-control form-field" id="mail-address-input" value={{user.mailingAddress}}>
+          {{core/form-input value=user.mailingAddress name="Почтовый адрес"}}
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="email-input">Email</label>
-          <input class="form-control form-field" id="email-input" value={{user.email}}>
+          {{core/form-input value=user.email name="Email"}}
         </div>
       </div>
     </div>
@@ -134,6 +125,26 @@
 
   <div class="personalData__block">
     <div class="box__title align-items-center">
+      <h5 class="box__name h5">Шифрование</h5>
+      {{#if changeEncryptionOK}}
+        <span>
+          <span class="icon-check-symbol"></span>
+          Изменения успешно сохранены
+        </span>
+      {{/if}}
+      <button class="btn btnStyle btnStyle_сolor" onclick={{action 'changeEncryption'}}>Сохранить настройки</button>
+    </div>
+    <div class="row inputsSet">
+      <div class="col-md-12">
+        <div class="form-group">
+          {{core/form-input value=user.encryptionKey name="Ключ"}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="personalData__block">
+    <div class="box__title align-items-center">
       <h5 class="box__name h5">Интеграции</h5>
       {{#if integrationsChangeOK}}
         <span>
@@ -144,7 +155,7 @@
       <button class="btn btnStyle btnStyle_сolor" onclick={{action 'changeSocialTokens'}}>Сохранить настройки</button>
     </div>
     <div class="row inputsSet">
-      <div class="col-md-4">
+      <div class="col-md-12">
         <div class="form-group">
           {{core/form-input value=socialTokens.yandexDisk name="Yandex.Disk Token"}}
         </div>
