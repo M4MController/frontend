@@ -16,6 +16,10 @@ export default class extends Component {
 
   @computed('username')
   get usernameError() {
+    if (this.get('isLiteMode')) {
+      return undefined;
+    }
+
     const username = this.get('username');
 
     if (!username.length) {
@@ -31,6 +35,10 @@ export default class extends Component {
 
   @computed('fio')
   get fioError() {
+    if (this.get('isLiteMode')) {
+      return undefined;
+    }
+
     const fio = this.get('fio');
 
     if (!fio.length) {
@@ -81,14 +89,20 @@ export default class extends Component {
 
   @action
   onRegisterClickAction() {
-    const [lastName, firstName, middleName] = this.get('fio').split(' ');
+    if (this.get('isLiteMode')) {
+      this.get('isValid') && this.attrs.onSignUp && this.attrs.onSignUp({
+        password: this.get('password'),
+      });
+    } else {
+      const [lastName, firstName, middleName] = this.get('fio').split(' ');
 
-    this.get('isValid') && this.attrs.onSignUp && this.attrs.onSignUp({
-      username: this.get('username'),
-      lastName,
-      firstName,
-      middleName,
-      password: this.get('password'),
-    });
+      this.get('isValid') && this.attrs.onSignUp && this.attrs.onSignUp({
+        username: this.get('username'),
+        lastName,
+        firstName,
+        middleName,
+        password: this.get('password'),
+      });
+    }
   }
 }

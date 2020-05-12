@@ -22,11 +22,12 @@ const BaseAuthService = class extends BackendService {
     this.get('cookies').write('token', value, {path: '/'});
   }
 
-  async logIn(username, password) {
-    return this.request('/sign_in', 'POST', {
-      login: username,
-      password,
-    }).then((response) => {
+  async logIn({username, password}) {
+    const data = {password};
+    if (!IS_LITE_MODE) {
+      data.login = username;
+    }
+    return this.request('/sign_in', 'POST', data).then((response) => {
       this.set('isAuthorized', true);
       this.set('token', response['token']);
       return this.get('store').findRecord('user', 1);
@@ -40,10 +41,11 @@ const BaseAuthService = class extends BackendService {
     middleName,
     password,
   }) {
-    return this.request('/sign_up', 'POST', {
-      login: username,
-      password,
-    }).then(async (response) => {
+    const data = {password};
+    if (!IS_LITE_MODE) {
+      data.login = username;
+    }
+    return this.request('/sign_up', 'POST', data).then(async (response) => {
       this.set('isAuthorized', true);
       this.set('token', response['token']);
       const user = await this.get('store').findRecord('user', 1);

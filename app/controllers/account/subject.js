@@ -22,8 +22,4 @@ export default class extends Controller {
       onSuccess: () => openModal('sensors-add', {sensors: controller.get('sensors')}),
     });
   }
-
-  get isLiteMode() {
-    return IS_LITE_MODE;
-  }
 }

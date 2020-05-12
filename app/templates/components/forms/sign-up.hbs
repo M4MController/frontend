@@ -1,27 +1,33 @@
 <div class="popupForm">
+  {{#unless isLiteMode}}
+    {{core/form-input
+            name="E-mail"
+            value=username
+            error=usernameError
+    }}
+    {{core/form-input
+            name="ФИО"
+            value=fio
+            error=fioError
+    }}
+  {{/unless}}
   {{core/form-input
-    name="E-mail"
-    value=username
-    error=usernameError
+          name="Пароль"
+          type="password"
+          value=password
+          error=passwordError
   }}
   {{core/form-input
-    name="ФИО"
-    value=fio
-    error=fioError
-  }}
-  {{core/form-input
-    name="Пароль"
-    type="password"
-    value=password
-    error=passwordError
-  }}
-  {{core/form-input
-    name="Повторите пароль"
-    type="password"
-    value=passwordRepeat
-    error=passwordRepeatError
+          name="Повторите пароль"
+          type="password"
+          value=passwordRepeat
+          error=passwordRepeatError
   }}
   <button class="btn btnStyle btnStyle_сolor popupEnterBtn" onClick={{action "onRegisterClickAction"}}>
-    Зарегестрироваться
+    {{#if isLiteMode}}
+      Сохранить
+    {{else}}
+      Зарегестрироваться
+    {{/if}}
   </button>
 </div>

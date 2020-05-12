@@ -37,8 +37,20 @@
           {{/unless}}
         </div>
       {{else}}
-        <h1 class="text-center margin-bottom-2x">Добро пожаловать в систему!</h1>
-        <p>Чтобы начать использовать контроллер, пожалуйста, зарегистрируйстесь</p>
+        <h1 class="text-center margin-bottom-2x">
+          {{#if isLiteMode}}
+            Добро пожаловать в систему!
+          {{else}}
+            Регистрация
+          {{/if}}
+        </h1>
+        <p class="text-center">
+          {{#if isLiteMode}}
+            Чтобы начать использовать контроллер, пожалуйста, придумайте пароль.
+            <br>
+            Это необходимо, чтобы защитить Ваши данные от посторонних лиц.
+          {{/if}}
+        </p>
         {{forms/sign-up class="vp-width h-center"
                         error=sugnUpError
                         onSignUp=(action "onSignUpAction")

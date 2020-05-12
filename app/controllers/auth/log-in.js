@@ -12,9 +12,9 @@ export default class extends Controller {
   supportRegistration = !IS_LITE_MODE;
 
   @action
-  async onLogInAction(username, password) {
+  async onLogInAction({username, password}) {
     this.set('isLoading', true);
-    if (await this.get('auth').logIn(username, password)) {
+    if (await this.get('auth').logIn({username, password})) {
       this.set('logInError', '');
       this.transitionToRoute('account.index');
     } else {
