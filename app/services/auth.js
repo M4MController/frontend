@@ -49,11 +49,13 @@ const BaseAuthService = class extends BackendService {
       this.set('isAuthorized', true);
       this.set('token', response['token']);
       const user = await this.get('store').findRecord('user', 1);
-      user.set('email', username);
-      user.set('firstName', firstName);
-      user.set('lastName', lastName);
-      user.set('middleName', middleName);
-      await user.save();
+      if (!IS_LITE_MODE) {
+        user.set('email', username);
+        user.set('firstName', firstName);
+        user.set('lastName', lastName);
+        user.set('middleName', middleName);
+        await user.save();
+      }
       return user;
     }).catch(() => false);
   }

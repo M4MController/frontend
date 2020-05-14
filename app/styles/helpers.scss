@@ -110,3 +110,19 @@
   bottom: 0;
   left: 0;
 }
+
+
+.yandex-disk {
+  background-color: #ffdb4d;
+  font-size: large;
+  font-weight: bold;
+  //border: solid 1px silver;
+
+  &::first-letter {
+    color: red;
+  }
+
+  &::before {
+    content: "Яндекс.Диск";
+  }
+}

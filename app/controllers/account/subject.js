@@ -1,7 +1,6 @@
 import Controller from '@ember/controller';
 import {action} from '@ember/object';
 import {openModal} from '../../helpers/open-modal';
-import {IS_LITE_MODE} from '../../constants';
 
 export default class extends Controller {
   @action
