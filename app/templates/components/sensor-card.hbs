@@ -1,1 +1,16 @@
-{{component (concat "sensor-" sensor.typeName "-card") sensor=sensor}}
+{{#if isLiteMode}}
+  {{component (concat "sensor-" sensor.typeName "-card") sensor=sensor}}
+{{else}}
+  <div class="card-wrapper">
+    {{#link-to "account.sensor" sensor.id tagName="div" class="clickable"}}
+      <div class="cardStyle">
+        <div class="cardStyle-title">
+          {{sensor.name}}
+        </div>
+        <div class="cardStyle-description">
+          Перейти к настройке
+        </div>
+      </div>
+    {{/link-to}}
+  </div>
+{{/if}}
