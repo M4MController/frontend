@@ -7,7 +7,7 @@ export default class extends Route {
     const sensors = this.get('store').peekAll('sensor').filterBy('typeName', 'obd');
 
     return {
-      company: this.get('store').peekRecord('service-company', companyId),
+      company: this.get('store').peekRecord('company', companyId),
       clients: [
         {
           status: '7/10',

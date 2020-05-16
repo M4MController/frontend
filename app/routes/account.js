@@ -21,20 +21,6 @@ export default class extends Route {
     addListener(this.get('auth'), 'log-in-required', () => this.transitionTo('auth.log-in'));
   }
 
-  afterModel(model) {
-    // todo: remove the stub
-    const check = this.get('store').peekRecord('service-company', 100500);
-    if (!check) {
-      const company = this.get('store').createRecord('service-company', {
-        id: 100500,
-        name: 'Гараж 4x4',
-        phone: '8 (800) 555-35-35',
-        address: 'Ильменский пр., 9А, стр. 12, Москва',
-      });
-      model.user.get('companies').pushObject(company);
-    }
-  }
-
   @on('activate')
   startAutoUpdate() {
     const timer = later(this, async function() {

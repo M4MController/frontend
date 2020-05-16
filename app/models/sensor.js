@@ -36,12 +36,11 @@ export default class extends DS.Model {
   @attr('string') valuePrevYearAverage;
 
   @attr('number') status;
-  @attr('string') company;
   @attr('string') unitName;
   @attr('number') type;
   @attr('date') activationDate;
   @attr('date') deactivationDate;
-  @belongsTo('service-company', {async: false}) serviceCompany;
+  @belongsTo('company', {async: false}) company;
   @belongsTo('controller', {async: false}) controller;
   @hasMany('sensor-value', {async: false}) values;
 

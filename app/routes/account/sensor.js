@@ -14,13 +14,16 @@ export default class extends Route {
     this.set('pageTitle', this.get('model.name'));
   }
 
-  model({'sensor_id': sensorId, field}) {
+  async model({'sensor_id': sensorId, field}) {
+    const store = this.get('store');
+
     this.set('sensorId', sensorId);
     if (IS_LITE_MODE) {
-      this.get('store').query('sensor-value', {sensorId, field, limit: 1000});
+      store.query('sensor-value', {sensorId, field, limit: 1000});
     }
     this.set('field', field);
-    return this.get('store').peekRecord('sensor', sensorId);
+    await store.findAll('company');
+    return store.peekRecord('sensor', sensorId);
   }
 
   afterModel(model) {
