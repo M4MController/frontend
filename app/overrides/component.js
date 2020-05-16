@@ -1,7 +1,11 @@
 import Ember from 'ember';
 import {action} from '@ember/object';
 
+import {IS_LITE_MODE} from '../constants';
+
 Ember.Component = class extends Ember.Component {
+  isLiteMode = IS_LITE_MODE;
+
   getAttr(prop) {
     const attrValue = this.get(prop);
     return attrValue === undefined ? this.defaultAttrs[prop] : attrValue;

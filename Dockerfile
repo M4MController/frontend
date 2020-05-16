@@ -34,5 +34,6 @@ RUN mkdir -p /usr/html/ && cp -R dist/. /usr/html/account/
 
 # remove unnecessary source files
 RUN rm -fr /application
+RUN apk del nodejs npm git
 
 ADD config/nginx-${MODE}.conf /etc/nginx/nginx.conf

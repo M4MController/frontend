@@ -6,39 +6,177 @@
       <div class="h-center">
         {{core/image-component name="logo-black" class="logo-setup margin-bottom-2x"}}
       </div>
-      {{#if setupStep}}
-        <div class="text-center">
-          {{#unless success}}
-            <h1 class="text-center margin-bottom-2x">Устройство почти готово к использованию!</h1>
-            {{core/form-input
-                    name="Введите название нового контроллера"
-                    value=objects.firstObject.name
-            }}
-            <button class="btn btnStyle btnStyle_сolor popupEnterBtn" onclick={{action "setProp" "success" true}}>
-              Далее
+      {{#if (eq step "object-create")}}
+        <div class="popupForm text-center">
+          <h1 class="text-center margin-bottom-2x">
+            {{#if isLiteMode}}
+              Устройство почти готово к использованию!
+            {{else}}
+              Добро пожаловать!
+            {{/if}}
+          </h1>
+          {{#unless isLiteMode}}
+            <p class="margin-bottom-2x">
+              Дайте название объекту, в котором будет находится контроллер. Например, дом, автомобиль, дача и т. д.
+            </p>
+          {{/unless}}
+          {{core/form-input
+                  name=(if isLiteMode "Введите название для этого контроллера")
+                  value=objectName
+          }}
+          <button class="btn btnStyle btnStyle_сolor popupEnterBtn" onclick={{action "onObjectCreate" objectName}}>
+            Далее
+          </button>
+        </div>
+      {{else if (eq step "setup")}}
+        {{#each objects as |object|}}
+          <h1 class="text-center margin-bottom-2x">Устройство готово к использованию!</h1>
+
+          {{#if object.sensors.length}}
+            <p class="margin-bottom-4x">
+              Первичная настройка завершена! Нам удалось обнаружить следующие сенсоры:
+            </p>
+            <div class="margin-bottom-2x">
+              <div class="margin-bottom-2x">Устройтво: <b>{{object.name}}</b></div>
+              {{#each object.sensors as |sensor|}}
+                <div class="inline-block margin-bottom-2x margin-right-2x">
+                  {{core/icon-component name=(sensor-icon-name sensor) class="sensor-icon"}}
+                  {{sensor.name}}
+                </div>
+              {{/each}}
+            </div>
+          {{else}}
+            <p>
+              Первичная настройка завершена! Однако, мы не смогли обнаружить ни одного сенсора.
+              <br/>
+              Возможно, Вы их не подключили?
+            </p>
+          {{/if}}
+        {{/each}}
+        {{#link-to "account.index" class="btn btnStyle btnStyle_сolor popupEnterBtn"}}
+          Далее
+        {{/link-to}}
+      {{else if (eq step "social-binding")}}
+        <div class="popupForm">
+          <h1 class="text-center margin-bottom-2x">
+            Привяжите облачное хранилище
+          </h1>
+          <p class="text-center">
+            {{#if isLiteMode}}
+              ...чтобы сохранить данные в случае потери контроллера
+              <br>
+              а так же получить возможность интеграции со сторонними сервисами.
+            {{else}}
+              ...чтобы получить возможность интеграции Ваших контроллеров со сторонними сервисами.
+            {{/if}}
+          </p>
+
+          {{#if showToken}}
+            <span class="text-muted">
+              <i>
+                (должно открыться окно авторизации в Я.Диске, на данный момент это невозможно, поэтому введите токен в поле ниже)
+              </i>
+            </span>
+            {{core/form-input value=token}}
+            <button class="btn btnStyle yandex-disk popupEnterBtn margin-bottom-4x" onClick={{action "onSocialBind"
+                                                                                                     token}}>
             </button>
           {{else}}
-            {{#each objects as |object|}}
-              <h1 class="text-center margin-bottom-2x">Устройство готово к использованию!</h1>
-              <p class="margin-bottom-4x">Первичная настройка завершена! Нам удалось обнаружить следующие сенсоры:</p>
-              <div class="margin-bottom-2x">
-                <div class="margin-bottom-2x">Устройтво: <b>{{object.name}}</b></div>
-                {{#each object.sensors as |sensor|}}
-                  <div class="inline-block margin-bottom-2x margin-right-2x">
-                    {{core/icon-component name=(sensor-icon-name sensor) class="sensor-icon"}}
-                    {{sensor.name}}
-                  </div>
-                {{/each}}
-              </div>
-            {{/each}}
-            {{#link-to "account.index" class="btn btnStyle btnStyle_сolor popupEnterBtn"}}
-              Войти в личный кабинет
-            {{/link-to}}
-          {{/unless}}
+            <button class="btn btnStyle yandex-disk popupEnterBtn margin-bottom-4x" onClick={{action "setProp"
+                                                                                                     "showToken"
+                                                                                                     true}}>
+            </button>
+          {{/if}}
+          <p>
+            Вы можете пропустить этот шаг и настроить привязку позже в настройках.
+          </p>
+
+          <div class="text-center">
+            <button class="btn btnStyle btnStyle_сolor" onClick={{action "onSocialBind" undefined}}>
+              Пропустить
+            </button>
+          </div>
+        </div>
+      {{else if (eq step "setup-key")}}
+        <h1 class="text-center margin-bottom-2x">
+          Этот контроллер и Ваше облачное хранилище синхронизированы
+        </h1>
+        <div class="text-center">
+          <p>
+            Контроллер будет отправлять собранные данные на Ваше облако в зашифрованном виде,
+            <br>
+            так что даже при взломе облачного хранилища, данные не утекут.
+          </p>
+          <div class="popupForm">
+            {{core/form-input class="block" value=key name="Задайте секретное слово, которым будут шифроваться данные"}}
+            <button class="btn btnStyle btnStyle_сolor popupEnterBtn" onClick={{action "onKeyEntered" key}}>
+              Сохранить
+            </button>
+          </div>
+        </div>
+      {{else if (eq step "instruction")}}
+        <div class="popupForm text-center">
+          <h1 class="margin-bottom-2x">
+            Добро пожаловать!
+          </h1>
+          {{#if isLiteMode}}
+            <p>
+              Настройка завершена!
+            </p>
+            {{#if token}}
+              <p>
+                Вы привязали облачное хранилище, все данные, собранные этим контроллером, будут сохраняться на Ваш
+                Яндекс.Диск.
+                <br/>
+                Для подключения стороннего сервиса и передачи ему данных, авторизуйтесь в личном кабинете на <a
+                      href="https://meter4.me" target="_blank">сайте</a> и привяжите этот же самый аккаунт Яндекс.Диска.
+              </p>
+            {{else}}
+              <p>
+                Вы не привязали облачное хранилище. Все данные, собранные этим контроллером, не будут синхронизироваться,
+                а будут храниться только локально на этом устройстве.
+                <br/>
+                Чтобы включить синхронизацию и получить возможность подключать сторонние сервисы, Вы можете привязать
+                облачное хранилище в настройках этого контроллера.
+              </p>
+            {{/if}}
+          {{else}}
+            {{#if token}}
+              <p>
+                Вы привязали облачное хранилище, все контроллеры, привязанные к этому аккаунту на Яндекс.Диске, появятся в
+                Вашем личном кабинете.
+                <br/>
+                Вы можете подключить интеграцию со сторонним сервисом в настройках каждого сенсора.
+              </p>
+            {{else}}
+              <p>
+                Вы не привязали облачное хранилище, действия Вашего аккаунта ограничены.
+                <br/>
+                Чтобы получить возможность подключать сторонние сервисы, привяжите облачние хранилище в настройках
+                личного кабинета.
+              </p>
+            {{/if}}
+          {{/if}}
+
+          <button class="btn btnStyle btnStyle_сolor popupEnterBtn" onClick={{action "onAccountGoClick" key}}>
+            Перейти в личный кабинет
+          </button>
         </div>
       {{else}}
-        <h1 class="text-center margin-bottom-2x">Добро пожаловать в систему!</h1>
-        <p>Чтобы начать использовать контроллер, пожалуйста, зарегистрируйстесь</p>
+        <h1 class="text-center margin-bottom-2x">
+          {{#if isLiteMode}}
+            Добро пожаловать в систему!
+          {{else}}
+            Регистрация
+          {{/if}}
+        </h1>
+        <p class="text-center">
+          {{#if isLiteMode}}
+            Чтобы начать использовать контроллер, пожалуйста, придумайте пароль.
+            <br>
+            Это необходимо, чтобы защитить Ваши данные от посторонних лиц.
+          {{/if}}
+        </p>
         {{forms/sign-up class="vp-width h-center"
                         error=sugnUpError
                         onSignUp=(action "onSignUpAction")

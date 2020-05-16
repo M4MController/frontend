@@ -2,16 +2,18 @@
   {{core/image-component name="logo-black" class="logo"}}
 {{/link-to}}
 <div class="popupForm">
+  {{#unless isLiteMode}}
+    {{core/form-input
+            name="E-mail"
+            value=username
+            error=usernameError
+    }}
+  {{/unless}}
   {{core/form-input
-    name="E-mail"
-    value=username
-    error=usernameError
-  }}
-  {{core/form-input
-    name="Пароль"
-    type="password"
-    value=password
-    error=passwordError
+          name="Пароль"
+          type="password"
+          value=password
+          error=passwordError
   }}
   <button class="btn btnStyle btnStyle_сolor popupEnterBtn" onClick={{action "onLoginClickAction"}}>
     Войти

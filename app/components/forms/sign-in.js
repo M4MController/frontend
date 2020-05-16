@@ -14,6 +14,10 @@ export default class extends Component {
 
   @computed('username')
   get usernameError() {
+    if (this.get('isLiteMode')) {
+      return undefined;
+    }
+
     const username = this.get('username');
 
     if (!username.length) {
@@ -49,6 +53,9 @@ export default class extends Component {
 
   @action
   onLoginClickAction() {
-    this.get('isValid') && this.attrs.onLogIn && this.attrs.onLogIn(this.get('username'), this.get('password'));
+    this.get('isValid') && this.attrs.onLogIn && this.attrs.onLogIn({
+      username: this.get('username'),
+      password: this.get('password'),
+    });
   }
 }
