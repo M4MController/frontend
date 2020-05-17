@@ -1,4 +1,5 @@
 import Controller from '@ember/controller';
+import {action} from '@ember/object';
 import {computed} from '@ember/object';
 import {inject as service} from '@ember/service';
 import {measurement} from '../../helpers/measurement';
@@ -189,4 +190,11 @@ export default class extends Controller {
     background2: '#F0F0EA',
 
   };
+
+  @action
+  async onChangeCompany(event) {
+    const sensor = this.get('model.sensor');
+    sensor.set('company', event.target.value && this.get('model.companies').findBy('id', event.target.value));
+    await sensor.save();
+  }
 }
