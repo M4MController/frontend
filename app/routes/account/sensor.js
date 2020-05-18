@@ -9,22 +9,27 @@ export default class extends Route {
   autoUpdateTimer;
   sensorId;
 
-  @observes('model.name')
+  @observes('model.sensor.name')
   onObjectNameChange() {
-    this.set('pageTitle', this.get('model.name'));
+    this.set('pageTitle', this.get('model.sensor.name'));
   }
 
-  model({'sensor_id': sensorId, field}) {
+  async model({'sensor_id': sensorId, field}) {
+    const store = this.get('store');
+
     this.set('sensorId', sensorId);
     if (IS_LITE_MODE) {
-      this.get('store').query('sensor-value', {sensorId, field, limit: 1000});
+      store.query('sensor-value', {sensorId, field, limit: 1000});
     }
     this.set('field', field);
-    return this.get('store').peekRecord('sensor', sensorId);
+    return {
+      companies: this.get('isLiteMode') ? null : await store.findAll('company'),
+      sensor: store.peekRecord('sensor', sensorId),
+    };
   }
 
   afterModel(model) {
-    this.set('pageTitle', model.get('name'));
+    this.set('pageTitle', model.sensor.get('name'));
   }
 
   @on('activate')

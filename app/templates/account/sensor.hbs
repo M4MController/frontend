@@ -1,83 +1,71 @@
 <div class="row">
   {{page-caption class="col-12"
-                 text=(if field (t (concat "obd." field) model) model.name)
-                 icon=(sensor-icon-name model)
+                 text=(if field (t (concat "obd." field) model.sensor) model.senor.name)
+                 icon=(sensor-icon-name model.sensor)
   }}
 </div>
+
 <div class="row cardStyle block">
-  <!--<h2 class="text-caption text-center">График потребления</h2>-->
   {{#if isGraphVisible}}
     <div class="margin-bottom-2x" align="middle">
-      {{#core/loader-component loading=(not model.values)}}
+      {{#core/loader-component loading=(not model.sensor.values)}}
         {{3rd/dynamic-high-charts mode="StockChart" content=content chartOptions=chartOptions settings=settings}}
       {{/core/loader-component}}
     </div>
   {{/if}}
 
-  <div class="v-center">
-    <div>
-      <span class="text-caption text-black">Правила</span>
-      <span class="btn btnStyle btnStyle_сolor pull-right margin-bottom-1x">Добавить</span>
+  {{#unless isLiteMode}}
+    <div class="v-center">
+      <div>
+        <span class="text-caption text-black">Правила</span>
+        <!--        <span class="btn btnStyle btnStyle_сolor pull-right margin-bottom-1x">Добавить</span>-->
+      </div>
     </div>
-  </div>
-  <table class="table text-default">
-    <thead>
-    <tr>
-      <th>Что</th>
-      <th>Куда</th>
-      <th>Когда</th>
-      <th class="width-9x"><span class="pull-right">Управление</span></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>Текущее значение, {{model.unitName}}</td>
-      <td>{{model.serviceCompany.name}}</td>
-      <td>раз в неделю</td>
-      <td align="right">
-        {{core/icon-component name="pen" class="height-2x padding-right-2x clickable" text="Изменить"}}
-        {{core/icon-component name=(if is1RuleActive "switch-off" "switch-on") class="height-2x clickable"
-                              text="Статус: правило действует"
-                              click=(action "toggle" "is1RuleActive")
-        }}
-      </td>
-    </tr>
-    <tr>
-      <td>Напряжение, V</td>
-      <td>МОЭК</td>
-      <td>раз в день</td>
-      <td align="right">
-        {{core/icon-component name="pen" class="height-2x padding-right-2x clickable" text="Изменить"}}
-        {{core/icon-component name=(if is2RuleActive "switch-off" "switch-on") class="height-2x clickable"
-                              text="Статус: правило действует"
-                              click=(action "toggle" "is2RuleActive")
-        }}
-      </td>
-    </tr>
-    <tr>
-      <td>Ток, A</td>
-      <td>МОЭК</td>
-      <td>раз в день</td>
-      <td align="right">
-        {{core/icon-component name="pen" class="height-2x padding-right-2x clickable" text="Изменить"}}
-        {{core/icon-component name=(if is3RuleActive "switch-off" "switch-on") class="height-2x clickable"
-                              text="Статус: правило действует"
-                              click=(action "toggle" "is3RuleActive")
-        }}
-      </td>
-    </tr>
-    <tr>
-      <td>Uptime</td>
-      <td>МОЭК</td>
-      <td>раз в день</td>
-      <td align="right">
-        {{core/icon-component name="pen" class="height-2x padding-right-2x clickable" text="Изменить"}}
-        {{core/icon-component name=(if is4RuleActive "switch-on" "switch-off") class="height-2x clickable"
-                              text="Статус: правило не активно"
-                              click=(action "toggle" "is4RuleActive")
-        }}
-      </td>
-    </tr>
-    </tbody>
-  </table>
+    <table class="table text-default">
+      <thead>
+      <tr>
+        <th>Компания</th>
+        <th>Частота</th>
+        <th>Начиная с даты</th>
+        <th class="width-9x"><span class="pull-right">Управление</span></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <select class="form-control full-width" onchange={{action "onChangeCompany"}}>
+            <option selected="{{if (eq model.sensor.company null) "selected"}}">Не выбрано</option>
+            {{#each model.companies as |company|}}
+              <option value="{{company.id}}" selected="{{if (eq model.sensor.company.id company.id) "selected"}}">
+                {{company.name}}
+              </option>
+            {{/each}}
+          </select>
+        </td>
+        <td>
+          {{#if model.sensor.company}}
+            <select class="form-control full-width">
+              <option>Раз в день</option>
+              <option>Раз в неделю</option>
+              <option>Раз в месяц</option>
+            </select>
+          {{/if}}
+        </td>
+        <td>
+          {{#if model.sensor.company}}
+            <input value="15.05.2020"/>
+          {{/if}}
+        </td>
+        <td align="right">
+          {{#if model.sensor.company}}
+            {{core/icon-component name=(if is1RuleActive "switch-off" "switch-on") class="height-2x clickable"
+                                  text="Статус: правило действует"
+                                  click=(action "toggle" "is1RuleActive")
+            }}
+          {{/if}}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  {{/unless}}
 </div>
