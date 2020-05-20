@@ -42,7 +42,11 @@ export default class extends Controller {
       await controller.save();
     }
 
-    this.set('step', 'social-binding');
+    if (IS_LITE_MODE) {
+      this.set('step', 'setup-key');
+    } else {
+      this.set('step', 'social-binding');
+    }
     this.set('isLoading', false);
   }
 
@@ -53,19 +57,13 @@ export default class extends Controller {
       const social = await this.get('store').findRecord('user-social-token', 1);
       social.set('yandexDisk', token);
       await social.save();
+    }
 
-      if (IS_LITE_MODE) {
-        this.set('step', 'setup-key');
-      } else {
-        this.set('step', 'instruction');
-      }
-    } else { // if user skipped this step
-      if (IS_LITE_MODE) {
-        this.set('objects', await this.get('store').findAll('object'));
-        this.set('step', 'setup');
-      } else {
-        this.set('step', 'instruction');
-      }
+    if (IS_LITE_MODE) {
+      this.set('objects', await this.get('store').findAll('object'));
+      this.set('step', 'setup');
+    } else {
+      this.set('step', 'instruction');
     }
     this.set('isLoading', false);
   }
@@ -85,7 +83,7 @@ export default class extends Controller {
     this.set('objects', await this.get('store').findAll('object'));
 
     this.set('isLoading', false);
-    this.set('step', 'setup');
+    this.set('step', 'social-binding');
   }
 
   @action
