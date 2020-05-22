@@ -26,6 +26,6 @@ export default class UserModel extends DS.Model {
 
   @computed('firstName', 'lastName')
   get fullName() {
-    return `${this.get('firstName')} ${this.get('lastName')} ${this.get('middleName')}`;
+    return [this.get('firstName'), this.get('lastName'), this.get('middleName')].filter((x) => x).join(' ');
   }
 }
