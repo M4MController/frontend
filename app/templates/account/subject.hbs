@@ -1,24 +1,17 @@
 <div class="row align-items-center">
   {{#page-caption text=model.name icon="home" class="col-12"}}
-    <div class="pull-right">
-      {{#unless model.sensors.length}}
-        <button class="btn btnStyle btnStyle_сolorgray margin-right-1x"
-                onclick={{action "onDeleteObjectAction" model}}>
-          <span class="icon-cross"></span> Удалить
-        </button>
-      {{/unless}}
-      <button class="btn btnStyle btnStyle_сolor"
-              onclick={{open-modal "controller-add" object=model onSuccess=(action "afterControllerAdded")}}
-      >
-        Добавить контроллер
-      </button>
-    </div>
   {{/page-caption}}
 </div>
 
-  <div class="row havings">
+<div class="row havings">
+  {{#if model.sensors.length}}
     {{#each (sort-by "typeName" model.sensors) as |sensor|}}
       {{sensor-card sensor=sensor}}
     {{/each}}
-  </div>
+  {{else}}
+    <div class="text-center text-muted full-width margin-top-2x">
+      В этом объекте нет ни одного сенсора. Возможно, вы подключили тестовый контроллер?
+    </div>
+  {{/if}}
+</div>
 

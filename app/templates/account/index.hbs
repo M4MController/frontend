@@ -1,17 +1,37 @@
-<div class="row">
-  {{#page-caption text="Мои объекты" icon="tree-structure" class="col-12"}}
-    <div class="text-right">
-      <button class="btn btnStyle btnStyle_сolor"
-              onclick={{open-modal "object-add" onSuccess=(action "afterObjectCreated")}}
-      >
-        Добавить объект
-      </button>
+{{#if (or (not model.objects.length) (not model.objects.firstObject.controllers))}}
+  <div class="row">
+    <div class="margin-top-2x text-center full-width h-center">
+      <img src="https://img.icons8.com/dotty/80/000000/nothing-found.png" class="text-center block"/>
+      <h2 class="block text-center margin-top-4x">К личному кабинету не привязано ни одного сенсора</h2>
     </div>
-  {{/page-caption}}
-</div>
+    <div class="vp-width full-height v-center h-center text-muted text-center">
+      <div class="margin-top-2x margin-bottom-2x">
+        Включите контроллер и следуйте инструкциям, появившимся в его web-интерфейсе.
+      </div>
+      <div class="">
+        Затем привяжите аккаунт Яндекс.Диска, привязанный к Вашему контроллеру в
+        <u>{{#link-to "account.settings.account" class="text-muted"}}Настройках{{/link-to}}</u>,
+        если Вы ещё не сдели этого.
+      </div>
+    </div>
+  </div>
+{{else}}
+  <div class="row">
+    {{#page-caption text="Мои объекты" icon="tree-structure" class="col-12"}}
+    {{!    <div class="text-right">
+          <button class="btn btnStyle btnStyle_сolor"
+                  onclick={{open-modal "object-add" onSuccess=(action "afterObjectCreated")} }
+          >
+            Добавить объект
+          </button>
+        </div>
+    }}
+    {{/page-caption}}
+  </div>
 
-<div class="row havings">
-  {{#each model.objects as |object|}}
-    {{object-card object=object}}
-  {{/each}}
-</div>
+  <div class="row havings">
+    {{#each model.objects as |object|}}
+      {{object-card object=object}}
+    {{/each}}
+  </div>
+{{/if}}
