@@ -13,18 +13,9 @@
         <nav class="nav headerNav headerMenu__nav" style="flex-wrap: nowrap; overflow: scroll;">
           <span class="closeMenu"><span class="icon-cross closeMenu__btn closeMenu__btn_js hideSideMenu_action"></span></span>
           {{#link-to "account.index" class="nav-link menuItem"}}Объекты{{/link-to}}
-          {{#link-to 'account.finance.subject' objects.firstObject class="nav-link menuItem"}}
-            Финансы
-          {{/link-to}}
           {{#link-to 'account.settings.devices' class='nav-link menuItem'}}
             Настройки
           {{/link-to}}
-
-          {{#each user.companies as |company|}}
-            {{#link-to 'account.company-account' company.id class='nav-link menuItem'}}
-              {{company.name}}
-            {{/link-to}}
-          {{/each}}
 
           <nav class="nav footerNav footerMenuInHeader" style="flex-wrap: nowrap">
             {{#link-to 'redirect' (query-params to="landing") class="nav-link menuItem"}}О компании{{/link-to}}
