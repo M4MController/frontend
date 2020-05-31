@@ -25,6 +25,13 @@ Router.map(function() {
       this.route('devices');
       this.route('payment');
     });
+    this.route('set-up', function() {
+      this.route('object-create');
+      this.route('social-binding');
+      this.route('setup-key');
+      this.route('set-up-controller');
+      this.route('instruction');
+    });
   });
   this.route('redirect');
   this.route('setup');

@@ -1,0 +1,34 @@
+{{#if isLoading}}
+  <div class="layout v-center h-center vp-height">
+    {{core/loader-component}}
+  </div>
+
+{{else}}
+  {{#each objects as |object|}}
+    <h1 class="text-center margin-bottom-2x">Устройство готово к использованию!</h1>
+
+    {{#if object.sensors.length}}
+      <p class="margin-bottom-4x">
+        Первичная настройка завершена! Нам удалось обнаружить следующие сенсоры:
+      </p>
+      <div class="margin-bottom-2x">
+        <div class="margin-bottom-2x">Устройтво: <b>{{object.name}}</b></div>
+        {{#each model.object.sensors as |sensor|}}
+          <div class="inline-block margin-bottom-2x margin-right-2x">
+            {{core/icon-component name=(sensor-icon-name sensor) class="sensor-icon"}}
+            {{sensor.name}}
+          </div>
+        {{/each}}
+      </div>
+    {{else}}
+      <p>
+        Первичная настройка завершена! Однако, мы не смогли обнаружить ни одного сенсора.
+        <br/>
+        Возможно, Вы их не подключили?
+      </p>
+    {{/if}}
+  {{/each}}
+  {{#link-to "account.index" class="btn btnStyle btnStyle_сolor popupEnterBtn"}}
+    Далее
+  {{/link-to}}
+{{/if}}

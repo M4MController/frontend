@@ -1,0 +1,35 @@
+{{#if isLoading}}
+  <div class="layout v-center h-center vp-height">
+    {{core/loader-component}}
+  </div>
+{{else}}
+  <div class="vp-height v-center h-center">
+    <div class="popupForm">
+      <h1 class="text-center margin-bottom-2x">
+        Привяжите облачное хранилище
+      </h1>
+      <p class="text-center">
+        {{#if isLiteMode}}
+          ...чтобы сохранить данные в случае потери контроллера
+          <br>
+          а так же получить возможность интеграции со сторонними сервисами.
+        {{else}}
+          ...чтобы получить возможность интеграции Ваших контроллеров со сторонними сервисами.
+        {{/if}}
+      </p>
+
+      <button class="btn btnStyle yandex-disk popupEnterBtn margin-bottom-4x"
+              onclick="window.location = 'https://oauth.yandex.ru/authorize?response_type=token&client_id=57a03979cd4e40f3b7c17cf12ccced73&redirect_uri=https://meter4.me/account/set-up/social-binding'"
+      ></button>
+      <p>
+        Вы можете пропустить этот шаг и настроить привязку позже в настройках.
+      </p>
+
+      <div class="text-center">
+        <button class="btn btnStyle btnStyle_сolor" onClick={{action "onSocialBind" undefined}}>
+          Пропустить
+        </button>
+      </div>
+    </div>
+  </div>
+{{/if}}
