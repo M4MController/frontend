@@ -1,0 +1,46 @@
+{{#if isLoading}}
+  {{core/loader-component class="vp-height vp-width h-center v-center"}}
+{{else}}
+  <div class="vp-height v-center h-center">
+    <div class="popupForm">
+      <h1 class="text-center margin-bottom-2x">
+        Привяжите облачное хранилище
+      </h1>
+      <p class="text-center">
+        {{#if isLiteMode}}
+          ...чтобы сохранить данные в случае потери контроллера
+          <br>
+          а так же получить возможность интеграции со сторонними сервисами.
+        {{else}}
+          ...чтобы получить возможность интеграции Ваших контроллеров со сторонними сервисами.
+        {{/if}}
+      </p>
+
+      {{#if showToken}}
+        <span class="text-muted">
+              <i>
+                (должно открыться окно авторизации в Я.Диске, на данный момент это невозможно, поэтому введите токен в поле ниже)
+              </i>
+            </span>
+        {{core/form-input value=token}}
+        <button class="btn btnStyle yandex-disk popupEnterBtn margin-bottom-4x" onClick={{action "onSocialBind"
+                                                                                                 token}}>
+        </button>
+      {{else}}
+        <button class="btn btnStyle yandex-disk popupEnterBtn margin-bottom-4x" onClick={{action "setProp"
+                                                                                                 "showToken"
+                                                                                                 true}}>
+        </button>
+      {{/if}}
+      <p>
+        Вы можете пропустить этот шаг и настроить привязку позже в настройках.
+      </p>
+
+      <div class="text-center">
+        <button class="btn btnStyle btnStyle_сolor" onClick={{action "onSocialBind" undefined}}>
+          Пропустить
+        </button>
+      </div>
+    </div>
+  </div>
+{{/if}}

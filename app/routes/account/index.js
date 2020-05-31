@@ -3,10 +3,10 @@ import Route from '@ember/routing/route';
 export default class extends Route {
   pageTitle = 'Объекты';
 
-  model() {
+  async model() {
     return {
       user: this.get('store').peekAll('user').get('firstObject'),
-      objects: this.get('store').peekAll('object'),
+      objects: await this.get('store').findAll('object', {reload: true}),
     };
   }
 }

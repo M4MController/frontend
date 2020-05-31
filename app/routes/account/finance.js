@@ -4,6 +4,6 @@ export default class extends Route {
   pageTitle = 'Финансы';
 
   model() {
-    return this.get('store').peekAll('object');
+    return this.get('store').findAll('object');
   }
 }

@@ -1,0 +1,22 @@
+{{#if isLoading}}
+  {{core/loader-component class="vp-height vp-width h-center v-center"}}
+{{else}}
+  <div class="vp-height v-center h-center">
+    <h1 class="text-center margin-bottom-2x">
+      Этот контроллер и Ваше облачное хранилище синхронизированы
+    </h1>
+    <div class="text-center">
+      <p>
+        Контроллер будет отправлять собранные данные на Ваше облако в зашифрованном виде,
+        <br>
+        так что даже при взломе облачного хранилища, данные не утекут.
+      </p>
+      <div class="popupForm">
+        {{core/form-input class="block" value=key name="Задайте секретное слово, которым будут шифроваться данные"}}
+        <button class="btn btnStyle btnStyle_сolor popupEnterBtn" onClick={{action "onKeyEntered" key}}>
+          Сохранить
+        </button>
+      </div>
+    </div>
+  </div>
+{{/if}}

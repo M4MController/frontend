@@ -1,0 +1,27 @@
+{{#if isLoading}}
+  {{core/loader-component class="vp-height vp-width h-center v-center"}}
+{{else}}
+  <div class="vp-height v-center h-center">
+    <div class="popupForm text-center">
+      <h1 class="text-center margin-bottom-2x">
+        {{#if isLiteMode}}
+          Устройство почти готово к использованию!
+        {{else}}
+          Добро пожаловать!
+        {{/if}}
+      </h1>
+      {{#unless isLiteMode}}
+        <p class="margin-bottom-2x">
+          Дайте название объекту, в котором будет находится контроллер. Например, дом, автомобиль, дача и т. д.
+        </p>
+      {{/unless}}
+      {{core/form-input
+              name=(if isLiteMode "Введите название для этого контроллера")
+              value=objectName
+      }}
+      <button class="btn btnStyle btnStyle_сolor popupEnterBtn" onclick={{action "onObjectCreate" objectName}}>
+        Далее
+      </button>
+    </div>
+  </div>
+{{/if}}
