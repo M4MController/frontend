@@ -1,5 +1,8 @@
 {{#if isLoading}}
-  {{core/loader-component class="vp-height vp-width h-center v-center"}}
+  <div class="layout v-center h-center vp-height">
+    {{core/loader-component}}
+  </div>
+
 {{else}}
   <div class="vp-height v-center h-center">
     <h1 class="text-center margin-bottom-2x">

@@ -1,5 +1,7 @@
 {{#if isLoading}}
-  {{core/loader-component class="vp-height vp-width h-center v-center"}}
+  <div class="layout v-center h-center vp-height">
+    {{core/loader-component}}
+  </div>
 {{else}}
   <div class="vp-height v-center h-center">
     <div class="popupForm">
@@ -16,22 +18,9 @@
         {{/if}}
       </p>
 
-      {{#if showToken}}
-        <span class="text-muted">
-              <i>
-                (должно открыться окно авторизации в Я.Диске, на данный момент это невозможно, поэтому введите токен в поле ниже)
-              </i>
-            </span>
-        {{core/form-input value=token}}
-        <button class="btn btnStyle yandex-disk popupEnterBtn margin-bottom-4x" onClick={{action "onSocialBind"
-                                                                                                 token}}>
-        </button>
-      {{else}}
-        <button class="btn btnStyle yandex-disk popupEnterBtn margin-bottom-4x" onClick={{action "setProp"
-                                                                                                 "showToken"
-                                                                                                 true}}>
-        </button>
-      {{/if}}
+      <button class="btn btnStyle yandex-disk popupEnterBtn margin-bottom-4x"
+              onclick="window.location = 'https://oauth.yandex.ru/authorize?response_type=token&client_id=57a03979cd4e40f3b7c17cf12ccced73&redirect_uri=https://meter4.me/account/set-up/social-binding'"
+      ></button>
       <p>
         Вы можете пропустить этот шаг и настроить привязку позже в настройках.
       </p>
