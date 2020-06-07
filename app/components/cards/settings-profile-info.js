@@ -29,7 +29,8 @@ export default class extends Component {
   }
 
   @action
-  async changeSocialTokens() {
+  async unbindYandex() {
+    this.set('socialTokens.yandexDisk', '');
     await this.get('socialTokens').save();
     this.set('integrationsChangeOK', true);
   }
