@@ -1,0 +1,14 @@
+{
+  "name": "M4M",
+  "short_name": "M4M",
+  "theme_color": "#567ba7",
+  "background_color": "#eeeeee",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/account",
+  "icons": [{
+    "src": "/images/logo-black.svg",
+    "sizes": "128x128",
+    "type": "image/svg+xml"
+  }]
+}
