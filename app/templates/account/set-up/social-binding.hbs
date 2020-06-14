@@ -18,9 +18,7 @@
         {{/if}}
       </p>
 
-      <button class="btn btnStyle yandex-disk popupEnterBtn margin-bottom-4x"
-              onclick="window.location = 'https://oauth.yandex.ru/authorize?response_type=token&client_id=57a03979cd4e40f3b7c17cf12ccced73&redirect_uri=https://meter4.me/account/set-up/social-binding'"
-      ></button>
+      {{core/yandex-disk redirect="https://meter4.me/account/set-up/social-binding" class="margin-bottom-4x"}}
       <p>
         Вы можете пропустить этот шаг и настроить привязку позже в настройках.
       </p>
