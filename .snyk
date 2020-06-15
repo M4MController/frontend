@@ -1,0 +1,14 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.14.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - ember-cli > portfinder > async > lodash:
+        patched: '2020-05-09T00:32:46.286Z'
+    - ember-cli > broccoli > console-ui > inquirer > lodash:
+        patched: '2020-05-09T00:32:46.286Z'
+    - ember-cli > @babel/plugin-transform-modules-amd > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2020-05-09T00:32:46.286Z'
+    - ember-cli > broccoli-babel-transpiler > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2020-05-09T00:32:46.286Z'

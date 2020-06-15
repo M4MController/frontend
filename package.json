@@ -17,7 +17,9 @@
     "lint:hbs": "./node_modules/.bin/ember-template-lint app/templates/",
     "lint:scss": "stylelint app/styles",
     "start": "ember serve",
-    "test": "npm run lint && ember test"
+    "test": "npm run lint && ember test",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "@ember/jquery": "^1.0.0",
@@ -67,9 +69,11 @@
     "sass": "^1.20.1",
     "stylelint": "^13.1.0",
     "stylelint-config-recommended": "^3.0.0",
-    "stylelint-scss": "^3.3.0"
+    "stylelint-scss": "^3.3.0",
+    "snyk": "^1.319.2"
   },
   "engines": {
     "node": ">= 10.*"
-  }
+  },
+  "snyk": true
 }
