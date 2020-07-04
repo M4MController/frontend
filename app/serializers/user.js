@@ -2,9 +2,9 @@ import ApplicationSerializer from './application';
 
 export default class extends ApplicationSerializer {
   attrs = {
-    firstName: 'name',
-    middleName: 'family_name',
-    lastName: 'second_name',
+    firstName: 'first_name',
+    middleName: 'middle_name',
+    lastName: 'last_name',
     registrationAddress: 'registration_addres',
     mailingAddress: 'mailing_addres',
     birthday: 'birth_day',
