@@ -14,8 +14,7 @@ WORKDIR /application
 
 # install dependencies
 ADD package.json .
-ADD package-lock.json .
-RUN npm ci
+RUN npm i
 
 # build the app
 ADD .eslintrc.js .
