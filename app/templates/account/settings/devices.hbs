@@ -28,8 +28,8 @@
             <span>Заблокировать</span>
           </button>
           <!--<button class="btn btnStyle btnStyle_сolorless inspector__btn">-->
-            <!--<span class="icon-move"></span>-->
-            <!--<span>Переместить</span>-->
+          <!--<span class="icon-move"></span>-->
+          <!--<span>Переместить</span>-->
           <!--</button>-->
           <button class="btn btnStyle btnStyle_сolorless inspector__btn"
                   onclick={{action "onControllerDeleteAction" controller}}>
@@ -56,14 +56,14 @@
                                       class="height-3x margin-right-1x"}}
                 <span class="counterItem__name">{{sensor.name}}</span>
               </td>
-              <td class="text-muted">{{sensor.serviceCompany.name}}</td>
-              <td class="text-muted">{{measurement sensor.value sensor.unitName}}</td>
-              <td align="right">
-                  <span class="icon-disabled counterItem__control"> <span
-                    class="controlText"> Заблокировать</span></span>
-                <span class="icon-cross counterItem__control"> <span
-                  class="controlText"> Удалить</span></span>
-              </td>
+              {{#if isLiteMode}}
+                <td class="text-right">
+                  <button class="btn btnStyle" onclick={{action "downloadPrettyData" sensor}}>Скачать данные</button>
+                </td>
+                <td class="text-right">
+                  <button class="btn btnStyle" onclick={{action "downloadRawData" sensor}}>Скачать сырые данные</button>
+                </td>
+              {{/if}}
             </tr>
           {{/each}}
           </tbody>
